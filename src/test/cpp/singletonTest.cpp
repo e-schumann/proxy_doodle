@@ -66,13 +66,13 @@ TEST( singletonTest, simple01 ) {
    int count{0};
 
    {
-      count = singleton< test::test::constructor_test_class >::instance<test::test::context_tag>().num_created();
+      count = singleton< test::constructor_test_class >::instance<test::context_tag>().num_created();
       EXPECT_EQ( count, 1 );
 
-      count = singleton< test::test::constructor_test_class >::instance<test::test::context_tag>().num_created();
+      count = singleton< test::constructor_test_class >::instance<test::context_tag>().num_created();
       EXPECT_EQ( count, 1 );
 
-      count = singleton< test::test::constructor_test_class >::instance<test::test::context_tag>().num_alive();
+      count = singleton< test::constructor_test_class >::instance<test::context_tag>().num_alive();
       EXPECT_EQ( count, 1 );
 
       test::constructor_test_class a;
@@ -132,14 +132,14 @@ TEST( singletonTest, simple01 ) {
       count = b.num_alive();
       EXPECT_EQ( count, 3 );
 
-      test::constructor_test_class c ( singleton< test::test::constructor_test_class >::instance<test::test::context_tag>() );
+      test::constructor_test_class c ( singleton< test::constructor_test_class >::instance<test::context_tag>() );
       count = c.num_created();
       EXPECT_EQ( count, 7 );
 
       count = c.num_alive();
       EXPECT_EQ( count, 4 );
 
-      test::constructor_test_class& d = singleton< test::test::constructor_test_class >::instance<test::test::context_tag>();
+      test::constructor_test_class& d = singleton< test::constructor_test_class >::instance<test::context_tag>();
 
       count = d.num_created();
       EXPECT_EQ( count, 7 );
@@ -147,9 +147,9 @@ TEST( singletonTest, simple01 ) {
       count = d.num_alive();
       EXPECT_EQ( count, 4 );
    }
-   count = singleton< test::test::constructor_test_class >::instance<test::test::context_tag>().num_created();
+   count = singleton< test::constructor_test_class >::instance<test::context_tag>().num_created();
    EXPECT_EQ( count, 7 );
 
-   count = singleton< test::test::constructor_test_class >::instance<test::test::context_tag>().num_alive();
+   count = singleton< test::constructor_test_class >::instance<test::context_tag>().num_alive();
    EXPECT_EQ( count, 1 );
 }

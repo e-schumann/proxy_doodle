@@ -1,7 +1,10 @@
-enable_testing()
-set( PROJECT_TEST_NAME ${PROJECT_NAME}_test )
+cmake_minimum_required (VERSION 3.2)
 
-include_directories( ${gtest_SOURCE_DIR}/include ${util_SOURCE_DIR} )
+project( ${PROJECT_TEST_NAME} )
+
+enable_testing()
+
+include_directories( ${gtest_SOURCE_DIR}/include ${util_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/cpp )
 
 file( GLOB UNIT_TEST_SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cpp/*.cpp )
 

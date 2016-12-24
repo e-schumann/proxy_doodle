@@ -96,7 +96,7 @@ protected:
 public:
   template < typename Context, typename... Args > static T& instance( Args... args );
 private:
-  template < typename Context > static T& apply( std::function<T&()>& func );
+  static T& apply( std::function<T&()>& func );
   template < typename Context, typename... Args > static T& create_meyer_instance( Args... args );
 };
 
@@ -104,19 +104,19 @@ private:
 // ------------------------------------------------------------------------------
 
 template < typename T > template < typename Context, typename... Args >
-static T& prxy::utl::singleton<T>::instance( Args... args ) {
+inline T& prxy::utl::singleton<T>::instance( Args... args ) {
   static auto unique_func = std::bind( create_meyer_instance< Context, Args...>, args... );
-  return apply<Context>( unique_func );
+  return apply( unique_func );
 }
 
-template < typename T > template < typename Context >
-static T& prxy::utl::singleton<T>::apply( std::function<T&()>& func ) {
+template < typename T >
+inline T& prxy::utl::singleton<T>::apply( std::function<T&()>& func ) {
   static T& ref_instance = func();
   return ref_instance;
 }
 
 template < typename T > template < typename Context, typename... Args >
-static T& prxy::utl::singleton<T>::create_meyer_instance(Args... args) {
+inline T& prxy::utl::singleton<T>::create_meyer_instance(Args... args) {
   static T instance{ std::forward<Args>(args)...};
   return instance;
 }

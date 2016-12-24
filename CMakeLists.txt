@@ -1,5 +1,9 @@
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.2)
+
 project(proxy_doodle C CXX)
+
+set (CMAKE_CXX_STANDARD 11)
+set( PROJECT_TEST_NAME ${PROJECT_NAME}_test CACHE INTERNAL "${PROJECT_NAME}: Test project name" FORCE )
 
 # Download and unpack googletest at configure time
 # https://crascit.com/2015/07/25/cmake-gtest/
