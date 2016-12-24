@@ -26,4 +26,3 @@ add_subdirectory(src/test)
 
 enable_testing()
 
-add_test( test1 ${PROJECT_TEST_NAME} )
