@@ -1,7 +1,7 @@
 enable_testing()
 set( PROJECT_TEST_NAME ${PROJECT_NAME}_test )
 
-include_directories( ${gtest_SOURCE_DIR}/include ${util_SOURCE_DIR}/header )
+include_directories( ${gtest_SOURCE_DIR}/include ${util_SOURCE_DIR} )
 
 file( GLOB UNIT_TEST_SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cpp/*.cpp )
 
