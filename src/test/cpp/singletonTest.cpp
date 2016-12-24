@@ -60,19 +60,24 @@
 // Tests
 // ---------------------------------------------------
 
+struct myclass : public prxy::utl::singleton<myclass> {
+   myclass(){};
+   ~myclass(){};
+};
+
 TEST( singletonTest, simple01 ) {
    using namespace prxy::utl;
 
    int count{0};
 
    {
-      count = singleton< test::constructor_test_class >::instance<test::context_tag>().num_created();
+      count = singleton< test::constructor_test_class >::instance().num_created();
       EXPECT_EQ( count, 1 );
 
-      count = singleton< test::constructor_test_class >::instance<test::context_tag>().num_created();
+      count = singleton< test::constructor_test_class >::instance().num_created();
       EXPECT_EQ( count, 1 );
 
-      count = singleton< test::constructor_test_class >::instance<test::context_tag>().num_alive();
+      count = singleton< test::constructor_test_class >::instance().num_alive();
       EXPECT_EQ( count, 1 );
 
       test::constructor_test_class a;
@@ -132,14 +137,14 @@ TEST( singletonTest, simple01 ) {
       count = b.num_alive();
       EXPECT_EQ( count, 3 );
 
-      test::constructor_test_class c ( singleton< test::constructor_test_class >::instance<test::context_tag>() );
+      test::constructor_test_class c ( singleton< test::constructor_test_class >::instance() );
       count = c.num_created();
       EXPECT_EQ( count, 7 );
 
       count = c.num_alive();
       EXPECT_EQ( count, 4 );
 
-      test::constructor_test_class& d = singleton< test::constructor_test_class >::instance<test::context_tag>();
+      test::constructor_test_class& d = singleton< test::constructor_test_class >::instance();
 
       count = d.num_created();
       EXPECT_EQ( count, 7 );
@@ -147,9 +152,9 @@ TEST( singletonTest, simple01 ) {
       count = d.num_alive();
       EXPECT_EQ( count, 4 );
    }
-   count = singleton< test::constructor_test_class >::instance<test::context_tag>().num_created();
+   count = singleton< test::constructor_test_class >::instance().num_created();
    EXPECT_EQ( count, 7 );
 
-   count = singleton< test::constructor_test_class >::instance<test::context_tag>().num_alive();
+   count = singleton< test::constructor_test_class >::instance().num_alive();
    EXPECT_EQ( count, 1 );
 }

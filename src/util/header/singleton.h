@@ -94,18 +94,18 @@ protected:
   singleton& operator=( singleton const& ) = delete;
   virtual ~singleton() = default;
 public:
-  template < typename Context, typename... Args > static T& instance( Args... args );
+  template < typename... Args > static T& instance( Args... args );
 private:
   static T& apply( std::function<T&()>& func );
-  template < typename Context, typename... Args > static T& create_meyer_instance( Args... args );
+  template < typename... Args > static T& create_meyer_instance( Args... args );
 };
 
 // Definition of (inlined) methods and functions ( most likely template related ).
 // ------------------------------------------------------------------------------
 
-template < typename T > template < typename Context, typename... Args >
+template < typename T > template < typename... Args >
 inline T& prxy::utl::singleton<T>::instance( Args... args ) {
-  static auto unique_func = std::bind( create_meyer_instance< Context, Args...>, args... );
+  static auto unique_func = std::bind( create_meyer_instance< Args...>, args... );
   return apply( unique_func );
 }
 
@@ -115,7 +115,7 @@ inline T& prxy::utl::singleton<T>::apply( std::function<T&()>& func ) {
   return ref_instance;
 }
 
-template < typename T > template < typename Context, typename... Args >
+template < typename T > template < typename... Args >
 inline T& prxy::utl::singleton<T>::create_meyer_instance(Args... args) {
   static T instance{ std::forward<Args>(args)...};
   return instance;
