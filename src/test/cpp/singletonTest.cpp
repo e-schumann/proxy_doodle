@@ -152,3 +152,100 @@ TEST( singletonTest, simple01 ) {
    count = test::constructor_test_class::instance().num_alive();
    EXPECT_EQ( count, 1 );
 }
+
+TEST( singletonTest, simple02 ) {
+   using namespace prxy::utl;
+
+   test::constructor_test_class2::reset();
+
+   int count{0};
+
+   {
+      count = singleton<test::constructor_test_class2>::instance().num_created();
+      EXPECT_EQ( count, 1 );
+
+      count = singleton<test::constructor_test_class2>::instance().num_created();
+      EXPECT_EQ( count, 1 );
+
+      count = singleton<test::constructor_test_class2>::instance().num_alive();
+      EXPECT_EQ( count, 1 );
+
+      test::constructor_test_class2 a;
+      count = a.num_created();
+      EXPECT_EQ( count, 2 );
+
+      count = a.num_alive();
+      EXPECT_EQ( count, 2 );
+
+      {
+         test::constructor_test_class2 a;
+         count = a.num_created();
+         EXPECT_EQ( count, 3 );
+
+         count = a.num_alive();
+         EXPECT_EQ( count, 3 );
+
+         test::constructor_test_class2 b;
+         count = b.num_created();
+         EXPECT_EQ( count, 4 );
+
+         count = b.num_alive();
+         EXPECT_EQ( count, 4 );
+
+         count = a.num_created();
+         EXPECT_EQ( count, 4 );
+
+         count = a.num_alive();
+         EXPECT_EQ( count, 4 );
+      }
+
+      count = a.num_created();
+      EXPECT_EQ( count, 4 );
+
+      count = a.num_alive();
+      EXPECT_EQ( count, 2 );
+
+      {
+         std::unique_ptr< test::constructor_test_class2 > p { new test::constructor_test_class2 };
+         count = p->num_created();
+         EXPECT_EQ( count, 5 );
+
+         count = p->num_alive();
+         EXPECT_EQ( count, 3 );
+      }
+
+      count = a.num_created();
+      EXPECT_EQ( count, 5 );
+
+      count = a.num_alive();
+      EXPECT_EQ( count, 2 );
+
+      test::constructor_test_class2 b ( a );
+      count = b.num_created();
+      EXPECT_EQ( count, 6 );
+
+      count = b.num_alive();
+      EXPECT_EQ( count, 3 );
+
+      test::constructor_test_class2 c ( singleton< test::constructor_test_class2 >::instance() );
+      count = c.num_created();
+      EXPECT_EQ( count, 7 );
+
+      count = c.num_alive();
+      EXPECT_EQ( count, 4 );
+
+      test::constructor_test_class2& d = singleton<test::constructor_test_class2>::instance();
+
+      count = d.num_created();
+      EXPECT_EQ( count, 7 );
+
+      count = d.num_alive();
+      EXPECT_EQ( count, 4 );
+   }
+   count = singleton<test::constructor_test_class2>::instance().num_created();
+   EXPECT_EQ( count, 7 );
+
+   count = singleton<test::constructor_test_class2>::instance().num_alive();
+   EXPECT_EQ( count, 1 );
+}
+

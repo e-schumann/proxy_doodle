@@ -84,6 +84,7 @@
 namespace test {
   struct context_tag;
   struct constructor_test_class;
+  struct constructor_test_class2;
 }
 
 // Declarations of the class interfaces
@@ -97,6 +98,12 @@ struct test::constructor_test_class : public prxy::utl::singleton<constructor_te
   constructor_test_class() {};
   constructor_test_class( constructor_test_class const&) {};
   ~constructor_test_class() {};
+};
+
+struct test::constructor_test_class2 : public prxy::utl::object_counter<constructor_test_class> {
+  constructor_test_class2() {};
+  constructor_test_class2( constructor_test_class2 const&) {};
+  ~constructor_test_class2() {};
 };
 
 // Definition of (inlined) methods and functions ( most likely template related ).
