@@ -73,7 +73,7 @@
 
 // Include project headers
 // -----------------------
-
+#include <singleton.h>
 #include <object_counter.h>
 
 // Synopsis/Namespace interface:
@@ -92,9 +92,11 @@ namespace test {
 struct test::context_tag {
 };
 
-struct test::constructor_test_class : public prxy::utl::object_counter<constructor_test_class> {
-  constructor_test_class() = default;
-  constructor_test_class( constructor_test_class const&) = default;
+struct test::constructor_test_class : public prxy::utl::singleton<constructor_test_class>,
+                                      public prxy::utl::object_counter<constructor_test_class> {
+  constructor_test_class() {};
+  constructor_test_class( constructor_test_class const&) {};
+  ~constructor_test_class() {};
 };
 
 // Definition of (inlined) methods and functions ( most likely template related ).

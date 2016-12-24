@@ -13,3 +13,14 @@ ExternalProject_Add(googletest
   INSTALL_COMMAND   ""
   TEST_COMMAND      ""
 )
+
+ExternalProject_Add(spdlog
+  GIT_REPOSITORY    https://github.com/gabime/spdlog.git
+  GIT_TAG           master
+  SOURCE_DIR        "/home/thor/develop/proxy_doodle/extern/spdlog-src"
+  BINARY_DIR        "/home/thor/develop/proxy_doodle/extern/spdlog-build"
+  CONFIGURE_COMMAND ""
+  BUILD_COMMAND     ""
+  INSTALL_COMMAND   ""
+  TEST_COMMAND      ""
+)

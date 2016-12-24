@@ -96,7 +96,7 @@ protected:
 public:
   template < typename... Args > static T& instance( Args... args );
 private:
-  static T& apply( std::function<T&()>& func );
+  static T& apply( std::function<T&()> const& func );
   template < typename... Args > static T& create_meyer_instance( Args... args );
 };
 
@@ -110,14 +110,14 @@ inline T& prxy::utl::singleton<T>::instance( Args... args ) {
 }
 
 template < typename T >
-inline T& prxy::utl::singleton<T>::apply( std::function<T&()>& func ) {
+inline T& prxy::utl::singleton<T>::apply( std::function<T&()> const& func ) {
   static T& ref_instance = func();
   return ref_instance;
 }
 
 template < typename T > template < typename... Args >
 inline T& prxy::utl::singleton<T>::create_meyer_instance(Args... args) {
-  static T instance{ std::forward<Args>(args)...};
+  static T instance{ std::forward<Args>(args)... };
   return instance;
 }
 

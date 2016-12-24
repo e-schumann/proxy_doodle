@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.2)
 
-project(googletest-download NONE)
+project(extern-download NONE)
 
 include(ExternalProject)
 ExternalProject_Add(googletest
@@ -8,6 +8,17 @@ ExternalProject_Add(googletest
   GIT_TAG           master
   SOURCE_DIR        "${CMAKE_BINARY_DIR}/extern/googletest-src"
   BINARY_DIR        "${CMAKE_BINARY_DIR}/extern/googletest-build"
+  CONFIGURE_COMMAND ""
+  BUILD_COMMAND     ""
+  INSTALL_COMMAND   ""
+  TEST_COMMAND      ""
+)
+
+ExternalProject_Add(spdlog
+  GIT_REPOSITORY    https://github.com/gabime/spdlog.git
+  GIT_TAG           master
+  SOURCE_DIR        "${CMAKE_BINARY_DIR}/extern/spdlog-src"
+  BINARY_DIR        "${CMAKE_BINARY_DIR}/extern/spdlog-build"
   CONFIGURE_COMMAND ""
   BUILD_COMMAND     ""
   INSTALL_COMMAND   ""

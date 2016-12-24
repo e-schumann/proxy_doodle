@@ -50,7 +50,6 @@
 
 // Include project headers
 // -----------------------
-#include <singleton.h>
 
 // Include declaration header
 // --------------------------
@@ -60,24 +59,19 @@
 // Tests
 // ---------------------------------------------------
 
-struct myclass : public prxy::utl::singleton<myclass> {
-   myclass(){};
-   ~myclass(){};
-};
-
 TEST( singletonTest, simple01 ) {
    using namespace prxy::utl;
 
    int count{0};
 
    {
-      count = singleton< test::constructor_test_class >::instance().num_created();
+      count = test::constructor_test_class::instance().num_created();
       EXPECT_EQ( count, 1 );
 
-      count = singleton< test::constructor_test_class >::instance().num_created();
+      count = test::constructor_test_class::instance().num_created();
       EXPECT_EQ( count, 1 );
 
-      count = singleton< test::constructor_test_class >::instance().num_alive();
+      count = test::constructor_test_class::instance().num_alive();
       EXPECT_EQ( count, 1 );
 
       test::constructor_test_class a;
@@ -130,31 +124,31 @@ TEST( singletonTest, simple01 ) {
       count = a.num_alive();
       EXPECT_EQ( count, 2 );
 
-      test::constructor_test_class b ( a );
-      count = b.num_created();
-      EXPECT_EQ( count, 6 );
+//      test::constructor_test_class b ( a );
+//      count = b.num_created();
+//      EXPECT_EQ( count, 6 );
+//
+//      count = b.num_alive();
+//      EXPECT_EQ( count, 3 );
+//
+//      test::constructor_test_class c ( singleton< test::constructor_test_class >::instance() );
+//      count = c.num_created();
+//      EXPECT_EQ( count, 7 );
+//
+//      count = c.num_alive();
+//      EXPECT_EQ( count, 4 );
 
-      count = b.num_alive();
-      EXPECT_EQ( count, 3 );
-
-      test::constructor_test_class c ( singleton< test::constructor_test_class >::instance() );
-      count = c.num_created();
-      EXPECT_EQ( count, 7 );
-
-      count = c.num_alive();
-      EXPECT_EQ( count, 4 );
-
-      test::constructor_test_class& d = singleton< test::constructor_test_class >::instance();
+      test::constructor_test_class& d = test::constructor_test_class::instance();
 
       count = d.num_created();
-      EXPECT_EQ( count, 7 );
+      EXPECT_EQ( count, 5 );
 
       count = d.num_alive();
-      EXPECT_EQ( count, 4 );
+      EXPECT_EQ( count, 2 );
    }
-   count = singleton< test::constructor_test_class >::instance().num_created();
-   EXPECT_EQ( count, 7 );
+   count = test::constructor_test_class::instance().num_created();
+   EXPECT_EQ( count, 5 );
 
-   count = singleton< test::constructor_test_class >::instance().num_alive();
+   count = test::constructor_test_class::instance().num_alive();
    EXPECT_EQ( count, 1 );
 }
