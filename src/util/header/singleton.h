@@ -81,13 +81,13 @@
 // file as well as forward declaration of classes, functions and types
 // provided by custom components.
 // --------------------------------------------------------------------
-namespace prxy { namespace utl {
+namespace tuto { namespace utl {
   template < typename T > class singleton;
 }}
 
 // Declarations of the class interfaces
 // ------------------------------------
-template < typename T > class prxy::utl::singleton {
+template < typename T > class tuto::utl::singleton {
 protected:
   singleton() = default;
   singleton( singleton const& ) = delete;
@@ -104,19 +104,19 @@ private:
 // ------------------------------------------------------------------------------
 
 template < typename T > template < typename... Args >
-inline T& prxy::utl::singleton<T>::instance( Args... args ) {
+inline T& tuto::utl::singleton<T>::instance( Args... args ) {
   static auto unique_func = std::bind( create_meyer_instance< Args...>, args... );
   return apply( unique_func );
 }
 
 template < typename T >
-inline T& prxy::utl::singleton<T>::apply( std::function<T&()> const& func ) {
+inline T& tuto::utl::singleton<T>::apply( std::function<T&()> const& func ) {
   static T& ref_instance = func();
   return ref_instance;
 }
 
 template < typename T > template < typename... Args >
-inline T& prxy::utl::singleton<T>::create_meyer_instance(Args... args) {
+inline T& tuto::utl::singleton<T>::create_meyer_instance(Args... args) {
   static T instance{ std::forward<Args>(args)... };
   return instance;
 }

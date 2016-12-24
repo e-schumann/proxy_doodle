@@ -59,8 +59,14 @@
 // Tests
 // ---------------------------------------------------
 
+/**
+ * This test uses a trivial class that is CRTP-derived from 'singleton'.
+ * Specialty: Due to the implementation of 'singleton' this class can not
+ * be copied.
+ */
+
 TEST( singletonTest, simple01 ) {
-   using namespace prxy::utl;
+   using namespace tuto::utl;
 
    int count{0};
 
@@ -124,20 +130,6 @@ TEST( singletonTest, simple01 ) {
       count = a.num_alive();
       EXPECT_EQ( count, 2 );
 
-//      test::constructor_test_class b ( a );
-//      count = b.num_created();
-//      EXPECT_EQ( count, 6 );
-//
-//      count = b.num_alive();
-//      EXPECT_EQ( count, 3 );
-//
-//      test::constructor_test_class c ( singleton< test::constructor_test_class >::instance() );
-//      count = c.num_created();
-//      EXPECT_EQ( count, 7 );
-//
-//      count = c.num_alive();
-//      EXPECT_EQ( count, 4 );
-
       test::constructor_test_class& d = test::constructor_test_class::instance();
 
       count = d.num_created();
@@ -153,8 +145,20 @@ TEST( singletonTest, simple01 ) {
    EXPECT_EQ( count, 1 );
 }
 
+/**
+ * This test uses a trivial class that is explicitly 'singletonized'.
+ * Specialty: This allows 'non-singletonized' instances of the class
+ * to be copied.
+ */
+
 TEST( singletonTest, simple02 ) {
-   using namespace prxy::utl;
+   using namespace tuto::utl;
+
+   /**
+    * This call to 'reset' is required be cause of the simplistic implementation of object_counter.
+    * The way it is implemented it counts instances of object_counter - it does not take inherited
+    * classes into account!
+    */
 
    test::constructor_test_class2::reset();
 

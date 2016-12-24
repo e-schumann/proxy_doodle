@@ -80,14 +80,14 @@
 // file as well as forward declaration of classes, functions and types
 // provided by custom components.
 // --------------------------------------------------------------------
-namespace prxy { namespace utl {
+namespace tuto { namespace utl {
   template < typename T > struct object_counter;
 }}
 
 // Declarations of the class interfaces
 // ------------------------------------
 
-template < typename T > struct prxy::utl::object_counter {
+template < typename T > struct tuto::utl::object_counter {
   static int created;
   static int alive;
   object_counter();
@@ -104,34 +104,34 @@ protected:
 // Definition of (inlined) methods and functions ( most likely template related ).
 // ------------------------------------------------------------------------------
 
-template < typename T > prxy::utl::object_counter<T>::object_counter() {
+template < typename T > tuto::utl::object_counter<T>::object_counter() {
   ++created;
   ++alive;
 }
 
-template < typename T > prxy::utl::object_counter<T>::object_counter( object_counter const& ) {
+template < typename T > tuto::utl::object_counter<T>::object_counter( object_counter const& ) {
   ++created;
   ++alive;
 }
 
-template < typename T > prxy::utl::object_counter<T>::~object_counter() {
+template < typename T > tuto::utl::object_counter<T>::~object_counter() {
   --alive;
 }
 
-template < typename T > inline int const& prxy::utl::object_counter<T>::num_created() const {
+template < typename T > inline int const& tuto::utl::object_counter<T>::num_created() const {
   return created;
 }
 
-template < typename T > inline int const& prxy::utl::object_counter<T>::num_alive() const {
+template < typename T > inline int const& tuto::utl::object_counter<T>::num_alive() const {
   return alive;
 }
 
-template < typename T > void prxy::utl::object_counter<T>::reset() {
+template < typename T > void tuto::utl::object_counter<T>::reset() {
   created = 0;
   alive = 0;
 }
 
-template < typename T > int prxy::utl::object_counter<T>::created(0);
-template < typename T > int prxy::utl::object_counter<T>::alive(0);
+template < typename T > int tuto::utl::object_counter<T>::created(0);
+template < typename T > int tuto::utl::object_counter<T>::alive(0);
 
 #endif /* OBJECT_COUNTER_H */

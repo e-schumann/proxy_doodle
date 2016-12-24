@@ -93,14 +93,14 @@ namespace test {
 struct test::context_tag {
 };
 
-struct test::constructor_test_class : public prxy::utl::singleton<constructor_test_class>,
-                                      public prxy::utl::object_counter<constructor_test_class> {
+struct test::constructor_test_class : public tuto::utl::singleton<constructor_test_class>,
+                                      public tuto::utl::object_counter<constructor_test_class> {
   constructor_test_class() {};
   constructor_test_class( constructor_test_class const&) {};
   ~constructor_test_class() {};
 };
 
-struct test::constructor_test_class2 : public prxy::utl::object_counter<constructor_test_class> {
+struct test::constructor_test_class2 : public tuto::utl::object_counter<constructor_test_class> {
   constructor_test_class2() {};
   constructor_test_class2( constructor_test_class2 const&) {};
   ~constructor_test_class2() {};
