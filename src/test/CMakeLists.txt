@@ -2,6 +2,8 @@ cmake_minimum_required (VERSION 3.2)
 
 project( ${PROJECT_TEST_NAME} )
 
+enable_testing()
+
 include_directories( ${gtest_SOURCE_DIR}/include ${util_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/cpp )
 link_directories( ${gmock_BINARY_DIR}/gtest )
 message( STATUS "gmock_BINARY_DIR: " ${gmock_BINARY_DIR} )
