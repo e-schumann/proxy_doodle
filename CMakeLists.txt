@@ -13,7 +13,16 @@ set( PROJECT_TEST_NAME ${PROJECT_NAME}_test CACHE INTERNAL "${PROJECT_NAME}: Tes
 #execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/extern/extern-download )
 #execute_process(COMMAND ${CMAKE_COMMAND} --build . WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/extern/extern-download )
 
-# Prevent GoogleTest from overriding our compiler/linker options
+execute(
+   COMMAND ./bootstrap.sh
+   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/external/boost
+)
+
+execute( 
+   COMMAND ./b2 -j4 --build-dir=./build --layout=versioned --prefix=${CMAKE_BINARY_DIR}/boost toolset=gcc cxxflags="-std=c++11" variant=release link=shared threading=multi runtime-link=shared install
+   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/external/boost
+)
+
 # when building with Visual Studio
 
 enable_testing()

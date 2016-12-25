@@ -15,11 +15,6 @@ gradle naming conventions for directory structure and tests.
 6. cmake --build .
 7. ctest -VV
 
-bcp --boost=/usr/include --namespace=fsboost --namespace-alias file_system config build ./boost_extract
-
-http://stackoverflow.com/questions/28182598/how-to-extract-boostfilesystem-using-bcp
-https://steveire.wordpress.com/2016/08/21/boost-dependencies-and-bcp/
-http://www.boost.org/doc/libs/1_61_0/tools/bcp/doc/html/index.html
 
 
 git clone --recursive https://github.com/boostorg/boost.git boost-git
@@ -27,5 +22,15 @@ cd boost-git
 git fetch --all --tags --prune
 git checkout tags/boost-1.62.0 -b t_build_1_62   <==== don't! This tagged version of Jamfile is not working (python rule is missing!)
 ./bootstrap.sh
-./b2 -j4 --build-dir=./build --layout=versioned toolset=gcc cxxflags="-std=c++14" variant=release link=shared threading=multi runtime-link=shared
+./b2 -j4 --build-dir=./build --layout=versioned toolset=gcc cxxflags="-std=c++11" variant=release link=shared threading=multi runtime-link=shared
+./b2 toolset=gcc cxxflags="-std=c++11" tools/bcp
 
+dist/bin/bcp --boost=/usr/include --namespace=fsboost --namespace-alias filesystem config build ~/boost_extract
+
+Remark: .git are copied to (which result in fatal error when doing git add boost_extract)
+
+
+http://stackoverflow.com/questions/28182598/how-to-extract-boostfilesystem-using-bcp
+https://steveire.wordpress.com/2016/08/21/boost-dependencies-and-bcp/
+http://www.boost.org/doc/libs/1_61_0/tools/bcp/doc/html/index.html
+http://stackoverflow.com/questions/4831056/create-boost-tool-executable
