@@ -96,7 +96,6 @@ template < typename T > struct tuto::utl::object_counter {
   int const& num_created() const;
   int const& num_alive() const;
 
-  static void reset();
 protected:
   ~object_counter();
 };
@@ -124,11 +123,6 @@ template < typename T > inline int const& tuto::utl::object_counter<T>::num_crea
 
 template < typename T > inline int const& tuto::utl::object_counter<T>::num_alive() const {
   return alive;
-}
-
-template < typename T > void tuto::utl::object_counter<T>::reset() {
-  created = 0;
-  alive = 0;
 }
 
 template < typename T > int tuto::utl::object_counter<T>::created(0);

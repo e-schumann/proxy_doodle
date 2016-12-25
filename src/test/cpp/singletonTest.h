@@ -82,16 +82,14 @@
 // provided by custom components.
 // --------------------------------------------------------------------
 namespace test {
-  struct context_tag;
   struct constructor_test_class;
   struct constructor_test_class2;
+  template < unsigned int n> class multiple_constructors;
 }
 
 // Declarations of the class interfaces
 // ------------------------------------
 
-struct test::context_tag {
-};
 
 struct test::constructor_test_class : public tuto::utl::singleton<constructor_test_class>,
                                       public tuto::utl::object_counter<constructor_test_class> {
@@ -100,15 +98,49 @@ struct test::constructor_test_class : public tuto::utl::singleton<constructor_te
   ~constructor_test_class() {};
 };
 
-struct test::constructor_test_class2 : public tuto::utl::object_counter<constructor_test_class> {
+struct test::constructor_test_class2 : public tuto::utl::object_counter<constructor_test_class2> {
   constructor_test_class2() {};
   constructor_test_class2( constructor_test_class2 const&) {};
   ~constructor_test_class2() {};
 };
 
+template < unsigned int n> class test::multiple_constructors : public tuto::utl::singleton<multiple_constructors<n>>,
+                                                               public tuto::utl::object_counter<multiple_constructors<n>> {
+  std::string name_;
+  unsigned int id_;
+public:
+  multiple_constructors();
+  multiple_constructors( std::string const& name );
+  multiple_constructors( unsigned int id );
+  multiple_constructors( std::string const& name, unsigned int id );
+  ~multiple_constructors() = default;
+
+  std::string const& name() const;
+  unsigned int id() const;
+};
+
+
 // Definition of (inlined) methods and functions ( most likely template related ).
 // ------------------------------------------------------------------------------
 
+template < unsigned int n> inline test::multiple_constructors<n>::multiple_constructors() : name_(""), id_(0) {
+}
 
+template < unsigned int n> inline test::multiple_constructors<n>::multiple_constructors( std::string const& name ) : name_(name), id_(0) {
+}
+
+template < unsigned int n> inline test::multiple_constructors<n>::multiple_constructors( unsigned int id ) : name_(""), id_(id) {
+}
+
+template < unsigned int n> inline test::multiple_constructors<n>::multiple_constructors( std::string const& name, unsigned int id ) : name_(name), id_(id) {
+}
+
+template < unsigned int n> inline std::string const& test::multiple_constructors<n>::name() const {
+  return name_;
+}
+
+template < unsigned int n> inline unsigned int test::multiple_constructors<n>::id() const {
+  return id_;
+}
 
 #endif /* SINGLETONTEST_H */

@@ -154,14 +154,6 @@ TEST( singletonTest, simple01 ) {
 TEST( singletonTest, simple02 ) {
    using namespace tuto::utl;
 
-   /**
-    * This call to 'reset' is required be cause of the simplistic implementation of object_counter.
-    * The way it is implemented it counts instances of object_counter - it does not take inherited
-    * classes into account!
-    */
-
-   test::constructor_test_class2::reset();
-
    int count{0};
 
    {
@@ -251,5 +243,82 @@ TEST( singletonTest, simple02 ) {
 
    count = singleton<test::constructor_test_class2>::instance().num_alive();
    EXPECT_EQ( count, 1 );
+}
+
+TEST( singletonTest, simple03 ) {
+   using namespace tuto::utl;
+
+   int count{0};
+
+   {
+      typedef test::multiple_constructors<1> test_class;
+
+      count = test_class::instance().num_created();
+      EXPECT_EQ( count, 1 );
+      EXPECT_EQ( test_class::instance().id(), 0 );
+      EXPECT_TRUE( test_class::instance().name().empty() );
+      EXPECT_EQ( test_class::instance().num_created(), 1 );
+      EXPECT_EQ( test_class::instance().num_alive(), 1 );
+
+      // This instance call does NOT initialize the field 'name' because being a singleton
+      // the constructor is not called because there is already an instance existing from above
+      // call. Effects like this made singletons an anti-pattern, I guess.
+      // On the other hand this might be the effect one just wanted to achieve.
+      // So: Use a singleton if you know what you do.
+      // Changing state of the 'singletonized' object requires setters.
+      test_class& instance = test_class::instance("wow");
+      count = instance.num_created();
+      EXPECT_EQ( count, 1 );
+      EXPECT_EQ( instance.id(), 0 );
+      EXPECT_TRUE( instance.name().empty() );
+   }
+
+   {
+      typedef test::multiple_constructors<2> test_class;
+
+      test_class& instance = test_class::instance("wow");
+      count = instance.num_created();
+      EXPECT_EQ( count, 1 );
+      EXPECT_EQ( instance.id(), 0 );
+      EXPECT_EQ( instance.name(), "wow" );
+      count = instance.num_created();
+      EXPECT_EQ( count, 1 );
+
+      // This instance call does NOT initialize the field 'id' because being a singleton
+      // the constructor is not called because there is already an instance existing from above
+      // call. Effects like this made singletons an anti-pattern, I guess.
+      // On the other hand this might be the effect one just wanted to achieve.
+      // So: Use a singleton if you know what you do.
+      // Changing state of the 'singletonized' object requires setters.
+
+      test_class& instance2 = test_class::instance(25U);
+      count = instance2.num_created();
+      EXPECT_EQ( count, 1 );
+      EXPECT_EQ( instance2.id(), 0 );
+      EXPECT_EQ( instance2.name(), "wow" );
+      count = instance.num_created();
+      EXPECT_EQ( count, 1 );
+   }
+
+   {
+      typedef test::multiple_constructors<3> test_class;
+
+      test_class& instance = test_class::instance("wow", 42U);
+      count = instance.num_created();
+      EXPECT_EQ( count, 1 );
+      EXPECT_EQ( instance.id(), 42U );
+      EXPECT_EQ( instance.name(), "wow" );
+      count = instance.num_created();
+      EXPECT_EQ( count, 1 );
+
+      test_class& instance2 = test_class::instance();
+      count = instance2.num_created();
+      EXPECT_EQ( count, 1 );
+      EXPECT_EQ( instance2.id(), 42U );
+      EXPECT_EQ( instance2.name(), "wow" );
+      count = instance2.num_created();
+      EXPECT_EQ( count, 1 );
+   }
+
 }
 
