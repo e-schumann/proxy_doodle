@@ -8,6 +8,8 @@ set( PROJECT_TEST_NAME ${PROJECT_NAME}_test CACHE INTERNAL "${PROJECT_NAME}: Tes
 # Download and unpack googletest at configure time
 # https://crascit.com/2015/07/25/cmake-gtest/
 configure_file(CMakeLists.txt.in extern/extern-download/CMakeLists.txt)
+configure_file(extern_boost.in extern/extern-boost/CMakeLists.txt)
+
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/extern/extern-download )
 execute_process(COMMAND ${CMAKE_COMMAND} --build . WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/extern/extern-download )
 
@@ -19,7 +21,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 # the following targets: gtest, gtest_main, gmock
 # and gmock_main
 add_subdirectory(${CMAKE_BINARY_DIR}/extern/googletest-src ${CMAKE_BINARY_DIR}/extern/googletest-build)
-
+add_subdirectory(${CMAKE_BINARY_DIR}/extern/extern-boost/)
 
 add_subdirectory(src/util)
 add_subdirectory(src/test)
