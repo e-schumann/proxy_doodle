@@ -64,12 +64,17 @@
 // provided by custom components.
 // --------------------------------------------------------------------
 namespace tuto { namespace utl {
-  template < typename Context, typename T > class context_singleton;
+  namespace class_scope {
+    template < typename Context, typename T > class context_singleton;
+  }
+  namespace instance_scope {
+    template < typename T > class context_singleton;
+  }
 }}
 
 // Declarations of the class interfaces
 // ------------------------------------
-template < typename context, typename T > class tuto::utl::context_singleton {
+template < typename context, typename T > class tuto::utl::class_scope::context_singleton {
 protected:
   context_singleton() = default;
   context_singleton( context_singleton const& ) = delete;
@@ -84,38 +89,74 @@ private:
 //  template < typename Context, typename... Args > static T& create_meyer_instance( Args... args );
 };
 
+// ------------------------------------------------------------------------------
+
+template < typename T > class tuto::utl::instance_scope::context_singleton {
+
+protected:
+  context_singleton() = default;
+  context_singleton( context_singleton const& ) = delete;
+  context_singleton& operator=( context_singleton const& ) = delete;
+  virtual ~context_singleton() = default;
+
+public:
+
+  template < typename Context, typename... Args >
+  static T& instance( Args... args );
+
+  private:
+
+  template < typename Context>
+  static T& apply( std::function<T&()> const& func );
+
+  template < typename Context, typename... Args >
+  static T& create_meyer_instance( Args... args );
+};
+
 // Definition of (inlined) methods and functions ( most likely template related ).
 // ------------------------------------------------------------------------------
 
 template < typename Context, typename T > template < typename... Args >
-inline T& tuto::utl::context_singleton<Context, T>::instance( Args... args ) {
+inline T& tuto::utl::class_scope::context_singleton<Context, T>::instance( Args... args ) {
   static auto unique_func = std::bind( create_meyer_instance< Args...>, args... );
   return apply( unique_func );
 }
-//template < typename T > template < typename Context, typename... Args >
-//inline T& tuto::utl::context_singleton<T>::instance( Args... args ) {
-//  static auto unique_func = std::bind( create_meyer_instance< Context, Args...>, args... );
-//  return apply( unique_func );
-//}
+
 template < typename Context, typename T >
-inline T& tuto::utl::context_singleton<Context, T>::apply( std::function<T&()> const& func ) {
+inline T& tuto::utl::class_scope::context_singleton<Context, T>::apply( std::function<T&()> const& func ) {
   static T& ref_instance = func();
   return ref_instance;
 }
-//template < typename T >
-//inline T& tuto::utl::context_singleton<T>::apply( std::function<T&()> const& func ) {
-//  static T& ref_instance = func();
-//  return ref_instance;
-//}
 
 template < typename Context, typename T > template < typename... Args >
-inline T& tuto::utl::context_singleton<Context, T>::create_meyer_instance(Args... args) {
+inline T& tuto::utl::class_scope::context_singleton<Context, T>::create_meyer_instance(Args... args) {
   static T instance{ std::forward<Args>(args)... };
   return instance;
 }
-//template < typename T > template < typename Context, typename... Args >
-//inline T& tuto::utl::context_singleton<T>::create_meyer_instance(Args... args) {
-//  static T instance{ std::forward<Args>(args)... };
-//  return instance;
-//}
+// ------------------------------------------------------------------------------
+
+//#include <iostream>
+//#include <typeinfo>
+
+template < typename T > template < typename Context, typename... Args >
+inline T& tuto::utl::instance_scope::context_singleton<T>::instance( Args... args ) {
+  auto unique_func = std::bind( create_meyer_instance< Context, Args...>, args... );
+//  std::cout << "--------------------> Return static func object of type: " << typeid(unique_func).name() << std::endl;
+  return apply<Context>( unique_func );
+}
+
+template < typename T > template < typename Context>
+inline T& tuto::utl::instance_scope::context_singleton<T>::apply( std::function<T&()> const& func ) {
+  static T& ref_instance = func();
+  return ref_instance;
+}
+
+template < typename T > template < typename Context, typename... Args >
+inline T& tuto::utl::instance_scope::context_singleton<T>::create_meyer_instance(Args... args) {
+  static T instance{ std::forward<Args>(args)... };
+//  static T instance( args... );
+//  std::cout << "--------------------> Return static of type: " << typeid(instance).name() << std::endl;
+  return instance;
+}
+
 #endif /* CONTEXT_SINGLETON_H */

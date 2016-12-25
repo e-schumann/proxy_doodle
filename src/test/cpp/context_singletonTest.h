@@ -68,21 +68,19 @@ namespace test {
   struct context2_tag;
   struct context3_tag;
   template < typename Context, unsigned int n> class multiple_ctors;
+  template < unsigned int n> class plain_multiple_ctors;
 }
 
 // Declarations of the class interfaces
 // ------------------------------------
-struct test::context1_tag {
-};
+struct test::context1_tag {};
 
-struct test::context2_tag {
-};
+struct test::context2_tag {};
 
-struct test::context3_tag {
-};
+struct test::context3_tag {};
 
 template < typename Context, unsigned int n> class test::multiple_ctors :
-    public tuto::utl::context_singleton<Context, multiple_ctors<Context, n>>,
+    public tuto::utl::class_scope::context_singleton<Context, multiple_ctors<Context, n>>,
     public tuto::utl::object_counter<multiple_ctors<Context, n>> {
   std::string name_;
   unsigned int id_;
@@ -97,29 +95,45 @@ public:
   unsigned int id() const;
 };
 
+template < unsigned int n> class test::plain_multiple_ctors :
+    public tuto::utl::instance_scope::context_singleton<plain_multiple_ctors<n>>,
+    public tuto::utl::object_counter<plain_multiple_ctors<n>> {
+  std::string name_;
+  unsigned int id_;
+public:
+  plain_multiple_ctors();
+  plain_multiple_ctors( std::string const& name );
+  plain_multiple_ctors( unsigned int id );
+  plain_multiple_ctors( std::string const& name, unsigned int id );
+  ~plain_multiple_ctors() = default;
+
+  std::string const& name() const;
+  unsigned int id() const;
+};
+
 // Definition of (inlined) methods and functions ( most likely template related ).
 // ------------------------------------------------------------------------------
 
-#include <iostream>
+//#include <iostream>
 
 template < typename Context, unsigned int n>
 inline test::multiple_ctors<Context, n>::multiple_ctors() : name_(""), id_(0) {
-  std::cout << "--------------------------------> Create with default ctor" << std::endl;
+//  std::cout << "--------------------------------> Create with default ctor" << std::endl;
 }
 
 template < typename Context, unsigned int n>
 inline test::multiple_ctors<Context, n>::multiple_ctors( std::string const& name ) : name_(name), id_(0) {
-  std::cout << "--------------------------------> Create with name ctor" << std::endl;
+//  std::cout << "--------------------------------> Create with name ctor" << std::endl;
 }
 
 template < typename Context, unsigned int n>
 inline test::multiple_ctors<Context, n>::multiple_ctors( unsigned int id ) : name_(""), id_(id) {
-  std::cout << "--------------------------------> Create with id ctor" << std::endl;
+//  std::cout << "--------------------------------> Create with id ctor" << std::endl;
 }
 
 template < typename Context, unsigned int n>
 inline test::multiple_ctors<Context, n>::multiple_ctors( std::string const& name, unsigned int id ) : name_(name), id_(id) {
-  std::cout << "--------------------------------> Create with full ctor" << std::endl;
+//  std::cout << "--------------------------------> Create with full ctor" << std::endl;
 }
 
 template < typename Context, unsigned int n>
@@ -132,5 +146,34 @@ inline unsigned int test::multiple_ctors<Context, n>::id() const {
   return id_;
 }
 
+template < unsigned int n>
+inline test::plain_multiple_ctors<n>::plain_multiple_ctors() : name_(""), id_(0) {
+//  std::cout << "--------------------------------> Create with default ctor" << std::endl;
+}
+
+template < unsigned int n>
+inline test::plain_multiple_ctors<n>::plain_multiple_ctors( std::string const& name ) : name_(name), id_(0) {
+//  std::cout << "--------------------------------> Create with name ctor" << std::endl;
+}
+
+template < unsigned int n>
+inline test::plain_multiple_ctors<n>::plain_multiple_ctors( unsigned int id ) : name_(""), id_(id) {
+//  std::cout << "--------------------------------> Create with id ctor" << std::endl;
+}
+
+template < unsigned int n>
+inline test::plain_multiple_ctors<n>::plain_multiple_ctors( std::string const& name, unsigned int id ) : name_(name), id_(id) {
+  std::cout << "--------------------------------> Create with full ctor" << std::endl;
+}
+
+template < unsigned int n>
+inline std::string const& test::plain_multiple_ctors<n>::name() const {
+  return name_;
+}
+
+template < unsigned int n>
+inline unsigned int test::plain_multiple_ctors<n>::id() const {
+  return id_;
+}
 
 #endif /* CONTEXT_SINGLETONTEST_H */
