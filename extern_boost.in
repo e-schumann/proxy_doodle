@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(extern-boost NONE)
+project(extern-boost C CXX)
 
 include(ExternalProject)
-ExternalProject_Add( boost
+ExternalProject_Add( boostlib
   PREFIX            "${CMAKE_BINARY_DIR}/extern/boost"
   GIT_REPOSITORY    https://github.com/boostorg/boost.git
   GIT_TAG           master
@@ -16,7 +16,7 @@ ExternalProject_Add( boost
   TEST_COMMAND      ""
 )
 
-ExternalProject_Add_Step( boost call_b2
+ExternalProject_Add_Step( boostlib call_b2
   WORKING_DIRECTORY    "${CMAKE_BINARY_DIR}/extern/boost/src/boost"
   COMMAND              ./b2 -j4 --build-dir=./build --layout=versioned toolset=gcc cxxflags="-std=c++11" variant=release link=shared threading=multi runtime-link=shared
 )

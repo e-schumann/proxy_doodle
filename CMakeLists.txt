@@ -7,8 +7,8 @@ set( PROJECT_TEST_NAME ${PROJECT_NAME}_test CACHE INTERNAL "${PROJECT_NAME}: Tes
 
 # Download and unpack googletest at configure time
 # https://crascit.com/2015/07/25/cmake-gtest/
-configure_file(CMakeLists.txt.in extern/extern-download/CMakeLists.txt)
 configure_file(extern_boost.in extern/extern-boost/CMakeLists.txt)
+configure_file(CMakeLists.txt.in extern/extern-download/CMakeLists.txt)
 
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/extern/extern-download )
 execute_process(COMMAND ${CMAKE_COMMAND} --build . WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/extern/extern-download )

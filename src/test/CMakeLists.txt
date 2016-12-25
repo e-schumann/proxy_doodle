@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.2)
 
 #project( ${PROJECT_TEST_NAME} )
-project( unittests )
+project( unittests C CXX )
 
 #enable_testing()
 
