@@ -3,17 +3,19 @@
 include(ExternalProject)
 
 set( GOOGLETEST_NAME googletest CACHE INTERNAL "External googletest build" FORCE )
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 ExternalProject_Add( ${GOOGLETEST_NAME}
   GIT_REPOSITORY    https://github.com/google/googletest.git
   GIT_TAG           master
+  CMAKE_ARGS        -DBUILD_SHARED_LIBS=ON
   UPDATE_COMMAND    ""
   INSTALL_COMMAND   ""
 )
 
 set( GTEST_INCLUDE_DIR ${CMAKE_BINARY_DIR}/${GOOGLETEST_NAME}-prefix/src/${GOOGLETEST_NAME}/${GOOGLETEST_NAME} CACHE INTERNAL "Google Test include hint" FORCE )
-set( GTEST_LIBRARY ${CMAKE_BINARY_DIR}/${GOOGLETEST_NAME}-prefix/src/${GOOGLETEST_NAME}-build//googlemock/gtest/libgtest.a CACHE INTERNAL "Google Test library hint" FORCE )
-set( GTEST_MAIN_LIBRARY ${CMAKE_BINARY_DIR}/${GOOGLETEST_NAME}-prefix/src/${GOOGLETEST_NAME}-build//googlemock/gtest/libgtest_main.a CACHE INTERNAL "Main Google Test library hint" FORCE )
+set( GTEST_LIBRARY ${CMAKE_BINARY_DIR}/${GOOGLETEST_NAME}-prefix/src/${GOOGLETEST_NAME}-build/googlemock/gtest/libgtest.so CACHE INTERNAL "Google Test library hint" FORCE )
+set( GTEST_MAIN_LIBRARY ${CMAKE_BINARY_DIR}/${GOOGLETEST_NAME}-prefix/src/${GOOGLETEST_NAME}-build/googlemock/gtest/libgtest_main.so CACHE INTERNAL "Main Google Test library hint" FORCE )
 
 ExternalProject_Add( spdlog
   GIT_REPOSITORY    https://github.com/gabime/spdlog.git
@@ -22,21 +24,21 @@ ExternalProject_Add( spdlog
   INSTALL_COMMAND   ""
 )
 
-set( BOOSTLIB_NAME boostlib CACHE INTERNAL "External boost build" FORCE )
+#set( BOOSTLIB_NAME boostlib CACHE INTERNAL "External boost build" FORCE )
 
-ExternalProject_Add( ${BOOSTLIB_NAME}
-  GIT_REPOSITORY    https://github.com/boostorg/boost.git
-  GIT_TAG           master
-  GIT_SUBMODULES    ""
-  BINARY_DIR        "${CMAKE_BINARY_DIR}/${BOOSTLIB_NAME}-prefix/src/${BOOSTLIB_NAME}"
-  CONFIGURE_COMMAND ""
-  BUILD_COMMAND     ./bootstrap.sh
-  INSTALL_COMMAND   ./b2 -j4 --build-dir=./build --layout=versioned toolset=gcc cxxflags="-std=c++11" variant=release link=shared threading=multi runtime-link=shared
-  UPDATE_COMMAND   ""
-)
+#ExternalProject_Add( ${BOOSTLIB_NAME}
+#  GIT_REPOSITORY    https://github.com/boostorg/boost.git
+#  GIT_TAG           master
+#  GIT_SUBMODULES    ""
+#  BINARY_DIR        "${CMAKE_BINARY_DIR}/${BOOSTLIB_NAME}-prefix/src/${BOOSTLIB_NAME}"
+#  CONFIGURE_COMMAND ""
+#  BUILD_COMMAND     ./bootstrap.sh
+#  INSTALL_COMMAND   ./b2 -j4 --build-dir=./build --layout=versioned toolset=gcc cxxflags="-std=c++11" variant=release link=shared threading=multi runtime-link=shared
+#  UPDATE_COMMAND   ""
+#)
 
-set( BOOST_INCLUDEDIR ${CMAKE_BINARY_DIR}/${BOOSTLIB_NAME}-prefix/src/${BOOSTLIB_NAME} CACHE INTERNAL "Boost include hint" FORCE )
-set( BOOST_LIBRARYDIR ${CMAKE_BINARY_DIR}/${BOOSTLIB_NAME}-prefix/src/${BOOSTLIB_NAME}/stage/lib CACHE INTERNAL "Boost library hint" FORCE )
+#set( BOOST_INCLUDEDIR ${CMAKE_BINARY_DIR}/${BOOSTLIB_NAME}-prefix/src/${BOOSTLIB_NAME} CACHE INTERNAL "Boost include hint" FORCE )
+#set( BOOST_LIBRARYDIR ${CMAKE_BINARY_DIR}/${BOOSTLIB_NAME}-prefix/src/${BOOSTLIB_NAME}/stage/lib CACHE INTERNAL "Boost library hint" FORCE )
 
 #ExternalProject_Add_Step( ${BOOSTLIB_NAME} call_b2
 #  WORKING_DIRECTORY    "${CMAKE_BINARY_DIR}/${BOOSTLIB_NAME}-prefix/src/${BOOSTLIB_NAME}"
