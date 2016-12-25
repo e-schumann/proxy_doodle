@@ -22,7 +22,7 @@ ExternalProject_Add( spdlog
   INSTALL_COMMAND   ""
 )
 
-set( BOOSTLIB_NAME bostlib CACHE INTERNAL "External boost build" FORCE )
+set( BOOSTLIB_NAME boostlib CACHE INTERNAL "External boost build" FORCE )
 
 ExternalProject_Add( ${BOOSTLIB_NAME}
   GIT_REPOSITORY    https://github.com/boostorg/boost.git
