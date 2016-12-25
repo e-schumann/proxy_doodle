@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.2)
+
+project(extern-boost NONE)
+
+include(ExternalProject)
+ExternalProject_Add( boost
+  PREFIX            "${CMAKE_BINARY_DIR}/extern/boost"
+  GIT_REPOSITORY    https://github.com/boostorg/boost.git
+  GIT_TAG           master
+  GIT_SUBMODULES    ""
+
+  BINARY_DIR        "${CMAKE_BINARY_DIR}/extern/boost/src/boost"
+  CONFIGURE_COMMAND ""
+  BUILD_COMMAND     "./bootstrap.sh"
+  INSTALL_COMMAND   ""
+  TEST_COMMAND      ""
+)
+
+ExternalProject_Add_Step( boost call_b2
+  WORKING_DIRECTORY    "${CMAKE_BINARY_DIR}/extern/boost/src/boost"
+  COMMAND              ./b2 -j4 --build-dir=./build --layout=versioned toolset=gcc cxxflags="-std=c++11" variant=release link=shared threading=multi runtime-link=shared
+)
+
+
+#${CMAKE_BINARY_DIR}/extern/boost/src/boost/b2 -j4 --build-dir=./build --layout=versioned toolset=gcc cxxflags="-std=c++14" variant=release link=shared threading=multi runtime-link=shared"
