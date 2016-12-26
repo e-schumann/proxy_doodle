@@ -13,7 +13,7 @@
 // rather than including <memory> directly:
 #include <boost/config/no_tr1/memory.hpp>  // std::auto_ptr
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { 
+namespace boost { 
 
 // get_pointer(p) extracts a ->* capable pointer from p
 
@@ -71,6 +71,6 @@ template<class T> T * get_pointer( std::shared_ptr<T> const& p )
 
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // GET_POINTER_DWA20021219_HPP

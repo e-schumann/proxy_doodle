@@ -15,7 +15,7 @@
 #include <boost/range/begin.hpp>
 #include <boost/range/end.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace algorithm {
+namespace boost { namespace algorithm {
 
 /// \fn all_of ( InputIterator first, InputIterator last, Predicate p )
 /// \return true if all elements in [first, last) satisfy the predicate 'p'
@@ -45,7 +45,7 @@ bool all_of ( InputIterator first, InputIterator last, Predicate p )
 template<typename Range, typename Predicate> 
 bool all_of ( const Range &r, Predicate p )
 {
-    return boost_part::algorithm::all_of ( boost_part::begin (r), boost_part::end (r), p );
+    return boost::algorithm::all_of ( boost::begin (r), boost::end (r), p );
 } 
 
 /// \fn all_of_equal ( InputIterator first, InputIterator last, const T &val )
@@ -75,9 +75,9 @@ bool all_of_equal ( InputIterator first, InputIterator last, const T &val )
 template<typename Range, typename T> 
 bool all_of_equal ( const Range &r, const T &val ) 
 {
-    return boost_part::algorithm::all_of_equal ( boost_part::begin (r), boost_part::end (r), val );
+    return boost::algorithm::all_of_equal ( boost::begin (r), boost::end (r), val );
 } 
 
-}} // namespace boost_part and algorithm
+}} // namespace boost and algorithm
 
 #endif // BOOST_ALGORITHM_ALL_OF_HPP

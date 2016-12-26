@@ -30,7 +30,7 @@
 // Boost
 #include <boost/scoped_ptr.hpp>
 #include <boost/io/ios_state.hpp>
-typedef ::boost_part::io::ios_base_all_saver io_saver_type;
+typedef ::boost::io::ios_base_all_saver io_saver_type;
 
 // STL
 #include <iostream>
@@ -39,7 +39,7 @@ typedef ::boost_part::io::ios_base_all_saver io_saver_type;
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace results_reporter {
 
@@ -190,7 +190,7 @@ make_report( report_level l, test_unit_id id )
 
 } // namespace results_reporter
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

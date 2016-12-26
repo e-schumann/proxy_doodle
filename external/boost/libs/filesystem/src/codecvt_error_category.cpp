@@ -31,7 +31,7 @@
 
 namespace
 {
-  class codecvt_error_cat : public boost_part::system::error_category
+  class codecvt_error_cat : public boost::system::error_category
   {
   public:
     codecvt_error_cat(){}
@@ -69,16 +69,16 @@ namespace
 
 } // unnamed namespace
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace filesystem
   {
 
-    BOOST_FILESYSTEM_DECL const boost_part::system::error_category& codecvt_error_category()
+    BOOST_FILESYSTEM_DECL const boost::system::error_category& codecvt_error_category()
     {
       static const codecvt_error_cat  codecvt_error_cat_const;
       return codecvt_error_cat_const;
     }
 
   } // namespace filesystem
-} // namespace boost_part
+} // namespace boost

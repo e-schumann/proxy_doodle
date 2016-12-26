@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_TYPEID
 #include "boost_no_typeid.ipp"
 #else
-namespace boost_part_no_typeid = empty_boost;
+namespace boost_no_typeid = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_typeid::test();
+   return boost_no_typeid::test();
 }
 

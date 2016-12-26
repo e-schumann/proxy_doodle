@@ -18,8 +18,8 @@
 #include <boost/config.hpp>
 #include <string>
 
-namespace boost_part {} namespace boost = boost_part; namespace
-boost_part
+namespace
+boost
     {
     template <class T>
     inline
@@ -69,10 +69,10 @@ boost_part
         }
     }
 
-#define BOOST_EXCEPTION_STATIC_TYPEID(T) ::boost_part::exception_detail::type_info_(BOOST_CORE_TYPEID(T))
+#define BOOST_EXCEPTION_STATIC_TYPEID(T) ::boost::exception_detail::type_info_(BOOST_CORE_TYPEID(T))
 
 #ifndef BOOST_NO_RTTI
-#define BOOST_EXCEPTION_DYNAMIC_TYPEID(x) ::boost_part::exception_detail::type_info_(typeid(x))
+#define BOOST_EXCEPTION_DYNAMIC_TYPEID(x) ::boost::exception_detail::type_info_(typeid(x))
 #endif
 
 #if defined(_MSC_VER) && !defined(BOOST_EXCEPTION_ENABLE_WARNINGS)

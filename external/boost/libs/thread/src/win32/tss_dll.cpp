@@ -25,27 +25,27 @@
         {
             case DLL_PROCESS_ATTACH:
             {
-                boost_part::boost_parton_process_enter();
-                boost_part::boost_parton_thread_enter();
+                boost::on_process_enter();
+                boost::on_thread_enter();
                 break;
             }
 
             case DLL_THREAD_ATTACH:
             {
-                boost_part::boost_parton_thread_enter();
+                boost::on_thread_enter();
                 break;
             }
 
             case DLL_THREAD_DETACH:
             {
-                boost_part::boost_parton_thread_exit();
+                boost::on_thread_exit();
                 break;
             }
 
             case DLL_PROCESS_DETACH:
             {
-                boost_part::boost_parton_thread_exit();
-                boost_part::boost_parton_process_exit();
+                boost::on_thread_exit();
+                boost::on_process_exit();
                 break;
             }
         }
@@ -53,16 +53,16 @@
         return TRUE;
     }
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
-    void boost_parttss_cleanup_implemented()
+    void tss_cleanup_implemented()
     {
         /*
         This function's sole purpose is to cause a link error in cases where
         automatic tss cleanup is not implemented by Boost.Threads as a
         reminder that user code is responsible for calling the necessary
         functions at the appropriate times (and for implementing an a
-        boost_parttss_cleanup_implemented() function to eliminate the linker's
+        tss_cleanup_implemented() function to eliminate the linker's
         missing symbol error).
 
         If Boost.Threads later implements automatic tss cleanup in cases
@@ -77,7 +77,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #ifdef _MSC_VER
 // Prevent LNK4221 warning with link=static
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace link_static_warning_inhibit {
+namespace boost { namespace link_static_warning_inhibit {
     extern __declspec(dllexport) void foo() { }
 } }
 #endif

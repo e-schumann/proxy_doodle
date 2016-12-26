@@ -15,7 +15,7 @@
 //                 void g() { return f(); }
 
 
-namespace boost_part_no_void_returns{
+namespace boost_no_void_returns{
 
 void f() {}
 

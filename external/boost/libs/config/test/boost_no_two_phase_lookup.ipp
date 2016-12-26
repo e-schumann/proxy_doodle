@@ -9,7 +9,7 @@
 //  TITLE:         Two phase name lookup
 //  DESCRIPTION:   If the compiler does not perform two phase name lookup
 
-namespace boost_part_no_two_phase_name_lookup {
+namespace boost_no_two_phase_name_lookup {
 
 template< class T >
 struct base {

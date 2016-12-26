@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -30,7 +30,7 @@ template<class RandomAccessRange>
 inline RandomAccessRange& random_shuffle(RandomAccessRange& rng)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<RandomAccessRange> ));
-    std::random_shuffle(boost_part::begin(rng), boost_part::end(rng));
+    std::random_shuffle(boost::begin(rng), boost::end(rng));
     return rng;
 }
 
@@ -39,7 +39,7 @@ template<class RandomAccessRange>
 inline const RandomAccessRange& random_shuffle(const RandomAccessRange& rng)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<const RandomAccessRange> ));
-    std::random_shuffle(boost_part::begin(rng), boost_part::end(rng));
+    std::random_shuffle(boost::begin(rng), boost::end(rng));
     return rng;
 }
 
@@ -48,7 +48,7 @@ template<class RandomAccessRange, class Generator>
 inline RandomAccessRange& random_shuffle(RandomAccessRange& rng, Generator& gen)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<RandomAccessRange> ));
-    std::random_shuffle(boost_part::begin(rng), boost_part::end(rng), gen);
+    std::random_shuffle(boost::begin(rng), boost::end(rng), gen);
     return rng;
 }
 
@@ -57,12 +57,12 @@ template<class RandomAccessRange, class Generator>
 inline const RandomAccessRange& random_shuffle(const RandomAccessRange& rng, Generator& gen)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<const RandomAccessRange> ));
-    std::random_shuffle(boost_part::begin(rng), boost_part::end(rng), gen);
+    std::random_shuffle(boost::begin(rng), boost::end(rng), gen);
     return rng;
 }
 
     } // namespace range
     using range::random_shuffle;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

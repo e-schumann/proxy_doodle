@@ -25,20 +25,20 @@
 
 #ifndef BOOST_NO_EXCEPTIONS
 #include <boost/exception/current_exception_cast.hpp>
-namespace boost_part {} namespace boost = boost_part; namespace
-boost_part
+namespace
+boost
     {
     namespace
     exception_detail
         {
-        std::string diagnostic_information_impl( boost_part::exception const *, std::exception const *, bool, bool );
+        std::string diagnostic_information_impl( boost::exception const *, std::exception const *, bool, bool );
         }
 
     inline
     std::string
     current_exception_diagnostic_information( bool verbose=true)
         {
-        boost_part::exception const * be=current_exception_cast<boost_part::exception const>();
+        boost::exception const * be=current_exception_cast<boost::exception const>();
         std::exception const * se=current_exception_cast<std::exception const>();
         if( be || se )
             return exception_detail::diagnostic_information_impl(be,se,true,verbose);
@@ -48,8 +48,8 @@ boost_part
     }
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace
-boost_part
+namespace
+boost
     {
     namespace
     exception_detail
@@ -107,13 +107,13 @@ boost_part
 
         inline
         std::string
-        diagnostic_information_impl( boost_part::exception const * be, std::exception const * se, bool with_what, bool verbose )
+        diagnostic_information_impl( boost::exception const * be, std::exception const * se, bool with_what, bool verbose )
             {
             if( !be && !se )
                 return "Unknown exception.";
 #ifndef BOOST_NO_RTTI
             if( !be )
-                be=dynamic_cast<boost_part::exception const *>(se);
+                be=dynamic_cast<boost::exception const *>(se);
             if( !se )
                 se=dynamic_cast<std::exception const *>(be);
 #endif
@@ -183,7 +183,7 @@ boost_part
             if( char const * di=exception_detail::get_diagnostic_information(e,0) )
                 return di;
             else
-                return "Failed to produce boost_part::diagnostic_information_what()";
+                return "Failed to produce boost::diagnostic_information_what()";
 #ifndef BOOST_NO_EXCEPTIONS
             }
         catch(

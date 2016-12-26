@@ -59,7 +59,7 @@ namespace std { using ::wcscmp; }
 #endif
 # endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace test_tools {
 namespace tt_detail {
 
@@ -119,7 +119,7 @@ print_log_value<wchar_t const*>::operator()( std::ostream& ostr, wchar_t const* 
 // **************            TOOL BOX Implementation           ************** //
 // ************************************************************************** //
 
-using ::boost_part::unit_test::lazy_ostream;
+using ::boost::unit_test::lazy_ostream;
 
 static char const* check_str [] = { " == ", " != ", " < " , " <= ", " > " , " >= " };
 static char const* rever_str [] = { " != ", " == ", " >= ", " > " , " <= ", " < "  };
@@ -443,7 +443,7 @@ is_defined_impl( const_string symbol_name, const_string symbol_value )
 // **************                 context_frame                ************** //
 // ************************************************************************** //
 
-context_frame::context_frame( ::boost_part::unit_test::lazy_ostream const& context_descr )
+context_frame::context_frame( ::boost::unit_test::lazy_ostream const& context_descr )
 : m_frame_id( unit_test::framework::add_context( context_descr, true ) )
 {
 }
@@ -787,7 +787,7 @@ output_test_stream::sync()
 //____________________________________________________________________________//
 
 } // namespace test_tools
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

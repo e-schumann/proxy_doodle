@@ -4,7 +4,7 @@
 #include <string>
 #include <locale>
 
-namespace fs = boost_part::filesystem;
+namespace fs = boost::filesystem;
 
 int main(void) {
 

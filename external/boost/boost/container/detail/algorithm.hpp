@@ -23,13 +23,13 @@
 
 #include <boost/intrusive/detail/algorithm.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 
-using boost_part::intrusive::algo_equal;
-using boost_part::intrusive::algo_lexicographical_compare;
+using boost::intrusive::algo_equal;
+using boost::intrusive::algo_lexicographical_compare;
 
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #endif   //#ifndef BOOST_CONTAINER_DETAIL_ALGORITHM_HPP

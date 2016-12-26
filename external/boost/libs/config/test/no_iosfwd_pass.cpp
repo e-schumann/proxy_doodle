@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_IOSFWD
 #include "boost_no_iosfwd.ipp"
 #else
-namespace boost_part_no_iosfwd = empty_boost;
+namespace boost_no_iosfwd = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_iosfwd::test();
+   return boost_no_iosfwd::test();
 }
 

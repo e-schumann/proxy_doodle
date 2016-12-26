@@ -12,7 +12,7 @@
 #include <cwchar>
 #include <wchar.h>
 
-namespace boost_part_no_cwchar{
+namespace boost_no_cwchar{
 
 int test()
 {

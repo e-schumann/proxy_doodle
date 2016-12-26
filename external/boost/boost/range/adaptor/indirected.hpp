@@ -15,21 +15,21 @@
 #include <boost/range/concepts.hpp>
 #include <boost/iterator/indirect_iterator.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
         template< class R >
         struct indirected_range :
-            public boost_part::iterator_range<
-                        boost_part::indirect_iterator<
+            public boost::iterator_range<
+                        boost::indirect_iterator<
                             BOOST_DEDUCED_TYPENAME range_iterator<R>::type
                         >
                     >
         {
         private:
-            typedef boost_part::iterator_range<
-                        boost_part::indirect_iterator<
+            typedef boost::iterator_range<
+                        boost::indirect_iterator<
                             BOOST_DEDUCED_TYPENAME range_iterator<R>::type
                         >
                     >

@@ -33,7 +33,7 @@
 
 #include <boost/core/no_exceptions_support.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace container {
+namespace boost { namespace container {
 
 namespace container_detail {
 
@@ -57,7 +57,7 @@ namespace container_detail {
       struct dummy;
 
       template<class X>
-      static decltype(X(boost_part::move_detail::declval<Args>()...), true_type()) test(int);
+      static decltype(X(boost::move_detail::declval<Args>()...), true_type()) test(int);
 
       template<class X>
       static no_type test(...);
@@ -118,7 +118,7 @@ inline typename container_detail::enable_if_and
    ( ConstructAlloc & construct_alloc, BOOST_FWD_REF(ArgAlloc) arg_alloc, T* p, BOOST_FWD_REF(Args)...args)
 {
    (void)arg_alloc;
-   allocator_traits<ConstructAlloc>::construct(construct_alloc, p, ::boost_part::forward<Args>(args)...);
+   allocator_traits<ConstructAlloc>::construct(construct_alloc, p, ::boost::forward<Args>(args)...);
 }
 
 // allocator_arg_t
@@ -137,7 +137,7 @@ inline typename container_detail::enable_if_and
 {
    allocator_traits<ConstructAlloc>::construct
       ( construct_alloc, p, allocator_arg
-      , ::boost_part::forward<ArgAlloc>(arg_alloc), ::boost_part::forward<Args>(args)...);
+      , ::boost::forward<ArgAlloc>(arg_alloc), ::boost::forward<Args>(args)...);
 }
 
 // allocator suffix
@@ -155,7 +155,7 @@ inline typename container_detail::enable_if_and
    ( ConstructAlloc& construct_alloc, BOOST_FWD_REF(ArgAlloc) arg_alloc, T* p, BOOST_FWD_REF(Args)...args)
 {
    allocator_traits<ConstructAlloc>::construct
-      (construct_alloc, p, ::boost_part::forward<Args>(args)..., ::boost_part::forward<ArgAlloc>(arg_alloc));
+      (construct_alloc, p, ::boost::forward<Args>(args)..., ::boost::forward<ArgAlloc>(arg_alloc));
 }
 
 #else    //#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
@@ -189,7 +189,7 @@ BOOST_MOVE_ITERATE_0TO9(BOOST_CONTAINER_SCOPED_ALLOCATOR_DISPATCH_USES_ALLOCATOR
       (ConstructAlloc& construct_alloc, BOOST_FWD_REF(ArgAlloc) arg_alloc, T* p BOOST_MOVE_I##N BOOST_MOVE_UREF##N)\
    {\
       allocator_traits<ConstructAlloc>::construct\
-         (construct_alloc, p, allocator_arg, ::boost_part::forward<ArgAlloc>(arg_alloc) BOOST_MOVE_I##N BOOST_MOVE_FWD##N);\
+         (construct_alloc, p, allocator_arg, ::boost::forward<ArgAlloc>(arg_alloc) BOOST_MOVE_I##N BOOST_MOVE_FWD##N);\
    }\
 //
 BOOST_MOVE_ITERATE_0TO9(BOOST_CONTAINER_SCOPED_ALLOCATOR_DISPATCH_USES_ALLOCATOR_CODE)
@@ -207,7 +207,7 @@ BOOST_MOVE_ITERATE_0TO9(BOOST_CONTAINER_SCOPED_ALLOCATOR_DISPATCH_USES_ALLOCATOR
       (ConstructAlloc& construct_alloc, BOOST_FWD_REF(ArgAlloc) arg_alloc, T* p BOOST_MOVE_I##N BOOST_MOVE_UREF##N)\
    {\
       allocator_traits<ConstructAlloc>::construct\
-         (construct_alloc, p BOOST_MOVE_I##N BOOST_MOVE_FWD##N, ::boost_part::forward<ArgAlloc>(arg_alloc));\
+         (construct_alloc, p BOOST_MOVE_I##N BOOST_MOVE_FWD##N, ::boost::forward<ArgAlloc>(arg_alloc));\
    }\
 //
 BOOST_MOVE_ITERATE_0TO9(BOOST_CONTAINER_SCOPED_ALLOCATOR_DISPATCH_USES_ALLOCATOR_CODE)
@@ -246,9 +246,9 @@ BOOST_CONTAINER_DOC1ST(void, typename container_detail::enable_if<container_deta
    , BOOST_FWD_REF(ArgAlloc) arg_alloc
    , Pair* p, BOOST_FWD_REF(U) x, BOOST_FWD_REF(V) y)
 {
-   (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(p->first), ::boost_part::forward<U>(x));
+   (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(p->first), ::boost::forward<U>(x));
    BOOST_TRY{
-      (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(p->second), ::boost_part::forward<V>(y));
+      (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(p->second), ::boost::forward<V>(y));
    }
    BOOST_CATCH(...){
       allocator_traits<ConstructAlloc>::destroy(construct_alloc, container_detail::addressof(p->first));
@@ -273,23 +273,23 @@ template < typename ConstructAlloc
 typename container_detail::enable_if_and
    < void
    , container_detail::is_pair<Pair>
-   , container_detail::not_<boost_part::move_detail::is_reference<Pair2> > >::type //This is needed for MSVC10 and ambiguous overloads
+   , container_detail::not_<boost::move_detail::is_reference<Pair2> > >::type //This is needed for MSVC10 and ambiguous overloads
    dispatch_uses_allocator
    (ConstructAlloc & construct_alloc
       , BOOST_FWD_REF(ArgAlloc) arg_alloc
       , Pair* p, BOOST_RV_REF_BEG Pair2 BOOST_RV_REF_END x)
-{  (dispatch_uses_allocator)(construct_alloc, arg_alloc, p, ::boost_part::move(x.first), ::boost_part::move(x.second));  }
+{  (dispatch_uses_allocator)(construct_alloc, arg_alloc, p, ::boost::move(x.first), ::boost::move(x.second));  }
 
 
-//piecewise construction from boost_part::tuple
+//piecewise construction from boost::tuple
 #define BOOST_DISPATCH_USES_ALLOCATOR_PIECEWISE_CONSTRUCT_BOOST_TUPLE_CODE(N,M)\
 template< typename ConstructAlloc, typename ArgAlloc, class Pair \
         , template<class, class, class, class, class, class, class, class, class, class> class BoostTuple \
          BOOST_MOVE_I_IF(BOOST_MOVE_OR(N,M)) BOOST_MOVE_CLASS##N BOOST_MOVE_I_IF(BOOST_MOVE_AND(N,M)) BOOST_MOVE_CLASSQ##M > \
 typename container_detail::enable_if< container_detail::is_pair<Pair> >::type\
    dispatch_uses_allocator( ConstructAlloc & construct_alloc, ArgAlloc & arg_alloc, Pair* pair, piecewise_construct_t\
-      , BoostTuple<BOOST_MOVE_TARG##N  BOOST_MOVE_I##N BOOST_MOVE_REPEAT(BOOST_MOVE_SUB(10,N),::boost_part::tuples::null_type)> p\
-      , BoostTuple<BOOST_MOVE_TARGQ##M BOOST_MOVE_I##M BOOST_MOVE_REPEAT(BOOST_MOVE_SUB(10,M),::boost_part::tuples::null_type)> q)\
+      , BoostTuple<BOOST_MOVE_TARG##N  BOOST_MOVE_I##N BOOST_MOVE_REPEAT(BOOST_MOVE_SUB(10,N),::boost::tuples::null_type)> p\
+      , BoostTuple<BOOST_MOVE_TARGQ##M BOOST_MOVE_I##M BOOST_MOVE_REPEAT(BOOST_MOVE_SUB(10,M),::boost::tuples::null_type)> q)\
 {\
    (void)p; (void)q;\
    (dispatch_uses_allocator)\
@@ -317,9 +317,9 @@ BOOST_MOVE_ITER2D_0TOMAX(9, BOOST_DISPATCH_USES_ALLOCATOR_PIECEWISE_CONSTRUCT_BO
                                     , Tuple<Args1...>& t1, Tuple<Args2...>& t2, index_tuple<Indexes1...>, index_tuple<Indexes2...>)
    {
       (void)t1; (void)t2;
-      (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(pair->first), ::boost_part::forward<Args1>(get<Indexes1>(t1))...);
+      (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(pair->first), ::boost::forward<Args1>(get<Indexes1>(t1))...);
       BOOST_TRY{
-         (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(pair->second), ::boost_part::forward<Args2>(get<Indexes2>(t2))...);
+         (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(pair->second), ::boost::forward<Args2>(get<Indexes2>(t2))...);
       }
       BOOST_CATCH(...){
          allocator_traits<ConstructAlloc>::destroy(construct_alloc, container_detail::addressof(pair->first));
@@ -408,7 +408,7 @@ BOOST_MOVE_ITER2D_0TOMAX(9, BOOST_DISPATCH_USES_ALLOCATOR_PIECEWISE_CONSTRUCT_BO
 
 }  //namespace container_detail
 
-}} // namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace container {
+}} // namespace boost { namespace container {
 
 #include <boost/container/detail/config_end.hpp>
 

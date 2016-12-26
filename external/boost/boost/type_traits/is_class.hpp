@@ -28,7 +28,7 @@
 
 #endif // BOOST_IS_CLASS
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace detail {
 
@@ -47,16 +47,16 @@ namespace detail {
 // http://groups.google.com/groups?hl=en&selm=000001c1cc83%24e154d5e0%247772e50c%40c161550a&rnum=1
 #if defined(__GNUC__)  && !defined(__EDG_VERSION__)
 
-template <class U> ::boost_part::type_traits::yes_type is_class_tester(void(U::*)(void));
-template <class U> ::boost_part::type_traits::no_type is_class_tester(...);
+template <class U> ::boost::type_traits::yes_type is_class_tester(void(U::*)(void));
+template <class U> ::boost::type_traits::no_type is_class_tester(...);
 
 template <typename T>
 struct is_class_impl
 {
 
     BOOST_STATIC_CONSTANT(bool, value =
-            sizeof(is_class_tester<T>(0)) == sizeof(::boost_part::type_traits::yes_type)
-            && ! ::boost_part::is_union<T>::value
+            sizeof(is_class_tester<T>(0)) == sizeof(::boost::type_traits::yes_type)
+            && ! ::boost::is_union<T>::value
         );
 };
 
@@ -65,12 +65,12 @@ struct is_class_impl
 template <typename T>
 struct is_class_impl
 {
-    template <class U> static ::boost_part::type_traits::yes_type is_class_tester(void(U::*)(void));
-    template <class U> static ::boost_part::type_traits::no_type is_class_tester(...);
+    template <class U> static ::boost::type_traits::yes_type is_class_tester(void(U::*)(void));
+    template <class U> static ::boost::type_traits::no_type is_class_tester(...);
 
     BOOST_STATIC_CONSTANT(bool, value =
-            sizeof(is_class_tester<T>(0)) == sizeof(::boost_part::type_traits::yes_type)
-            && ! ::boost_part::is_union<T>::value
+            sizeof(is_class_tester<T>(0)) == sizeof(::boost::type_traits::yes_type)
+            && ! ::boost::is_union<T>::value
         );
 };
 
@@ -82,12 +82,12 @@ template <typename T>
 struct is_class_impl
 {
     BOOST_STATIC_CONSTANT(bool, value =
-        ! ::boost_part::is_union<T>::value >::value
-        && ! ::boost_part::is_scalar<T>::value
-        && ! ::boost_part::is_array<T>::value
-        && ! ::boost_part::is_reference<T>::value
-        && ! ::boost_part::is_void<T>::value
-        && ! ::boost_part::is_function<T>::value
+        ! ::boost::is_union<T>::value >::value
+        && ! ::boost::is_scalar<T>::value
+        && ! ::boost::is_array<T>::value
+        && ! ::boost::is_reference<T>::value
+        && ! ::boost::is_void<T>::value
+        && ! ::boost::is_function<T>::value
         );
 };
 
@@ -102,13 +102,13 @@ struct is_class_impl
 
 } // namespace detail
 
-template <class T> struct is_class : public integral_constant<bool, ::boost_part::detail::is_class_impl<T>::value> {};
+template <class T> struct is_class : public integral_constant<bool, ::boost::detail::is_class_impl<T>::value> {};
 # ifdef __EDG_VERSION__
 template <class T> struct is_class<const T> : public is_class<T>{};
 template <class T> struct is_class<const volatile T> : public is_class<T>{};
 template <class T> struct is_class<volatile T> : public is_class<T>{};
 # endif
     
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_IS_CLASS_HPP_INCLUDED

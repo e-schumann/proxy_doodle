@@ -9,7 +9,7 @@
 
 //  boost/memory_order.hpp
 //
-//  Defines enum boost_part::memory_order per the C++0x working draft
+//  Defines enum boost::memory_order per the C++0x working draft
 //
 //  Copyright (c) 2008, 2009 Peter Dimov
 //
@@ -18,7 +18,7 @@
 //  http://www.boost.org/LICENSE_1_0.txt)
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 //
@@ -52,6 +52,6 @@ enum memory_order
     memory_order_seq_cst = 14 // acq_rel | 8
 };
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // #ifndef BOOST_MEMORY_ORDER_HPP_INCLUDED

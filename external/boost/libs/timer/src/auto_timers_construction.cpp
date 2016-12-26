@@ -29,7 +29,7 @@ namespace
   const std::string default_fmt(" %ws wall, %us user + %ss system = %ts CPU (%p%)\n");
 }
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace timer
   {
@@ -43,4 +43,4 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       : m_places(default_places), m_os(&std::cout), m_format(format) { start(); }
 
   } // namespace timer
-} // namespace boost_part
+} // namespace boost

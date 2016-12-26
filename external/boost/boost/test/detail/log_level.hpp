@@ -12,7 +12,7 @@
 #ifndef BOOST_TEST_LOG_LEVEL_HPP_011605GER
 #define BOOST_TEST_LOG_LEVEL_HPP_011605GER
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 // ************************************************************************** //
@@ -35,6 +35,6 @@ enum            log_level {
 };
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TEST_LOG_LEVEL_HPP_011605GER

@@ -15,16 +15,16 @@
 #include <boost/type_traits/is_lvalue_reference.hpp>
 #include <boost/type_traits/is_rvalue_reference.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 template <class T> struct is_reference 
    : public 
    integral_constant<
       bool, 
-      ::boost_part::is_lvalue_reference<T>::value || ::boost_part::is_rvalue_reference<T>::value>
+      ::boost::is_lvalue_reference<T>::value || ::boost::is_rvalue_reference<T>::value>
 {};
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_IS_REFERENCE_HPP_INCLUDED
 

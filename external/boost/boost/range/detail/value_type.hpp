@@ -19,7 +19,7 @@
 // missing partial specialization  workaround.
 //////////////////////////////////////////////////////////////////////////////
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part 
+namespace boost 
 {
     namespace range_detail 
     {        
@@ -42,7 +42,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             template< typename P >
             struct pts
             {
-                typedef BOOST_RANGE_DEDUCED_TYPENAME boost_part::iterator_value< BOOST_RANGE_DEDUCED_TYPENAME P::first_type >::type type;
+                typedef BOOST_RANGE_DEDUCED_TYPENAME boost::iterator_value< BOOST_RANGE_DEDUCED_TYPENAME P::first_type >::type type;
             };
         };
 

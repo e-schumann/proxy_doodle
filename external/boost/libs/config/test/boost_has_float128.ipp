@@ -12,7 +12,7 @@
 #include <cstdlib>
 
 
-namespace boost_part_has_float128{
+namespace boost_has_float128{
 
 int test()
 {

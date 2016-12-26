@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_two_phase_name_lookup::test();
+   return boost_no_two_phase_name_lookup::test();
 }
 

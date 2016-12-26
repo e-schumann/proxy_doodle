@@ -26,7 +26,7 @@
 #pragma warning(disable:981 2259 383)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 namespace BOOST_REGEX_DETAIL_NS{
 
@@ -392,7 +392,7 @@ icu_regex_traits::char_class_type icu_regex_traits::lookup_classname(const char_
       char_class_type(U_GC_ND_MASK) | mask_xdigit,
    };
 
-   int idx = ::boost_part::BOOST_REGEX_DETAIL_NS::get_default_class_id(p1, p2);
+   int idx = ::boost::BOOST_REGEX_DETAIL_NS::get_default_class_id(p1, p2);
    if(idx >= 0)
       return masks[idx+1];
    char_class_type result = lookup_icu_mask(p1, p2);
@@ -415,7 +415,7 @@ icu_regex_traits::char_class_type icu_regex_traits::lookup_classname(const char_
          }
       }
       if(s.size())
-         idx = ::boost_part::BOOST_REGEX_DETAIL_NS::get_default_class_id(&*s.begin(), &*s.begin() + s.size());
+         idx = ::boost::BOOST_REGEX_DETAIL_NS::get_default_class_id(&*s.begin(), &*s.begin() + s.size());
       if(idx >= 0)
          return masks[idx+1];
       if(s.size())
@@ -457,7 +457,7 @@ icu_regex_traits::string_type icu_regex_traits::lookup_collatename(const char_ty
          return result;
       }
       // try POSIX name:
-      s = ::boost_part::BOOST_REGEX_DETAIL_NS::lookup_default_collate_name(s);
+      s = ::boost::BOOST_REGEX_DETAIL_NS::lookup_default_collate_name(s);
 #ifndef BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
       result.assign(s.begin(), s.end());
 #else
@@ -495,9 +495,9 @@ bool icu_regex_traits::isctype(char_type c, char_class_type f) const
       return true;
    if(((f & mask_ascii) != 0) && (c <= 0x7F))
       return true;
-   if(((f & mask_vertical) != 0) && (::boost_part::BOOST_REGEX_DETAIL_NS::is_separator(c) || (c == static_cast<char_type>('\v')) || (m == U_GC_ZL_MASK) || (m == U_GC_ZP_MASK)))
+   if(((f & mask_vertical) != 0) && (::boost::BOOST_REGEX_DETAIL_NS::is_separator(c) || (c == static_cast<char_type>('\v')) || (m == U_GC_ZL_MASK) || (m == U_GC_ZP_MASK)))
       return true;
-   if(((f & mask_horizontal) != 0) && !::boost_part::BOOST_REGEX_DETAIL_NS::is_separator(c) && u_isspace(c) && (c != static_cast<char_type>('\v')))
+   if(((f & mask_horizontal) != 0) && !::boost::BOOST_REGEX_DETAIL_NS::is_separator(c) && u_isspace(c) && (c != static_cast<char_type>('\v')))
       return true;
    return false;
 }

@@ -12,7 +12,7 @@
 
 #include <mutex>
 
-namespace boost_part_no_cxx11_hdr_mutex {
+namespace boost_no_cxx11_hdr_mutex {
 
 int test()
 {

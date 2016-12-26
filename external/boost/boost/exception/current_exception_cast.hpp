@@ -12,8 +12,8 @@
 #pragma warning(push,1)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace
-boost_part
+namespace
+boost
     {
     template <class E>
     inline

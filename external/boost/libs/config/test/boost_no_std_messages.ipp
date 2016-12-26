@@ -12,7 +12,7 @@
 #include <locale>
 
 
-namespace boost_part_no_std_messages{
+namespace boost_no_std_messages{
 
 //
 // this just has to complile, not run:

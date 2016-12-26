@@ -12,7 +12,7 @@
 #include <time.h>
 
 
-namespace boost_part_has_nanosleep{
+namespace boost_has_nanosleep{
 
 void f()
 {

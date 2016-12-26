@@ -15,7 +15,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace executors
 {
@@ -38,7 +38,7 @@ namespace executors
      */
 #if ! defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
     template <typename ...Args>
-    executor_adaptor(BOOST_THREAD_RV_REF(Args) ... args) : ex(boost_part::forward<Args>(args)...) {}
+    executor_adaptor(BOOST_THREAD_RV_REF(Args) ... args) : ex(boost::forward<Args>(args)...) {}
 #else
     /**
      * executor_adaptor constructor
@@ -50,7 +50,7 @@ namespace executors
         BOOST_THREAD_FWD_REF(A1) a1
         ) :
       ex(
-          boost_part::forward<A1>(a1)
+          boost::forward<A1>(a1)
           ) {}
     template <typename A1, typename A2>
     executor_adaptor(
@@ -58,8 +58,8 @@ namespace executors
         BOOST_THREAD_FWD_REF(A2) a2
         ) :
       ex(
-          boost_part::forward<A1>(a1),
-          boost_part::forward<A2>(a2)
+          boost::forward<A1>(a1),
+          boost::forward<A2>(a2)
           ) {}
     template <typename A1, typename A2, typename A3>
     executor_adaptor(
@@ -68,9 +68,9 @@ namespace executors
         BOOST_THREAD_FWD_REF(A3) a3
         ) :
       ex(
-          boost_part::forward<A1>(a1),
-          boost_part::forward<A2>(a2),
-          boost_part::forward<A3>(a3)
+          boost::forward<A1>(a1),
+          boost::forward<A2>(a2),
+          boost::forward<A3>(a3)
           ) {}
 #endif
     Executor& underlying_executor() { return ex; }
@@ -96,7 +96,7 @@ namespace executors
      * Whatever exception that can be throw while storing the closure.
      */
     void submit(BOOST_THREAD_RV_REF(work) closure)  {
-      return ex.submit(boost_part::move(closure));
+      return ex.submit(boost::move(closure));
     }
 
 #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -114,9 +114,9 @@ namespace executors
     template <typename Closure>
     void submit(BOOST_THREAD_FWD_REF(Closure) closure)
     {
-      //submit(work(boost_part::forward<Closure>(closure)));
-      work w((boost_part::forward<Closure>(closure)));
-      submit(boost_part::move(w));
+      //submit(work(boost::forward<Closure>(closure)));
+      work w((boost::forward<Closure>(closure)));
+      submit(boost::move(w));
     }
 
     /**

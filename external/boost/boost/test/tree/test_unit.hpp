@@ -6,8 +6,8 @@
 //  See http://www.boost.org/libs/test for the library home page.
 //
 /// @file
-/// Defines @ref boost_part::unit_test::test_unit "test_unit", @ref boost_part::unit_test::test_case "test_case",
-/// @ref boost_part::unit_test::test_suite "test_suite" and @ref boost_part::unit_test::master_test_suite_t "master_test_suite_t"
+/// Defines @ref boost::unit_test::test_unit "test_unit", @ref boost::unit_test::test_case "test_case",
+/// @ref boost::unit_test::test_suite "test_suite" and @ref boost::unit_test::master_test_suite_t "master_test_suite_t"
 // ***************************************************************************
 
 #ifndef BOOST_TEST_TREE_TEST_UNIT_HPP_100211GER
@@ -38,7 +38,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 namespace framework {
@@ -64,7 +64,7 @@ public:
     typedef std::vector<decorator::base_ptr>                                decor_list_t;
     typedef BOOST_READONLY_PROPERTY(std::vector<std::string>,(test_unit))   label_list_t;
 
-    typedef boost_part::function<test_tools::assertion_result (test_unit_id)>    precondition_t;
+    typedef boost::function<test_tools::assertion_result (test_unit_id)>    precondition_t;
     typedef BOOST_READONLY_PROPERTY(std::vector<precondition_t>,(test_unit)) precond_list_t;
 
     // preconditions management
@@ -138,11 +138,11 @@ public:
     enum { type = TUT_CASE };
 
     // Constructor
-    test_case( const_string tc_name, boost_part::function<void ()> const& test_func );
-    test_case( const_string tc_name, const_string tc_file, std::size_t tc_line, boost_part::function<void ()> const& test_func );
+    test_case( const_string tc_name, boost::function<void ()> const& test_func );
+    test_case( const_string tc_name, const_string tc_file, std::size_t tc_line, boost::function<void ()> const& test_func );
 
     // Public property
-    typedef BOOST_READONLY_PROPERTY(boost_part::function<void ()>,(test_case))  test_func;
+    typedef BOOST_READONLY_PROPERTY(boost::function<void ()>,(test_case))  test_func;
 
     test_func   p_test_func;
 
@@ -244,7 +244,7 @@ struct user_tc_method_invoker {
 // ************************************************************************** //
 
 inline test_case*
-make_test_case( boost_part::function<void ()> const& test_func, const_string tc_name, const_string tc_file, std::size_t tc_line )
+make_test_case( boost::function<void ()> const& test_func, const_string tc_name, const_string tc_file, std::size_t tc_line )
 {
     return new test_case( ut_detail::normalize_test_case_name( tc_name ), tc_file, tc_line, test_func );
 }
@@ -257,7 +257,7 @@ make_test_case( void (UserTestCase::*           test_method )(),
                 const_string                    tc_name,
                 const_string                    tc_file,
                 std::size_t                     tc_line,
-                boost_part::shared_ptr<InstanceType> user_test_case )
+                boost::shared_ptr<InstanceType> user_test_case )
 {
     return new test_case( ut_detail::normalize_test_case_name( tc_name ),
                           tc_file,
@@ -268,7 +268,7 @@ make_test_case( void (UserTestCase::*           test_method )(),
 //____________________________________________________________________________//
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

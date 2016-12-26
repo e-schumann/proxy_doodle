@@ -59,10 +59,10 @@
 namespace std { using ::getenv; using ::strncmp; using ::strcmp; }
 # endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
-namespace rt = boost_part::runtime;
+namespace rt = boost::runtime;
 
 // ************************************************************************** //
 // **************                 runtime_config               ************** //
@@ -117,7 +117,7 @@ register_parameters( rt::parameters_store& store )
                    "is only available on a few selected platforms: Win32 and *nix. There is a "
                    "default debugger configured for these platforms. You can manually configure "
                    "different debugger. For more details on how to configure the debugger see the "
-                   "Boost.Test debug API, specifically the function boost_part::debug::set_debugger."
+                   "Boost.Test debug API, specifically the function boost::debug::set_debugger."
     ));
 
     auto_start_dbg.add_cla_id( "--", AUTO_START_DBG, "=" );
@@ -678,15 +678,15 @@ init( int& argc, char** argv )
         // Report help if requested
         if( runtime_config::get<bool>( VERSION ) ) {
             parser->version( std::cerr );
-            BOOST_TEST_I_THROW( framework::nothing_to_test( boost_part::exit_success ) );
+            BOOST_TEST_I_THROW( framework::nothing_to_test( boost::exit_success ) );
         }
         else if( runtime_config::get<bool>( USAGE ) ) {
             parser->usage( std::cerr );
-            BOOST_TEST_I_THROW( framework::nothing_to_test( boost_part::exit_success ) );
+            BOOST_TEST_I_THROW( framework::nothing_to_test( boost::exit_success ) );
         }
         else if( s_arguments_store.has( HELP ) ) {
             parser->help( std::cerr, s_parameters_store, runtime_config::get<std::string>( HELP ) );
-            BOOST_TEST_I_THROW( framework::nothing_to_test( boost_part::exit_success ) );
+            BOOST_TEST_I_THROW( framework::nothing_to_test( boost::exit_success ) );
         }
 
         // A bit of business logic: output_format takes precedence over log/report formats
@@ -706,7 +706,7 @@ init( int& argc, char** argv )
         BOOST_TEST_FOREACH( rt::cstring, name, ex.m_amb_candidates )
             std::cerr << "   " << name << "\n";
 
-        BOOST_TEST_I_THROW( framework::nothing_to_test( boost_part::exit_exception_failure ) );
+        BOOST_TEST_I_THROW( framework::nothing_to_test( boost::exit_exception_failure ) );
     }
     BOOST_TEST_I_CATCH( rt::unrecognized_param, ex ) {
         std::cerr << ex.msg << "\n";
@@ -722,7 +722,7 @@ init( int& argc, char** argv )
             parser->usage( std::cerr );
         }
 
-        BOOST_TEST_I_THROW( framework::nothing_to_test( boost_part::exit_exception_failure ) );
+        BOOST_TEST_I_THROW( framework::nothing_to_test( boost::exit_exception_failure ) );
     }
     BOOST_TEST_I_CATCH( rt::input_error, ex ) {
         std::cerr << ex.msg << "\n\n";
@@ -730,7 +730,7 @@ init( int& argc, char** argv )
         if( parser )
             parser->usage( std::cerr, ex.param_name );
 
-        BOOST_TEST_I_THROW( framework::nothing_to_test( boost_part::exit_exception_failure ) );
+        BOOST_TEST_I_THROW( framework::nothing_to_test( boost::exit_exception_failure ) );
     }
 }
 
@@ -754,7 +754,7 @@ save_pattern()
 
 } // namespace runtime_config
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

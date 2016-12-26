@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_CTYPE_FUNCTIONS
 #include "boost_no_ctype_functions.ipp"
 #else
-namespace boost_part_no_ctype_functions = empty_boost;
+namespace boost_no_ctype_functions = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_ctype_functions::test();
+   return boost_no_ctype_functions::test();
 }
 

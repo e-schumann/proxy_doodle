@@ -12,7 +12,7 @@
 #ifndef BOOST_SYSTEM_LOCAL_FREE_ON_EXIT_HPP
 #define BOOST_SYSTEM_LOCAL_FREE_ON_EXIT_HPP
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace system {
 namespace detail {
 
@@ -35,6 +35,6 @@ private:
 
 } // namespace detail
 } // namespace system
-} // namespace boost_part
+} // namespace boost
 
 #endif  // BOOST_SYSTEM_LOCAL_FREE_ON_EXIT_HPP

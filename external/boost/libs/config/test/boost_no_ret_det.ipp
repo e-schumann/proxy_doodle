@@ -16,7 +16,7 @@
 # include <stdlib.h>
 #endif
 
-namespace boost_part_no_unreachable_return_detection{
+namespace boost_no_unreachable_return_detection{
 
 int checker()
 {

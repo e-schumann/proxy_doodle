@@ -25,7 +25,7 @@
 #include <boost/intrusive/detail/workaround.hpp>
 #include <boost/intrusive/detail/pointer_element.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace intrusive {
 namespace detail {
 
@@ -34,13 +34,13 @@ BOOST_INTRUSIVE_FORCEINLINE T* to_raw_pointer(T* p)
 {  return p; }
 
 template <class Pointer>
-BOOST_INTRUSIVE_FORCEINLINE typename boost_part::intrusive::pointer_element<Pointer>::type*
+BOOST_INTRUSIVE_FORCEINLINE typename boost::intrusive::pointer_element<Pointer>::type*
 to_raw_pointer(const Pointer &p)
-{  return boost_part::intrusive::detail::to_raw_pointer(p.operator->());  }
+{  return boost::intrusive::detail::to_raw_pointer(p.operator->());  }
 
 } //namespace detail
 } //namespace intrusive
-} //namespace boost_part
+} //namespace boost
 
 #include <boost/intrusive/detail/config_end.hpp>
 

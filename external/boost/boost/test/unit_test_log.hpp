@@ -34,7 +34,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 // ************************************************************************** //
@@ -91,24 +91,24 @@ private:
 /// having their own log level and output stream.
 ///
 /// This class serves the purpose of
-/// - exposing an interface to the test framework (as a boost_part::unit_test::test_observer)
+/// - exposing an interface to the test framework (as a boost::unit_test::test_observer)
 /// - exposing an interface to the testing tools
 /// - managing several loggers
 ///
 /// @note Accesses to the functions exposed by this class are made through the singleton
-///   @c boost_part::unit_test::unit_test_log.
+///   @c boost::unit_test::unit_test_log.
 ///
 /// Users/developers willing to implement their own formatter need to:
-/// - implement a boost_part::unit_test::unit_test_log_formatter that will output the desired format
+/// - implement a boost::unit_test::unit_test_log_formatter that will output the desired format
 /// - register the formatter during a eg. global fixture using the method @c set_formatter (though the framework singleton).
 ///
-/// @warning this observer has a higher priority than the @ref boost_part::unit_test::results_collector_t. This means
-/// that the various @ref boost_part::unit_test::test_results associated to each test unit may not be available at the time
+/// @warning this observer has a higher priority than the @ref boost::unit_test::results_collector_t. This means
+/// that the various @ref boost::unit_test::test_results associated to each test unit may not be available at the time
 /// the @c test_unit_start, @c test_unit_finish ... are called.
 ///
 /// @see
-/// - boost_part::unit_test::test_observer
-/// - boost_part::unit_test::unit_test_log_formatter
+/// - boost::unit_test::test_observer
+/// - boost::unit_test::unit_test_log_formatter
 class BOOST_TEST_DECL unit_test_log_t : public test_observer, public singleton<unit_test_log_t> {
 public:
     // test_observer interface implementation
@@ -221,12 +221,12 @@ BOOST_TEST_SINGLETON_INST( unit_test_log )
 
 // helper macros
 #define BOOST_TEST_LOG_ENTRY( ll )                                                  \
-    (::boost_part::unit_test::unit_test_log                                              \
-        << ::boost_part::unit_test::log::begin( BOOST_TEST_L(__FILE__), __LINE__ ))(ll)  \
+    (::boost::unit_test::unit_test_log                                              \
+        << ::boost::unit_test::log::begin( BOOST_TEST_L(__FILE__), __LINE__ ))(ll)  \
 /**/
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 // ************************************************************************** //
 // **************       Unit test log interface helpers        ************** //
@@ -234,24 +234,24 @@ BOOST_TEST_SINGLETON_INST( unit_test_log )
 
 // messages sent by the framework
 #define BOOST_TEST_FRAMEWORK_MESSAGE( M )                       \
-   (::boost_part::unit_test::unit_test_log                           \
-        << ::boost_part::unit_test::log::begin(                      \
+   (::boost::unit_test::unit_test_log                           \
+        << ::boost::unit_test::log::begin(                      \
                 "boost.test framework",                         \
                 __LINE__ ))                                     \
-             ( ::boost_part::unit_test::log_messages )               \
+             ( ::boost::unit_test::log_messages )               \
     << BOOST_TEST_LAZY_MSG( M )                                 \
 /**/
 
 
 #define BOOST_TEST_MESSAGE( M )                                 \
-    BOOST_TEST_LOG_ENTRY( ::boost_part::unit_test::log_messages )    \
+    BOOST_TEST_LOG_ENTRY( ::boost::unit_test::log_messages )    \
     << BOOST_TEST_LAZY_MSG( M )                                 \
 /**/
 
 //____________________________________________________________________________//
 
 #define BOOST_TEST_PASSPOINT()                                  \
-    ::boost_part::unit_test::unit_test_log.set_checkpoint(           \
+    ::boost::unit_test::unit_test_log.set_checkpoint(           \
         BOOST_TEST_L(__FILE__),                                 \
         static_cast<std::size_t>(__LINE__) )                    \
 /**/
@@ -259,10 +259,10 @@ BOOST_TEST_SINGLETON_INST( unit_test_log )
 //____________________________________________________________________________//
 
 #define BOOST_TEST_CHECKPOINT( M )                              \
-    ::boost_part::unit_test::unit_test_log.set_checkpoint(           \
+    ::boost::unit_test::unit_test_log.set_checkpoint(           \
         BOOST_TEST_L(__FILE__),                                 \
         static_cast<std::size_t>(__LINE__),                     \
-        (::boost_part::wrap_stringstream().ref() << M).str() )       \
+        (::boost::wrap_stringstream().ref() << M).str() )       \
 /**/
 
 //____________________________________________________________________________//

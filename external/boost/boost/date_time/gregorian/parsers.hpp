@@ -16,7 +16,7 @@
 #include <string>
 #include <sstream>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace gregorian {
 
   //! Return special_value from string argument

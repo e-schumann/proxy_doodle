@@ -29,7 +29,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace unit_test {
 
@@ -55,7 +55,7 @@ struct bcs_char_traits_impl
 #if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x564))
     typedef CharT const const_char;
 #else
-    typedef typename boost_part::add_const<CharT>::type const_char;
+    typedef typename boost::add_const<CharT>::type const_char;
 #endif
     static bool eq( CharT c1, CharT c2 )
     {
@@ -141,7 +141,7 @@ public:
 
 } // namespace unit_test
 
-} // namespace boost_part
+} // namespace boost
 
 //____________________________________________________________________________//
 

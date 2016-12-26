@@ -21,7 +21,7 @@
 #include <boost/iterator/reverse_iterator.hpp>
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     //////////////////////////////////////////////////////////////////////////
     // default
@@ -36,7 +36,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     };
     
 
-} // namespace boost_part
+} // namespace boost
 
 
 #endif

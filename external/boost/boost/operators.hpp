@@ -109,7 +109,7 @@
 // templates, which are explicitly targeted at the 1-type-argument and
 // 2-type-argument operator forms, respectively.
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace operators_impl
 {
@@ -882,7 +882,7 @@ struct random_access_iterator_helper
 } // namespace operators_impl
 using namespace operators_impl;
 
-} // namespace boost_part
+} // namespace boost
 
 #if defined(__sgi) && !defined(__GNUC__)
 #pragma reset woff 1234

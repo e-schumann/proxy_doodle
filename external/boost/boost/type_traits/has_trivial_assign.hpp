@@ -21,14 +21,14 @@
 #include <boost/type_traits/is_assignable.hpp>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
    template <typename T>
    struct has_trivial_assign : public integral_constant < bool,
 #ifdef BOOST_HAS_TRIVIAL_ASSIGN
       BOOST_HAS_TRIVIAL_ASSIGN(T)
 #else
-      ::boost_part::is_pod<T>::value && !::boost_part::is_const<T>::value && !::boost_part::is_volatile<T>::value
+      ::boost::is_pod<T>::value && !::boost::is_const<T>::value && !::boost::is_volatile<T>::value
 #endif
    > {};
 
@@ -47,6 +47,6 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
    template <typename T, std::size_t N> struct has_trivial_assign<T[N]> : public false_type{};
    template <typename T> struct has_trivial_assign<T[]> : public false_type{};
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_HAS_TRIVIAL_ASSIGN_HPP_INCLUDED

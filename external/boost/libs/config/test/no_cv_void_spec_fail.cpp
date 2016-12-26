@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_cv_void_specializations::test();
+   return boost_no_cv_void_specializations::test();
 }
 

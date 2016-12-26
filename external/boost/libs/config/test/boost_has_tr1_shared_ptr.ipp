@@ -11,7 +11,7 @@
 
 #include <memory>
 
-namespace boost_part_has_tr1_shared_ptr{
+namespace boost_has_tr1_shared_ptr{
 
 int test()
 {

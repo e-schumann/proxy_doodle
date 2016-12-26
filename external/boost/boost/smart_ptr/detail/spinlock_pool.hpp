@@ -25,7 +25,7 @@
 #include <boost/smart_ptr/detail/spinlock.hpp>
 #include <cstddef>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -86,6 +86,6 @@ template< int M > spinlock spinlock_pool< M >::pool_[ 41 ] =
 };
 
 } // namespace detail
-} // namespace boost_part
+} // namespace boost
 
 #endif // #ifndef BOOST_SMART_PTR_DETAIL_SPINLOCK_POOL_HPP_INCLUDED

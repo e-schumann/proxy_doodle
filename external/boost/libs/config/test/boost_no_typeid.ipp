@@ -11,7 +11,7 @@
 
 #include <typeinfo>
 
-namespace boost_part_no_typeid
+namespace boost_no_typeid
 {
 
 int test()

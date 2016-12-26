@@ -16,7 +16,7 @@ if [ qt5.initialized ]
 
     project qttest
       : requirements
-          <library>/boost/test//boost_part_unit_test_framework
+          <library>/boost/test//boost_unit_test_framework
       ;
 
     alias qt-tests :

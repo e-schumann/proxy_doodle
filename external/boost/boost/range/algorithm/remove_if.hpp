@@ -16,7 +16,7 @@
 #include <boost/range/detail/range_return.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -28,20 +28,20 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 /// \pre ForwardRange is a model of the ForwardRangeConcept
 /// \pre UnaryPredicate is a model of the UnaryPredicateConcept
 template< class ForwardRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME boost_part::range_iterator<ForwardRange>::type
+inline BOOST_DEDUCED_TYPENAME boost::range_iterator<ForwardRange>::type
 remove_if(ForwardRange& rng, UnaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return std::remove_if(boost_part::begin(rng), boost_part::end(rng), pred);
+    return std::remove_if(boost::begin(rng), boost::end(rng), pred);
 }
 
 /// \overload
 template< class ForwardRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME boost_part::range_iterator<const ForwardRange>::type
+inline BOOST_DEDUCED_TYPENAME boost::range_iterator<const ForwardRange>::type
 remove_if(const ForwardRange& rng, UnaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::remove_if(boost_part::begin(rng), boost_part::end(rng), pred);
+    return std::remove_if(boost::begin(rng), boost::end(rng), pred);
 }
 
 // range_return overloads
@@ -53,7 +53,7 @@ remove_if(ForwardRange& rng, UnaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
     return range_return<ForwardRange,re>::pack(
-        std::remove_if(boost_part::begin(rng), boost_part::end(rng), pred),
+        std::remove_if(boost::begin(rng), boost::end(rng), pred),
         rng);
 }
 
@@ -64,12 +64,12 @@ remove_if(const ForwardRange& rng, UnaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
     return range_return<const ForwardRange,re>::pack(
-        std::remove_if(boost_part::begin(rng), boost_part::end(rng), pred),
+        std::remove_if(boost::begin(rng), boost::end(rng), pred),
         rng);
 }
 
     } // namespace range
     using range::remove_if;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

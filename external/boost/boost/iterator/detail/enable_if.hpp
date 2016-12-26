@@ -18,7 +18,7 @@
 // 23/02/03 thw
 //
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
   namespace iterators
@@ -76,7 +76,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
   } // namespace iterators
 
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/iterator/detail/config_undef.hpp>
 

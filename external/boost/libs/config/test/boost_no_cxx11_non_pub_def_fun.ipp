@@ -14,7 +14,7 @@
 #  error Non-public defaulted functions are not supported in non-C++11 mode
 #endif
 
-namespace boost_part_no_cxx11_non_public_defaulted_functions {
+namespace boost_no_cxx11_non_public_defaulted_functions {
 
 struct foo
 {

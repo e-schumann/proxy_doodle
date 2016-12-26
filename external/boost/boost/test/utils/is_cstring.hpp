@@ -27,7 +27,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 // ************************************************************************** //
@@ -53,9 +53,9 @@ struct is_cstring_impl<wchar_t*> : public mpl::true_ {};
 
 template <typename T>
 struct deduce_cstring_impl {
-    typedef typename boost_part::add_const<
-        typename boost_part::remove_pointer<
-            typename boost_part::decay<T>::type
+    typedef typename boost::add_const<
+        typename boost::remove_pointer<
+            typename boost::decay<T>::type
         >::type
     >::type type;
 };
@@ -63,7 +63,7 @@ struct deduce_cstring_impl {
 template <typename T>
 struct deduce_cstring_impl< std::basic_string<T, std::char_traits<T> > > {
   // const is required here
-  typedef typename boost_part::add_const<T>::type type;
+  typedef typename boost::add_const<T>::type type;
 };
 
 } // namespace ut_detail
@@ -77,13 +77,13 @@ struct is_cstring< std::basic_string<T, std::char_traits<T> > > : public mpl::tr
 template <class T>
 struct deduce_cstring {
     typedef typename
-        boost_part::remove_const<
-            typename boost_part::remove_reference<T>::type
+        boost::remove_const<
+            typename boost::remove_reference<T>::type
         >::type U;
     typedef typename ut_detail::deduce_cstring_impl<U>::type type;
 };
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TEST_UTILS_IS_CSTRING_HPP

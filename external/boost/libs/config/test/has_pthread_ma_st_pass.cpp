@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
 #include "boost_has_pthread_ma_st.ipp"
 #else
-namespace boost_part_has_pthread_mutexattr_settype = empty_boost;
+namespace boost_has_pthread_mutexattr_settype = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_pthread_mutexattr_settype::test();
+   return boost_has_pthread_mutexattr_settype::test();
 }
 

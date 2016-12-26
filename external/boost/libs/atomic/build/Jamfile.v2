@@ -29,9 +29,9 @@ alias atomic_sources
 explicit atomic_sources ;
 
 
-lib boost_part_atomic
+lib boost_atomic
    : atomic_sources
    ;
 
 
-boost-install boost_part_atomic ;
+boost-install boost_atomic ;

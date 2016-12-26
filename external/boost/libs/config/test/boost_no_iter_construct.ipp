@@ -14,7 +14,7 @@
 #include <deque>
 #include <list>
 
-namespace boost_part_no_templated_iterator_constructors{
+namespace boost_no_templated_iterator_constructors{
 
 int test()
 {

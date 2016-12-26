@@ -31,7 +31,7 @@
 
 #include <boost/filesystem/detail/utf8_codecvt_facet.hpp>
 
-namespace fs = boost_part::filesystem;
+namespace fs = boost::filesystem;
 
 #include <boost/config.hpp>
 #ifdef BOOST_NO_STDC_NAMESPACE
@@ -165,5 +165,5 @@ int cpp_main(int argc, char*[])
   ws += 0x263A;
   test(ws);
 
-  return ::boost_part::report_errors();
+  return ::boost::report_errors();
 }

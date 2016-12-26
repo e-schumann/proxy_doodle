@@ -39,7 +39,7 @@
 namespace std{ using ::ispunct; using ::isspace; }
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace utils {
 
@@ -411,7 +411,7 @@ make_range_token_iterator( Iter begin, Iter end, Modifier const& m )
 
 } // namespace utils
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 //____________________________________________________________________________//
 

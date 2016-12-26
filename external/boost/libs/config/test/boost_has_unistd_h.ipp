@@ -11,7 +11,7 @@
 
 #include <unistd.h>
 
-namespace boost_part_has_unistd_h{
+namespace boost_has_unistd_h{
 
 int test()
 {

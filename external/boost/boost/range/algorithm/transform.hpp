@@ -16,7 +16,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -39,7 +39,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                   UnaryOperation          fun)
         {
             BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
-            return std::transform(boost_part::begin(rng),boost_part::end(rng),out,fun);
+            return std::transform(boost::begin(rng),boost::end(rng),out,fun);
         }
 
     } // namespace range
@@ -83,14 +83,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
             BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
             BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-            return boost_part::range_detail::transform_impl(
-                        boost_part::begin(rng1), boost_part::end(rng1),
-                        boost_part::begin(rng2), boost_part::end(rng2),
+            return boost::range_detail::transform_impl(
+                        boost::begin(rng1), boost::end(rng1),
+                        boost::begin(rng2), boost::end(rng2),
                         out, fun);
         }
 
     } // namespace range
     using range::transform;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

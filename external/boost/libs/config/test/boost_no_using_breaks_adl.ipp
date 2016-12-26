@@ -13,7 +13,7 @@
 //                 using whatever::symbol;.
 
 
-namespace boost_part_ns
+namespace boost_ns
 {
    template <class T>
    T* get_pointer(T* p)
@@ -43,23 +43,23 @@ namespace user_ns
    int f(T x)
    {
       // use this as a workaround:
-      //using namespace boost_part;
+      //using namespace boost;
       // this statement breaks ADL:
-      using boost_part_ns::get_pointer;    // conforming compilers require
+      using boost_ns::get_pointer;    // conforming compilers require
                                    // this one to find the auto_ptr
                                    // and T* overloads
       return get_pointer(x) == 0;
    }
 }
 
-namespace boost_part_function_scope_using_declaration_breaks_adl{
+namespace boost_function_scope_using_declaration_breaks_adl{
 
 int test()
 {
    int i;
    typedef void* pv;
    i = user_ns::f(pv());
-   i = user_ns::f(boost_part_ns::inner2::X<int>());
+   i = user_ns::f(boost_ns::inner2::X<int>());
    (void)i;
    return 0;
 }

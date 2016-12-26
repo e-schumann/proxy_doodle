@@ -33,7 +33,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace math {
 namespace fpc {
 
@@ -142,7 +142,7 @@ struct fpt_non_specialized_limits
 };
 
 template<typename FPT>
-struct fpt_limits : boost_part::conditional<std::numeric_limits<FPT>::is_specialized,
+struct fpt_limits : boost::conditional<std::numeric_limits<FPT>::is_specialized,
                                        fpt_specialized_limits<FPT>,
                                        fpt_non_specialized_limits<FPT>
                                       >::type
@@ -199,7 +199,7 @@ fraction_tolerance( percent_tolerance_t<FPT> tolerance )
  * This predicate is used to compare floating point numbers. In addition the comparison produces maximum 
  * related differnce, which can be used to generate detailed error message
  * The methods for comparing floating points are detailed in the documentation. The method is chosen
- * by the @ref boost_part::math::fpc::strength given at construction.
+ * by the @ref boost::math::fpc::strength given at construction.
  */
 template<typename FPT>
 class close_at_tolerance {
@@ -266,7 +266,7 @@ private:
 
 /*!@brief Predicate for comparing floating point numbers against 0
  *
- * Serves the same purpose as boost_part::math::fpc::close_at_tolerance, but used when one
+ * Serves the same purpose as boost::math::fpc::close_at_tolerance, but used when one
  * of the operand is null. 
  */
 template<typename FPT>
@@ -308,7 +308,7 @@ is_small( FPT fpv, FPT tolerance )
 
 } // namespace fpc
 } // namespace math
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

@@ -12,7 +12,7 @@
 
 #include <boost/config.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 // * convert a type T to volatile type - add_volatile<T>
 // this is not required since the result is always
@@ -35,6 +35,6 @@ template <class T> struct add_volatile{ typedef T volatile type; };
 
 template <class T> struct add_volatile<T&>{ typedef T& type; };
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_ADD_VOLATILE_HPP_INCLUDED

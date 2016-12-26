@@ -20,7 +20,7 @@ BOOST_AUTO_TEST_CASE( defines)
 
 BOOST_AUTO_TEST_CASE( declarative )
 {
-    QCoreApplication app(boost_part::unit_test::framework::master_test_suite().argc,
-                         boost_part::unit_test::framework::master_test_suite().argv);
+    QCoreApplication app(boost::unit_test::framework::master_test_suite().argc,
+                         boost::unit_test::framework::master_test_suite().argv);
     QDeclarativeView view;
 }

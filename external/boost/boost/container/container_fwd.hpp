@@ -21,36 +21,36 @@
 
 //! \file
 //! This header file forward declares the following containers:
-//!   - boost_part::container::vector
-//!   - boost_part::container::stable_vector
-//!   - boost_part::container::static_vector
-//!   - boost_part::container::small_vector
-//!   - boost_part::container::slist
-//!   - boost_part::container::list
-//!   - boost_part::container::set
-//!   - boost_part::container::multiset
-//!   - boost_part::container::map
-//!   - boost_part::container::multimap
-//!   - boost_part::container::flat_set
-//!   - boost_part::container::flat_multiset
-//!   - boost_part::container::flat_map
-//!   - boost_part::container::flat_multimap
-//!   - boost_part::container::basic_string
-//!   - boost_part::container::string
-//!   - boost_part::container::wstring
+//!   - boost::container::vector
+//!   - boost::container::stable_vector
+//!   - boost::container::static_vector
+//!   - boost::container::small_vector
+//!   - boost::container::slist
+//!   - boost::container::list
+//!   - boost::container::set
+//!   - boost::container::multiset
+//!   - boost::container::map
+//!   - boost::container::multimap
+//!   - boost::container::flat_set
+//!   - boost::container::flat_multiset
+//!   - boost::container::flat_map
+//!   - boost::container::flat_multimap
+//!   - boost::container::basic_string
+//!   - boost::container::string
+//!   - boost::container::wstring
 //!
 //! Forward declares the following allocators:
-//!   - boost_part::container::allocator
-//!   - boost_part::container::node_allocator
-//!   - boost_part::container::adaptive_pool
+//!   - boost::container::allocator
+//!   - boost::container::node_allocator
+//!   - boost::container::adaptive_pool
 //!
 //! Forward declares the following polymorphic resource classes:
-//!   - boost_part::container::pmr::memory_resource
-//!   - boost_part::container::pmr::polymorphic_allocator
-//!   - boost_part::container::pmr::monotonic_buffer_resource
-//!   - boost_part::container::pmr::pool_options
-//!   - boost_part::container::pmr::unsynchronized_pool_resource
-//!   - boost_part::container::pmr::synchronized_pool_resource
+//!   - boost::container::pmr::memory_resource
+//!   - boost::container::pmr::polymorphic_allocator
+//!   - boost::container::pmr::monotonic_buffer_resource
+//!   - boost::container::pmr::pool_options
+//!   - boost::container::pmr::unsynchronized_pool_resource
+//!   - boost::container::pmr::synchronized_pool_resource
 //!
 //! And finally it defines the following types
 
@@ -61,20 +61,20 @@
    #include <boost/container/detail/std_fwd.hpp>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 namespace intrusive{
 namespace detail{
    //Create namespace to avoid compilation errors
 }}}
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{ namespace container{ namespace container_detail{
-   namespace bi = boost_part::intrusive;
-   namespace bid = boost_part::intrusive::detail;
+namespace boost{ namespace container{ namespace container_detail{
+   namespace bi = boost::intrusive;
+   namespace bid = boost::intrusive::detail;
 }}}
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{ namespace container{ namespace pmr{
-   namespace bi = boost_part::intrusive;
-   namespace bid = boost_part::intrusive::detail;
+namespace boost{ namespace container{ namespace pmr{
+   namespace bi = boost::intrusive;
+   namespace bid = boost::intrusive::detail;
 }}}
 
 #include <cstddef>
@@ -85,7 +85,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part{ name
 //                             Containers
 //////////////////////////////////////////////////////////////////////////////
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 
 //! Enumeration used to configure ordered associative containers
@@ -312,6 +312,6 @@ struct dummy
 
 #endif   //#ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
 
-}}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace container {
+}}  //namespace boost { namespace container {
 
 #endif //#ifndef BOOST_CONTAINER_CONTAINER_FWD_HPP

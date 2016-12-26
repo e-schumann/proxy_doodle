@@ -10,7 +10,7 @@
 //                 into a derived class if functions of the same name
 //                 are present in the derived class.
 
-namespace boost_part_no_using_declaration_overloads_from_typename_base {
+namespace boost_no_using_declaration_overloads_from_typename_base {
 
 struct base
 {

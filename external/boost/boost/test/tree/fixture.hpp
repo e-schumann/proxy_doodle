@@ -27,7 +27,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 // ************************************************************************** //
@@ -91,7 +91,7 @@ private:
 class function_based_fixture : public test_unit_fixture {
 public:
     // Constructor
-    function_based_fixture( boost_part::function<void ()> const& setup_, boost_part::function<void ()> const& teardown_ )
+    function_based_fixture( boost::function<void ()> const& setup_, boost::function<void ()> const& teardown_ )
     : m_setup( setup_ )
     , m_teardown( teardown_ )
     {
@@ -103,12 +103,12 @@ private:
     virtual void                teardown()  { if( m_teardown ) m_teardown(); }
 
     // Data members
-    boost_part::function<void ()>    m_setup;
-    boost_part::function<void ()>    m_teardown;
+    boost::function<void ()>    m_setup;
+    boost::function<void ()>    m_teardown;
 };
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

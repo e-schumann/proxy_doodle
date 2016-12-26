@@ -21,7 +21,7 @@
 #include <boost/type_traits/remove_extent.hpp>
 #include <ostream>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
@@ -29,21 +29,21 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 template<typename Sep, typename Prefix, typename Postfix>
 struct formatted_holder
 {
-    typedef typename boost_part::mpl::if_<
-        boost_part::is_array<Sep>,
-        const typename boost_part::remove_extent<Sep>::type*,
+    typedef typename boost::mpl::if_<
+        boost::is_array<Sep>,
+        const typename boost::remove_extent<Sep>::type*,
         Sep
     >::type separator_t;
 
-    typedef typename boost_part::mpl::if_<
-        boost_part::is_array<Prefix>,
-        const typename boost_part::remove_extent<Prefix>::type*,
+    typedef typename boost::mpl::if_<
+        boost::is_array<Prefix>,
+        const typename boost::remove_extent<Prefix>::type*,
         Prefix
     >::type prefix_t;
 
-    typedef typename boost_part::mpl::if_<
-        boost_part::is_array<Postfix>,
-        const typename boost_part::remove_extent<Postfix>::type*,
+    typedef typename boost::mpl::if_<
+        boost::is_array<Postfix>,
+        const typename boost::remove_extent<Postfix>::type*,
         Postfix
     >::type postfix_t;
 
@@ -64,12 +64,12 @@ struct formatted_holder
 
 template<typename Iter, typename Sep, typename Prefix, typename Postfix>
 class formatted_range
-        : public boost_part::iterator_range<Iter>
+        : public boost::iterator_range<Iter>
 {
     typedef formatted_holder<Sep,Prefix,Postfix> holder_t;
 public:
     formatted_range(Iter first, Iter last, const holder_t& holder)
-        : boost_part::iterator_range<Iter>(first, last)
+        : boost::iterator_range<Iter>(first, last)
         , m_holder(holder)
     {
     }
@@ -110,7 +110,7 @@ operator|(
 {
     typedef typename range_iterator<const SinglePassRange>::type iterator;
     return range_detail::formatted_range<iterator, Sep, Prefix, Postfix>(
-        boost_part::begin(rng), boost_part::end(rng), holder);
+        boost::begin(rng), boost::end(rng), holder);
 }
 
 template<typename Char, typename Traits, typename Iter, typename Sep,
@@ -161,8 +161,8 @@ using range_detail::formatted_range;
 
 template<typename SinglePassRange, typename Sep, typename Prefix,
          typename Postfix>
-inline boost_part::range_detail::formatted_range<
-    typename boost_part::range_iterator<const SinglePassRange>::type,
+inline boost::range_detail::formatted_range<
+    typename boost::range_iterator<const SinglePassRange>::type,
     Sep, Prefix, Postfix
 >
 format(
@@ -172,22 +172,22 @@ format(
     const Postfix& postfix
 )
 {
-    typedef typename boost_part::range_iterator<const SinglePassRange>::type
+    typedef typename boost::range_iterator<const SinglePassRange>::type
                 iterator_t;
 
-    typedef boost_part::range_detail::formatted_range<
+    typedef boost::range_detail::formatted_range<
                 iterator_t, Sep, Prefix, Postfix>       result_t;
 
-    typedef boost_part::range_detail::formatted_holder<Sep, Prefix, Postfix>
+    typedef boost::range_detail::formatted_holder<Sep, Prefix, Postfix>
                 holder_t;
 
-    return result_t(boost_part::begin(rng), boost_part::end(rng),
+    return result_t(boost::begin(rng), boost::end(rng),
                     holder_t(sep, prefix, postfix));
 }
 
 template<typename SinglePassRange, typename Sep, typename Prefix>
-inline boost_part::range_detail::formatted_range<
-    typename boost_part::range_iterator<const SinglePassRange>::type,
+inline boost::range_detail::formatted_range<
+    typename boost::range_iterator<const SinglePassRange>::type,
     Sep, Prefix, char
 >
 format(
@@ -199,8 +199,8 @@ format(
 }
 
 template<typename SinglePassRange, typename Sep>
-inline boost_part::range_detail::formatted_range<
-    typename boost_part::range_iterator<const SinglePassRange>::type,
+inline boost::range_detail::formatted_range<
+    typename boost::range_iterator<const SinglePassRange>::type,
     Sep, char, char
 >
 format(const SinglePassRange& rng, const Sep& sep)
@@ -209,8 +209,8 @@ format(const SinglePassRange& rng, const Sep& sep)
 }
 
 template<typename SinglePassRange>
-inline boost_part::range_detail::formatted_range<
-    typename boost_part::range_iterator<const SinglePassRange>::type,
+inline boost::range_detail::formatted_range<
+    typename boost::range_iterator<const SinglePassRange>::type,
     char, char, char
 >
 format(const SinglePassRange& rng)
@@ -222,8 +222,8 @@ format(const SinglePassRange& rng)
 
     namespace range
     {
-        using boost_part::range_detail::formatted_range;
+        using boost::range_detail::formatted_range;
     } // namespace range
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

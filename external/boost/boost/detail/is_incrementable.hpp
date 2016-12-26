@@ -10,7 +10,7 @@
 # include <boost/mpl/bool.hpp>
 # include <boost/detail/workaround.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace detail {
+namespace boost { namespace detail {
 
 // is_incrementable<T> metafunction
 //
@@ -75,7 +75,7 @@ namespace is_incrementable_
   template <class T>
   struct impl
   {
-      static typename boost_part::remove_cv<T>::type& x;
+      static typename boost::remove_cv<T>::type& x;
 
       BOOST_STATIC_CONSTANT(
           bool
@@ -86,7 +86,7 @@ namespace is_incrementable_
   template <class T>
   struct postfix_impl
   {
-      static typename boost_part::remove_cv<T>::type& x;
+      static typename boost::remove_cv<T>::type& x;
 
       BOOST_STATIC_CONSTANT(
           bool
@@ -104,21 +104,21 @@ namespace is_incrementable_
 
 template<typename T>
 struct is_incrementable :
-    public boost_part::integral_constant<bool, boost_part::detail::is_incrementable_::impl<T>::value>
+    public boost::integral_constant<bool, boost::detail::is_incrementable_::impl<T>::value>
 {
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,is_incrementable,(T))
 };
 
 template<typename T>
 struct is_postfix_incrementable :
-    public boost_part::integral_constant<bool, boost_part::detail::is_incrementable_::postfix_impl<T>::value>
+    public boost::integral_constant<bool, boost::detail::is_incrementable_::postfix_impl<T>::value>
 {
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,is_postfix_incrementable,(T))
 };
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
 # include <boost/type_traits/detail/bool_trait_undef.hpp>
 

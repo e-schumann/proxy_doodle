@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 #include "boost_no_partial_spec.ipp"
 #else
-namespace boost_part_no_template_partial_specialization = empty_boost;
+namespace boost_no_template_partial_specialization = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_template_partial_specialization::test();
+   return boost_no_template_partial_specialization::test();
 }
 

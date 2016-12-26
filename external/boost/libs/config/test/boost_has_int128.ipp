@@ -12,7 +12,7 @@
 #include <cstdlib>
 
 
-namespace boost_part_has_int128{
+namespace boost_has_int128{
 
 int test()
 {

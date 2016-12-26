@@ -74,12 +74,12 @@
 #include <cstddef>               // for NULL
 #include <stdexcept>             // for std::domain_error
 #include <string>                // for std::string implicit constructor
-#include <boost/operators.hpp>   // for boost_part::addable etc
+#include <boost/operators.hpp>   // for boost::addable etc
 #include <cstdlib>               // for std::abs
-#include <boost/call_traits.hpp> // for boost_part::call_traits
+#include <boost/call_traits.hpp> // for boost::call_traits
 #include <boost/detail/workaround.hpp> // for BOOST_WORKAROUND
 #include <boost/assert.hpp>      // for BOOST_ASSERT
-#include <boost/integer/common_factor_rt.hpp> // for boost_part::integer::gcd, lcm
+#include <boost/integer/common_factor_rt.hpp> // for boost::integer::gcd, lcm
 #include <limits>                // for std::numeric_limits
 #include <boost/static_assert.hpp>  // for BOOST_STATIC_ASSERT
 #include <boost/throw_exception.hpp>
@@ -89,7 +89,7 @@
 #define BOOST_CONTROL_RATIONAL_HAS_GCD  1
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 #if BOOST_CONTROL_RATIONAL_HAS_GCD
 template <typename IntType>
@@ -138,7 +138,7 @@ class rational :
     BOOST_STATIC_ASSERT( ::std::numeric_limits<IntType>::is_specialized );
 
     // Helper types
-    typedef typename boost_part::call_traits<IntType>::param_type param_type;
+    typedef typename boost::call_traits<IntType>::param_type param_type;
 
     struct helper { IntType parts[2]; };
     typedef IntType (helper::* bool_type)[2];
@@ -702,6 +702,6 @@ struct lcm_evaluator< rational<IntType> >
 
 } // namespace integer
 
-} // namespace boost_part
+} // namespace boost
 
 #endif  // BOOST_RATIONAL_HPP

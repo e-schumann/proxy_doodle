@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX14_HDR_SHARED_MUTEX
 #include "boost_no_cxx14_hdr_shared_mutex.ipp"
 #else
-namespace boost_part_no_cxx14_hdr_shared_mutex = empty_boost;
+namespace boost_no_cxx14_hdr_shared_mutex = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx14_hdr_shared_mutex::test();
+   return boost_no_cxx14_hdr_shared_mutex::test();
 }
 

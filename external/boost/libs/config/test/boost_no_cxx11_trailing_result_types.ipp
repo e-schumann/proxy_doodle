@@ -10,7 +10,7 @@
 //  TITLE:         C++11 trailing function result types syntax.
 //  DESCRIPTION:   The compiler does not support the new C++11 function result types specification syntax.
 
-namespace boost_part_no_cxx11_trailing_result_types {
+namespace boost_no_cxx11_trailing_result_types {
 
 template< typename T >
 auto foo(T const& t) -> T

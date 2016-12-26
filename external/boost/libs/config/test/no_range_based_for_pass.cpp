@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_RANGE_BASED_FOR
 #include "boost_no_range_based_for.ipp"
 #else
-namespace boost_part_no_cxx11_range_based_for = empty_boost;
+namespace boost_no_cxx11_range_based_for = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_range_based_for::test();
+   return boost_no_cxx11_range_based_for::test();
 }
 

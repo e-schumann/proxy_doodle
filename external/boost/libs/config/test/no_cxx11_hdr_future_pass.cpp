@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_FUTURE
 #include "boost_no_cxx11_hdr_future.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_future = empty_boost;
+namespace boost_no_cxx11_hdr_future = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_future::test();
+   return boost_no_cxx11_hdr_future::test();
 }
 

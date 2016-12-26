@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_REGEX
 #include "boost_has_tr1_regex.ipp"
 #else
-namespace boost_part_has_tr1_regex = empty_boost;
+namespace boost_has_tr1_regex = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_regex::test();
+   return boost_has_tr1_regex::test();
 }
 

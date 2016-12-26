@@ -41,7 +41,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 // ************************************************************************** //
@@ -198,7 +198,7 @@ test_unit::has_label( const_string l ) const
 // **************                   test_case                  ************** //
 // ************************************************************************** //
 
-test_case::test_case( const_string name, boost_part::function<void ()> const& test_func )
+test_case::test_case( const_string name, boost::function<void ()> const& test_func )
 : test_unit( name, "", 0, static_cast<test_unit_type>(type) )
 , p_test_func( test_func )
 {
@@ -207,7 +207,7 @@ test_case::test_case( const_string name, boost_part::function<void ()> const& te
 
 //____________________________________________________________________________//
 
-test_case::test_case( const_string name, const_string file_name, std::size_t line_num, boost_part::function<void ()> const& test_func )
+test_case::test_case( const_string name, const_string file_name, std::size_t line_num, boost::function<void ()> const& test_func )
 : test_unit( name, file_name, line_num, static_cast<test_unit_type>(type) )
 , p_test_func( test_func )
 {
@@ -454,7 +454,7 @@ global_fixture::global_fixture()
 //____________________________________________________________________________//
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

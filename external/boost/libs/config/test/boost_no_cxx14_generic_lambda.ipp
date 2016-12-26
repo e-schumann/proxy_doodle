@@ -11,7 +11,7 @@
 //  TITLE:         C++14 generic lambda unavailable
 //  DESCRIPTION:   The compiler does not support C++14 generic lambda
 
-namespace boost_part_no_cxx14_generic_lambdas
+namespace boost_no_cxx14_generic_lambdas
 {
 
 int test()

@@ -41,8 +41,8 @@
    #pragma warning (disable : 4127) //conditional expression is constant
    #pragma warning (disable : 4146)
    #pragma warning (disable : 4267) //conversion from 'X' to 'Y', possible loss of data
-   #pragma warning (disable : 4541) //'typeid' used on polymorphic type 'boost_part::exception' with /GR-
-   #pragma warning (disable : 4512) //'typeid' used on polymorphic type 'boost_part::exception' with /GR-
+   #pragma warning (disable : 4541) //'typeid' used on polymorphic type 'boost::exception' with /GR-
+   #pragma warning (disable : 4512) //'typeid' used on polymorphic type 'boost::exception' with /GR-
    #pragma warning (disable : 4522)
    #pragma warning (disable : 4706) //assignment within conditional expression
    #pragma warning (disable : 4710) // function not inlined

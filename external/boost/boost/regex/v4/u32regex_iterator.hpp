@@ -19,7 +19,7 @@
 #ifndef BOOST_REGEX_V4_U32REGEX_ITERATOR_HPP
 #define BOOST_REGEX_V4_U32REGEX_ITERATOR_HPP
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 #ifdef BOOST_HAS_ABI_HEADERS
 #  include BOOST_ABI_PREFIX
@@ -187,7 +187,7 @@ inline u32regex_iterator<const UChar*> make_u32regex_iterator(const U_NAMESPACE_
 #  include BOOST_ABI_SUFFIX
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_REGEX_V4_REGEX_ITERATOR_HPP
 

@@ -17,7 +17,7 @@
 //                 f(&bar); // should choose #2.
 
 
-namespace boost_part_no_function_template_ordering{
+namespace boost_no_function_template_ordering{
 
 template<typename T>
 bool f(T)

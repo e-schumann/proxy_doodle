@@ -22,7 +22,7 @@
 #include <boost/current_function.hpp>
 #include <functional>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace core
@@ -76,7 +76,7 @@ namespace detail
 
 template<class T> struct core_typeid_
 {
-    static boost_part::core::typeinfo ti_;
+    static boost::core::typeinfo ti_;
 
     static char const * name()
     {
@@ -87,9 +87,9 @@ template<class T> struct core_typeid_
 #if defined(__SUNPRO_CC)
 // see #4199, the Sun Studio compiler gets confused about static initialization 
 // constructor arguments. But an assignment works just fine. 
-template<class T> boost_part::core::typeinfo core_typeid_< T >::ti_ = core_typeid_< T >::name();
+template<class T> boost::core::typeinfo core_typeid_< T >::ti_ = core_typeid_< T >::name();
 #else
-template<class T> boost_part::core::typeinfo core_typeid_< T >::ti_(core_typeid_< T >::name());
+template<class T> boost::core::typeinfo core_typeid_< T >::ti_(core_typeid_< T >::name());
 #endif
 
 template<class T> struct core_typeid_< T & >: core_typeid_< T >
@@ -110,16 +110,16 @@ template<class T> struct core_typeid_< T const volatile >: core_typeid_< T >
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
-#define BOOST_CORE_TYPEID(T) (boost_part::detail::core_typeid_<T>::ti_)
+#define BOOST_CORE_TYPEID(T) (boost::detail::core_typeid_<T>::ti_)
 
 #else
 
 #include <boost/core/demangle.hpp>
 #include <typeinfo>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace core
@@ -142,7 +142,7 @@ inline std::string demangled_name( core::typeinfo const & ti )
 
 } // namespace core
 
-} // namespace boost_part
+} // namespace boost
 
 #define BOOST_CORE_TYPEID(T) typeid(T)
 

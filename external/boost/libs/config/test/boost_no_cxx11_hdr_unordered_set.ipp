@@ -12,7 +12,7 @@
 
 #include <unordered_set>
 
-namespace boost_part_no_cxx11_hdr_unordered_set {
+namespace boost_no_cxx11_hdr_unordered_set {
 
 int test()
 {

@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string>
 
-namespace boost_part_no_stringstream{
+namespace boost_no_stringstream{
 
 int test()
 {

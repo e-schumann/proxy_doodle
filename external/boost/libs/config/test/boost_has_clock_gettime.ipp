@@ -12,7 +12,7 @@
 #include <time.h>
 
 
-namespace boost_part_has_clock_gettime{
+namespace boost_has_clock_gettime{
 
 void f()
 {

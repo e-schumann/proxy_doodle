@@ -172,7 +172,7 @@ extern "C" void* __cdecl _InterlockedExchangePointer( void* volatile *, void* );
 
 #define BOOST_INTERLOCKED_IMPORT __declspec(dllimport)
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -191,17 +191,17 @@ extern "C" BOOST_INTERLOCKED_IMPORT void* __stdcall InterlockedExchangePointer( 
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
-# define BOOST_INTERLOCKED_INCREMENT ::boost_part::detail::InterlockedIncrement
-# define BOOST_INTERLOCKED_DECREMENT ::boost_part::detail::InterlockedDecrement
-# define BOOST_INTERLOCKED_COMPARE_EXCHANGE ::boost_part::detail::InterlockedCompareExchange
-# define BOOST_INTERLOCKED_EXCHANGE ::boost_part::detail::InterlockedExchange
-# define BOOST_INTERLOCKED_EXCHANGE_ADD ::boost_part::detail::InterlockedExchangeAdd
+# define BOOST_INTERLOCKED_INCREMENT ::boost::detail::InterlockedIncrement
+# define BOOST_INTERLOCKED_DECREMENT ::boost::detail::InterlockedDecrement
+# define BOOST_INTERLOCKED_COMPARE_EXCHANGE ::boost::detail::InterlockedCompareExchange
+# define BOOST_INTERLOCKED_EXCHANGE ::boost::detail::InterlockedExchange
+# define BOOST_INTERLOCKED_EXCHANGE_ADD ::boost::detail::InterlockedExchangeAdd
 
 # if defined(_M_IA64) || defined(_M_AMD64)
-#  define BOOST_INTERLOCKED_COMPARE_EXCHANGE_POINTER ::boost_part::detail::InterlockedCompareExchangePointer
-#  define BOOST_INTERLOCKED_EXCHANGE_POINTER ::boost_part::detail::InterlockedExchangePointer
+#  define BOOST_INTERLOCKED_COMPARE_EXCHANGE_POINTER ::boost::detail::InterlockedCompareExchangePointer
+#  define BOOST_INTERLOCKED_EXCHANGE_POINTER ::boost::detail::InterlockedExchangePointer
 # else
 #  define BOOST_INTERLOCKED_COMPARE_EXCHANGE_POINTER(dest,exchange,compare) \
     ((void*)BOOST_INTERLOCKED_COMPARE_EXCHANGE((long volatile*)(dest),(long)(exchange),(long)(compare)))

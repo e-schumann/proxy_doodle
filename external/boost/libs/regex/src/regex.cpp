@@ -13,7 +13,7 @@
   *   LOCATION:    see http://www.boost.org for most recent version.
   *   FILE:        regex.cpp
   *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: Misc boost_part::regbase member funnctions.
+  *   DESCRIPTION: Misc boost::regbase member funnctions.
   */
 
 
@@ -49,7 +49,7 @@
 #pragma warning(disable:383)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 //
 // fix: these are declared out of line here to ensure
@@ -64,7 +64,7 @@ regex_error::regex_error(const std::string& s, regex_constants::error_type err, 
 }
 
 regex_error::regex_error(regex_constants::error_type err) 
-   : std::runtime_error(::boost_part::BOOST_REGEX_DETAIL_NS::get_default_error_string(err))
+   : std::runtime_error(::boost::BOOST_REGEX_DETAIL_NS::get_default_error_string(err))
    , m_error_code(err)
    , m_position(0) 
 {
@@ -77,7 +77,7 @@ regex_error::~regex_error() throw()
 void regex_error::raise()const
 {
 #ifndef BOOST_NO_EXCEPTIONS
-   ::boost_part::throw_exception(*this);
+   ::boost::throw_exception(*this);
 #endif
 }
 
@@ -87,12 +87,12 @@ namespace BOOST_REGEX_DETAIL_NS{
 
 BOOST_REGEX_DECL void BOOST_REGEX_CALL raise_runtime_error(const std::runtime_error& ex)
 {
-   ::boost_part::throw_exception(ex);
+   ::boost::throw_exception(ex);
 }
 //
 // error checking API:
 //
-BOOST_REGEX_DECL void BOOST_REGEX_CALL verify_options(boost_part::regex::flag_type /*ef*/, match_flag_type mf)
+BOOST_REGEX_DECL void BOOST_REGEX_CALL verify_options(boost::regex::flag_type /*ef*/, match_flag_type mf)
 {
 #ifndef BOOST_REGEX_V3
    //
@@ -217,7 +217,7 @@ BOOST_REGEX_DECL void BOOST_REGEX_CALL put_mem_block(void* p)
 
 
 
-} // namespace boost_part
+} // namespace boost
 
 #if defined(BOOST_RE_USE_VCL) && defined(BOOST_REGEX_DYN_LINK)
 

@@ -27,11 +27,11 @@
 #ifdef BOOST_HAS_INT128
 #include "boost_has_int128.ipp"
 #else
-namespace boost_part_has_int128 = empty_boost;
+namespace boost_has_int128 = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_int128::test();
+   return boost_has_int128::test();
 }
 

@@ -39,7 +39,7 @@ namespace std { using ::log10; }
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace output {
 
@@ -200,7 +200,7 @@ plain_report_formatter::do_confirmation_report( test_unit const& tu, std::ostrea
 
 } // namespace output
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

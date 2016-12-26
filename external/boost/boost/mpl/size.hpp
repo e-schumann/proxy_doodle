@@ -21,7 +21,7 @@
 #include <boost/mpl/aux_/lambda_support.hpp>
 #include <boost/mpl/aux_/msvc_eti_base.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 template<
       typename BOOST_MPL_AUX_NA_PARAM(Sequence)

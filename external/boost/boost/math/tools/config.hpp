@@ -12,7 +12,7 @@
 
 #include <boost/config.hpp>
 #include <boost/predef.h>
-#include <boost/cstdint.hpp> // for boost_part::uintmax_t
+#include <boost/cstdint.hpp> // for boost::uintmax_t
 #include <boost/detail/workaround.hpp>
 #include <boost/type_traits/is_integral.hpp>
 #include <algorithm>  // for min and max
@@ -131,10 +131,10 @@
 #  include "boost/type.hpp"
 #  include "boost/non_type.hpp"
 
-#  define BOOST_MATH_EXPLICIT_TEMPLATE_TYPE(t)         boost_part::type<t>* = 0
-#  define BOOST_MATH_EXPLICIT_TEMPLATE_TYPE_SPEC(t)    boost_part::type<t>*
-#  define BOOST_MATH_EXPLICIT_TEMPLATE_NON_TYPE(t, v)  boost_part::non_type<t, v>* = 0
-#  define BOOST_MATH_EXPLICIT_TEMPLATE_NON_TYPE_SPEC(t, v)  boost_part::non_type<t, v>*
+#  define BOOST_MATH_EXPLICIT_TEMPLATE_TYPE(t)         boost::type<t>* = 0
+#  define BOOST_MATH_EXPLICIT_TEMPLATE_TYPE_SPEC(t)    boost::type<t>*
+#  define BOOST_MATH_EXPLICIT_TEMPLATE_NON_TYPE(t, v)  boost::non_type<t, v>* = 0
+#  define BOOST_MATH_EXPLICIT_TEMPLATE_NON_TYPE_SPEC(t, v)  boost::non_type<t, v>*
 
 #  define BOOST_MATH_APPEND_EXPLICIT_TEMPLATE_TYPE(t)         \
              , BOOST_MATH_EXPLICIT_TEMPLATE_TYPE(t)
@@ -231,8 +231,8 @@
 #  define BOOST_MATH_IS_FLOAT(T) (std::is_floating_point<T>::value)
 #else
 #include <boost/type_traits/is_floating_point.hpp>
-#  define BOOST_MATH_NOEXCEPT(T) noexcept(boost_part::is_floating_point<T>::value)
-#  define BOOST_MATH_IS_FLOAT(T) (boost_part::is_floating_point<T>::value)
+#  define BOOST_MATH_NOEXCEPT(T) noexcept(boost::is_floating_point<T>::value)
+#  define BOOST_MATH_IS_FLOAT(T) (boost::is_floating_point<T>::value)
 #endif
 #else
 #  define BOOST_MATH_NOEXCEPT(T)
@@ -332,7 +332,7 @@
 
 #define BOOST_MATH_STD_USING BOOST_MATH_STD_USING_CORE
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{ namespace math{
+namespace boost{ namespace math{
 namespace tools
 {
 
@@ -360,7 +360,7 @@ namespace detail{
 template <class T>
 struct is_integer_for_rounding
 {
-   static const bool value = boost_part::is_integral<T>::value
+   static const bool value = boost::is_integral<T>::value
 #ifndef BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
       || (std::numeric_limits<T>::is_specialized && std::numeric_limits<T>::is_integer)
 #endif
@@ -369,7 +369,7 @@ struct is_integer_for_rounding
 
 }
 
-}} // namespace boost_part namespace math
+}} // namespace boost namespace math
 
 #ifdef __GLIBC_PREREQ
 #  if __GLIBC_PREREQ(2,14)
@@ -389,7 +389,7 @@ struct is_integer_for_rounding
 
 #  ifdef FE_ALL_EXCEPT
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{ namespace math{
+namespace boost{ namespace math{
    namespace detail
    {
    struct fpu_guard
@@ -410,7 +410,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part{ name
    } // namespace detail
    }} // namespaces
 
-#    define BOOST_FPU_EXCEPTION_GUARD boost_part::math::detail::fpu_guard local_guard_object;
+#    define BOOST_FPU_EXCEPTION_GUARD boost::math::detail::fpu_guard local_guard_object;
 #    define BOOST_MATH_INSTRUMENT_FPU do{ fexcept_t cpu_flags; fegetexceptflag(&cpu_flags, FE_ALL_EXCEPT); BOOST_MATH_INSTRUMENT_VARIABLE(cpu_flags); } while(0); 
 
 #  else

@@ -15,7 +15,7 @@
 #include <iostream>
 #include <string>
 
-using namespace boost_part::filesystem;
+using namespace boost::filesystem;
 
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/detail/lightweight_main.hpp>
@@ -55,5 +55,5 @@ int cpp_main(int, char*[])
 
   //remove_all(x_p);
 
-  return ::boost_part::report_errors();
+  return ::boost::report_errors();
 }

@@ -11,7 +11,7 @@
 
 #include <math.h>
 
-namespace boost_part_has_expm1{
+namespace boost_has_expm1{
 
 int test()
 {

@@ -16,7 +16,7 @@
 #include <boost/range/iterator_range.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -31,11 +31,11 @@ template< class SinglePassRange, class OutputIterator >
 inline OutputIterator copy(const SinglePassRange& rng, OutputIterator out)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return std::copy(boost_part::begin(rng),boost_part::end(rng),out);
+    return std::copy(boost::begin(rng),boost::end(rng),out);
 }
 
     } // namespace range
     using range::copy;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

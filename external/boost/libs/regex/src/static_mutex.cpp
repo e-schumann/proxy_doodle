@@ -34,7 +34,7 @@
 #endif
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 #if defined(BOOST_HAS_PTHREADS) && defined(PTHREAD_MUTEX_INITIALIZER)
 
@@ -74,7 +74,7 @@ void scoped_static_mutex_lock::unlock()
 
 #elif defined(BOOST_HAS_WINTHREADS)
 
-BOOST_STATIC_ASSERT(sizeof(LONG) == sizeof(boost_part::int32_t));
+BOOST_STATIC_ASSERT(sizeof(LONG) == sizeof(boost::int32_t));
 
 scoped_static_mutex_lock::scoped_static_mutex_lock(static_mutex& m, bool lk)
 : m_mutex(m), m_have_lock(false)
@@ -94,7 +94,7 @@ void scoped_static_mutex_lock::lock()
    if(0 == m_have_lock)
    {
 #if !defined(InterlockedCompareExchangePointer)
-      while(0 != InterlockedCompareExchange(reinterpret_cast<void**>((boost_part::uint_least16_t*)&(m_mutex.m_mutex)), (void*)1, 0))
+      while(0 != InterlockedCompareExchange(reinterpret_cast<void**>((boost::uint_least16_t*)&(m_mutex.m_mutex)), (void*)1, 0))
 #else
       while(0 != InterlockedCompareExchange(reinterpret_cast<LONG*>(&(m_mutex.m_mutex)), 1, 0))
 #endif
@@ -125,10 +125,10 @@ void scoped_static_mutex_lock::unlock()
 #include <stdlib.h>
 #include <boost/assert.hpp>
 
-boost_part::recursive_mutex* static_mutex::m_pmutex = 0;
-boost_part::once_flag static_mutex::m_once = BOOST_ONCE_INIT;
+boost::recursive_mutex* static_mutex::m_pmutex = 0;
+boost::once_flag static_mutex::m_once = BOOST_ONCE_INIT;
 
-extern "C" BOOST_REGEX_DECL void boost_part_regex_free_static_mutex()
+extern "C" BOOST_REGEX_DECL void boost_regex_free_static_mutex()
 {
    delete static_mutex::m_pmutex;
    static_mutex::m_pmutex = 0;
@@ -136,8 +136,8 @@ extern "C" BOOST_REGEX_DECL void boost_part_regex_free_static_mutex()
 
 void static_mutex::init()
 {
-   m_pmutex = new boost_part::recursive_mutex();
-   int r = atexit(boost_part_regex_free_static_mutex);
+   m_pmutex = new boost::recursive_mutex();
+   int r = atexit(boost_regex_free_static_mutex);
    BOOST_ASSERT(0 == r);
 }
 
@@ -159,9 +159,9 @@ void scoped_static_mutex_lock::lock()
 {
    if(0 == m_have_lock)
    {
-       boost_part::call_once(static_mutex::m_once,&static_mutex::init);
+       boost::call_once(static_mutex::m_once,&static_mutex::init);
       if(0 == m_plock)
-         m_plock = new boost_part::unique_lock<boost_part::recursive_mutex>(*static_mutex::m_pmutex, boost_part::defer_lock);
+         m_plock = new boost::unique_lock<boost::recursive_mutex>(*static_mutex::m_pmutex, boost::defer_lock);
       m_plock->lock();
       m_have_lock = true;
    }

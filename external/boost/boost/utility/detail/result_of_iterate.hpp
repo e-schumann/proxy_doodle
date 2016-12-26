@@ -27,14 +27,14 @@ template<typename F BOOST_PP_ENUM_TRAILING_PARAMS(BOOST_PP_ITERATION(),typename 
 struct tr1_result_of<F(BOOST_RESULT_OF_ARGS)>
     : mpl::if_<
           mpl::or_< is_pointer<F>, is_member_function_pointer<F> >
-        , boost_part::detail::tr1_result_of_impl<
+        , boost::detail::tr1_result_of_impl<
             typename remove_cv<F>::type,
             typename remove_cv<F>::type(BOOST_RESULT_OF_ARGS),
-            (boost_part::detail::has_result_type<F>::value)>
-        , boost_part::detail::tr1_result_of_impl<
+            (boost::detail::has_result_type<F>::value)>
+        , boost::detail::tr1_result_of_impl<
             F,
             F(BOOST_RESULT_OF_ARGS),
-            (boost_part::detail::has_result_type<F>::value)> >::type { };
+            (boost::detail::has_result_type<F>::value)> >::type { };
 #endif
 
 #ifdef BOOST_RESULT_OF_USE_DECLTYPE
@@ -108,7 +108,7 @@ struct BOOST_PP_CAT(result_of_is_callable_, BOOST_PP_ITERATION()) {
     typedef typename BOOST_PP_CAT(result_of_select_call_wrapper_type_, BOOST_PP_ITERATION())<F>::type wrapper_t;
     static const bool value = (
         sizeof(result_of_no_type) == sizeof(detail::result_of_is_private_type(
-            (boost_part::declval<wrapper_t>()(BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_ITERATION(), boost_part::declval<T, >() BOOST_PP_INTERCEPT)), result_of_weird_type())
+            (boost::declval<wrapper_t>()(BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_ITERATION(), boost::declval<T, >() BOOST_PP_INTERCEPT)), result_of_weird_type())
         ))
     );
     typedef mpl::bool_<value> type;
@@ -126,8 +126,8 @@ template<typename F BOOST_PP_ENUM_TRAILING_PARAMS(BOOST_PP_ITERATION(),typename 
 struct cpp0x_result_of_impl<F(BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(),T)), false>
 {
   typedef decltype(
-    boost_part::declval<F>()(
-      BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_ITERATION(), boost_part::declval<T, >() BOOST_PP_INTERCEPT)
+    boost::declval<F>()(
+      BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_ITERATION(), boost::declval<T, >() BOOST_PP_INTERCEPT)
     )
   ) type;
 };
@@ -137,13 +137,13 @@ struct cpp0x_result_of_impl<F(BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(),T)), fal
 template<typename F BOOST_PP_ENUM_TRAILING_PARAMS(BOOST_PP_ITERATION(),typename T)>
 struct cpp0x_result_of_impl<F(BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(),T)),
                             typename result_of_always_void<decltype(
-                                boost_part::declval<F>()(
-                                    BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_ITERATION(), boost_part::declval<T, >() BOOST_PP_INTERCEPT)
+                                boost::declval<F>()(
+                                    BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_ITERATION(), boost::declval<T, >() BOOST_PP_INTERCEPT)
                                 )
                             )>::type> {
   typedef decltype(
-    boost_part::declval<F>()(
-      BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_ITERATION(), boost_part::declval<T, >() BOOST_PP_INTERCEPT)
+    boost::declval<F>()(
+      BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_ITERATION(), boost::declval<T, >() BOOST_PP_INTERCEPT)
     )
   ) type;
 };

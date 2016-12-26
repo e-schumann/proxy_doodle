@@ -12,7 +12,7 @@
 #define BOOST_NON_TYPE_HPP_GP_20030417
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
   // Just a simple "envelope" for non-type template parameters. Useful
   // to work around some MSVC deficiencies.

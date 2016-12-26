@@ -27,7 +27,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   // template<class Callable, class ...Args> void
   // call_once(once_flag& flag, Callable&& func, Args&&... args);

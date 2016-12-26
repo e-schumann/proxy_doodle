@@ -18,7 +18,7 @@
 #include <sys/times.h> //for times
 # include <unistd.h>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace chrono
   {
@@ -97,7 +97,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       {
         if (BOOST_CHRONO_IS_THROWS(ec))
         {
-          boost_part::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_real_cpu_clock"));
+          boost::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_real_cpu_clock"));
         } else
         {
           ec.assign(errno, BOOST_CHRONO_SYSTEM_CATEGORY);
@@ -117,7 +117,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
           if (BOOST_CHRONO_IS_THROWS(ec))
           {
-            boost_part::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_real_cpu_clock"));
+            boost::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_real_cpu_clock"));
           } else
           {
             ec.assign(errno, BOOST_CHRONO_SYSTEM_CATEGORY);
@@ -131,7 +131,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       {
         if (BOOST_CHRONO_IS_THROWS(ec))
         {
-          boost_part::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_real_cpu_clock"));
+          boost::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_real_cpu_clock"));
         } else
         {
           ec.assign(errno, BOOST_CHRONO_SYSTEM_CATEGORY);
@@ -151,7 +151,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
           if (BOOST_CHRONO_IS_THROWS(ec))
           {
-            boost_part::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_real_cpu_clock"));
+            boost::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_real_cpu_clock"));
           } else
           {
             ec.assign(errno, BOOST_CHRONO_SYSTEM_CATEGORY);
@@ -173,7 +173,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       {
         if (BOOST_CHRONO_IS_THROWS(ec))
         {
-          boost_part::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_user_cpu_clock"));
+          boost::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_user_cpu_clock"));
         } else
         {
           ec.assign(errno, BOOST_CHRONO_SYSTEM_CATEGORY);
@@ -193,7 +193,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
           if (BOOST_CHRONO_IS_THROWS(ec))
           {
-            boost_part::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_user_cpu_clock"));
+            boost::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_user_cpu_clock"));
           } else
           {
             ec.assign(errno, BOOST_CHRONO_SYSTEM_CATEGORY);
@@ -256,7 +256,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       {
         if (BOOST_CHRONO_IS_THROWS(ec))
         {
-          boost_part::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_system_cpu_clock"));
+          boost::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_system_cpu_clock"));
         } else
         {
           ec.assign(errno, BOOST_CHRONO_SYSTEM_CATEGORY);
@@ -276,7 +276,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
           if (BOOST_CHRONO_IS_THROWS(ec))
           {
-            boost_part::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_system_cpu_clock"));
+            boost::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_system_cpu_clock"));
           } else
           {
             ec.assign(errno, BOOST_CHRONO_SYSTEM_CATEGORY);
@@ -321,7 +321,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       {
         if (BOOST_CHRONO_IS_THROWS(ec))
         {
-          boost_part::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_clock"));
+          boost::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_clock"));
         } else
         {
           ec.assign(errno, BOOST_CHRONO_SYSTEM_CATEGORY);
@@ -340,7 +340,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
           if (BOOST_CHRONO_IS_THROWS(ec))
           {
-            boost_part::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_clock"));
+            boost::throw_exception(system::system_error(errno, BOOST_CHRONO_SYSTEM_CATEGORY, "chrono::process_clock"));
           } else
           {
             ec.assign(errno, BOOST_CHRONO_SYSTEM_CATEGORY);

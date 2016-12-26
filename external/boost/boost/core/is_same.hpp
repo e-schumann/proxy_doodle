@@ -17,7 +17,7 @@
 
 #include <boost/config.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace core
@@ -35,6 +35,6 @@ template< class T > struct is_same< T, T >
 
 } // namespace core
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // #ifndef BOOST_CORE_IS_SAME_HPP_INCLUDED

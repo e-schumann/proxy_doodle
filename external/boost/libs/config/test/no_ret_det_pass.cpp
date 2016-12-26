@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_UNREACHABLE_RETURN_DETECTION
 #include "boost_no_ret_det.ipp"
 #else
-namespace boost_part_no_unreachable_return_detection = empty_boost;
+namespace boost_no_unreachable_return_detection = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_unreachable_return_detection::test();
+   return boost_no_unreachable_return_detection::test();
 }
 

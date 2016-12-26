@@ -41,7 +41,7 @@
 #define BOOST_THREAD_HAS_EINTR_BUG
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace posix {
 #ifdef BOOST_THREAD_HAS_EINTR_BUG
@@ -101,13 +101,13 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             int const res=pthread_mutex_init(&m,NULL);
             if(res)
             {
-                boost_part::throw_exception(thread_resource_error(res, "boost_part:: mutex constructor failed in pthread_mutex_init"));
+                boost::throw_exception(thread_resource_error(res, "boost:: mutex constructor failed in pthread_mutex_init"));
             }
         }
         ~mutex()
         {
           int const res = posix::pthread_mutex_destroy(&m);
-          boost_part::ignore_unused(res);
+          boost::ignore_unused(res);
           BOOST_ASSERT(!res);
         }
 
@@ -116,7 +116,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             int res = posix::pthread_mutex_lock(&m);
             if (res)
             {
-                boost_part::throw_exception(lock_error(res,"boost: mutex lock failed in pthread_mutex_lock"));
+                boost::throw_exception(lock_error(res,"boost: mutex lock failed in pthread_mutex_lock"));
             }
         }
 
@@ -127,7 +127,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             BOOST_ASSERT(res == 0);
 //            if (res)
 //            {
-//                boost_part::throw_exception(lock_error(res,"boost: mutex unlock failed in pthread_mutex_unlock"));
+//                boost::throw_exception(lock_error(res,"boost: mutex unlock failed in pthread_mutex_unlock"));
 //            }
         }
 
@@ -176,7 +176,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             int const res=pthread_mutex_init(&m,NULL);
             if(res)
             {
-                boost_part::throw_exception(thread_resource_error(res, "boost_part:: timed_mutex constructor failed in pthread_mutex_init"));
+                boost::throw_exception(thread_resource_error(res, "boost:: timed_mutex constructor failed in pthread_mutex_init"));
             }
 #ifndef BOOST_PTHREAD_HAS_TIMEDLOCK
             int const res2=pthread_cond_init(&cond,NULL);
@@ -184,7 +184,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             {
                 BOOST_VERIFY(!posix::pthread_mutex_destroy(&m));
                 //BOOST_VERIFY(!pthread_mutex_destroy(&m));
-                boost_part::throw_exception(thread_resource_error(res2, "boost_part:: timed_mutex constructor failed in pthread_cond_init"));
+                boost::throw_exception(thread_resource_error(res2, "boost:: timed_mutex constructor failed in pthread_cond_init"));
             }
             is_locked=false;
 #endif
@@ -203,7 +203,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
             return timed_lock(get_system_time()+relative_time);
         }
-        bool timed_lock(boost_part::xtime const & absolute_time)
+        bool timed_lock(boost::xtime const & absolute_time)
         {
             return timed_lock(system_time(absolute_time));
         }
@@ -214,7 +214,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             int res = posix::pthread_mutex_lock(&m);
             if (res)
             {
-                boost_part::throw_exception(lock_error(res,"boost: mutex lock failed in pthread_mutex_lock"));
+                boost::throw_exception(lock_error(res,"boost: mutex lock failed in pthread_mutex_lock"));
             }
         }
 
@@ -225,7 +225,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             BOOST_ASSERT(res == 0);
 //            if (res)
 //            {
-//                boost_part::throw_exception(lock_error(res,"boost: mutex unlock failed in pthread_mutex_unlock"));
+//                boost::throw_exception(lock_error(res,"boost: mutex unlock failed in pthread_mutex_unlock"));
 //            }
         }
 
@@ -257,7 +257,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #else
         void lock()
         {
-            boost_part::pthread::pthread_mutex_scoped_lock const local_lock(&m);
+            boost::pthread::pthread_mutex_scoped_lock const local_lock(&m);
             while(is_locked)
             {
                 BOOST_VERIFY(!pthread_cond_wait(&cond,&m));
@@ -267,14 +267,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         void unlock()
         {
-            boost_part::pthread::pthread_mutex_scoped_lock const local_lock(&m);
+            boost::pthread::pthread_mutex_scoped_lock const local_lock(&m);
             is_locked=false;
             BOOST_VERIFY(!pthread_cond_signal(&cond));
         }
 
         bool try_lock()
         {
-            boost_part::pthread::pthread_mutex_scoped_lock const local_lock(&m);
+            boost::pthread::pthread_mutex_scoped_lock const local_lock(&m);
             if(is_locked)
             {
                 return false;
@@ -286,7 +286,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     private:
         bool do_try_lock_until(struct timespec const &timeout)
         {
-            boost_part::pthread::pthread_mutex_scoped_lock const local_lock(&m);
+            boost::pthread::pthread_mutex_scoped_lock const local_lock(&m);
             while(is_locked)
             {
                 int const cond_res=pthread_cond_timedwait(&cond,&m,&timeout);
@@ -305,7 +305,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #if defined BOOST_THREAD_USES_DATETIME
         bool timed_lock(system_time const & abs_time)
         {
-            struct timespec const ts=boost_part::detail::to_timespec(abs_time);
+            struct timespec const ts=boost::detail::to_timespec(abs_time);
             return do_try_lock_until(ts);
         }
 #endif
@@ -334,7 +334,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
           //using namespace chrono;
           chrono::nanoseconds d = tp.time_since_epoch();
-          timespec ts = boost_part::detail::to_timespec(d);
+          timespec ts = boost::detail::to_timespec(d);
           return do_try_lock_until(ts);
         }
 #endif

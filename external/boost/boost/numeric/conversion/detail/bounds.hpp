@@ -14,7 +14,7 @@
 #include "boost/config.hpp"
 #include "boost/mpl/if.hpp"
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace numeric { namespace boundsdetail
+namespace boost { namespace numeric { namespace boundsdetail
 {
   template<class N>
   class Integral
@@ -51,7 +51,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
     typedef typename mpl::if_<is_int,impl_int,impl_float>::type type ;
   } ;
 
-} } } // namespace boost_part::numeric::boundsdetail.
+} } } // namespace boost::numeric::boundsdetail.
 
 #endif
 //

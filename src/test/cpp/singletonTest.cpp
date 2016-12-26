@@ -47,7 +47,7 @@
 // Include external headers (e.g. from Boost, etc ...)
 // ---------------------------------------------------
 #include <gtest/gtest.h>
-
+#include <boost/filesystem/path.hpp>
 // Include project headers
 // -----------------------
 

@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_CODECVT
 #include "boost_no_cxx11_hdr_codecvt.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_codecvt = empty_boost;
+namespace boost_no_cxx11_hdr_codecvt = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_codecvt::test();
+   return boost_no_cxx11_hdr_codecvt::test();
 }
 

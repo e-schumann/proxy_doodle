@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_FTIME
 #include "boost_has_ftime.ipp"
 #else
-namespace boost_part_has_ftime = empty_boost;
+namespace boost_has_ftime = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_ftime::test();
+   return boost_has_ftime::test();
 }
 

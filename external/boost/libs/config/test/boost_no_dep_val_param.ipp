@@ -13,7 +13,7 @@
 //                 class X { ... };
 
 
-namespace boost_part_no_dependent_types_in_template_value_parameters{
+namespace boost_no_dependent_types_in_template_value_parameters{
 
 template <class T, typename T::type value = 0>
 class X

@@ -18,7 +18,7 @@
 #  define BOOST_UNUSED_ATTRIBUTE
 #endif
 
-namespace boost_part_has_partial_std_allocator{
+namespace boost_has_partial_std_allocator{
 
 //
 // test everything except rebind template members:

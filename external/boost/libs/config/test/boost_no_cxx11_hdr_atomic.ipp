@@ -19,7 +19,7 @@
 #  error "required macros not defined"
 #endif
 
-namespace boost_part_no_cxx11_hdr_atomic {
+namespace boost_no_cxx11_hdr_atomic {
 
 int test()
 {

@@ -31,7 +31,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace utils {
 
@@ -136,7 +136,7 @@ operator<<( custom_printer<cdata> const& p, const_string value )
 
 } // namespace utils
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

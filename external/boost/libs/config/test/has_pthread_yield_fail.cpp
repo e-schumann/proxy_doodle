@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_has_pthread_yield::test();
+   return boost_has_pthread_yield::test();
 }
 

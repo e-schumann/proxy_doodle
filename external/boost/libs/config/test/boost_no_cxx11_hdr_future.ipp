@@ -12,7 +12,7 @@
 
 #include <future>
 
-namespace boost_part_no_cxx11_hdr_future {
+namespace boost_no_cxx11_hdr_future {
 
 int test()
 {

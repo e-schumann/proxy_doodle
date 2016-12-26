@@ -49,7 +49,7 @@
 
 //--------------------------------------------------------------------------------------//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace filesystem
   {
@@ -161,7 +161,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         path         m_path2; // may be empty()
         std::string  m_what;  // not built until needed
       };
-      boost_part::shared_ptr<m_imp> m_imp_ptr;
+      boost::shared_ptr<m_imp> m_imp_ptr;
     };
 
 //--------------------------------------------------------------------------------------//
@@ -335,9 +335,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
   struct space_info
   {
     // all values are byte counts
-    boost_part::uintmax_t capacity;
-    boost_part::uintmax_t free;      // <= capacity
-    boost_part::uintmax_t available; // <= free
+    boost::uintmax_t capacity;
+    boost::uintmax_t free;      // <= capacity
+    boost::uintmax_t available; // <= free
   };
 
   BOOST_SCOPED_ENUM_START(copy_option)
@@ -392,9 +392,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     BOOST_FILESYSTEM_DECL
     bool equivalent(const path& p1, const path& p2, system::error_code* ec=0);
     BOOST_FILESYSTEM_DECL
-    boost_part::uintmax_t file_size(const path& p, system::error_code* ec=0);
+    boost::uintmax_t file_size(const path& p, system::error_code* ec=0);
     BOOST_FILESYSTEM_DECL
-    boost_part::uintmax_t hard_link_count(const path& p, system::error_code* ec=0);
+    boost::uintmax_t hard_link_count(const path& p, system::error_code* ec=0);
     BOOST_FILESYSTEM_DECL
     std::time_t last_write_time(const path& p, system::error_code* ec=0);
     BOOST_FILESYSTEM_DECL
@@ -409,7 +409,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     BOOST_FILESYSTEM_DECL
     bool remove(const path& p, system::error_code* ec=0);
     BOOST_FILESYSTEM_DECL
-    boost_part::uintmax_t remove_all(const path& p, system::error_code* ec=0);
+    boost::uintmax_t remove_all(const path& p, system::error_code* ec=0);
     BOOST_FILESYSTEM_DECL
     void rename(const path& old_p, const path& new_p, system::error_code* ec=0);
     BOOST_FILESYSTEM_DECL
@@ -611,16 +611,16 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
   bool equivalent(const path& p1, const path& p2, system::error_code& ec) BOOST_NOEXCEPT
                                        {return detail::equivalent(p1, p2, &ec);}
   inline
-  boost_part::uintmax_t file_size(const path& p) {return detail::file_size(p);}
+  boost::uintmax_t file_size(const path& p) {return detail::file_size(p);}
 
   inline
-  boost_part::uintmax_t file_size(const path& p, system::error_code& ec) BOOST_NOEXCEPT
+  boost::uintmax_t file_size(const path& p, system::error_code& ec) BOOST_NOEXCEPT
                                        {return detail::file_size(p, &ec);}
   inline
-  boost_part::uintmax_t hard_link_count(const path& p) {return detail::hard_link_count(p);}
+  boost::uintmax_t hard_link_count(const path& p) {return detail::hard_link_count(p);}
 
   inline
-  boost_part::uintmax_t hard_link_count(const path& p, system::error_code& ec) BOOST_NOEXCEPT
+  boost::uintmax_t hard_link_count(const path& p, system::error_code& ec) BOOST_NOEXCEPT
                                        {return detail::hard_link_count(p, &ec);}
   inline
   path initial_path()                  {return detail::initial_path();}
@@ -668,10 +668,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                                        {return detail::remove(p, &ec);}
 
   inline
-  boost_part::uintmax_t remove_all(const path& p) {return detail::remove_all(p);}
+  boost::uintmax_t remove_all(const path& p) {return detail::remove_all(p);}
     
   inline
-  boost_part::uintmax_t remove_all(const path& p, system::error_code& ec) BOOST_NOEXCEPT
+  boost::uintmax_t remove_all(const path& p, system::error_code& ec) BOOST_NOEXCEPT
                                        {return detail::remove_all(p, &ec);}
   inline
   void rename(const path& old_p, const path& new_p) {detail::rename(old_p, new_p);}
@@ -744,13 +744,13 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 class BOOST_FILESYSTEM_DECL directory_entry
 {
 public:
-  typedef boost_part::filesystem::path::value_type value_type;   // enables class path ctor taking directory_entry
+  typedef boost::filesystem::path::value_type value_type;   // enables class path ctor taking directory_entry
 
   directory_entry() BOOST_NOEXCEPT {}
-  explicit directory_entry(const boost_part::filesystem::path& p)
+  explicit directory_entry(const boost::filesystem::path& p)
     : m_path(p), m_status(file_status()), m_symlink_status(file_status())
     {}
-  directory_entry(const boost_part::filesystem::path& p,
+  directory_entry(const boost::filesystem::path& p,
     file_status st, file_status symlink_st = file_status())
     : m_path(p), m_status(st), m_symlink_status(symlink_st) {}
 
@@ -785,11 +785,11 @@ public:
   }
 #endif
 
-  void assign(const boost_part::filesystem::path& p,
+  void assign(const boost::filesystem::path& p,
     file_status st = file_status(), file_status symlink_st = file_status())
     { m_path = p; m_status = st; m_symlink_status = symlink_st; }
 
-  void replace_filename(const boost_part::filesystem::path& p,
+  void replace_filename(const boost::filesystem::path& p,
     file_status st = file_status(), file_status symlink_st = file_status())
   {
     m_path.remove_filename();
@@ -799,13 +799,13 @@ public:
   }
 
 # ifndef BOOST_FILESYSTEM_NO_DEPRECATED
-  void replace_leaf(const boost_part::filesystem::path& p,
+  void replace_leaf(const boost::filesystem::path& p,
     file_status st, file_status symlink_st)
       { replace_filename(p, st, symlink_st); }
 # endif
 
-  const boost_part::filesystem::path&  path() const BOOST_NOEXCEPT {return m_path;}
-  operator const boost_part::filesystem::path&() const BOOST_NOEXCEPT
+  const boost::filesystem::path&  path() const BOOST_NOEXCEPT {return m_path;}
+  operator const boost::filesystem::path&() const BOOST_NOEXCEPT
                                                               {return m_path;}
   file_status   status() const                                {return m_get_status();}
   file_status   status(system::error_code& ec) const BOOST_NOEXCEPT
@@ -822,7 +822,7 @@ public:
   bool operator>=(const directory_entry& rhs) const BOOST_NOEXCEPT {return m_path >= rhs.m_path;} 
 
 private:
-  boost_part::filesystem::path   m_path;
+  boost::filesystem::path   m_path;
   mutable file_status       m_status;           // stat()-like
   mutable file_status       m_symlink_status;   // lstat()-like
 
@@ -888,9 +888,9 @@ namespace detail
 //--------------------------------------------------------------------------------------//
 
   class directory_iterator
-    : public boost_part::iterator_facade< directory_iterator,
+    : public boost::iterator_facade< directory_iterator,
                                      directory_entry,
-                                     boost_part::single_pass_traversal_tag >
+                                     boost::single_pass_traversal_tag >
   {
   public:
 
@@ -923,14 +923,14 @@ namespace detail
 
     // shared_ptr provides the shallow-copy semantics required for single pass iterators
     // (i.e. InputIterators). The end iterator is indicated by !m_imp || !m_imp->handle
-    boost_part::shared_ptr< detail::dir_itr_imp >  m_imp;
+    boost::shared_ptr< detail::dir_itr_imp >  m_imp;
 
-    friend class boost_part::iterator_core_access;
+    friend class boost::iterator_core_access;
 
-    boost_part::iterator_facade<
+    boost::iterator_facade<
       directory_iterator,
       directory_entry,
-      boost_part::single_pass_traversal_tag >::reference dereference() const 
+      boost::single_pass_traversal_tag >::reference dereference() const 
     {
       BOOST_ASSERT_MSG(m_imp.get(), "attempt to dereference end iterator");
       return m_imp->dir_entry;
@@ -972,13 +972,13 @@ namespace detail
     {return directory_iterator();}
   }  // namespace filesystem
 
-  //  namespace boost_part template specializations
+  //  namespace boost template specializations
   template<>
-  struct range_mutable_iterator<boost_part::filesystem::directory_iterator>
-    { typedef boost_part::filesystem::directory_iterator type; };
+  struct range_mutable_iterator<boost::filesystem::directory_iterator>
+    { typedef boost::filesystem::directory_iterator type; };
   template<>
-  struct range_const_iterator <boost_part::filesystem::directory_iterator>
-    { typedef boost_part::filesystem::directory_iterator type; };
+  struct range_const_iterator <boost::filesystem::directory_iterator>
+    { typedef boost::filesystem::directory_iterator type; };
 
 namespace filesystem
 {
@@ -1021,7 +1021,7 @@ namespace filesystem
 
     //  Implementation is inline to avoid dynamic linking difficulties with m_stack:
     //  Microsoft warning C4251, m_stack needs to have dll-interface to be used by
-    //  clients of struct 'boost_part::filesystem::detail::recur_dir_itr_imp'
+    //  clients of struct 'boost::filesystem::detail::recur_dir_itr_imp'
 
     inline
     bool recur_dir_itr_imp::push_directory(system::error_code& ec) BOOST_NOEXCEPT
@@ -1142,10 +1142,10 @@ namespace filesystem
 //--------------------------------------------------------------------------------------//
 
   class recursive_directory_iterator
-    : public boost_part::iterator_facade<
+    : public boost::iterator_facade<
         recursive_directory_iterator,
         directory_entry,
-        boost_part::single_pass_traversal_tag >
+        boost::single_pass_traversal_tag >
   {
   public:
 
@@ -1263,14 +1263,14 @@ namespace filesystem
     // shared_ptr provides the shallow-copy semantics required for single pass iterators
     // (i.e. InputIterators).
     // The end iterator is indicated by !m_imp || m_imp->m_stack.empty()
-    boost_part::shared_ptr< detail::recur_dir_itr_imp >  m_imp;
+    boost::shared_ptr< detail::recur_dir_itr_imp >  m_imp;
 
-    friend class boost_part::iterator_core_access;
+    friend class boost::iterator_core_access;
 
-    boost_part::iterator_facade< 
+    boost::iterator_facade< 
       recursive_directory_iterator,
       directory_entry,
-      boost_part::single_pass_traversal_tag >::reference
+      boost::single_pass_traversal_tag >::reference
     dereference() const 
     {
       BOOST_ASSERT_MSG(m_imp.get(),
@@ -1324,13 +1324,13 @@ namespace filesystem
                                                   {return recursive_directory_iterator();}
   }  // namespace filesystem
 
-  //  namespace boost_part template specializations
+  //  namespace boost template specializations
   template<>
-  struct range_mutable_iterator<boost_part::filesystem::recursive_directory_iterator>
-                        { typedef boost_part::filesystem::recursive_directory_iterator type; };
+  struct range_mutable_iterator<boost::filesystem::recursive_directory_iterator>
+                        { typedef boost::filesystem::recursive_directory_iterator type; };
   template<>
-  struct range_const_iterator <boost_part::filesystem::recursive_directory_iterator>
-                        { typedef boost_part::filesystem::recursive_directory_iterator type; };
+  struct range_const_iterator <boost::filesystem::recursive_directory_iterator>
+                        { typedef boost::filesystem::recursive_directory_iterator type; };
 
 namespace filesystem
 {
@@ -1351,7 +1351,7 @@ namespace filesystem
   }
 
   } // namespace filesystem
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/config/abi_suffix.hpp> // pops abi_prefix.hpp pragmas
 #endif // BOOST_FILESYSTEM3_OPERATIONS_HPP

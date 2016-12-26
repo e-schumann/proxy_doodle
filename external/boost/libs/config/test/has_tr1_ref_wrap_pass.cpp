@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_REFERENCE_WRAPPER
 #include "boost_has_tr1_ref_wrap.ipp"
 #else
-namespace boost_part_has_tr1_reference_wrapper = empty_boost;
+namespace boost_has_tr1_reference_wrapper = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_reference_wrapper::test();
+   return boost_has_tr1_reference_wrapper::test();
 }
 

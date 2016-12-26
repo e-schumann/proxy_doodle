@@ -12,7 +12,7 @@
 #include <algorithm>
 #include <boost/filesystem.hpp>
 using std::cout;
-using namespace boost_part::filesystem;
+using namespace boost::filesystem;
 
 int main(int argc, char* argv[])
 {

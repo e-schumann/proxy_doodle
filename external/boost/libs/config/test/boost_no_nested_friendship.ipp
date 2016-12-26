@@ -10,7 +10,7 @@
 //  DESCRIPTION:   If the compiler fails to support access to private members
 //                 from nested classes
 
-namespace boost_part_no_nested_friendship {
+namespace boost_no_nested_friendship {
 
 class A {
 public:

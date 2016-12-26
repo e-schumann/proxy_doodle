@@ -19,9 +19,9 @@
 
 #if !defined( BOOST_USE_WINDOWS_H )
 extern "C" {
-BOOST_SYMBOL_IMPORT boost_part::detail::winapi::BOOL_ WINAPI
+BOOST_SYMBOL_IMPORT boost::detail::winapi::BOOL_ WINAPI
 GetThreadTimes(
-    boost_part::detail::winapi::HANDLE_ hThread,
+    boost::detail::winapi::HANDLE_ hThread,
     ::_FILETIME* lpCreationTime,
     ::_FILETIME* lpExitTime,
     ::_FILETIME* lpKernelTime,
@@ -29,7 +29,7 @@ GetThreadTimes(
 }
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace detail {
 namespace winapi {
 

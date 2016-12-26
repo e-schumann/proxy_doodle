@@ -11,7 +11,7 @@
 
 #include <iosfwd>
 
-namespace boost_part_no_iosfwd
+namespace boost_no_iosfwd
 {
 
 int test()

@@ -23,47 +23,47 @@ extern "C" {
 struct _FILETIME;
 struct _SYSTEMTIME;
 
-BOOST_SYMBOL_IMPORT boost_part::detail::winapi::VOID_ WINAPI
+BOOST_SYMBOL_IMPORT boost::detail::winapi::VOID_ WINAPI
 GetSystemTime(::_SYSTEMTIME* lpSystemTime);
 
 #ifdef BOOST_HAS_GETSYSTEMTIMEASFILETIME  // Windows CE does not define GetSystemTimeAsFileTime
-BOOST_SYMBOL_IMPORT boost_part::detail::winapi::VOID_ WINAPI
+BOOST_SYMBOL_IMPORT boost::detail::winapi::VOID_ WINAPI
 GetSystemTimeAsFileTime(::_FILETIME* lpSystemTimeAsFileTime);
 #endif
 
-BOOST_SYMBOL_IMPORT boost_part::detail::winapi::BOOL_ WINAPI
+BOOST_SYMBOL_IMPORT boost::detail::winapi::BOOL_ WINAPI
 SystemTimeToFileTime(
     const ::_SYSTEMTIME* lpSystemTime,
     ::_FILETIME* lpFileTime);
 
-BOOST_SYMBOL_IMPORT boost_part::detail::winapi::BOOL_ WINAPI
+BOOST_SYMBOL_IMPORT boost::detail::winapi::BOOL_ WINAPI
 FileTimeToSystemTime(
     const ::_FILETIME* lpFileTime,
     ::_SYSTEMTIME* lpSystemTime);
 
 #if BOOST_PLAT_WINDOWS_DESKTOP
-BOOST_SYMBOL_IMPORT boost_part::detail::winapi::BOOL_ WINAPI
+BOOST_SYMBOL_IMPORT boost::detail::winapi::BOOL_ WINAPI
 FileTimeToLocalFileTime(
     const ::_FILETIME* lpFileTime,
     ::_FILETIME* lpLocalFileTime);
 
-BOOST_SYMBOL_IMPORT boost_part::detail::winapi::BOOL_ WINAPI
+BOOST_SYMBOL_IMPORT boost::detail::winapi::BOOL_ WINAPI
 LocalFileTimeToFileTime(
     const ::_FILETIME* lpLocalFileTime,
     ::_FILETIME* lpFileTime);
 
-BOOST_SYMBOL_IMPORT boost_part::detail::winapi::DWORD_ WINAPI
+BOOST_SYMBOL_IMPORT boost::detail::winapi::DWORD_ WINAPI
 GetTickCount(BOOST_DETAIL_WINAPI_VOID);
 #endif
 
 #if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN6
-BOOST_SYMBOL_IMPORT boost_part::detail::winapi::ULONGLONG_ WINAPI
+BOOST_SYMBOL_IMPORT boost::detail::winapi::ULONGLONG_ WINAPI
 GetTickCount64(BOOST_DETAIL_WINAPI_VOID);
 #endif
 }
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace detail {
 namespace winapi {
 
@@ -104,9 +104,9 @@ BOOST_FORCEINLINE VOID_ GetSystemTimeAsFileTime(LPFILETIME_ lpSystemTimeAsFileTi
 // Windows CE does not define GetSystemTimeAsFileTime
 BOOST_FORCEINLINE VOID_ GetSystemTimeAsFileTime(FILETIME_* lpFileTime)
 {
-    boost_part::detail::winapi::SYSTEMTIME_ st;
-    boost_part::detail::winapi::GetSystemTime(&st);
-    boost_part::detail::winapi::SystemTimeToFileTime(&st, lpFileTime);
+    boost::detail::winapi::SYSTEMTIME_ st;
+    boost::detail::winapi::GetSystemTime(&st);
+    boost::detail::winapi::SystemTimeToFileTime(&st, lpFileTime);
 }
 #endif
 

@@ -46,7 +46,7 @@ namespace std{
 }
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{ namespace BOOST_REGEX_DETAIL_NS{
+namespace boost{ namespace BOOST_REGEX_DETAIL_NS{
 
 
 //
@@ -124,9 +124,9 @@ inline bool is_separator(charT c)
       (c == static_cast<charT>('\n'))
       || (c == static_cast<charT>('\r'))
       || (c == static_cast<charT>('\f'))
-      || (static_cast<boost_part::uint16_t>(c) == 0x2028u)
-      || (static_cast<boost_part::uint16_t>(c) == 0x2029u)
-      || (static_cast<boost_part::uint16_t>(c) == 0x85u));
+      || (static_cast<boost::uint16_t>(c) == 0x2028u)
+      || (static_cast<boost::uint16_t>(c) == 0x2029u)
+      || (static_cast<boost::uint16_t>(c) == 0x85u));
 }
 template <>
 inline bool is_separator<char>(char c)
@@ -304,13 +304,13 @@ int global_value(charT c)
    return -1;
 }
 template <class charT, class traits>
-boost_part::intmax_t global_toi(const charT*& p1, const charT* p2, int radix, const traits& t)
+boost::intmax_t global_toi(const charT*& p1, const charT* p2, int radix, const traits& t)
 {
    (void)t; // warning suppression
-   boost_part::intmax_t next_value = t.value(*p1, radix);
+   boost::intmax_t next_value = t.value(*p1, radix);
    if((p1 == p2) || (next_value < 0) || (next_value >= radix))
       return -1;
-   boost_part::intmax_t result = 0;
+   boost::intmax_t result = 0;
    while(p1 != p2)
    {
       next_value = t.value(*p1, radix);

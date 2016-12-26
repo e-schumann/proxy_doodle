@@ -12,9 +12,9 @@
 
 #if defined(__sgi) && defined(_COMPILER_VERSION) && _COMPILER_VERSION <= 730 && !defined(BOOST_STRICT_CONFIG)
 // Work around a compiler bug.
-// boost_part::python::objects::function has to be seen by the compiler before the
-// boost_part::function class template.
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace python { namespace objects {
+// boost::python::objects::function has to be seen by the compiler before the
+// boost::function class template.
+namespace boost { namespace python { namespace objects {
   class function;
 }}}
 #endif
@@ -24,7 +24,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
 #  define BOOST_FUNCTION_NO_FUNCTION_TYPE_SYNTAX
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
   class bad_function_call;
 
 #if !defined(BOOST_FUNCTION_NO_FUNCTION_TYPE_SYNTAX)

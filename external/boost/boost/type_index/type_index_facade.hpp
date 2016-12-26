@@ -26,11 +26,11 @@
 #endif
 
 // Forward declaration from #include <boost/functional/hash_fwd.hpp>
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     template <class It> std::size_t hash_range(It, It);
 }
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace typeindex {
+namespace boost { namespace typeindex {
 
 /// \class type_index_facade
 ///
@@ -106,7 +106,7 @@ public:
     /// \note <boost/functional/hash.hpp> has to be included if this function is used.
     inline std::size_t hash_code() const BOOST_NOEXCEPT {
         const char* const name_raw = derived().raw_name();
-        return boost_part::hash_range(name_raw, name_raw + std::strlen(name_raw));
+        return boost::hash_range(name_raw, name_raw + std::strlen(name_raw));
     }
 
 #if defined(BOOST_TYPE_INDEX_DOXYGEN_INVOKED)
@@ -120,7 +120,7 @@ protected:
     inline const type_info_t& type_info() const BOOST_NOEXCEPT;
 
     /// This is a factory method that is used to create instances of Derived classes.
-    /// boost_part::typeindex::type_id() will call this method, if Derived has same type as boost_part::typeindex::type_index.
+    /// boost::typeindex::type_id() will call this method, if Derived has same type as boost::typeindex::type_index.
     ///
     /// \b Override: This function \b may be redefined and made public in Derived class. Overrides \b must not throw. 
     /// Overrides \b must remove const, volatile && and & modifiers from T.
@@ -130,7 +130,7 @@ protected:
     static Derived type_id() BOOST_NOEXCEPT;
 
     /// This is a factory method that is used to create instances of Derived classes.
-    /// boost_part::typeindex::type_id_with_cvr() will call this method, if Derived has same type as boost_part::typeindex::type_index.
+    /// boost::typeindex::type_id_with_cvr() will call this method, if Derived has same type as boost::typeindex::type_index.
     ///
     /// \b Override: This function \b may be redefined and made public in Derived class. Overrides \b must not throw. 
     /// Overrides \b must \b not remove const, volatile && and & modifiers from T.
@@ -140,7 +140,7 @@ protected:
     static Derived type_id_with_cvr() BOOST_NOEXCEPT;
 
     /// This is a factory method that is used to create instances of Derived classes.
-    /// boost_part::typeindex::type_id_runtime(const T&) will call this method, if Derived has same type as boost_part::typeindex::type_index.
+    /// boost::typeindex::type_id_runtime(const T&) will call this method, if Derived has same type as boost::typeindex::type_index.
     ///
     /// \b Override: This function \b may be redefined and made public in Derived class.
     /// \param variable Variable which runtime type will be stored in type_index.
@@ -294,7 +294,7 @@ inline std::size_t hash_value(const type_index_facade<Derived, TypeInfo>& lhs) B
     return static_cast<Derived const&>(lhs).hash_code();
 }
 
-}} // namespace boost_part::typeindex
+}} // namespace boost::typeindex
 
 #endif // BOOST_TYPE_INDEX_TYPE_INDEX_FACADE_HPP
 

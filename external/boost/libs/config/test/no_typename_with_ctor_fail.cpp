@@ -32,6 +32,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_typename_with_ctor::test();
+   return boost_no_typename_with_ctor::test();
 }
 

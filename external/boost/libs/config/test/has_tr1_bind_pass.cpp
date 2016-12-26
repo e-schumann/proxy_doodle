@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_BIND
 #include "boost_has_tr1_bind.ipp"
 #else
-namespace boost_part_has_tr1_bind = empty_boost;
+namespace boost_has_tr1_bind = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_bind::test();
+   return boost_has_tr1_bind::test();
 }
 

@@ -32,7 +32,7 @@
 #define BOOST_TEST_CLA_NEW_API
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace runtime {
 
 // ************************************************************************** //
@@ -99,7 +99,7 @@ struct enum_values : unit_test::static_constant<
 } // local namespace
 
 } // namespace runtime
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

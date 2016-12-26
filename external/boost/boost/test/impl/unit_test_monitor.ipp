@@ -26,7 +26,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 // ************************************************************************** //
@@ -34,7 +34,7 @@ namespace unit_test {
 // ************************************************************************** //
 
 unit_test_monitor_t::error_level
-unit_test_monitor_t::execute_and_translate( boost_part::function<void ()> const& func, unsigned timeout )
+unit_test_monitor_t::execute_and_translate( boost::function<void ()> const& func, unsigned timeout )
 {
     BOOST_TEST_I_TRY {
         p_catch_system_errors.value     = runtime_config::get<bool>( runtime_config::CATCH_SYS_ERRORS );
@@ -68,7 +68,7 @@ unit_test_monitor_t::execute_and_translate( boost_part::function<void ()> const&
 //____________________________________________________________________________//
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

@@ -39,7 +39,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace test_tools {
 namespace tt_detail {
 
@@ -63,7 +63,7 @@ namespace tt_detail {
 #define ARG_INFO( z, m, dummy )                                                     \
  , BOOST_JOIN( BOOST_JOIN( arg, m ), _descr )                                       \
  , &static_cast<const unit_test::lazy_ostream&>(unit_test::lazy_ostream::instance() \
-        << ::boost_part::test_tools::tt_detail::print_helper( BOOST_JOIN( arg, m ) ))    \
+        << ::boost::test_tools::tt_detail::print_helper( BOOST_JOIN( arg, m ) ))    \
 /**/
 
 #define IMPL_FRWD( z, n, dummy )                                                    \
@@ -209,9 +209,9 @@ struct equal_coll_impl {
             if( *left_begin != *right_begin ) {
                 pr = false;
                 pr.message() << "\nMismatch at position " << pos << ": "
-                  << ::boost_part::test_tools::tt_detail::print_helper(*left_begin)
+                  << ::boost::test_tools::tt_detail::print_helper(*left_begin)
                   << " != "
-                  << ::boost_part::test_tools::tt_detail::print_helper(*right_begin);
+                  << ::boost::test_tools::tt_detail::print_helper(*right_begin);
             }
         }
 
@@ -351,7 +351,7 @@ check_is_small( FPT fpv, FPT tolerance )
 //____________________________________________________________________________//
 
 } // namespace test_tools
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

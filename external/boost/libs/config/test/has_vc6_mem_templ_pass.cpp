@@ -24,11 +24,11 @@
 #ifdef BOOST_MSVC6_MEMBER_TEMPLATES
 #include "boost_has_vc6_mem_templ.ipp"
 #else
-namespace boost_part_msvc6_member_templates = empty_boost;
+namespace boost_msvc6_member_templates = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_msvc6_member_templates::test();
+   return boost_msvc6_member_templates::test();
 }
 

@@ -30,7 +30,7 @@
 namespace std { using ::toupper; }
 # endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace unit_test {
 
@@ -95,10 +95,10 @@ public:
 
 template<class CharT>
 inline bool
-operator <( boost_part::unit_test::basic_cstring<CharT> const& x,
-            boost_part::unit_test::basic_cstring<CharT> const& y )
+operator <( boost::unit_test::basic_cstring<CharT> const& x,
+            boost::unit_test::basic_cstring<CharT> const& y )
 {
-    typedef typename boost_part::unit_test::basic_cstring<CharT>::traits_type traits_type;
+    typedef typename boost::unit_test::basic_cstring<CharT>::traits_type traits_type;
     return x.size() != y.size()
             ? x.size() < y.size()
             : traits_type::compare( x.begin(), y.begin(), x.size() ) < 0;
@@ -108,8 +108,8 @@ operator <( boost_part::unit_test::basic_cstring<CharT> const& x,
 
 template<class CharT>
 inline bool
-operator <=( boost_part::unit_test::basic_cstring<CharT> const& x,
-            boost_part::unit_test::basic_cstring<CharT> const& y )
+operator <=( boost::unit_test::basic_cstring<CharT> const& x,
+            boost::unit_test::basic_cstring<CharT> const& y )
 {
     return !(y < x);
 }
@@ -118,8 +118,8 @@ operator <=( boost_part::unit_test::basic_cstring<CharT> const& x,
 
 template<class CharT>
 inline bool
-operator >( boost_part::unit_test::basic_cstring<CharT> const& x,
-            boost_part::unit_test::basic_cstring<CharT> const& y )
+operator >( boost::unit_test::basic_cstring<CharT> const& x,
+            boost::unit_test::basic_cstring<CharT> const& y )
 {
     return y < x;
 }
@@ -128,8 +128,8 @@ operator >( boost_part::unit_test::basic_cstring<CharT> const& x,
 
 template<class CharT>
 inline bool
-operator >=( boost_part::unit_test::basic_cstring<CharT> const& x,
-            boost_part::unit_test::basic_cstring<CharT> const& y )
+operator >=( boost::unit_test::basic_cstring<CharT> const& x,
+            boost::unit_test::basic_cstring<CharT> const& y )
 {
     return !(x < y);
 }
@@ -138,7 +138,7 @@ operator >=( boost_part::unit_test::basic_cstring<CharT> const& x,
 
 } // namespace unit_test
 
-} // namespace boost_part
+} // namespace boost
 
 //____________________________________________________________________________//
 

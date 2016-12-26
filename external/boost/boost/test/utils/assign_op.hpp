@@ -15,7 +15,7 @@
 #ifndef BOOST_TEST_UTILS_ASSIGN_OP_HPP
 #define BOOST_TEST_UTILS_ASSIGN_OP_HPP
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 // ************************************************************************** //
@@ -33,7 +33,7 @@ assign_op( T& t, S const& s, long )
 //____________________________________________________________________________//
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TEST_UTILS_ASSIGN_OP_HPP
 

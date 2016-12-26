@@ -26,7 +26,7 @@
 #pragma once
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 using atomics::atomic;
 
@@ -88,6 +88,6 @@ using atomics::atomic_intptr_t;
 using atomics::atomic_uintptr_t;
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_ATOMIC_ATOMIC_HPP_INCLUDED_

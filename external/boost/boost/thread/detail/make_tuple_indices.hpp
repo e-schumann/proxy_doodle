@@ -24,7 +24,7 @@
 #include <boost/config.hpp>
 #include <boost/static_assert.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace detail
   {

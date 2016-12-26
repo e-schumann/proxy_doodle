@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
 #include "boost_no_mem_templ_frnds.ipp"
 #else
-namespace boost_part_no_member_template_friends = empty_boost;
+namespace boost_no_member_template_friends = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_member_template_friends::test();
+   return boost_no_member_template_friends::test();
 }
 

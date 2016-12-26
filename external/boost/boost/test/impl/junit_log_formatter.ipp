@@ -46,7 +46,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace output {
 
@@ -147,7 +147,7 @@ public:
         std::string classname;
         test_unit_id id(tc.p_parent_id);
         while( id != m_ts.p_id ) {
-            test_unit const& tu = boost_part::unit_test::framework::get( id, TUT_ANY );
+            test_unit const& tu = boost::unit_test::framework::get( id, TUT_ANY );
 
             if(need_skipping_reason)
             {
@@ -309,7 +309,7 @@ private:
 void
 junit_log_formatter::log_finish( std::ostream& ostr )
 {
-    junit_result_helper ch( ostr, boost_part::unit_test::framework::get( root_id, TUT_SUITE ), map_tests, m_display_build_info );
+    junit_result_helper ch( ostr, boost::unit_test::framework::get( root_id, TUT_SUITE ), map_tests, m_display_build_info );
     traverse_test_tree( root_id, ch, true ); // last is to ignore disabled suite special handling
 
     return;
@@ -620,7 +620,7 @@ junit_log_formatter::get_default_stream_description() const {
 
 } // namespace output
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

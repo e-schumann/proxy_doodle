@@ -11,7 +11,7 @@
 //  TITLE:         C++14 member initializers unavailable
 //  DESCRIPTION:   The compiler does not support C++14 member initializers
 
-namespace boost_part_no_cxx14_aggregate_nsdmi
+namespace boost_no_cxx14_aggregate_nsdmi
 {
 
 struct S

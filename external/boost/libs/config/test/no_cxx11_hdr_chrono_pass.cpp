@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_CHRONO
 #include "boost_no_cxx11_hdr_chrono.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_chrono = empty_boost;
+namespace boost_no_cxx11_hdr_chrono = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_chrono::test();
+   return boost_no_cxx11_hdr_chrono::test();
 }
 

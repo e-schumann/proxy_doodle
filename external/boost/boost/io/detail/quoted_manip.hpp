@@ -18,7 +18,7 @@
 #include <iterator>
 #include <boost/io/ios_state.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace io
   {
@@ -135,7 +135,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
           return is;
         }
         {
-          boost_part::io::ios_flags_saver ifs(is);
+          boost::io::ios_flags_saver ifs(is);
           is >> std::noskipws;
           for (;;)  
           {
@@ -185,6 +185,6 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     }
 
   }  // namespace io
-}  // namespace boost_part
+}  // namespace boost
 
 #endif // BOOST_IO_QUOTED_MANIP

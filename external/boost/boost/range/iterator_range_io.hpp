@@ -40,7 +40,7 @@
 #include <algorithm>
 #include <cstddef>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 #ifndef _STLP_NO_IOSTREAMS
@@ -82,7 +82,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 # endif
 #endif // _STLP_NO_IOSTREAMS
 
-} // namespace boost_part
+} // namespace boost
 
 #undef BOOST_OLD_IOSTREAMS
 

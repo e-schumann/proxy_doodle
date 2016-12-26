@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_std_min_max::test();
+   return boost_no_std_min_max::test();
 }
 

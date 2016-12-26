@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_TEMPLATED_IOSTREAMS
 #include "boost_no_template_streams.ipp"
 #else
-namespace boost_part_no_templated_iostreams = empty_boost;
+namespace boost_no_templated_iostreams = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_templated_iostreams::test();
+   return boost_no_templated_iostreams::test();
 }
 

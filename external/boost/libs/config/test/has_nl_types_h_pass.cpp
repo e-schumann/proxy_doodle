@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_NL_TYPES_H
 #include "boost_has_nl_types_h.ipp"
 #else
-namespace boost_part_has_nl_types_h = empty_boost;
+namespace boost_has_nl_types_h = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_nl_types_h::test();
+   return boost_has_nl_types_h::test();
 }
 

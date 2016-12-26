@@ -12,7 +12,7 @@
 
 #include <initializer_list>
 
-namespace boost_part_no_cxx11_hdr_initializer_list {
+namespace boost_no_cxx11_hdr_initializer_list {
 
 void foo(const std::initializer_list<const char*>&)
 {

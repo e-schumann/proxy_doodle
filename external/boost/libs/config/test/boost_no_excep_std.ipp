@@ -12,7 +12,7 @@
 
 #include <exception>
 
-namespace boost_part_no_exception_std_namespace{
+namespace boost_no_exception_std_namespace{
 
 int t(int i)
 {

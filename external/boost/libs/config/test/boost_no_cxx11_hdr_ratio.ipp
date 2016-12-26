@@ -12,7 +12,7 @@
 
 #include <ratio>
 
-namespace boost_part_no_cxx11_hdr_ratio {
+namespace boost_no_cxx11_hdr_ratio {
 
 int test()
 {

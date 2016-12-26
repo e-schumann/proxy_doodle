@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_INTRINSIC_WCHAR_T
 #include "boost_no_wchar_t.ipp"
 #else
-namespace boost_part_no_intrinsic_wchar_t = empty_boost;
+namespace boost_no_intrinsic_wchar_t = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_intrinsic_wchar_t::test();
+   return boost_no_intrinsic_wchar_t::test();
 }
 

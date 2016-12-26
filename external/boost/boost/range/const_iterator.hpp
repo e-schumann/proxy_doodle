@@ -24,7 +24,7 @@
 #include <cstddef>
 #include <utility>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     //////////////////////////////////////////////////////////////////////////
     // default
@@ -70,7 +70,7 @@ struct range_const_iterator
 {
 };
 
-} // namespace boost_part
+} // namespace boost
 
 
 #endif

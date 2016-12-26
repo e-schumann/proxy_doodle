@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_EXCEPTION_STD_NAMESPACE
 #include "boost_no_excep_std.ipp"
 #else
-namespace boost_part_no_exception_std_namespace = empty_boost;
+namespace boost_no_exception_std_namespace = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_exception_std_namespace::test();
+   return boost_no_exception_std_namespace::test();
 }
 

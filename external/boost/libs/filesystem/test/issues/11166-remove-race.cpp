@@ -2,15 +2,15 @@
 #include <boost/thread.hpp>
 #include <fstream>
 
-boost_part::condition_variable cond;
-boost_part::mutex mut;
+boost::condition_variable cond;
+boost::mutex mut;
 
 #define FNAME ("remove-test")
 void remover()
 {
     while(1)
     {
-        boost_part::filesystem::remove(FNAME);
+        boost::filesystem::remove(FNAME);
     }
 }
 
@@ -21,8 +21,8 @@ void creater()
 
 int main()
 {
-    boost_part::filesystem::remove(FNAME);
-    boost_part::filesystem::remove(FNAME);
+    boost::filesystem::remove(FNAME);
+    boost::filesystem::remove(FNAME);
 
     std::cout <<
         "If you got this far, it's OK to remove a file that doesn't exist\n"
@@ -30,7 +30,7 @@ int main()
         "This is likely to crash after just a few seconds at most." <<
         std::endl;
 
-    boost_part::thread c(creater), r1(remover), r2(remover);
+    boost::thread c(creater), r1(remover), r2(remover);
 
     c.join();
     r1.interrupt(); r1.join();

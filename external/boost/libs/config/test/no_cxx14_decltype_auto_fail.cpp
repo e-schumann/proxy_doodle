@@ -32,6 +32,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx14_decltype_auto::test();
+   return boost_no_cxx14_decltype_auto::test();
 }
 

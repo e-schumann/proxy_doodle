@@ -9,7 +9,7 @@
 // *Preprocessed* version of the main "template_arity.hpp" header
 // -- DO NOT modify by hand!
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl { namespace aux {
+namespace boost { namespace mpl { namespace aux {
 template< int N > struct arity_tag
 {
     typedef char (&type)[N + 1];
@@ -81,7 +81,7 @@ template< typename F, int N >
 struct template_arity_impl
 {
     BOOST_STATIC_CONSTANT(int, value =
-          sizeof(::boost_part::mpl::aux::arity_helper(type_wrapper<F>(), arity_tag<N>())) - 1
+          sizeof(::boost::mpl::aux::arity_helper(type_wrapper<F>(), arity_tag<N>())) - 1
         );
 };
 

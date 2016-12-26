@@ -28,39 +28,39 @@
 
 #include <cstddef>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 namespace container_detail {
 
-using boost_part::move_detail::integral_constant;
-using boost_part::move_detail::true_type;
-using boost_part::move_detail::false_type;
-using boost_part::move_detail::enable_if_c;
-using boost_part::move_detail::enable_if;
-using boost_part::move_detail::enable_if_convertible;
-using boost_part::move_detail::disable_if_c;
-using boost_part::move_detail::disable_if;
-using boost_part::move_detail::disable_if_convertible;
-using boost_part::move_detail::is_convertible;
-using boost_part::move_detail::if_c;
-using boost_part::move_detail::if_;
-using boost_part::move_detail::identity;
-using boost_part::move_detail::bool_;
-using boost_part::move_detail::true_;
-using boost_part::move_detail::false_;
-using boost_part::move_detail::yes_type;
-using boost_part::move_detail::no_type;
-using boost_part::move_detail::bool_;
-using boost_part::move_detail::true_;
-using boost_part::move_detail::false_;
-using boost_part::move_detail::unvoid_ref;
-using boost_part::move_detail::and_;
-using boost_part::move_detail::or_;
-using boost_part::move_detail::not_;
-using boost_part::move_detail::enable_if_and;
-using boost_part::move_detail::disable_if_and;
-using boost_part::move_detail::enable_if_or;
-using boost_part::move_detail::disable_if_or;
+using boost::move_detail::integral_constant;
+using boost::move_detail::true_type;
+using boost::move_detail::false_type;
+using boost::move_detail::enable_if_c;
+using boost::move_detail::enable_if;
+using boost::move_detail::enable_if_convertible;
+using boost::move_detail::disable_if_c;
+using boost::move_detail::disable_if;
+using boost::move_detail::disable_if_convertible;
+using boost::move_detail::is_convertible;
+using boost::move_detail::if_c;
+using boost::move_detail::if_;
+using boost::move_detail::identity;
+using boost::move_detail::bool_;
+using boost::move_detail::true_;
+using boost::move_detail::false_;
+using boost::move_detail::yes_type;
+using boost::move_detail::no_type;
+using boost::move_detail::bool_;
+using boost::move_detail::true_;
+using boost::move_detail::false_;
+using boost::move_detail::unvoid_ref;
+using boost::move_detail::and_;
+using boost::move_detail::or_;
+using boost::move_detail::not_;
+using boost::move_detail::enable_if_and;
+using boost::move_detail::disable_if_and;
+using boost::move_detail::enable_if_or;
+using boost::move_detail::disable_if_or;
 
 template <class FirstType>
 struct select1st
@@ -78,7 +78,7 @@ struct select1st
 
 }  //namespace container_detail {
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #include <boost/container/detail/config_end.hpp>
 

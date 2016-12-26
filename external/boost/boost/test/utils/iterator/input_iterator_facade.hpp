@@ -19,7 +19,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace utils {
 
@@ -72,7 +72,7 @@ protected: // provide access to the Derived
     ValueType           m_value;
 
 private:
-    friend class boost_part::iterator_core_access;
+    friend class boost::iterator_core_access;
 
     // iterator facade interface implementation
     void                increment()
@@ -96,7 +96,7 @@ private:
 
 } // namespace utils
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 //____________________________________________________________________________//
 

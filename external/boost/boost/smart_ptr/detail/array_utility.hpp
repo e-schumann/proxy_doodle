@@ -16,10 +16,10 @@
 #include <memory>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace detail {
-        typedef boost_part::true_type  ms_is_trivial;
-        typedef boost_part::false_type ms_no_trivial;
+        typedef boost::true_type  ms_is_trivial;
+        typedef boost::false_type ms_no_trivial;
 
         template<class T>
         inline void ms_destroy(T*, std::size_t, ms_is_trivial) {
@@ -34,7 +34,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
         template<class T>
         inline void ms_destroy(T* memory, std::size_t size) {
-            boost_part::has_trivial_destructor<T> trivial;
+            boost::has_trivial_destructor<T> trivial;
             ms_destroy(memory, size, trivial);
         }
 
@@ -69,7 +69,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
         template<class T>
         inline void ms_init(T* memory, std::size_t size) {
-            boost_part::has_trivial_default_constructor<T> trivial;
+            boost::has_trivial_default_constructor<T> trivial;
             ms_init(memory, size, trivial);
         }
 
@@ -148,7 +148,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
         template<class T, class A>
         inline void as_init(const A& allocator, T* memory, std::size_t size) {
-            boost_part::has_trivial_default_constructor<T> trivial;
+            boost::has_trivial_default_constructor<T> trivial;
             as_init(allocator, memory, size, trivial);
         }
 
@@ -205,7 +205,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
         template<class T>
         inline void ms_noinit(T* memory, std::size_t size) {
-            boost_part::has_trivial_default_constructor<T> trivial;
+            boost::has_trivial_default_constructor<T> trivial;
             ms_noinit(memory, size, trivial);
         }
     }

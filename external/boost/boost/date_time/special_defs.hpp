@@ -9,7 +9,7 @@
  * $Date$
  */
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace date_time {
 
     enum special_values {not_a_date_time, 

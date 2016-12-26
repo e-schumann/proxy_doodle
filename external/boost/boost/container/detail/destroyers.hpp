@@ -28,7 +28,7 @@
 #include <boost/container/detail/to_raw_pointer.hpp>
 #include <boost/container/detail/version_type.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 namespace container_detail {
 
@@ -40,7 +40,7 @@ struct scoped_deallocator
    typedef allocator_traits<Allocator> allocator_traits_type;
    typedef typename allocator_traits_type::pointer pointer;
    typedef container_detail::integral_constant<unsigned,
-      boost_part::container::container_detail::
+      boost::container::container_detail::
          version<Allocator>::value>                   alloc_version;
 
    private:
@@ -81,7 +81,7 @@ struct scoped_deallocator
 template <class Allocator>
 struct null_scoped_deallocator
 {
-   typedef boost_part::container::allocator_traits<Allocator> AllocTraits;
+   typedef boost::container::allocator_traits<Allocator> AllocTraits;
    typedef typename AllocTraits::pointer    pointer;
    typedef typename AllocTraits::size_type  size_type;
 
@@ -103,7 +103,7 @@ struct null_scoped_deallocator
 template <class Allocator>
 struct scoped_array_deallocator
 {
-   typedef boost_part::container::allocator_traits<Allocator> AllocTraits;
+   typedef boost::container::allocator_traits<Allocator> AllocTraits;
    typedef typename AllocTraits::pointer    pointer;
    typedef typename AllocTraits::size_type  size_type;
 
@@ -125,7 +125,7 @@ struct scoped_array_deallocator
 template <class Allocator>
 struct null_scoped_array_deallocator
 {
-   typedef boost_part::container::allocator_traits<Allocator> AllocTraits;
+   typedef boost::container::allocator_traits<Allocator> AllocTraits;
    typedef typename AllocTraits::pointer    pointer;
    typedef typename AllocTraits::size_type  size_type;
 
@@ -139,11 +139,11 @@ struct null_scoped_array_deallocator
 template <class Allocator>
 struct scoped_destroy_deallocator
 {
-   typedef boost_part::container::allocator_traits<Allocator> AllocTraits;
+   typedef boost::container::allocator_traits<Allocator> AllocTraits;
    typedef typename AllocTraits::pointer    pointer;
    typedef typename AllocTraits::size_type  size_type;
    typedef container_detail::integral_constant<unsigned,
-      boost_part::container::container_detail::
+      boost::container::container_detail::
          version<Allocator>::value>                          alloc_version;
 
    scoped_destroy_deallocator(pointer p, Allocator& a)
@@ -178,7 +178,7 @@ struct scoped_destroy_deallocator
 template <class Allocator>
 struct scoped_destructor_n
 {
-   typedef boost_part::container::allocator_traits<Allocator> AllocTraits;
+   typedef boost::container::allocator_traits<Allocator> AllocTraits;
    typedef typename AllocTraits::pointer    pointer;
    typedef typename AllocTraits::value_type value_type;
    typedef typename AllocTraits::size_type  size_type;
@@ -219,7 +219,7 @@ struct scoped_destructor_n
 template <class Allocator>
 struct null_scoped_destructor_n
 {
-   typedef boost_part::container::allocator_traits<Allocator> AllocTraits;
+   typedef boost::container::allocator_traits<Allocator> AllocTraits;
    typedef typename AllocTraits::pointer pointer;
    typedef typename AllocTraits::size_type size_type;
 
@@ -242,7 +242,7 @@ struct null_scoped_destructor_n
 template<class Allocator>
 class scoped_destructor
 {
-   typedef boost_part::container::allocator_traits<Allocator> AllocTraits;
+   typedef boost::container::allocator_traits<Allocator> AllocTraits;
    public:
    typedef typename Allocator::value_type value_type;
    scoped_destructor(Allocator &a, value_type *pv)
@@ -273,7 +273,7 @@ class scoped_destructor
 template<class Allocator>
 class value_destructor
 {
-   typedef boost_part::container::allocator_traits<Allocator> AllocTraits;
+   typedef boost::container::allocator_traits<Allocator> AllocTraits;
    public:
    typedef typename Allocator::value_type value_type;
    value_destructor(Allocator &a, value_type &rv)
@@ -293,11 +293,11 @@ class value_destructor
 template <class Allocator>
 class allocator_destroyer
 {
-   typedef boost_part::container::allocator_traits<Allocator> AllocTraits;
+   typedef boost::container::allocator_traits<Allocator> AllocTraits;
    typedef typename AllocTraits::value_type value_type;
    typedef typename AllocTraits::pointer    pointer;
    typedef container_detail::integral_constant<unsigned,
-      boost_part::container::container_detail::
+      boost::container::container_detail::
          version<Allocator>::value>                           alloc_version;
 
    private:
@@ -371,7 +371,7 @@ class allocator_multialloc_chain_node_deallocator
 
 }  //namespace container_detail {
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #include <boost/container/detail/config_end.hpp>
 

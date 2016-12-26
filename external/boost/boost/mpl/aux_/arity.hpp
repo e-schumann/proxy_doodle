@@ -21,7 +21,7 @@
 #   include <boost/mpl/aux_/nttp_decl.hpp>
 #   include <boost/mpl/aux_/config/static_constant.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl { namespace aux {
+namespace boost { namespace mpl { namespace aux {
 
 // agurt, 15/mar/02: it's possible to implement the template so that it will 
 // "just work" and do not require any specialization, but not on the compilers

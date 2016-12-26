@@ -15,38 +15,38 @@
    (\
       /* Lhs==pointer and Rhs==fundamental and Rhs!=integral */\
       (\
-         ::boost_part::is_pointer< Lhs_noref >::value && \
-         ::boost_part::is_fundamental< Rhs_nocv >::value && \
-         (!  ::boost_part::is_integral< Rhs_noref >::value )\
+         ::boost::is_pointer< Lhs_noref >::value && \
+         ::boost::is_fundamental< Rhs_nocv >::value && \
+         (!  ::boost::is_integral< Rhs_noref >::value )\
       ) || \
       /* Lhs==void* and (Rhs==fundamental or Rhs==pointer) */\
       (\
-         ::boost_part::is_pointer< Lhs_noref >::value && \
-         ::boost_part::is_void< Lhs_noptr >::value && \
+         ::boost::is_pointer< Lhs_noref >::value && \
+         ::boost::is_void< Lhs_noptr >::value && \
          ( \
-            ::boost_part::is_fundamental< Rhs_nocv >::value || \
-            ::boost_part::is_pointer< Rhs_noref >::value\
+            ::boost::is_fundamental< Rhs_nocv >::value || \
+            ::boost::is_pointer< Rhs_noref >::value\
           )\
       ) || \
       /* Rhs==void* and (Lhs==fundamental or Lhs==pointer) */\
       (\
-         ::boost_part::is_pointer< Rhs_noref >::value && \
-         ::boost_part::is_void< Rhs_noptr >::value && \
+         ::boost::is_pointer< Rhs_noref >::value && \
+         ::boost::is_void< Rhs_noptr >::value && \
          (\
-            ::boost_part::is_fundamental< Lhs_nocv >::value || \
-            ::boost_part::is_pointer< Lhs_noref >::value\
+            ::boost::is_fundamental< Lhs_nocv >::value || \
+            ::boost::is_pointer< Lhs_noref >::value\
           )\
       ) ||\
       /* Lhs=fundamental and Rhs=pointer */\
       (\
-         ::boost_part::is_fundamental< Lhs_nocv >::value && \
-         ::boost_part::is_pointer< Rhs_noref >::value\
+         ::boost::is_fundamental< Lhs_nocv >::value && \
+         ::boost::is_pointer< Rhs_noref >::value\
       ) ||\
       /* two different pointers */\
       (\
-         ::boost_part::is_pointer< Lhs_noref >::value && \
-         ::boost_part::is_pointer< Rhs_noref >::value && \
-         (!  ::boost_part::is_same< Lhs_nocv, Rhs_nocv >::value )\
+         ::boost::is_pointer< Lhs_noref >::value && \
+         ::boost::is_pointer< Rhs_noref >::value && \
+         (!  ::boost::is_same< Lhs_nocv, Rhs_nocv >::value )\
       )\
       )
 

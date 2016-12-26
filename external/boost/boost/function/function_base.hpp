@@ -50,18 +50,18 @@
 #endif // __ICL etc
 
 #  define BOOST_FUNCTION_ENABLE_IF_NOT_INTEGRAL(Functor,Type)              \
-      typename ::boost_part::enable_if_c<          \
-                           !(::boost_part::is_integral<Functor>::value), \
+      typename ::boost::enable_if_c<          \
+                           !(::boost::is_integral<Functor>::value), \
                            Type>::type
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
   namespace detail {
     namespace function {
       class X;
 
       /**
        * A buffer used to store small function objects in
-       * boost_part::function. It is a union containing function pointers,
+       * boost::function. It is a union containing function pointers,
        * object pointers, and a structure that resembles a bound
        * member function pointer.
        */
@@ -74,7 +74,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
         // For pointers to std::type_info objects
         struct type_t {
           // (get_functor_type_tag, check_functor_type_tag).
-          const boost_part::typeindex::type_info* type;
+          const boost::typeindex::type_info* type;
 
           // Whether the type is const-qualified.
           bool const_qualified;
@@ -195,7 +195,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
             {
               // Check whether we have the same type. We can add
               // cv-qualifiers, but we can't take them away.
-              if (*out_buffer.members.type.type == boost_part::typeindex::type_id<F>()
+              if (*out_buffer.members.type.type == boost::typeindex::type_id<F>()
                   && (!in_buffer.members.obj_ref.is_const_qualified
                       || out_buffer.members.type.const_qualified)
                   && (!in_buffer.members.obj_ref.is_volatile_qualified
@@ -207,7 +207,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
             return;
 
           case get_functor_type_tag:
-            out_buffer.members.type.type = &boost_part::typeindex::type_id<F>().type_info();
+            out_buffer.members.type.type = &boost::typeindex::type_id<F>().type_info();
             out_buffer.members.type.const_qualified = in_buffer.members.obj_ref.is_const_qualified;
             out_buffer.members.type.volatile_qualified = in_buffer.members.obj_ref.is_volatile_qualified;
             return;
@@ -216,7 +216,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
       };
 
       /**
-       * Determine if boost_part::function can use the small-object
+       * Determine if boost::function can use the small-object
        * optimization with the function object type F.
        */
       template<typename F>
@@ -267,12 +267,12 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
           } else if (op == destroy_functor_tag)
             out_buffer.members.func_ptr = 0;
           else if (op == check_functor_type_tag) {
-            if (*out_buffer.members.type.type == boost_part::typeindex::type_id<Functor>())
+            if (*out_buffer.members.type.type == boost::typeindex::type_id<Functor>())
               out_buffer.members.obj_ptr = &in_buffer.members.func_ptr;
             else
               out_buffer.members.obj_ptr = 0;
           } else /* op == get_functor_type_tag */ {
-            out_buffer.members.type.type = &boost_part::typeindex::type_id<Functor>().type_info();
+            out_buffer.members.type.type = &boost::typeindex::type_id<Functor>().type_info();
             out_buffer.members.type.const_qualified = false;
             out_buffer.members.type.volatile_qualified = false;
           }
@@ -299,12 +299,12 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
              (void)f; // suppress warning about the value of f not being used (MSVC)
              f->~Functor();
           } else if (op == check_functor_type_tag) {
-             if (*out_buffer.members.type.type == boost_part::typeindex::type_id<Functor>())
+             if (*out_buffer.members.type.type == boost::typeindex::type_id<Functor>())
               out_buffer.members.obj_ptr = in_buffer.data;
             else
               out_buffer.members.obj_ptr = 0;
           } else /* op == get_functor_type_tag */ {
-            out_buffer.members.type.type = &boost_part::typeindex::type_id<Functor>().type_info();
+            out_buffer.members.type.type = &boost::typeindex::type_id<Functor>().type_info();
             out_buffer.members.type.const_qualified = false;
             out_buffer.members.type.volatile_qualified = false;
           }
@@ -358,12 +358,12 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
             delete f;
             out_buffer.members.obj_ptr = 0;
           } else if (op == check_functor_type_tag) {
-            if (*out_buffer.members.type.type == boost_part::typeindex::type_id<Functor>())
+            if (*out_buffer.members.type.type == boost::typeindex::type_id<Functor>())
               out_buffer.members.obj_ptr = in_buffer.members.obj_ptr;
             else
               out_buffer.members.obj_ptr = 0;
           } else /* op == get_functor_type_tag */ {
-            out_buffer.members.type.type = &boost_part::typeindex::type_id<Functor>().type_info();
+            out_buffer.members.type.type = &boost::typeindex::type_id<Functor>().type_info();
             out_buffer.members.type.const_qualified = false;
             out_buffer.members.type.volatile_qualified = false;
           }
@@ -398,7 +398,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
           typedef typename get_function_tag<functor_type>::type tag_type;
           switch (op) {
           case get_functor_type_tag:
-            out_buffer.members.type.type = &boost_part::typeindex::type_id<functor_type>().type_info();
+            out_buffer.members.type.type = &boost::typeindex::type_id<functor_type>().type_info();
             out_buffer.members.type.const_qualified = false;
             out_buffer.members.type.volatile_qualified = false;
             return;
@@ -467,12 +467,12 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
             wrapper_allocator.deallocate(victim,1);
             out_buffer.members.obj_ptr = 0;
           } else if (op == check_functor_type_tag) {
-            if (*out_buffer.members.type.type == boost_part::typeindex::type_id<Functor>())
+            if (*out_buffer.members.type.type == boost::typeindex::type_id<Functor>())
               out_buffer.members.obj_ptr = in_buffer.members.obj_ptr;
             else
               out_buffer.members.obj_ptr = 0;
           } else /* op == get_functor_type_tag */ {
-            out_buffer.members.type.type = &boost_part::typeindex::type_id<Functor>().type_info();
+            out_buffer.members.type.type = &boost::typeindex::type_id<Functor>().type_info();
             out_buffer.members.type.const_qualified = false;
             out_buffer.members.type.volatile_qualified = false;
           }
@@ -499,7 +499,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
           typedef typename get_function_tag<functor_type>::type tag_type;
           switch (op) {
           case get_functor_type_tag:
-            out_buffer.members.type.type = &boost_part::typeindex::type_id<functor_type>().type_info();
+            out_buffer.members.type.type = &boost::typeindex::type_id<functor_type>().type_info();
             out_buffer.members.type.const_qualified = false;
             out_buffer.members.type.volatile_qualified = false;
             return;
@@ -575,7 +575,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
       /**
        * Stores the "manager" portion of the vtable for a
-       * boost_part::function object.
+       * boost::function object.
        */
       struct vtable_base
       {
@@ -602,9 +602,9 @@ public:
 
   /** Retrieve the type of the stored function object, or type_id<void>()
       if this is empty. */
-  const boost_part::typeindex::type_info& target_type() const
+  const boost::typeindex::type_info& target_type() const
   {
-    if (!vtable) return boost_part::typeindex::type_id<void>().type_info();
+    if (!vtable) return boost::typeindex::type_id<void>().type_info();
 
     detail::function::function_buffer type;
     get_vtable()->manager(functor, type, detail::function::get_functor_type_tag);
@@ -617,7 +617,7 @@ public:
       if (!vtable) return 0;
 
       detail::function::function_buffer type_result;
-      type_result.members.type.type = &boost_part::typeindex::type_id<Functor>().type_info();
+      type_result.members.type.type = &boost::typeindex::type_id<Functor>().type_info();
       type_result.members.type.const_qualified = is_const<Functor>::value;
       type_result.members.type.volatile_qualified = is_volatile<Functor>::value;
       get_vtable()->manager(functor, type_result,
@@ -631,7 +631,7 @@ public:
       if (!vtable) return 0;
 
       detail::function::function_buffer type_result;
-      type_result.members.type.type = &boost_part::typeindex::type_id<Functor>().type_info();
+      type_result.members.type.type = &boost::typeindex::type_id<Functor>().type_info();
       type_result.members.type.const_qualified = true;
       type_result.members.type.volatile_qualified = is_volatile<Functor>::value;
       get_vtable()->manager(functor, type_result,
@@ -690,13 +690,13 @@ public: // should be protected, but GCC 2.95.3 will fail to allow access
 };
 
 /**
- * The bad_function_call exception class is thrown when a boost_part::function
+ * The bad_function_call exception class is thrown when a boost::function
  * object is invoked
  */
 class bad_function_call : public std::runtime_error
 {
 public:
-  bad_function_call() : std::runtime_error("call to empty boost_part::function") {}
+  bad_function_call() : std::runtime_error("call to empty boost::function") {}
 };
 
 #ifndef BOOST_NO_SFINAE
@@ -726,7 +726,7 @@ inline bool operator!=(detail::function::useless_clear_type*,
 #endif
 
 #ifdef BOOST_NO_SFINAE
-// Comparisons between boost_part::function objects and arbitrary function objects
+// Comparisons between boost::function objects and arbitrary function objects
 template<typename Functor>
   inline bool operator==(const function_base& f, Functor g)
   {
@@ -757,7 +757,7 @@ template<typename Functor>
 #else
 
 #  if !(defined(__GNUC__) && __GNUC__ == 3 && __GNUC_MINOR__ <= 3)
-// Comparisons between boost_part::function objects and arbitrary function
+// Comparisons between boost::function objects and arbitrary function
 // objects. GCC 3.3 and before has an obnoxious bug that prevents this
 // from working.
 template<typename Functor>
@@ -855,7 +855,7 @@ namespace detail {
 #endif
   } // end namespace function
 } // end namespace detail
-} // end namespace boost_part
+} // end namespace boost
 
 #undef BOOST_FUNCTION_ENABLE_IF_NOT_INTEGRAL
 

@@ -15,7 +15,7 @@
 // $Date$
 // $Revision$
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 template< typename Tag > struct contains_impl;
 template< typename Sequence, typename T > struct contains;

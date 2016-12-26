@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_IOSTREAM
 #include "boost_no_iostream.ipp"
 #else
-namespace boost_part_no_iostream = empty_boost;
+namespace boost_no_iostream = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_iostream::test();
+   return boost_no_iostream::test();
 }
 

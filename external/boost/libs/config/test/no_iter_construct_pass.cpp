@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
 #include "boost_no_iter_construct.ipp"
 #else
-namespace boost_part_no_templated_iterator_constructors = empty_boost;
+namespace boost_no_templated_iterator_constructors = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_templated_iterator_constructors::test();
+   return boost_no_templated_iterator_constructors::test();
 }
 

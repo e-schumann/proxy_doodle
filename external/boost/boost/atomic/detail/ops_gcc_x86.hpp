@@ -36,7 +36,7 @@
 #define BOOST_ATOMIC_DETAIL_TEMP_CAS_REGISTER "edx"
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace atomics {
 namespace detail {
 
@@ -509,7 +509,7 @@ BOOST_FORCEINLINE void signal_fence(memory_order order) BOOST_NOEXCEPT
 
 } // namespace detail
 } // namespace atomics
-} // namespace boost_part
+} // namespace boost
 
 #undef BOOST_ATOMIC_DETAIL_TEMP_CAS_REGISTER
 

@@ -28,10 +28,10 @@
     of the matches (in a compatible structure like std::string) or
     a reference to it (e.g. using the iterator range class).
     Examples of such a container are \c std::vector<std::string>
-    or \c std::list<boost_part::iterator_range<std::string::iterator>>
+    or \c std::list<boost::iterator_range<std::string::iterator>>
 */
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace algorithm {
 
 //  find_all  ------------------------------------------------------------//
@@ -47,7 +47,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
             of the matches (in a compatible structure like std::string) or
             a reference to it (e.g. using the iterator range class).
             Examples of such a container are \c std::vector<std::string>
-            or \c std::list<boost_part::iterator_range<std::string::iterator>>
+            or \c std::list<boost::iterator_range<std::string::iterator>>
 
             \param Result A container that can hold copies of references to the substrings
             \param Input A container which will be searched.
@@ -64,10 +64,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
             Range1T& Input,
             const Range2T& Search)
         {
-            return ::boost_part::algorithm::iter_find(
+            return ::boost::algorithm::iter_find(
                 Result,
                 Input,
-                ::boost_part::algorithm::first_finder(Search) );        
+                ::boost::algorithm::first_finder(Search) );        
         }
 
         //! Find all algorithm ( case insensitive ) 
@@ -79,7 +79,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
             of the matches (in a compatible structure like std::string) or
             a reference to it (e.g. using the iterator range class).
             Examples of such a container are \c std::vector<std::string>
-            or \c std::list<boost_part::iterator_range<std::string::iterator>>
+            or \c std::list<boost::iterator_range<std::string::iterator>>
 
             Searching is case insensitive.
 
@@ -100,10 +100,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
             const Range2T& Search,
             const std::locale& Loc=std::locale() )
         {
-            return ::boost_part::algorithm::iter_find(
+            return ::boost::algorithm::iter_find(
                 Result,
                 Input,
-                ::boost_part::algorithm::first_finder(Search, is_iequal(Loc) ) );        
+                ::boost::algorithm::first_finder(Search, is_iequal(Loc) ) );        
         }
 
 
@@ -121,7 +121,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
             of the matches (in a compatible structure like std::string) or
             a reference to it (e.g. using the iterator range class).
             Examples of such a container are \c std::vector<std::string>
-            or \c std::list<boost_part::iterator_range<std::string::iterator>>
+            or \c std::list<boost::iterator_range<std::string::iterator>>
     
             \param Result A container that can hold copies of references to the substrings          
             \param Input A container which will be searched.
@@ -143,10 +143,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
             PredicateT Pred,
             token_compress_mode_type eCompress=token_compress_off )
         {
-            return ::boost_part::algorithm::iter_split(
+            return ::boost::algorithm::iter_split(
                 Result,
                 Input,
-                ::boost_part::algorithm::token_finder( Pred, eCompress ) );         
+                ::boost::algorithm::token_finder( Pred, eCompress ) );         
         }
 
     } // namespace algorithm
@@ -156,7 +156,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
     using algorithm::ifind_all;
     using algorithm::split;    
 
-} // namespace boost_part
+} // namespace boost
 
 
 #endif  // BOOST_STRING_SPLIT_HPP

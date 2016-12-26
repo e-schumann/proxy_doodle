@@ -23,8 +23,8 @@ BOOST_AUTO_TEST_CASE( defines)
  */
 BOOST_AUTO_TEST_CASE( webengine )
 {
-    QGuiApplication app(boost_part::unit_test::framework::master_test_suite().argc,
-                        boost_part::unit_test::framework::master_test_suite().argv);
+    QGuiApplication app(boost::unit_test::framework::master_test_suite().argc,
+                        boost::unit_test::framework::master_test_suite().argv);
 
     QtWebEngine::initialize();
 }

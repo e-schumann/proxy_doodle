@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_using_declaration_overloads_from_typename_base::test();
+   return boost_no_using_declaration_overloads_from_typename_base::test();
 }
 

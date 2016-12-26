@@ -10,7 +10,7 @@
 //  DESCRIPTION:   Compiler violates std::9.4.2/4.
 
 
-namespace boost_part_no_inclass_member_initialization{
+namespace boost_no_inclass_member_initialization{
 
 struct UDT{};
 

@@ -42,7 +42,7 @@
 #pragma comment(lib, "runtimeobject.lib")
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace detail
   {
@@ -65,9 +65,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     namespace
     {
 #ifdef BOOST_THREAD_PROVIDES_ONCE_CXX11
-        boost_part::once_flag current_thread_tls_init_flag;
+        boost::once_flag current_thread_tls_init_flag;
 #else
-        boost_part::once_flag current_thread_tls_init_flag=BOOST_ONCE_INIT;
+        boost::once_flag current_thread_tls_init_flag=BOOST_ONCE_INIT;
 #endif
 #if defined(UNDER_CE)
         // Windows CE does not define the TLS_OUT_OF_INDEXES constant.
@@ -76,12 +76,12 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #if !BOOST_PLAT_WINDOWS_RUNTIME
         DWORD current_thread_tls_key=TLS_OUT_OF_INDEXES;
 #else
-        __declspec(thread) boost_part::detail::thread_data_base* current_thread_data_base;
+        __declspec(thread) boost::detail::thread_data_base* current_thread_data_base;
 #endif
 
         void create_current_thread_tls_key()
         {
-            boost_parttss_cleanup_implemented(); // if anyone uses TSS, we need the cleanup linked in
+            tss_cleanup_implemented(); // if anyone uses TSS, we need the cleanup linked in
 #if !BOOST_PLAT_WINDOWS_RUNTIME
             current_thread_tls_key=TlsAlloc();
             BOOST_ASSERT(current_thread_tls_key!=TLS_OUT_OF_INDEXES);
@@ -101,7 +101,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         void set_current_thread_data(detail::thread_data_base* new_data)
         {
-            boost_part::call_once(current_thread_tls_init_flag,create_current_thread_tls_key);
+            boost::call_once(current_thread_tls_init_flag,create_current_thread_tls_key);
 #if BOOST_PLAT_WINDOWS_RUNTIME
             current_thread_data_base = new_data;
 #else
@@ -112,7 +112,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             else
             {
                 BOOST_VERIFY(false);
-                //boost_part::throw_exception(thread_resource_error());
+                //boost::throw_exception(thread_resource_error());
             }
 #endif
         }
@@ -149,7 +149,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         DWORD WINAPI ThreadProxy(LPVOID args)
         {
-            boost_part::csbl::unique_ptr<ThreadProxyData> data(reinterpret_cast<ThreadProxyData*>(args));
+            boost::csbl::unique_ptr<ThreadProxyData> data(reinterpret_cast<ThreadProxyData*>(args));
             DWORD ret=data->start_address_(data->arglist_);
             return ret;
         }
@@ -179,10 +179,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     {
         struct thread_exit_callback_node
         {
-            boost_part::detail::thread_exit_function_base* func;
+            boost::detail::thread_exit_function_base* func;
             thread_exit_callback_node* next;
 
-            thread_exit_callback_node(boost_part::detail::thread_exit_function_base* func_,
+            thread_exit_callback_node(boost::detail::thread_exit_function_base* func_,
                                       thread_exit_callback_node* next_):
                 func(func_),next(next_)
             {}
@@ -223,7 +223,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 // Add a reference since we need to access the completionHandle after the thread_start_function.
                 // This is to handle cases where detach() was called and run_thread_exit_callbacks() would end
                 // up closing the handle.
-                ::boost_part::detail::thread_data_base* const thread_info(reinterpret_cast<::boost_part::detail::thread_data_base*>(parameter));
+                ::boost::detail::thread_data_base* const thread_info(reinterpret_cast<::boost::detail::thread_data_base*>(parameter));
                 intrusive_ptr_add_ref(thread_info);
 
                 __try
@@ -266,9 +266,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                         if(current_node->func)
                         {
                             (*current_node->func)();
-                            boost_part::detail::heap_delete(current_node->func);
+                            boost::detail::heap_delete(current_node->func);
                         }
-                        boost_part::detail::heap_delete(current_node);
+                        boost::detail::heap_delete(current_node);
                     }
                     while (!current_thread_data->tss_data.empty())
                     {
@@ -322,7 +322,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
          if (!thread_info->thread_handle.start(&thread_start_function, thread_info.get(), &thread_info->id))
          {
              intrusive_ptr_release(thread_info.get());
-//           boost_part::throw_exception(thread_resource_error());
+//           boost::throw_exception(thread_resource_error());
              return false;
          }
          return true;
@@ -331,7 +331,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         if(!new_thread)
         {
             return false;
-//            boost_part::throw_exception(thread_resource_error());
+//            boost::throw_exception(thread_resource_error());
         }
         intrusive_ptr_add_ref(thread_info.get());
         thread_info->thread_handle=(detail::win32::handle)(new_thread);
@@ -352,7 +352,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       if(!new_thread)
       {
         return false;
-//          boost_part::throw_exception(thread_resource_error());
+//          boost::throw_exception(thread_resource_error());
       }
       intrusive_ptr_add_ref(thread_info.get());
       thread_info->thread_handle=(detail::win32::handle)(new_thread);
@@ -460,9 +460,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     }
 
 #if defined BOOST_THREAD_USES_DATETIME
-    bool thread::timed_join(boost_part::system_time const& wait_until)
+    bool thread::timed_join(boost::system_time const& wait_until)
     {
-      return do_try_join_until(boost_part::detail::get_milliseconds_until(wait_until));
+      return do_try_join_until(boost::detail::get_milliseconds_until(wait_until));
     }
 #endif
     bool thread::do_try_join_until_noexcept(uintmax_t milli, bool& res)
@@ -964,7 +964,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
 
         void add_new_tss_node(void const* key,
-                              boost_part::shared_ptr<tss_cleanup_function> func,
+                              boost::shared_ptr<tss_cleanup_function> func,
                               void* tss_data)
         {
             detail::thread_data_base* const current_thread_data(get_or_make_current_thread_data());
@@ -978,7 +978,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
 
         void set_tss_data(void const* key,
-                          boost_part::shared_ptr<tss_cleanup_function> func,
+                          boost::shared_ptr<tss_cleanup_function> func,
                           void* tss_data,bool cleanup_existing)
         {
             if(tss_data_node* const current_node=find_tss_data(key))
@@ -1004,20 +1004,20 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
     }
 
-    BOOST_THREAD_DECL void __cdecl boost_parton_process_enter()
+    BOOST_THREAD_DECL void __cdecl on_process_enter()
     {}
 
-    BOOST_THREAD_DECL void __cdecl boost_parton_thread_enter()
+    BOOST_THREAD_DECL void __cdecl on_thread_enter()
     {}
 
-    BOOST_THREAD_DECL void __cdecl boost_parton_process_exit()
+    BOOST_THREAD_DECL void __cdecl on_process_exit()
     {
-        boost_part::cleanup_tls_key();
+        boost::cleanup_tls_key();
     }
 
-    BOOST_THREAD_DECL void __cdecl boost_parton_thread_exit()
+    BOOST_THREAD_DECL void __cdecl on_thread_exit()
     {
-        boost_part::run_thread_exit_callbacks();
+        boost::run_thread_exit_callbacks();
     }
 
     BOOST_THREAD_DECL void notify_all_at_thread_exit(condition_variable& cond, unique_lock<mutex> lk)

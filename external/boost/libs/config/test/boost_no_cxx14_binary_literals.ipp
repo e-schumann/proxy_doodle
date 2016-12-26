@@ -11,7 +11,7 @@
 //  TITLE:         C++14 binary literals unavailable
 //  DESCRIPTION:   The compiler does not support C++14 binary literals
 
-namespace boost_part_no_cxx14_binary_literals
+namespace boost_no_cxx14_binary_literals
 {
 
 int test()

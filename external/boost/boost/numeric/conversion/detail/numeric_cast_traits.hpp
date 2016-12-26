@@ -56,12 +56,12 @@
     #define BOOST_NUMERIC_CONVERSION_SEQ_A() BOOST_NUMERIC_CONVERSION_BASE_BUILTIN_TYPES()
 	#define BOOST_NUMERIC_CONVERSION_SEQ_B() BOOST_NUMERIC_CONVERSION_BASE_BUILTIN_TYPES()
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace numeric {
+namespace boost { namespace numeric {
 
     #define BOOST_PP_ITERATION_PARAMS_1 (3, (0, BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(BOOST_NUMERIC_CONVERSION_SEQ_A())), <boost/numeric/conversion/detail/numeric_cast_traits.hpp>))
     #include BOOST_PP_ITERATE()    
 
-}}//namespace boost_part::numeric;
+}}//namespace boost::numeric;
 
     #if defined(__WAVE__) && defined(BOOST_NUMERIC_CONVERSION_CREATE_PREPROCESSED_FILES)
         #pragma wave option(output: null)
@@ -88,15 +88,15 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
             #pragma wave option(preserve: 1)
         #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace numeric {
+namespace boost { namespace numeric {
 
-    #define BOOST_NUMERIC_CONVERSION_SEQ_A() BOOST_NUMERIC_CONVERSION_BASE_BUILTIN_TYPES()(boost_part::long_long_type)(boost_part::ulong_long_type)
-	#define BOOST_NUMERIC_CONVERSION_SEQ_B() (boost_part::long_long_type)(boost_part::ulong_long_type)
+    #define BOOST_NUMERIC_CONVERSION_SEQ_A() BOOST_NUMERIC_CONVERSION_BASE_BUILTIN_TYPES()(boost::long_long_type)(boost::ulong_long_type)
+	#define BOOST_NUMERIC_CONVERSION_SEQ_B() (boost::long_long_type)(boost::ulong_long_type)
     
     #define BOOST_PP_ITERATION_PARAMS_1 (3, (0, BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(BOOST_NUMERIC_CONVERSION_SEQ_A())), <boost/numeric/conversion/detail/numeric_cast_traits.hpp>))
     #include BOOST_PP_ITERATE()    
 
-}}//namespace boost_part::numeric;
+}}//namespace boost::numeric;
 
         #if defined(__WAVE__) && defined(BOOST_NUMERIC_CONVERSION_CREATE_PREPROCESSED_FILES)
             #pragma wave option(output: null)

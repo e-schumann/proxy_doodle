@@ -13,7 +13,7 @@
 
 #include <algorithm>
 
-namespace boost_part_no_std_min_max{
+namespace boost_no_std_min_max{
 
 
 int test()

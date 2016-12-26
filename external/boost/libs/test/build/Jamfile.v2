@@ -20,7 +20,7 @@ project boost/test
 
                    # adding a dependency on boost/timer as the header are needed, and the junction needs
                    # to be there in order to build the library.
-                   <library>/boost/timer//boost_part_timer
+                   <library>/boost/timer//boost_timer
     : usage-requirements
                    <define>BOOST_TEST_NO_AUTO_LINK=1
                    # Disable Warning about boost::noncopyable not being exported
@@ -28,7 +28,7 @@ project boost/test
 
                    # Adding a dependency on boost/timer as the headers need to be there in case of the
                    # header-only usage variant
-                   <use>/boost/timer//boost_part_timer
+                   <use>/boost/timer//boost_timer
     ;
 
 PRG_EXEC_MON_SOURCES =
@@ -80,7 +80,7 @@ UTF_SOURCES =
   xml_report_formatter
   ;
 
-lib boost_part_prg_exec_monitor
+lib boost_prg_exec_monitor
   : # sources
     $(PRG_EXEC_MON_SOURCES).cpp
   : # requirements
@@ -89,7 +89,7 @@ lib boost_part_prg_exec_monitor
     <link>shared:<define>BOOST_TEST_DYN_LINK=1
   ;
 
-lib boost_part_test_exec_monitor
+lib boost_test_exec_monitor
   : # sources
     $(TEST_EXEC_MON_SOURCES).cpp
   : # requirements
@@ -99,7 +99,7 @@ lib boost_part_test_exec_monitor
     <link>shared:<define>BOOST_TEST_DYN_LINK=1
   ;
 
-lib boost_part_unit_test_framework
+lib boost_unit_test_framework
   : # sources
     $(UTF_SOURCES).cpp
   : # requirements
@@ -112,6 +112,6 @@ alias minimal ;
 
 alias included ;
 
-boost-install boost_part_prg_exec_monitor
-              boost_part_test_exec_monitor
-              boost_part_unit_test_framework ;
+boost-install boost_prg_exec_monitor
+              boost_test_exec_monitor
+              boost_unit_test_framework ;

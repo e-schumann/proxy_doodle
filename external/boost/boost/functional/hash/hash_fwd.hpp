@@ -18,7 +18,7 @@
 #include <cstddef>
 #include <boost/detail/workaround.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     template <class T> struct hash;
 

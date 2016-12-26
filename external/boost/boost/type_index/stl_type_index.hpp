@@ -10,14 +10,14 @@
 #define BOOST_TYPE_INDEX_STL_TYPE_INDEX_HPP
 
 /// \file stl_type_index.hpp
-/// \brief Contains boost_part::typeindex::stl_type_index class.
+/// \brief Contains boost::typeindex::stl_type_index class.
 ///
-/// boost_part::typeindex::stl_type_index class can be used as a drop-in replacement 
+/// boost::typeindex::stl_type_index class can be used as a drop-in replacement 
 /// for std::type_index.
 ///
 /// It is used in situations when RTTI is enabled or typeid() method is available.
 /// When typeid() is disabled or BOOST_TYPE_INDEX_FORCE_NO_RTTI_COMPATIBILITY macro
-/// is defined boost_part::typeindex::ctti is usually used instead of boost_part::typeindex::stl_type_index.
+/// is defined boost::typeindex::ctti is usually used instead of boost::typeindex::stl_type_index.
 
 #include <boost/type_index/type_index_facade.hpp>
 
@@ -51,7 +51,7 @@
 # pragma once
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace typeindex {
+namespace boost { namespace typeindex {
 
 /// \class stl_type_index
 /// This class is a wrapper around std::type_info, that workarounds issues and provides
@@ -125,16 +125,16 @@ inline const char* stl_type_index::name() const BOOST_NOEXCEPT {
 }
 
 inline std::string stl_type_index::pretty_name() const {
-    static const char cvr_saver_name[] = "boost_part::typeindex::detail::cvr_saver<";
+    static const char cvr_saver_name[] = "boost::typeindex::detail::cvr_saver<";
     static BOOST_CONSTEXPR_OR_CONST std::string::size_type cvr_saver_name_len = sizeof(cvr_saver_name) - 1;
 
     // In case of MSVC demangle() is a no-op, and name() already returns demangled name.
     // In case of GCC and Clang (on non-Windows systems) name() returns mangled name and demangle() undecorates it.
-    const boost_part::core::scoped_demangled_name demangled_name(data_->name());
+    const boost::core::scoped_demangled_name demangled_name(data_->name());
 
     const char* begin = demangled_name.get();
     if (!begin) {
-        boost_part::throw_exception(std::runtime_error("Type name demangling failed"));
+        boost::throw_exception(std::runtime_error("Type name demangling failed"));
     }
 
     const std::string::size_type len = std::strlen(begin);
@@ -177,7 +177,7 @@ inline std::size_t stl_type_index::hash_code() const BOOST_NOEXCEPT {
 #if _MSC_VER > 1600 || (__GNUC__ == 4 && __GNUC_MINOR__ > 5 && defined(__GXX_EXPERIMENTAL_CXX0X__))
     return data_->hash_code();
 #else
-    return boost_part::hash_range(raw_name(), raw_name() + std::strlen(raw_name()));
+    return boost::hash_range(raw_name(), raw_name() + std::strlen(raw_name()));
 #endif
 }
 
@@ -220,18 +220,18 @@ inline bool stl_type_index::before(const stl_type_index& rhs) const BOOST_NOEXCE
 
 template <class T>
 inline stl_type_index stl_type_index::type_id() BOOST_NOEXCEPT {
-    typedef BOOST_DEDUCED_TYPENAME boost_part::remove_reference<T>::type no_ref_t;
-    typedef BOOST_DEDUCED_TYPENAME boost_part::remove_cv<no_ref_t>::type no_cvr_prefinal_t;
+    typedef BOOST_DEDUCED_TYPENAME boost::remove_reference<T>::type no_ref_t;
+    typedef BOOST_DEDUCED_TYPENAME boost::remove_cv<no_ref_t>::type no_cvr_prefinal_t;
 
     #  if (defined(__EDG_VERSION__) && __EDG_VERSION__ < 245) \
         || (defined(__sgi) && defined(_COMPILER_VERSION) && _COMPILER_VERSION <= 744)
 
         // Old EDG-based compilers seem to mistakenly distinguish 'integral' from 'signed integral'
         // in typeid() expressions. Full template specialization for 'integral' fixes that issue:
-        typedef BOOST_DEDUCED_TYPENAME boost_part::mpl::if_<
-            boost_part::is_signed<no_cvr_prefinal_t>,
-            boost_part::make_signed<no_cvr_prefinal_t>,
-            boost_part::mpl::identity<no_cvr_prefinal_t>
+        typedef BOOST_DEDUCED_TYPENAME boost::mpl::if_<
+            boost::is_signed<no_cvr_prefinal_t>,
+            boost::make_signed<no_cvr_prefinal_t>,
+            boost::mpl::identity<no_cvr_prefinal_t>
         >::type no_cvr_prefinal_lazy_t;
 
         typedef BOOST_DEDUCED_TYPENAME no_cvr_prefinal_t::type no_cvr_t;
@@ -248,8 +248,8 @@ namespace detail {
 
 template <class T>
 inline stl_type_index stl_type_index::type_id_with_cvr() BOOST_NOEXCEPT {
-    typedef BOOST_DEDUCED_TYPENAME boost_part::mpl::if_<
-        boost_part::mpl::or_<boost_part::is_reference<T>, boost_part::is_const<T>, boost_part::is_volatile<T> >,
+    typedef BOOST_DEDUCED_TYPENAME boost::mpl::if_<
+        boost::mpl::or_<boost::is_reference<T>, boost::is_const<T>, boost::is_volatile<T> >,
         detail::cvr_saver<T>,
         T
     >::type type;
@@ -267,6 +267,6 @@ inline stl_type_index stl_type_index::type_id_runtime(const T& value) BOOST_NOEX
 #endif
 }
 
-}} // namespace boost_part::typeindex
+}} // namespace boost::typeindex
 
 #endif // BOOST_TYPE_INDEX_STL_TYPE_INDEX_HPP

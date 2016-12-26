@@ -10,8 +10,8 @@
 project boost/timer
     : source-location ../src
     : requirements
-      <library>/boost/chrono//boost_part_chrono
-      <library>/boost/system//boost_part_system
+      <library>/boost/chrono//boost_chrono
+      <library>/boost/system//boost_system
     : usage-requirements  # pass these requirement to dependants (i.e. users)
       <link>shared:<define>BOOST_TIMER_DYN_LINK=1
       <link>static:<define>BOOST_TIMER_STATIC_LINK=1
@@ -19,10 +19,10 @@ project boost/timer
 
 SOURCES = auto_timers_construction cpu_timer ;
 
-lib boost_part_timer
+lib boost_timer
    : $(SOURCES).cpp
    : <link>shared:<define>BOOST_TIMER_DYN_LINK=1
      <link>static:<define>BOOST_TIMER_STATIC_LINK=1
    ;
 
-boost-install boost_part_timer ;
+boost-install boost_timer ;

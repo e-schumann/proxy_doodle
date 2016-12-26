@@ -14,7 +14,7 @@
 // $Date$
 // $Revision$
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl { namespace aux {
+namespace boost { namespace mpl { namespace aux {
 
 template< typename F > struct template_arity;
 

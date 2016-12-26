@@ -11,7 +11,7 @@
 
 #include <boost/config.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace type_traits_detail
@@ -74,7 +74,7 @@ template<> struct arithmetic_type<7>
 
 template<> struct arithmetic_type<8>
 {
-    typedef boost_part::long_long_type type;
+    typedef boost::long_long_type type;
     typedef char (&result_type) [8];
 };
 
@@ -108,7 +108,7 @@ template<> struct arithmetic_type<12>
 
 template<> struct arithmetic_type<13>
 {
-    typedef boost_part::ulong_long_type type;
+    typedef boost::ulong_long_type type;
     typedef char (&result_type) [13];
 };
 
@@ -156,13 +156,13 @@ template<> struct arithmetic_type<18>
 
 template<> struct arithmetic_type<19>
 {
-    typedef boost_part::int128_type type;
+    typedef boost::int128_type type;
     typedef char (&result_type) [19];
 };
 
 template<> struct arithmetic_type<20>
 {
-    typedef boost_part::uint128_type type;
+    typedef boost::uint128_type type;
     typedef char (&result_type) [20];
 };
 
@@ -213,6 +213,6 @@ public:
 
 } // namespace type_traits_detail
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // #ifndef BOOST_TYPE_TRAITS_DETAIL_COMMON_ARITHMETIC_TYPE_HPP_INCLUDED

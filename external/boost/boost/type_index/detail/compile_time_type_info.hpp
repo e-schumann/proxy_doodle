@@ -10,7 +10,7 @@
 #define BOOST_TYPE_INDEX_DETAIL_COMPILE_TIME_TYPE_INFO_HPP
 
 /// \file compile_time_type_info.hpp
-/// \brief Contains helper macros and implementation details of boost_part::typeindex::ctti_type_index.
+/// \brief Contains helper macros and implementation details of boost::typeindex::ctti_type_index.
 /// Not intended for inclusion from user's code. 
 
 #include <boost/config.hpp>
@@ -23,12 +23,12 @@
 
 /// @cond
 #define BOOST_TYPE_INDEX_REGISTER_CTTI_PARSING_PARAMS(begin_skip, end_skip, runtime_skip, runtime_skip_until)   \
-    namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace typeindex { namespace detail {                                                  \
+    namespace boost { namespace typeindex { namespace detail {                                                  \
         BOOST_STATIC_CONSTEXPR std::size_t ctti_skip_size_at_begin  = begin_skip;                               \
         BOOST_STATIC_CONSTEXPR std::size_t ctti_skip_size_at_end    = end_skip;                                 \
         BOOST_STATIC_CONSTEXPR bool ctti_skip_more_at_runtime       = runtime_skip;                             \
         BOOST_STATIC_CONSTEXPR char ctti_skip_until_runtime[]       = runtime_skip_until;                       \
-    }}} /* namespace boost_part::typeindex::detail */                                                                \
+    }}} /* namespace boost::typeindex::detail */                                                                \
     /**/
 /// @endcond
 
@@ -39,31 +39,31 @@
 #   include <boost/preprocessor/facilities/expand.hpp>
     BOOST_PP_EXPAND( BOOST_TYPE_INDEX_REGISTER_CTTI_PARSING_PARAMS BOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING )
 #elif defined(_MSC_VER) && defined (BOOST_NO_CXX11_NOEXCEPT)
-    // sizeof("const char *__cdecl boost_part::detail::ctti<") - 1, sizeof(">::n(void)") - 1
+    // sizeof("const char *__cdecl boost::detail::ctti<") - 1, sizeof(">::n(void)") - 1
     BOOST_TYPE_INDEX_REGISTER_CTTI_PARSING_PARAMS(40, 10, false, "")
 #elif defined(_MSC_VER) && !defined (BOOST_NO_CXX11_NOEXCEPT)
-    // sizeof("const char *__cdecl boost_part::detail::ctti<") - 1, sizeof(">::n(void) noexcept") - 1
+    // sizeof("const char *__cdecl boost::detail::ctti<") - 1, sizeof(">::n(void) noexcept") - 1
     BOOST_TYPE_INDEX_REGISTER_CTTI_PARSING_PARAMS(40, 19, false, "")
 #elif defined(__clang__) && defined(__APPLE__)
     // Someone made __clang_major__ equal to LLVM version rather than compiler version
     // on APPLE platform.
     //
     // Using less efficient solution because there is no good way to detect real version of Clang.
-    // sizeof("static const char *boost_part::detail::ctti<") - 1, sizeof("]") - 1, true, "???????????>::n() [T = int"
+    // sizeof("static const char *boost::detail::ctti<") - 1, sizeof("]") - 1, true, "???????????>::n() [T = int"
     BOOST_TYPE_INDEX_REGISTER_CTTI_PARSING_PARAMS(39, 1, true, "T = ")
 #elif defined(__clang__) && (__clang_major__ < 3 || (__clang_major__ == 3 && __clang_minor__ == 0))
-    // sizeof("static const char *boost_part::detail::ctti<") - 1, sizeof(">::n()") - 1
+    // sizeof("static const char *boost::detail::ctti<") - 1, sizeof(">::n()") - 1
     // note: checked on 3.0
     BOOST_TYPE_INDEX_REGISTER_CTTI_PARSING_PARAMS(39, 6, false, "")
 #elif defined(__clang__) && (__clang_major__ >= 4 || (__clang_major__ == 3 && __clang_minor__ > 0))
-    // sizeof("static const char *boost_part::detail::ctti<") - 1, sizeof("]") - 1, true, "int>::n() [T = int"
+    // sizeof("static const char *boost::detail::ctti<") - 1, sizeof("]") - 1, true, "int>::n() [T = int"
     // note: checked on 3.1, 3.4
     BOOST_TYPE_INDEX_REGISTER_CTTI_PARSING_PARAMS(39, 1, true, "T = ")
 #elif defined(__GNUC__) && !defined(BOOST_NO_CXX14_CONSTEXPR)
-    // sizeof("static contexpr char boost_part::detail::ctti<T>::s() [with unsigned int I = 0u; T = ") - 1, sizeof("]") - 1
+    // sizeof("static contexpr char boost::detail::ctti<T>::s() [with unsigned int I = 0u; T = ") - 1, sizeof("]") - 1
     BOOST_TYPE_INDEX_REGISTER_CTTI_PARSING_PARAMS(81, 1, false, "")
 #elif defined(__GNUC__) && defined(BOOST_NO_CXX14_CONSTEXPR)
-    // sizeof("static const char* boost_part::detail::ctti<T>::n() [with T = ") - 1, sizeof("]") - 1
+    // sizeof("static const char* boost::detail::ctti<T>::n() [with T = ") - 1, sizeof("]") - 1
     BOOST_TYPE_INDEX_REGISTER_CTTI_PARSING_PARAMS(57, 1, false, "")
 #else
     // Deafult code for other platforms... Just skip nothing!
@@ -72,7 +72,7 @@
 
 #undef BOOST_TYPE_INDEX_REGISTER_CTTI_PARSING_PARAMS
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace typeindex { namespace detail { 
+namespace boost { namespace typeindex { namespace detail { 
     template <bool Condition>
     BOOST_CXX14_CONSTEXPR inline void assert_compile_time_legths() BOOST_NOEXCEPT {
         BOOST_STATIC_ASSERT_MSG(
@@ -95,7 +95,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
     }
 
     template <unsigned int ArrayLength>
-    BOOST_CXX14_CONSTEXPR inline const char* skip_begining_runtime(const char* begin, boost_part::mpl::false_) BOOST_NOEXCEPT {
+    BOOST_CXX14_CONSTEXPR inline const char* skip_begining_runtime(const char* begin, boost::mpl::false_) BOOST_NOEXCEPT {
         return begin;
     }
 
@@ -137,7 +137,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
     }
 
     template <unsigned int ArrayLength>
-    BOOST_CXX14_CONSTEXPR inline const char* skip_begining_runtime(const char* begin, boost_part::mpl::true_) BOOST_NOEXCEPT {
+    BOOST_CXX14_CONSTEXPR inline const char* skip_begining_runtime(const char* begin, boost::mpl::true_) BOOST_NOEXCEPT {
         const char* const it = constexpr_search(
             begin, begin + ArrayLength,
             ctti_skip_until_runtime, ctti_skip_until_runtime + sizeof(ctti_skip_until_runtime) - 1
@@ -150,7 +150,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
         assert_compile_time_legths<(ArrayLength > ctti_skip_size_at_begin + ctti_skip_size_at_end)>();
         return skip_begining_runtime<ArrayLength - ctti_skip_size_at_begin>(
             begin + ctti_skip_size_at_begin, 
-            boost_part::mpl::bool_<ctti_skip_more_at_runtime>()
+            boost::mpl::bool_<ctti_skip_more_at_runtime>()
         );
     }
 
@@ -194,9 +194,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
     constexpr char cstring<C...>::data_[];
 #endif
 
-}}} // namespace boost_part::typeindex::detail
+}}} // namespace boost::typeindex::detail
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace detail {
+namespace boost { namespace detail {
 
 /// Noncopyable type_info that does not require RTTI.
 /// CTTI == Compile Time Type Info.
@@ -227,8 +227,8 @@ struct ctti {
     }
 
     template <unsigned int ...Indexes>
-    constexpr static const char* impl(::boost_part::typeindex::detail::index_seq<Indexes...> ) BOOST_NOEXCEPT {
-        return ::boost_part::typeindex::detail::cstring<s<Indexes>()...>::data_;
+    constexpr static const char* impl(::boost::typeindex::detail::index_seq<Indexes...> ) BOOST_NOEXCEPT {
+        return ::boost::typeindex::detail::cstring<s<Indexes>()...>::data_;
     }
 
     template <unsigned int D = 0> // `D` means `Dummy`
@@ -246,17 +246,17 @@ struct ctti {
                     || defined(__DMC__)
         constexpr unsigned int size = sizeof(__PRETTY_FUNCTION__);
     #else
-        boost_part::typeindex::detail::failed_to_get_function_name();
+        boost::typeindex::detail::failed_to_get_function_name();
     #endif
 
-        boost_part::typeindex::detail::assert_compile_time_legths<
-            (size > boost_part::typeindex::detail::ctti_skip_size_at_begin + boost_part::typeindex::detail::ctti_skip_size_at_end + sizeof("const *") - 1)
+        boost::typeindex::detail::assert_compile_time_legths<
+            (size > boost::typeindex::detail::ctti_skip_size_at_begin + boost::typeindex::detail::ctti_skip_size_at_end + sizeof("const *") - 1)
         >();
-        static_assert(!boost_part::typeindex::detail::ctti_skip_more_at_runtime, "Skipping for GCC in C++14 mode is unsupported");
+        static_assert(!boost::typeindex::detail::ctti_skip_more_at_runtime, "Skipping for GCC in C++14 mode is unsupported");
 
-        typedef typename boost_part::typeindex::detail::make_index_seq_impl<
-            boost_part::typeindex::detail::ctti_skip_size_at_begin,
-            size - sizeof("const *") + 1 - boost_part::typeindex::detail::ctti_skip_size_at_begin
+        typedef typename boost::typeindex::detail::make_index_seq_impl<
+            boost::typeindex::detail::ctti_skip_size_at_begin,
+            size - sizeof("const *") + 1 - boost::typeindex::detail::ctti_skip_size_at_begin
         >::type idx_seq;
         return impl(idx_seq());
     }
@@ -264,9 +264,9 @@ struct ctti {
     /// Returns raw name. Must be as short, as possible, to avoid code bloat
     BOOST_CXX14_CONSTEXPR static const char* n() BOOST_NOEXCEPT {
     #if defined(BOOST_TYPE_INDEX_FUNCTION_SIGNATURE)
-        return boost_part::typeindex::detail::skip_begining< sizeof(BOOST_TYPE_INDEX_FUNCTION_SIGNATURE) >(BOOST_TYPE_INDEX_FUNCTION_SIGNATURE);
+        return boost::typeindex::detail::skip_begining< sizeof(BOOST_TYPE_INDEX_FUNCTION_SIGNATURE) >(BOOST_TYPE_INDEX_FUNCTION_SIGNATURE);
     #elif defined(__FUNCSIG__)
-        return boost_part::typeindex::detail::skip_begining< sizeof(__FUNCSIG__) >(__FUNCSIG__);
+        return boost::typeindex::detail::skip_begining< sizeof(__FUNCSIG__) >(__FUNCSIG__);
     #elif defined(__PRETTY_FUNCTION__) \
                 || defined(__GNUC__) \
                 || (defined(__SUNPRO_CC) && (__SUNPRO_CC >= 0x5130)) \
@@ -274,16 +274,16 @@ struct ctti {
                 || (defined(__ICC) && (__ICC >= 600)) \
                 || defined(__ghs__) \
                 || defined(__DMC__)
-        return boost_part::typeindex::detail::skip_begining< sizeof(__PRETTY_FUNCTION__) >(__PRETTY_FUNCTION__);
+        return boost::typeindex::detail::skip_begining< sizeof(__PRETTY_FUNCTION__) >(__PRETTY_FUNCTION__);
     #else
-        boost_part::typeindex::detail::failed_to_get_function_name();
+        boost::typeindex::detail::failed_to_get_function_name();
         return "";
     #endif
     }
 #endif
 };
 
-}} // namespace boost_part::detail
+}} // namespace boost::detail
 
 #endif // BOOST_TYPE_INDEX_DETAIL_COMPILE_TIME_TYPE_INFO_HPP
 

@@ -18,7 +18,7 @@
 #include <boost/detail/lightweight_test_report.hpp>
 #include <iostream>
 
-using boost_part::filesystem::path;
+using boost::filesystem::path;
 using std::cout;
 using std::endl;
 
@@ -107,5 +107,5 @@ int test_main(int, char*[])
   lexically_relative_test();
   lexically_proximate_test();
 
-  return ::boost_part::report_errors();
+  return ::boost::report_errors();
 }

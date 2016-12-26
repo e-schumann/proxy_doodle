@@ -15,7 +15,7 @@
 #endif
 
 
-namespace boost_part_no_explicit_function_template_arguments{
+namespace boost_no_explicit_function_template_arguments{
 
 struct foo
 {

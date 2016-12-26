@@ -30,7 +30,7 @@ struct void_ { typedef void_ type; };
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 template< typename T >
 struct is_void_

@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
 #include "boost_no_inline_memb_init.ipp"
 #else
-namespace boost_part_no_inclass_member_initialization = empty_boost;
+namespace boost_no_inclass_member_initialization = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_inclass_member_initialization::test();
+   return boost_no_inclass_member_initialization::test();
 }
 

@@ -13,7 +13,7 @@
 #include <stdio.h>
 
 
-namespace boost_part_no_swprintf{
+namespace boost_no_swprintf{
 
 int test()
 {

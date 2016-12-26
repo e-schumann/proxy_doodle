@@ -23,7 +23,7 @@
 #  include <boost/detail/lightweight_main.hpp>
 #endif
 
-namespace fs = boost_part::filesystem;
+namespace fs = boost::filesystem;
 using fs::path;
 using std::cout;
 using std::endl;
@@ -59,5 +59,5 @@ int cpp_main(int argc, char* argv[])
     // Remove any test files or directories here
   }
 
-  return ::boost_part::report_errors();
+  return ::boost::report_errors();
 }

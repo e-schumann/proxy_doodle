@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_PTHREAD_DELAY_NP
 #include "boost_has_pthread_delay_np.ipp"
 #else
-namespace boost_part_has_pthread_delay_np = empty_boost;
+namespace boost_has_pthread_delay_np = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_pthread_delay_np::test();
+   return boost_has_pthread_delay_np::test();
 }
 

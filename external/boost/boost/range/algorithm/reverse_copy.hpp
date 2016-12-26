@@ -16,7 +16,7 @@
 #include <boost/iterator/iterator_concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -30,11 +30,11 @@ template<class BidirectionalRange, class OutputIterator>
 inline OutputIterator reverse_copy(const BidirectionalRange& rng, OutputIterator out)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<const BidirectionalRange> ));
-    return std::reverse_copy(boost_part::begin(rng), boost_part::end(rng), out);
+    return std::reverse_copy(boost::begin(rng), boost::end(rng), out);
 }
 
     } // namespace range
     using range::reverse_copy;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

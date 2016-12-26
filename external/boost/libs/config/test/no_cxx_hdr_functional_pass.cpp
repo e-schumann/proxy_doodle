@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_FUNCTIONAL
 #include "boost_no_cxx_hdr_functional.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_functional = empty_boost;
+namespace boost_no_cxx11_hdr_functional = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_functional::test();
+   return boost_no_cxx11_hdr_functional::test();
 }
 

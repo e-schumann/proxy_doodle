@@ -9,7 +9,7 @@
 //  TITLE:         C++11 ranged-based for statement unavailable
 //  DESCRIPTION:   The compiler does not support the C++11 range-based for statement
 
-namespace boost_part_no_cxx11_range_based_for {
+namespace boost_no_cxx11_range_based_for {
 
 int test()
 {

@@ -34,7 +34,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace test_tools {
 namespace tt_detail {
 
@@ -44,7 +44,7 @@ namespace tt_detail {
 
 template<typename T>
 struct print_log_value {
-    BOOST_STATIC_ASSERT_MSG( (boost_part::has_left_shift<std::ostream,T>::value),
+    BOOST_STATIC_ASSERT_MSG( (boost::has_left_shift<std::ostream,T>::value),
                              "Type has to implement operator<< to be printable");
 
     void    operator()( std::ostream& ostr, T const& t )
@@ -189,7 +189,7 @@ operator<<( std::ostream& ostr, print_helper_t<T> const& ph )
 // ************************************************************************** //
 
 #define BOOST_TEST_DONT_PRINT_LOG_VALUE( the_type )         \
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{ namespace test_tools{ namespace tt_detail{ \
+namespace boost{ namespace test_tools{ namespace tt_detail{ \
 template<>                                                  \
 struct print_log_value<the_type > {                         \
     void    operator()( std::ostream&, the_type const& ) {} \
@@ -198,7 +198,7 @@ struct print_log_value<the_type > {                         \
 /**/
 
 } // namespace test_tools
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

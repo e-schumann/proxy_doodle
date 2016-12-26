@@ -10,7 +10,7 @@
 #include <boost/filesystem/fstream.hpp>
 #include <string>
 #include <list>
-namespace fs = boost_part::filesystem;
+namespace fs = boost::filesystem;
 
 int main()
 {

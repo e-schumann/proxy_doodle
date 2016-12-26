@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_MEMBER_FUNCTION_SPECIALIZATIONS
 #include "boost_no_mem_func_spec.ipp"
 #else
-namespace boost_part_no_member_function_specializations = empty_boost;
+namespace boost_no_member_function_specializations = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_member_function_specializations::test();
+   return boost_no_member_function_specializations::test();
 }
 

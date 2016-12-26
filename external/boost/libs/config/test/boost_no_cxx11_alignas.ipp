@@ -10,7 +10,7 @@
 //  TITLE:         C++11 alignas keyword.
 //  DESCRIPTION:   The compiler does not support the C++11 alignment specification with alignas keyword.
 
-namespace boost_part_no_cxx11_alignas {
+namespace boost_no_cxx11_alignas {
 
 struct alignas(16) my_data1
 {

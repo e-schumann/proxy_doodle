@@ -14,7 +14,7 @@
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/has_trivial_constructor.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
@@ -45,20 +45,20 @@ public:
         return (*m_impl)(arg);
     }
 private:
-    boost_part::optional<F> m_impl;
+    boost::optional<F> m_impl;
 };
 
 template<typename F, typename R>
 struct default_constructible_unary_fn_gen
 {
-    typedef typename boost_part::mpl::if_<
-        boost_part::has_trivial_default_constructor<F>,
+    typedef typename boost::mpl::if_<
+        boost::has_trivial_default_constructor<F>,
         F,
         default_constructible_unary_fn_wrapper<F,R>
     >::type type;
 };
 
     } // namespace range_detail
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

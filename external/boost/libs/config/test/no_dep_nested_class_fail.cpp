@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_dependent_nested_derivations::test();
+   return boost_no_dependent_nested_derivations::test();
 }
 

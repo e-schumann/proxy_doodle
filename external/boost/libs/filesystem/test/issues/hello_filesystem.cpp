@@ -25,7 +25,7 @@
 
 using std::cout;
 using std::endl;
-namespace fs = boost_part::filesystem;
+namespace fs = boost::filesystem;
 
 //------------------------------------  cpp_main  --------------------------------------//
 
@@ -35,5 +35,5 @@ int cpp_main(int argc, char* argv[])
 
   BOOST_TEST(fs::exists("."));
 
-  return ::boost_part::report_errors();
+  return ::boost::report_errors();
 } // cpp_main

@@ -36,7 +36,7 @@
 #  pragma warning(disable: 4800)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 namespace BOOST_REGEX_DETAIL_NS{
 
@@ -230,14 +230,14 @@ public:
    void finalize(const charT* p1, const charT* p2);
 protected:
    regex_data<charT, traits>*    m_pdata;              // pointer to the basic_regex_data struct we are filling in
-   const ::boost_part::regex_traits_wrapper<traits>&  
+   const ::boost::regex_traits_wrapper<traits>&  
                                  m_traits;             // convenience reference to traits class
    re_syntax_base*               m_last_state;         // the last state we added
    bool                          m_icase;              // true for case insensitive matches
    unsigned                      m_repeater_id;        // the state_id of the next repeater
    bool                          m_has_backrefs;       // true if there are actually any backrefs
    unsigned                      m_backrefs;           // bitmask of permitted backrefs
-   boost_part::uintmax_t              m_bad_repeats;        // bitmask of repeats we can't deduce a startmap for;
+   boost::uintmax_t              m_bad_repeats;        // bitmask of repeats we can't deduce a startmap for;
    bool                          m_has_recursions;     // set when we have recursive expresisons to fixup
    std::vector<bool>             m_recursion_checks;   // notes which recursions we've followed while analysing this expression
    typename traits::char_class_type m_word_mask;       // mask used to determine if a character is a word character
@@ -267,7 +267,7 @@ basic_regex_creator<charT, traits>::basic_regex_creator(regex_data<charT, traits
    : m_pdata(data), m_traits(*(data->m_ptraits)), m_last_state(0), m_repeater_id(0), m_has_backrefs(false), m_backrefs(0), m_has_recursions(false)
 {
    m_pdata->m_data.clear();
-   m_pdata->m_status = ::boost_part::regex_constants::error_ok;
+   m_pdata->m_status = ::boost::regex_constants::error_ok;
    static const charT w = 'w';
    static const charT s = 's';
    static const charT l[5] = { 'l', 'o', 'w', 'e', 'r', };
@@ -371,9 +371,9 @@ re_syntax_base* basic_regex_creator<charT, traits>::append_set(
    //
    // fill in the basics:
    //
-   result->csingles = static_cast<unsigned int>(::boost_part::BOOST_REGEX_DETAIL_NS::distance(char_set.singles_begin(), char_set.singles_end()));
-   result->cranges = static_cast<unsigned int>(::boost_part::BOOST_REGEX_DETAIL_NS::distance(char_set.ranges_begin(), char_set.ranges_end())) / 2;
-   result->cequivalents = static_cast<unsigned int>(::boost_part::BOOST_REGEX_DETAIL_NS::distance(char_set.equivalents_begin(), char_set.equivalents_end()));
+   result->csingles = static_cast<unsigned int>(::boost::BOOST_REGEX_DETAIL_NS::distance(char_set.singles_begin(), char_set.singles_end()));
+   result->cranges = static_cast<unsigned int>(::boost::BOOST_REGEX_DETAIL_NS::distance(char_set.ranges_begin(), char_set.ranges_end())) / 2;
+   result->cequivalents = static_cast<unsigned int>(::boost::BOOST_REGEX_DETAIL_NS::distance(char_set.equivalents_begin(), char_set.equivalents_end()));
    result->cclasses = char_set.classes();
    result->cnclasses = char_set.negated_classes();
    if(flags() & regbase::icase)
@@ -759,7 +759,7 @@ void basic_regex_creator<charT, traits>::fixup_recursions(re_syntax_base* state)
                   {
                      // check of sub-expression that doesn't exist:
                      if(0 == this->m_pdata->m_status) // update the error code if not already set
-                        this->m_pdata->m_status = boost_part::regex_constants::error_bad_pattern;
+                        this->m_pdata->m_status = boost::regex_constants::error_bad_pattern;
                      //
                      // clear the expression, we should be empty:
                      //
@@ -771,7 +771,7 @@ void basic_regex_creator<charT, traits>::fixup_recursions(re_syntax_base* state)
                      if(0 == (this->flags() & regex_constants::no_except))
                      {
                         std::string message = "Encountered a forward reference to a marked sub-expression that does not exist.";
-                        boost_part::regex_error e(message, boost_part::regex_constants::error_bad_pattern, 0);
+                        boost::regex_error e(message, boost::regex_constants::error_bad_pattern, 0);
                         e.raise();
                      }
                   }
@@ -841,7 +841,7 @@ void basic_regex_creator<charT, traits>::fixup_recursions(re_syntax_base* state)
             {
                // recursion to sub-expression that doesn't exist:
                if(0 == this->m_pdata->m_status) // update the error code if not already set
-                  this->m_pdata->m_status = boost_part::regex_constants::error_bad_pattern;
+                  this->m_pdata->m_status = boost::regex_constants::error_bad_pattern;
                //
                // clear the expression, we should be empty:
                //
@@ -853,7 +853,7 @@ void basic_regex_creator<charT, traits>::fixup_recursions(re_syntax_base* state)
                if(0 == (this->flags() & regex_constants::no_except))
                {
                   std::string message = "Encountered a forward reference to a recursive sub-expression that does not exist.";
-                  boost_part::regex_error e(message, boost_part::regex_constants::error_bad_pattern, 0);
+                  boost::regex_error e(message, boost::regex_constants::error_bad_pattern, 0);
                   e.raise();
                }
             }
@@ -907,7 +907,7 @@ void basic_regex_creator<charT, traits>::create_startmaps(re_syntax_base* state)
          {
             // Oops error:
             if(0 == this->m_pdata->m_status) // update the error code if not already set
-               this->m_pdata->m_status = boost_part::regex_constants::error_bad_pattern;
+               this->m_pdata->m_status = boost::regex_constants::error_bad_pattern;
             //
             // clear the expression, we should be empty:
             //
@@ -919,7 +919,7 @@ void basic_regex_creator<charT, traits>::create_startmaps(re_syntax_base* state)
             if(0 == (this->flags() & regex_constants::no_except))
             {
                std::string message = "Invalid lookbehind assertion encountered in the regular expression.";
-               boost_part::regex_error e(message, boost_part::regex_constants::error_bad_pattern, 0);
+               boost::regex_error e(message, boost::regex_constants::error_bad_pattern, 0);
                e.raise();
             }
          }
@@ -1110,7 +1110,7 @@ void basic_regex_creator<charT, traits>::create_startmap(re_syntax_base* state, 
             {
                // Infinite recursion!!
                if(0 == this->m_pdata->m_status) // update the error code if not already set
-                  this->m_pdata->m_status = boost_part::regex_constants::error_bad_pattern;
+                  this->m_pdata->m_status = boost::regex_constants::error_bad_pattern;
                //
                // clear the expression, we should be empty:
                //
@@ -1122,7 +1122,7 @@ void basic_regex_creator<charT, traits>::create_startmap(re_syntax_base* state, 
                if(0 == (this->flags() & regex_constants::no_except))
                {
                   std::string message = "Encountered an infinite recursion.";
-                  boost_part::regex_error e(message, boost_part::regex_constants::error_bad_pattern, 0);
+                  boost::regex_error e(message, boost::regex_constants::error_bad_pattern, 0);
                   e.raise();
                }
             }
@@ -1421,7 +1421,7 @@ bool basic_regex_creator<charT, traits>::is_bad_repeat(re_syntax_base* pt)
          unsigned state_id = static_cast<re_repeat*>(pt)->state_id;
          if(state_id > sizeof(m_bad_repeats) * CHAR_BIT)
             return true;  // run out of bits, assume we can't traverse this one.
-         static const boost_part::uintmax_t one = 1uL;
+         static const boost::uintmax_t one = 1uL;
          return m_bad_repeats & (one << state_id);
       }
    default:
@@ -1441,7 +1441,7 @@ void basic_regex_creator<charT, traits>::set_bad_repeat(re_syntax_base* pt)
    case syntax_element_long_set_rep:
       {
          unsigned state_id = static_cast<re_repeat*>(pt)->state_id;
-         static const boost_part::uintmax_t one = 1uL;
+         static const boost::uintmax_t one = 1uL;
          if(state_id <= sizeof(m_bad_repeats) * CHAR_BIT)
             m_bad_repeats |= (one << state_id);
       }
@@ -1537,7 +1537,7 @@ void basic_regex_creator<charT, traits>::probe_leading_repeat(re_syntax_base* st
 
 } // namespace BOOST_REGEX_DETAIL_NS
 
-} // namespace boost_part
+} // namespace boost
 
 #ifdef BOOST_MSVC
 #  pragma warning(pop)

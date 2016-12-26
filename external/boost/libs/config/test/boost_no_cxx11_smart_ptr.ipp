@@ -15,7 +15,7 @@
 // but with some std lib's we have to include <functional> as well...
 #include <functional>
 
-namespace boost_part_no_cxx11_smart_ptr {
+namespace boost_no_cxx11_smart_ptr {
 
 int test()
 {

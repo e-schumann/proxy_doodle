@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_NRVO
 #include "boost_has_nrvo.ipp"
 #else
-namespace boost_part_has_nrvo = empty_boost;
+namespace boost_has_nrvo = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_nrvo::test();
+   return boost_has_nrvo::test();
 }
 

@@ -74,7 +74,7 @@
 
 #if !defined(BOOST_NO_UNSPECIFIED_BOOL)
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace detail {
 
@@ -107,24 +107,24 @@ namespace detail {
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
 #define BOOST_EXPLICIT_OPERATOR_BOOL()\
-    BOOST_FORCEINLINE operator boost_part::detail::unspecified_bool_type () const\
+    BOOST_FORCEINLINE operator boost::detail::unspecified_bool_type () const\
     {\
-        return (!this->operator! () ? &boost_part::detail::unspecified_bool::true_value : (boost_part::detail::unspecified_bool_type)0);\
+        return (!this->operator! () ? &boost::detail::unspecified_bool::true_value : (boost::detail::unspecified_bool_type)0);\
     }
 
 #define BOOST_EXPLICIT_OPERATOR_BOOL_NOEXCEPT()\
-    BOOST_FORCEINLINE operator boost_part::detail::unspecified_bool_type () const BOOST_NOEXCEPT\
+    BOOST_FORCEINLINE operator boost::detail::unspecified_bool_type () const BOOST_NOEXCEPT\
     {\
-        return (!this->operator! () ? &boost_part::detail::unspecified_bool::true_value : (boost_part::detail::unspecified_bool_type)0);\
+        return (!this->operator! () ? &boost::detail::unspecified_bool::true_value : (boost::detail::unspecified_bool_type)0);\
     }
 
 #define BOOST_CONSTEXPR_EXPLICIT_OPERATOR_BOOL()\
-    BOOST_FORCEINLINE BOOST_CONSTEXPR operator boost_part::detail::unspecified_bool_type () const BOOST_NOEXCEPT\
+    BOOST_FORCEINLINE BOOST_CONSTEXPR operator boost::detail::unspecified_bool_type () const BOOST_NOEXCEPT\
     {\
-        return (!this->operator! () ? &boost_part::detail::unspecified_bool::true_value : (boost_part::detail::unspecified_bool_type)0);\
+        return (!this->operator! () ? &boost::detail::unspecified_bool::true_value : (boost::detail::unspecified_bool_type)0);\
     }
 
 #else // !defined(BOOST_NO_UNSPECIFIED_BOOL)

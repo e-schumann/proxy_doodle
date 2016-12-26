@@ -18,7 +18,7 @@
 #include <boost/mpl/apply_wrap.hpp>
 #include <boost/mpl/aux_/config/forwarding.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl { namespace aux {
+namespace boost { namespace mpl { namespace aux {
 
 template<
       typename F

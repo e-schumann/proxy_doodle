@@ -11,7 +11,7 @@
 
 #include <limits>
 
-namespace boost_part_no_cxx11_numeric_limits{
+namespace boost_no_cxx11_numeric_limits{
 
 int f()
 {

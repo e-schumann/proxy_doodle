@@ -16,8 +16,8 @@
 #include <boost/exception/detail/is_output_streamable.hpp>
 #include <sstream>
 
-namespace boost_part {} namespace boost = boost_part; namespace
-boost_part
+namespace
+boost
     {
     template <class T,class U>
     std::string to_string( std::pair<T,U> const & );
@@ -28,7 +28,7 @@ boost_part
         {
         template <class T>
         typename disable_if<is_output_streamable<T>,char>::type to_string( T const & );
-        using boost_part::to_string;
+        using boost::to_string;
 
         template <class,bool IsOutputStreamable>
         struct has_to_string_impl;

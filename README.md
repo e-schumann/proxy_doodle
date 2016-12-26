@@ -12,7 +12,7 @@ gradle naming conventions for directory structure and tests.
 3. mkdir build
 4. cd build
 5. cmake ..
-6. cmake --build .
+6. cmake --build .       ( cmake --build . -- VERBOSE=1)
 7. ctest -VV
 
 
@@ -25,7 +25,7 @@ git checkout tags/boost-1.62.0 -b t_build_1_62   <==== don't! This tagged versio
 ./b2 -j4 --build-dir=./build --layout=versioned toolset=gcc cxxflags="-std=c++11" variant=release link=shared threading=multi runtime-link=shared
 ./b2 toolset=gcc cxxflags="-std=c++11" tools/bcp
 
-dist/bin/bcp --boost=/usr/include --namespace=fsboost --namespace-alias filesystem config build ~/boost_extract
+dist/bin/bcp --boost=/opt/software/boost-git filesystem config build $HOME/develop/proxy_doodle_2/external/boost
 
 Remark: .git are copied to (which result in fatal error when doing git add boost_extract)
 

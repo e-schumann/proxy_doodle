@@ -18,7 +18,7 @@
 
 #include <boost/detail/workaround.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace unit_test {
 
@@ -34,7 +34,7 @@ typedef char const* const           c_literal_string;
 
 } // namespace unit_test
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TEST_UTILS_BASIC_CSTRING_FWD_HPP
 

@@ -9,12 +9,12 @@
 #ifndef BOOST_TT_CONDITIONAL_HPP_INCLUDED
 #define BOOST_TT_CONDITIONAL_HPP_INCLUDED
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 template <bool b, class T, class U> struct conditional { typedef T type; };
 template <class T, class U> struct conditional<false, T, U> { typedef U type; };
 
-} // namespace boost_part
+} // namespace boost
 
 
 #endif // BOOST_TT_CONDITIONAL_HPP_INCLUDED

@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_STD_USE_FACET
 #include "boost_no_std_use_facet.ipp"
 #else
-namespace boost_part_no_std_use_facet = empty_boost;
+namespace boost_no_std_use_facet = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_std_use_facet::test();
+   return boost_no_std_use_facet::test();
 }
 

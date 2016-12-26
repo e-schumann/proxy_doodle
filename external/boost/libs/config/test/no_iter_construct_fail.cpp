@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_templated_iterator_constructors::test();
+   return boost_no_templated_iterator_constructors::test();
 }
 

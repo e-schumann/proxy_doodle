@@ -13,7 +13,7 @@
 #include <istream>
 #include <ostream>
 
-namespace boost_part_no_iostream
+namespace boost_no_iostream
 {
 
 int test()

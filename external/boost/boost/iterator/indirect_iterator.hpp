@@ -34,7 +34,7 @@
 
 #include <boost/iterator/detail/config_def.hpp> // must be last #include
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace iterators {
 
   template <class Iter, class Value, class Category, class Reference, class Difference>
@@ -45,7 +45,7 @@ namespace iterators {
     template <class Iter, class Value, class Category, class Reference, class Difference>
     struct indirect_base
     {
-        typedef typename boost_part::detail::iterator_traits<Iter>::value_type dereferenceable;
+        typedef typename boost::detail::iterator_traits<Iter>::value_type dereferenceable;
 
         typedef iterator_adaptor<
             indirect_iterator<Iter, Value, Category, Reference, Difference>
@@ -138,7 +138,7 @@ namespace iterators {
 using iterators::indirect_iterator;
 using iterators::make_indirect_iterator;
 
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/iterator/detail/config_undef.hpp>
 

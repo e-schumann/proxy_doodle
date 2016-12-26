@@ -12,7 +12,7 @@
 
 #include <limits>
 
-namespace boost_part_no_limits_compile_time_constants{
+namespace boost_no_limits_compile_time_constants{
 
 struct UDT{};
 

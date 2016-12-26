@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_VOID_RETURNS
 #include "boost_no_void_returns.ipp"
 #else
-namespace boost_part_no_void_returns = empty_boost;
+namespace boost_no_void_returns = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_void_returns::test();
+   return boost_no_void_returns::test();
 }
 

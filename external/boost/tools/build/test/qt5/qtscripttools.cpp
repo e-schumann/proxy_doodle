@@ -15,7 +15,7 @@
 
 #include <iostream>
 
-namespace utf = boost_part::unit_test::framework;
+namespace utf = boost::unit_test::framework;
 
 std::ostream&
 operator << (std::ostream& stream, QString const& string)

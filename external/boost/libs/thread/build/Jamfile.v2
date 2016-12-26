@@ -21,11 +21,11 @@
 #
 # The naming of the resulting libraries is mostly the same for the
 # variant native to the build platform, i.e.
-# boost_part_thread and the boost specific tagging.
+# boost_thread and the boost specific tagging.
 # For the library variant that is not native on the build platform
 # an additional tag is applied:
-# boost_part_thread_pthread for the pthread variant on windows, and
-# boost_part_thread_win32 for the win32 variant (likely when built on cygwin).
+# boost_thread_pthread for the pthread variant on windows, and
+# boost_thread_win32 for the win32 variant (likely when built on cygwin).
 #
 # To request the pthread variant on windows, from boost root you would
 # say e.g:
@@ -52,7 +52,7 @@ project boost/thread
       #<define>BOOST_SYSTEM_NO_DEPRECATED
       #<define>BOOST_THREAD_DONT_PROVIDE_INTERRUPTIONS
 
-      <library>/boost/system//boost_part_system
+      <library>/boost/system//boost_system
        #-pedantic -ansi -std=gnu++0x -Wextra -fpermissive
         <warnings>all
         <toolset>gcc:<cxxflags>-Wextra
@@ -138,7 +138,7 @@ project boost/thread
       #<define>BOOST_THREAD_THROW_IF_PRECONDITION_NOT_SATISFIED
       #<define>BOOST_SYSTEM_NO_DEPRECATED
       #<define>BOOST_THREAD_DONT_PROVIDE_INTERRUPTIONS
-      <library>/boost/system//boost_part_system
+      <library>/boost/system//boost_system
     ;
 
 local rule default_threadapi ( )
@@ -251,7 +251,7 @@ rule usage-requirements ( properties * )
 
     #if ! <toolset>vacpp in $(properties) || <toolset-vacpp:version>11.1 in $(properties) || <toolset-vacpp:version>12.1.0.1 in $(properties)  || <toolset-vacpp:version>12.1 in $(properties)
     #{
-      result += <library>/boost/chrono//boost_part_chrono ;
+      result += <library>/boost/chrono//boost_chrono ;
     #}
 
     return $(result) ;
@@ -279,11 +279,11 @@ rule requirements ( properties * )
         result += <define>BOOST_THREAD_DONT_USE_CHRONO ;
         if ! [ configure.builds has_atomic_flag_lockfree 
             : $(properties) : "lockfree boost::atomic_flag" ]  { 
-           result += <library>/boost/atomic//boost_part_atomic ; 
+           result += <library>/boost/atomic//boost_atomic ; 
         } 
     } else {
         result += <define>BOOST_THREAD_USES_CHRONO ;
-        result += <library>/boost/chrono//boost_part_chrono ;
+        result += <library>/boost/chrono//boost_chrono ;
     }
 
     return $(result) ;
@@ -310,7 +310,7 @@ alias thread_sources
 
 explicit thread_sources ;
 
-lib boost_part_thread
+lib boost_thread
     : thread_sources
     : <conditional>@requirements
     :
@@ -319,4 +319,4 @@ lib boost_part_thread
       <conditional>@usage-requirements
     ;
 
-boost-install boost_part_thread ;
+boost-install boost_thread ;

@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
 #include "boost_no_limits_const_exp.ipp"
 #else
-namespace boost_part_no_limits_compile_time_constants = empty_boost;
+namespace boost_no_limits_compile_time_constants = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_limits_compile_time_constants::test();
+   return boost_no_limits_compile_time_constants::test();
 }
 

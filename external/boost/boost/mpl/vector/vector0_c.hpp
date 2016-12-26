@@ -17,7 +17,7 @@
 #include <boost/mpl/vector/vector0.hpp>
 #include <boost/mpl/integral_c.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 template< typename T > struct vector0_c
     : vector0<>

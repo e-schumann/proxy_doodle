@@ -11,7 +11,7 @@
 #include <boost/iterator.hpp>
 #include <boost/iterator/iterator_adaptor.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace iterators {
 
   //
@@ -40,7 +40,7 @@ namespace iterators {
       {}
 
    private:
-      typename super_t::reference dereference() const { return *boost_part::prior(this->base()); }
+      typename super_t::reference dereference() const { return *boost::prior(this->base()); }
 
       void increment() { --this->base_reference(); }
       void decrement() { ++this->base_reference(); }
@@ -69,6 +69,6 @@ namespace iterators {
 using iterators::reverse_iterator;
 using iterators::make_reverse_iterator;
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_REVERSE_ITERATOR_23022003THW_HPP

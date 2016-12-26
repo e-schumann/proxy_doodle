@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_MS_INT64_NUMERIC_LIMITS
 #include "boost_no_i64_limits.ipp"
 #else
-namespace boost_part_no_ms_int64_numeric_limits = empty_boost;
+namespace boost_no_ms_int64_numeric_limits = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_ms_int64_numeric_limits::test();
+   return boost_no_ms_int64_numeric_limits::test();
 }
 

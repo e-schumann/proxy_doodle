@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_member_function_specializations::test();
+   return boost_no_member_function_specializations::test();
 }
 

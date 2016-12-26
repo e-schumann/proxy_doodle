@@ -17,7 +17,7 @@
 #include <boost/range/iterator_range.hpp>
 #include <boost/range/concepts.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace adaptors
     {

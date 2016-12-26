@@ -30,7 +30,7 @@
     match depending on the iterator used.
 */
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace algorithm { 
 
 //  find_iterator -----------------------------------------------//
@@ -56,7 +56,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
         {
         private:
             // facade support
-            friend class ::boost_part::iterator_core_access;
+            friend class ::boost::iterator_core_access;
 
         private:
         // typedefs
@@ -113,9 +113,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                     FinderT Finder ) :
                 detail::find_iterator_base<IteratorT>(Finder,0)
             {
-                iterator_range<BOOST_STRING_TYPENAME range_iterator<RangeT>::type> lit_col(::boost_part::as_literal(Col));
-                m_Match=::boost_part::make_iterator_range(::boost_part::begin(lit_col), ::boost_part::begin(lit_col));
-                m_End=::boost_part::end(lit_col);
+                iterator_range<BOOST_STRING_TYPENAME range_iterator<RangeT>::type> lit_col(::boost::as_literal(Col));
+                m_Match=::boost::make_iterator_range(::boost::begin(lit_col), ::boost::begin(lit_col));
+                m_End=::boost::end(lit_col);
 
                 increment();
             }
@@ -212,7 +212,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
         {
         private:
             // facade support
-            friend class ::boost_part::iterator_core_access;
+            friend class ::boost::iterator_core_access;
 
         private:
         // typedefs
@@ -282,10 +282,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 detail::find_iterator_base<IteratorT>(Finder,0),
                 m_bEof(false)
             {
-                iterator_range<BOOST_STRING_TYPENAME range_iterator<RangeT>::type> lit_col(::boost_part::as_literal(Col));
-                m_Match=make_iterator_range(::boost_part::begin(lit_col), ::boost_part::begin(lit_col));
-                m_Next=::boost_part::begin(lit_col);
-                m_End=::boost_part::end(lit_col);
+                iterator_range<BOOST_STRING_TYPENAME range_iterator<RangeT>::type> lit_col(::boost::as_literal(Col));
+                m_Match=make_iterator_range(::boost::begin(lit_col), ::boost::begin(lit_col));
+                m_Next=::boost::begin(lit_col);
+                m_End=::boost::end(lit_col);
 
                 // force the correct behavior for empty sequences and yield at least one token
                 if(m_Next!=m_End)
@@ -382,7 +382,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
     using algorithm::split_iterator;
     using algorithm::make_split_iterator;
 
-} // namespace boost_part
+} // namespace boost
 
 
 #endif  // BOOST_STRING_FIND_ITERATOR_HPP

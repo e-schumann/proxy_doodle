@@ -9,7 +9,7 @@
 //  TITLE:         member templates keyword
 //  DESCRIPTION:   Member template keyword not supported.
 
-namespace boost_part_no_member_template_keyword{
+namespace boost_no_member_template_keyword{
 
 #ifndef BOOST_NO_MEMBER_TEMPLATES
 

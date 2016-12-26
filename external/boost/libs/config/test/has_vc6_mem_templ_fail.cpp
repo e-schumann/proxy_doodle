@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_msvc6_member_templates::test();
+   return boost_msvc6_member_templates::test();
 }
 

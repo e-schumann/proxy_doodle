@@ -31,7 +31,7 @@
     for finders provided in this library.
 */
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace algorithm {
 
 //  Finder generators ------------------------------------------//
@@ -56,7 +56,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 detail::first_finderF<
                     BOOST_STRING_TYPENAME 
                         range_const_iterator<RangeT>::type,
-                        is_equal>( ::boost_part::as_literal(Search), is_equal() ) ;
+                        is_equal>( ::boost::as_literal(Search), is_equal() ) ;
         }
 
         //! "First" finder
@@ -74,7 +74,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 detail::first_finderF<
                     BOOST_STRING_TYPENAME 
                         range_const_iterator<RangeT>::type,
-                    PredicateT>( ::boost_part::as_literal(Search), Comp );
+                    PredicateT>( ::boost::as_literal(Search), Comp );
         }
 
         //! "Last" finder
@@ -97,7 +97,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 detail::last_finderF<
                     BOOST_STRING_TYPENAME 
                         range_const_iterator<RangeT>::type,
-                    is_equal>( ::boost_part::as_literal(Search), is_equal() );
+                    is_equal>( ::boost::as_literal(Search), is_equal() );
         }
         //! "Last" finder
         /*!
@@ -113,7 +113,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 detail::last_finderF<
                     BOOST_STRING_TYPENAME 
                         range_const_iterator<RangeT>::type,
-                    PredicateT>( ::boost_part::as_literal(Search), Comp ) ;
+                    PredicateT>( ::boost::as_literal(Search), Comp ) ;
         }
 
         //! "Nth" finder
@@ -139,7 +139,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 detail::nth_finderF<
                     BOOST_STRING_TYPENAME 
                         range_const_iterator<RangeT>::type,
-                    is_equal>( ::boost_part::as_literal(Search), Nth, is_equal() ) ;
+                    is_equal>( ::boost::as_literal(Search), Nth, is_equal() ) ;
         }
         //! "Nth" finder
         /*!
@@ -158,7 +158,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 detail::nth_finderF<
                     BOOST_STRING_TYPENAME 
                         range_const_iterator<RangeT>::type,
-                    PredicateT>( ::boost_part::as_literal(Search), Nth, Comp );
+                    PredicateT>( ::boost::as_literal(Search), Nth, Comp );
         }
 
         //! "Head" finder
@@ -264,7 +264,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
     using algorithm::token_finder;
     using algorithm::range_finder;
 
-} // namespace boost_part
+} // namespace boost
 
 
 #endif  // BOOST_STRING_FINDER_HPP

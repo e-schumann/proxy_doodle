@@ -24,11 +24,11 @@
 #ifdef BOOST_MSVC_STD_ITERATOR
 #include "boost_has_vc_iterator.ipp"
 #else
-namespace boost_part_msvc_std_iterator = empty_boost;
+namespace boost_msvc_std_iterator = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_msvc_std_iterator::test();
+   return boost_msvc_std_iterator::test();
 }
 

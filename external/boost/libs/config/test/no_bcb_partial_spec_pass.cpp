@@ -24,11 +24,11 @@
 #ifndef BOOST_BCB_PARTIAL_SPECIALIZATION_BUG
 #include "boost_no_bcb_partial_spec.ipp"
 #else
-namespace boost_part_bcb_partial_specialization_bug = empty_boost;
+namespace boost_bcb_partial_specialization_bug = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_bcb_partial_specialization_bug::test();
+   return boost_bcb_partial_specialization_bug::test();
 }
 

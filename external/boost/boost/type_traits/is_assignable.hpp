@@ -13,7 +13,7 @@
 #include <boost/type_traits/integral_constant.hpp>
 #include <boost/detail/workaround.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
    template <class T, class U = T> struct is_assignable;
 
@@ -24,22 +24,22 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part{
 #include <boost/type_traits/detail/yes_no_type.hpp>
 #include <boost/type_traits/declval.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
    namespace detail{
 
       struct is_assignable_imp
       {
-         template<typename T, typename U, typename = decltype(boost_part::declval<T>() = boost_part::declval<U>())>
-         static boost_part::type_traits::yes_type test(int);
+         template<typename T, typename U, typename = decltype(boost::declval<T>() = boost::declval<U>())>
+         static boost::type_traits::yes_type test(int);
 
          template<typename, typename>
-         static boost_part::type_traits::no_type test(...);
+         static boost::type_traits::no_type test(...);
       };
 
    }
 
-   template <class T, class U> struct is_assignable : public integral_constant<bool, sizeof(detail::is_assignable_imp::test<T, U>(0)) == sizeof(boost_part::type_traits::yes_type)>{};
+   template <class T, class U> struct is_assignable : public integral_constant<bool, sizeof(detail::is_assignable_imp::test<T, U>(0)) == sizeof(boost::type_traits::yes_type)>{};
    template <class T, std::size_t N, class U> struct is_assignable<T[N], U> : public is_assignable<T, U>{};
    template <class T, std::size_t N, class U> struct is_assignable<T(&)[N], U> : public is_assignable<T&, U>{};
    template <class T, class U> struct is_assignable<T[], U> : public is_assignable<T, U>{};
@@ -54,7 +54,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part{
 #include <boost/type_traits/has_trivial_assign.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
    // We don't know how to implement this:
    template <class T, class U> struct is_assignable : public integral_constant<bool, false>{};
@@ -72,6 +72,6 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part{
    */
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_IS_ASSIGNABLE_HPP_INCLUDED

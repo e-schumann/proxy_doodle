@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_STATIC_ASSERT
 #include "boost_has_static_assert.ipp"
 #else
-namespace boost_part_has_static_assert = empty_boost;
+namespace boost_has_static_assert = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_static_assert::test();
+   return boost_has_static_assert::test();
 }
 

@@ -14,7 +14,7 @@
 #include <boost/range/concepts.hpp>
 #include <iterator>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
@@ -174,9 +174,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
             BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
 
-            return ::boost_part::range_detail::equal(
-                ::boost_part::begin(rng1), ::boost_part::end(rng1),
-                ::boost_part::begin(rng2), ::boost_part::end(rng2) );
+            return ::boost::range_detail::equal(
+                ::boost::begin(rng1), ::boost::end(rng1),
+                ::boost::begin(rng2), ::boost::end(rng2) );
         }
 
         /// \overload
@@ -187,14 +187,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
             BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
 
-            return ::boost_part::range_detail::equal(
-                ::boost_part::begin(rng1), ::boost_part::end(rng1),
-                ::boost_part::begin(rng2), ::boost_part::end(rng2),
+            return ::boost::range_detail::equal(
+                ::boost::begin(rng1), ::boost::end(rng1),
+                ::boost::begin(rng2), ::boost::end(rng2),
                 pred);
         }
 
     } // namespace range
-    using ::boost_part::range::equal;
-} // namespace boost_part
+    using ::boost::range::equal;
+} // namespace boost
 
 #endif // include guard

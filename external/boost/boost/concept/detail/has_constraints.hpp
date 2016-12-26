@@ -8,7 +8,7 @@
 # include <boost/detail/workaround.hpp>
 # include <boost/concept/detail/backward_compatibility.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace concepts {
+namespace boost { namespace concepts {
 
 namespace detail
 { 
@@ -45,6 +45,6 @@ struct not_satisfied
     typedef mpl::bool_<value> type;
 };
 
-}} // namespace boost_part::concepts::detail
+}} // namespace boost::concepts::detail
 
 #endif // BOOST_CONCEPT_DETAIL_HAS_CONSTRAINTS_DWA2006429_HPP

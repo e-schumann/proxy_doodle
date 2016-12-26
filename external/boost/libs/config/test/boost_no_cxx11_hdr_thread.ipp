@@ -12,7 +12,7 @@
 
 #include <thread>
 
-namespace boost_part_no_cxx11_hdr_thread {
+namespace boost_no_cxx11_hdr_thread {
 
 int test()
 {

@@ -12,7 +12,7 @@
 #include <functional>
 #include <tuple>
 
-namespace boost_part_no_cxx17_std_apply {
+namespace boost_no_cxx17_std_apply {
 
 int foo( int i, int j) {
     return i + j;

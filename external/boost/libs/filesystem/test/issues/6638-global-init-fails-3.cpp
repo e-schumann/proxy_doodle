@@ -2,7 +2,7 @@
 #include <boost/detail/lightweight_main.hpp>
 #include <string>
 
-using namespace boost_part::filesystem;
+using namespace boost::filesystem;
 
 //  The original bug report was that this broke:
 //     path p(L"C:\\TEMP\\");

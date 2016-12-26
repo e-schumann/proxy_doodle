@@ -20,7 +20,7 @@
 #include <boost/type_traits/is_member_pointer.hpp>
 #include <boost/type_traits/conditional.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace type_traits_detail
@@ -41,23 +41,23 @@ template<class T> struct common_type_impl<T, T>
 
 template<class T, class U> struct ct_class
 {
-    BOOST_STATIC_CONSTANT( bool, ct = boost_part::is_class<T>::value || boost_part::is_union<T>::value );
-    BOOST_STATIC_CONSTANT( bool, cu = boost_part::is_class<U>::value || boost_part::is_union<U>::value );
+    BOOST_STATIC_CONSTANT( bool, ct = boost::is_class<T>::value || boost::is_union<T>::value );
+    BOOST_STATIC_CONSTANT( bool, cu = boost::is_class<U>::value || boost::is_union<U>::value );
 
     BOOST_STATIC_CONSTANT( bool, value = ct || cu );
 };
 
 template<class T, class U> struct common_type_impl3;
 
-template<class T, class U> struct common_type_class: public boost_part::conditional<
+template<class T, class U> struct common_type_class: public boost::conditional<
 
-    boost_part::is_convertible<T, U>::value && !boost_part::is_convertible<U, T>::value,
-    boost_part::type_identity<U>,
+    boost::is_convertible<T, U>::value && !boost::is_convertible<U, T>::value,
+    boost::type_identity<U>,
 
-    typename boost_part::conditional<
+    typename boost::conditional<
 
-        boost_part::is_convertible<U, T>::value && !boost_part::is_convertible<T, U>::value,
-        boost_part::type_identity<T>,
+        boost::is_convertible<U, T>::value && !boost::is_convertible<T, U>::value,
+        boost::type_identity<T>,
 
         common_type_impl3<T, U>
     >::type
@@ -65,7 +65,7 @@ template<class T, class U> struct common_type_class: public boost_part::conditio
 {
 };
 
-template<class T, class U> struct common_type_impl: public boost_part::conditional<
+template<class T, class U> struct common_type_impl: public boost::conditional<
     ct_class<T, U>::value,
     common_type_class<T, U>,
     common_type_impl3<T, U> >::type
@@ -76,8 +76,8 @@ template<class T, class U> struct common_type_impl: public boost_part::condition
 
 template<class T, class U> struct common_type_impl4;
 
-template<class T, class U> struct common_type_impl3: public boost_part::conditional<
-    boost_part::is_pointer<T>::value || boost_part::is_pointer<U>::value,
+template<class T, class U> struct common_type_impl3: public boost::conditional<
+    boost::is_pointer<T>::value || boost::is_pointer<U>::value,
     composite_pointer_type<T, U>,
     common_type_impl4<T, U> >::type
 {
@@ -87,8 +87,8 @@ template<class T, class U> struct common_type_impl3: public boost_part::conditio
 
 template<class T, class U> struct common_type_impl5;
 
-template<class T, class U> struct common_type_impl4: public boost_part::conditional<
-    boost_part::is_member_pointer<T>::value || boost_part::is_member_pointer<U>::value,
+template<class T, class U> struct common_type_impl4: public boost::conditional<
+    boost::is_member_pointer<T>::value || boost::is_member_pointer<U>::value,
     composite_member_pointer_type<T, U>,
     common_type_impl5<T, U> >::type
 {
@@ -102,6 +102,6 @@ template<class T, class U> struct common_type_impl5: public common_arithmetic_ty
 
 } // namespace type_traits_detail
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // #ifndef BOOST_TYPE_TRAITS_DETAIL_COMMON_TYPE_IMPL_HPP_INCLUDED

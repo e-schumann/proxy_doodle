@@ -34,7 +34,7 @@
 #define BOOST_SYSTEM_NOEXCEPT BOOST_NOEXCEPT
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace system
   {
@@ -237,7 +237,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
       template <class ErrorConditionEnum>
         error_condition(ErrorConditionEnum e,
-          typename boost_part::enable_if<is_error_condition_enum<ErrorConditionEnum> >::type* = 0) BOOST_SYSTEM_NOEXCEPT
+          typename boost::enable_if<is_error_condition_enum<ErrorConditionEnum> >::type* = 0) BOOST_SYSTEM_NOEXCEPT
       {
         *this = make_error_condition(e);
       }
@@ -251,7 +251,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       }
 
       template<typename ErrorConditionEnum>
-        typename boost_part::enable_if<is_error_condition_enum<ErrorConditionEnum>, error_condition>::type &
+        typename boost::enable_if<is_error_condition_enum<ErrorConditionEnum>, error_condition>::type &
           operator=( ErrorConditionEnum val ) BOOST_SYSTEM_NOEXCEPT
       {
         *this = make_error_condition(val);
@@ -324,7 +324,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
       template <class ErrorCodeEnum>
         error_code(ErrorCodeEnum e,
-          typename boost_part::enable_if<is_error_code_enum<ErrorCodeEnum> >::type* = 0) BOOST_SYSTEM_NOEXCEPT
+          typename boost::enable_if<is_error_code_enum<ErrorCodeEnum> >::type* = 0) BOOST_SYSTEM_NOEXCEPT
       {
         *this = make_error_code(e);
       }
@@ -337,7 +337,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       }
 
       template<typename ErrorCodeEnum>
-        typename boost_part::enable_if<is_error_code_enum<ErrorCodeEnum>, error_code>::type &
+        typename boost::enable_if<is_error_code_enum<ErrorCodeEnum>, error_code>::type &
           operator=( ErrorCodeEnum val ) BOOST_SYSTEM_NOEXCEPT
       {
         *this = make_error_code(val);
@@ -400,7 +400,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
     //  Moving from a "throws" object to a "throws" function without breaking
     //  existing code is a bit of a problem. The workaround is to place the
-    //  "throws" function in namespace boost_part rather than namespace boost_part::system.
+    //  "throws" function in namespace boost rather than namespace boost::system.
 
   }  // namespace system
 
@@ -507,7 +507,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     }
 
   } // namespace system
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/config/abi_suffix.hpp> // pops abi_prefix.hpp pragmas
 

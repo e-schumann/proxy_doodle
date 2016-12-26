@@ -27,7 +27,7 @@
 //
 //  The test returns the number of encountered value-initialization failures.
   
-namespace boost_part_no_complete_value_initialization
+namespace boost_no_complete_value_initialization
 {
   enum enum_type { negative_number = -1, magic_number = 42 };
   
@@ -1007,7 +1007,7 @@ namespace boost_part_no_complete_value_initialization
         << num_failures_of_temporaries << '+'
         << num_failures_of_heap_objects << "): "
         << total_num_failures
-        << "\nDetected by boost_part_no_complete_value_initialization::test() revision 32."
+        << "\nDetected by boost_no_complete_value_initialization::test() revision 32."
         << std::endl;
     }
     return static_cast<int>(total_num_failures);

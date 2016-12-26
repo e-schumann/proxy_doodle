@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX14_STD_EXCHANGE
 #include "boost_no_cxx14_std_exchange.ipp"
 #else
-namespace boost_part_no_cxx14_std_exchange = empty_boost;
+namespace boost_no_cxx14_std_exchange = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx14_std_exchange::test();
+   return boost_no_cxx14_std_exchange::test();
 }
 

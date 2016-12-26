@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_STD_ALLOCATOR
 #include "boost_no_std_allocator.ipp"
 #else
-namespace boost_part_no_std_allocator = empty_boost;
+namespace boost_no_std_allocator = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_std_allocator::test();
+   return boost_no_std_allocator::test();
 }
 

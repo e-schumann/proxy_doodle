@@ -26,7 +26,7 @@
 #include <boost/mpl/bool.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
     namespace detail // is_character<...>
     {
@@ -34,19 +34,19 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
         template < typename T >
         struct is_character
         {
-            typedef BOOST_DEDUCED_TYPENAME boost_part::mpl::bool_<
-                    boost_part::is_same< T, char >::value ||
+            typedef BOOST_DEDUCED_TYPENAME boost::mpl::bool_<
+                    boost::is_same< T, char >::value ||
                     #if !defined(BOOST_NO_STRINGSTREAM) && !defined(BOOST_NO_STD_WSTRING)
-                        boost_part::is_same< T, wchar_t >::value ||
+                        boost::is_same< T, wchar_t >::value ||
                     #endif
                     #ifndef BOOST_NO_CXX11_CHAR16_T
-                        boost_part::is_same< T, char16_t >::value ||
+                        boost::is_same< T, char16_t >::value ||
                     #endif
                     #ifndef BOOST_NO_CXX11_CHAR32_T
-                        boost_part::is_same< T, char32_t >::value ||
+                        boost::is_same< T, char32_t >::value ||
                     #endif
-                   	boost_part::is_same< T, unsigned char >::value ||
-                   	boost_part::is_same< T, signed char >::value
+                   	boost::is_same< T, unsigned char >::value ||
+                   	boost::is_same< T, signed char >::value
             > type;
 
             BOOST_STATIC_CONSTANT(bool, value = (type::value) );

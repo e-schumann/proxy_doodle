@@ -13,7 +13,7 @@
 //                 for function types
 
 
-namespace boost_part_no_function_type_specializations{
+namespace boost_no_function_type_specializations{
 
 template< typename T > struct is_function
 {

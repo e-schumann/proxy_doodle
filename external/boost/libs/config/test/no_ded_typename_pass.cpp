@@ -24,11 +24,11 @@
 #ifndef BOOST_DEDUCED_TYPENAME
 #include "boost_no_ded_typename.ipp"
 #else
-namespace boost_part_deduced_typename = empty_boost;
+namespace boost_deduced_typename = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_deduced_typename::test();
+   return boost_deduced_typename::test();
 }
 

@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_PTHREAD_YIELD
 #include "boost_has_pthread_yield.ipp"
 #else
-namespace boost_part_has_pthread_yield = empty_boost;
+namespace boost_has_pthread_yield = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_pthread_yield::test();
+   return boost_has_pthread_yield::test();
 }
 

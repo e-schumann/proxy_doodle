@@ -11,7 +11,7 @@
 
 #include <typeinfo>
 
-namespace boost_part_no_std_typeinfo
+namespace boost_no_std_typeinfo
 {
 void quiet_warning(const std::type_info*){}
 

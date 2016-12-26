@@ -24,7 +24,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 // ************************************************************************** //
@@ -47,7 +47,7 @@ protected:
 //____________________________________________________________________________//
 
 #define BOOST_TEST_SINGLETON_CONS( type )       \
-friend class boost_part::unit_test::singleton<type>; \
+friend class boost::unit_test::singleton<type>; \
 type() {}                                       \
 /**/
 
@@ -71,7 +71,7 @@ namespace { BOOST_JOIN( inst, _t)& inst = BOOST_JOIN( inst, _t)::instance(); }
 //____________________________________________________________________________//
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 
 #include <boost/test/detail/enable_warnings.hpp>

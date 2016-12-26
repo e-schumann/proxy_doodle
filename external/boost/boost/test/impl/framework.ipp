@@ -65,7 +65,7 @@ namespace std { using ::time; using ::srand; }
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace framework {
 namespace impl {
@@ -264,8 +264,8 @@ private:
         std::vector<component> const& filters = m_components[m_depth-1];
 
         // look for match
-        using namespace boost_part::placeholders;
-        return std::find_if( filters.begin(), filters.end(), bind( &component::pass, _1, boost_part::ref(tu) ) ) != filters.end();
+        using namespace boost::placeholders;
+        return std::find_if( filters.begin(), filters.end(), bind( &component::pass, _1, boost::ref(tu) ) ) != filters.end();
     }
 
     // test_tree_visitor interface
@@ -642,7 +642,7 @@ public:
 
         // 30. Execute setup fixtures if any; any failure here leads to test unit abortion
         BOOST_TEST_FOREACH( test_unit_fixture_ptr, F, tu.p_fixtures.get() ) {
-            result = unit_test_monitor.execute_and_translate( boost_part::bind( &test_unit_fixture::setup, F ) );
+            result = unit_test_monitor.execute_and_translate( boost::bind( &test_unit_fixture::setup, F ) );
             if( result != unit_test_monitor_t::test_ok )
                 break;
         }
@@ -652,7 +652,7 @@ public:
 
         if( result == unit_test_monitor_t::test_ok ) {
             // 40. We are going to time the execution
-            boost_part::timer tu_timer;
+            boost::timer tu_timer;
 
             if( tu.p_type == TUT_SUITE ) {
                 test_suite const& ts = static_cast<test_suite const&>( tu );
@@ -729,7 +729,7 @@ public:
         if( !unit_test_monitor.is_critical_error( result ) ) {
             // execute teardown fixtures if any in reverse order
             BOOST_TEST_REVERSE_FOREACH( test_unit_fixture_ptr, F, tu.p_fixtures.get() ) {
-                result = (std::min)( result, unit_test_monitor.execute_and_translate( boost_part::bind( &test_unit_fixture::teardown, F ), 0 ) );
+                result = (std::min)( result, unit_test_monitor.execute_and_translate( boost::bind( &test_unit_fixture::teardown, F ), 0 ) );
 
                 if( unit_test_monitor.is_critical_error( result ) )
                     break;
@@ -799,7 +799,7 @@ public:
     context_data    m_context;
     int             m_context_idx;
 
-    boost_part::execution_monitor m_aux_em;
+    boost::execution_monitor m_aux_em;
 
     std::map<output_format, runtime_config::stream_holder> m_log_sinks;
     runtime_config::stream_holder m_report_sink;
@@ -933,7 +933,7 @@ setup_loggers()
                     }
 
                     BOOST_TEST_I_ASSRT( format != OF_INVALID,
-                                        boost_part::runtime::access_to_missing_argument()
+                                        boost::runtime::access_to_missing_argument()
                                             << "Unable to determine the logger type from '"
                                             << current_config
                                             << "'. Possible choices are: "
@@ -972,7 +972,7 @@ setup_loggers()
 
 
                     BOOST_TEST_I_ASSRT( formatter_log_level != invalid_log_level,
-                                        boost_part::runtime::access_to_missing_argument()
+                                        boost::runtime::access_to_missing_argument()
                                             << "Unable to determine the log level from '"
                                             << current_config
                                             << "'. Possible choices are: "
@@ -999,13 +999,13 @@ setup_loggers()
 
         } // if/else new logger API
     } // BOOST_TEST_I_TRY
-    BOOST_TEST_I_CATCH( boost_part::runtime::init_error, ex ) {
+    BOOST_TEST_I_CATCH( boost::runtime::init_error, ex ) {
         BOOST_TEST_SETUP_ASSERT( false, ex.msg );
     }
-    BOOST_TEST_I_CATCH( boost_part::runtime::input_error, ex ) {
+    BOOST_TEST_I_CATCH( boost::runtime::input_error, ex ) {
         std::cerr << ex.msg << "\n\n";
 
-        BOOST_TEST_I_THROW( framework::nothing_to_test( boost_part::exit_exception_failure ) );
+        BOOST_TEST_I_THROW( framework::nothing_to_test( boost::exit_exception_failure ) );
     }
 
 
@@ -1062,7 +1062,7 @@ init( init_unit_test_func init_func, int argc, char* argv[] )
 
     // 70. Invoke test module initialization routine
     BOOST_TEST_I_TRY {
-        s_frk_state().m_aux_em.vexecute( boost_part::bind( &impl::invoke_init_func, init_func ) );
+        s_frk_state().m_aux_em.vexecute( boost::bind( &impl::invoke_init_func, init_func ) );
     }
     BOOST_TEST_I_CATCH( execution_exception, ex )  {
         BOOST_TEST_SETUP_ASSERT( false, ex.what() );
@@ -1240,7 +1240,7 @@ deregister_observer( test_observer& to )
 // ************************************************************************** //
 
 int
-add_context( ::boost_part::unit_test::lazy_ostream const& context_descr, bool sticky )
+add_context( ::boost::unit_test::lazy_ostream const& context_descr, bool sticky )
 {
     std::stringstream buffer;
     context_descr( buffer );
@@ -1420,7 +1420,7 @@ run( test_unit_id id, bool continue_test )
     if( call_start_finish ) {
         BOOST_TEST_FOREACH( test_observer*, to, impl::s_frk_state().m_observers ) {
             BOOST_TEST_I_TRY {
-                impl::s_frk_state().m_aux_em.vexecute( boost_part::bind( &test_observer::test_start, to, tcc.p_count ) );
+                impl::s_frk_state().m_aux_em.vexecute( boost::bind( &test_observer::test_start, to, tcc.p_count ) );
             }
             BOOST_TEST_I_CATCH( execution_exception, ex ) {
                 BOOST_TEST_SETUP_ASSERT( false, ex.what() );
@@ -1500,7 +1500,7 @@ test_unit_aborted( test_unit const& tu )
 
 } // namespace framework
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

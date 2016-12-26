@@ -12,7 +12,7 @@
 #include <OS.h>
 
 
-namespace boost_part_has_bethreads{
+namespace boost_has_bethreads{
 
 int test()
 {

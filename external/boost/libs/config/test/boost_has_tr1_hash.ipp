@@ -11,7 +11,7 @@
 
 #include <functional>
 
-namespace boost_part_has_tr1_hash{
+namespace boost_has_tr1_hash{
 
 using std::tr1::hash;
 

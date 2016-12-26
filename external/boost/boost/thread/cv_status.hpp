@@ -11,7 +11,7 @@
 
 #include <boost/core/scoped_enum.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
   // enum class cv_status;

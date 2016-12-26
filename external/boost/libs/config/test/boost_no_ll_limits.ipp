@@ -12,7 +12,7 @@
 
 #include <limits>
 
-namespace boost_part_no_long_long_numeric_limits{
+namespace boost_no_long_long_numeric_limits{
 
 int test()
 {

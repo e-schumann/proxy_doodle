@@ -14,7 +14,7 @@
 #endif
 
 
-namespace boost_part_deduced_typename{
+namespace boost_deduced_typename{
 
 template <class T>
 int f(T const volatile*, BOOST_DEDUCED_TYPENAME T::type* = 0)

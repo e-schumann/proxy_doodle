@@ -44,39 +44,39 @@
 #include <boost/range/iterator_range_core.hpp>
 #include <boost/container/container_fwd.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace detail
     {
         template<typename T>
         struct is_stdstring
-            : boost_part::false_type
+            : boost::false_type
         {};
 
         template<typename CharT, typename Traits, typename Alloc>
         struct is_stdstring< std::basic_string<CharT, Traits, Alloc> >
-            : boost_part::true_type
+            : boost::true_type
         {};
 
         // Sun Studio has problem with partial specialization of templates differing only in namespace.
-        // We workaround that by making `is_booststring` trait, instead of specializing `is_stdstring` for `boost_part::container::basic_string`.
+        // We workaround that by making `is_booststring` trait, instead of specializing `is_stdstring` for `boost::container::basic_string`.
         template<typename T>
         struct is_booststring
-            : boost_part::false_type
+            : boost::false_type
         {};
 
         template<typename CharT, typename Traits, typename Alloc>
-        struct is_booststring< boost_part::container::basic_string<CharT, Traits, Alloc> >
-            : boost_part::true_type
+        struct is_booststring< boost::container::basic_string<CharT, Traits, Alloc> >
+            : boost::true_type
         {};
 
         template<typename Target, typename Source>
         struct is_arithmetic_and_not_xchars
         {
-            typedef boost_part::mpl::bool_<
-                    !(boost_part::detail::is_character<Target>::value) &&
-                    !(boost_part::detail::is_character<Source>::value) &&
-                    boost_part::is_arithmetic<Source>::value &&
-                    boost_part::is_arithmetic<Target>::value
+            typedef boost::mpl::bool_<
+                    !(boost::detail::is_character<Target>::value) &&
+                    !(boost::detail::is_character<Source>::value) &&
+                    boost::is_arithmetic<Source>::value &&
+                    boost::is_arithmetic<Target>::value
                 > type;
         
             BOOST_STATIC_CONSTANT(bool, value = (
@@ -91,11 +91,11 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
         template<typename Target, typename Source>
         struct is_xchar_to_xchar 
         {
-            typedef boost_part::mpl::bool_<
+            typedef boost::mpl::bool_<
                      sizeof(Source) == sizeof(Target) &&
                      sizeof(Source) == sizeof(char) &&
-                     boost_part::detail::is_character<Target>::value &&
-                     boost_part::detail::is_character<Source>::value
+                     boost::detail::is_character<Target>::value &&
+                     boost::detail::is_character<Source>::value
                 > type;
                 
             BOOST_STATIC_CONSTANT(bool, value = (
@@ -105,34 +105,34 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
         template<typename Target, typename Source>
         struct is_char_array_to_stdstring
-            : boost_part::false_type
+            : boost::false_type
         {};
 
         template<typename CharT, typename Traits, typename Alloc>
         struct is_char_array_to_stdstring< std::basic_string<CharT, Traits, Alloc>, CharT* >
-            : boost_part::true_type
+            : boost::true_type
         {};
 
         template<typename CharT, typename Traits, typename Alloc>
         struct is_char_array_to_stdstring< std::basic_string<CharT, Traits, Alloc>, const CharT* >
-            : boost_part::true_type
+            : boost::true_type
         {};
 
         // Sun Studio has problem with partial specialization of templates differing only in namespace.
-        // We workaround that by making `is_char_array_to_booststring` trait, instead of specializing `is_char_array_to_stdstring` for `boost_part::container::basic_string`.
+        // We workaround that by making `is_char_array_to_booststring` trait, instead of specializing `is_char_array_to_stdstring` for `boost::container::basic_string`.
         template<typename Target, typename Source>
         struct is_char_array_to_booststring
-            : boost_part::false_type
+            : boost::false_type
         {};
 
         template<typename CharT, typename Traits, typename Alloc>
-        struct is_char_array_to_booststring< boost_part::container::basic_string<CharT, Traits, Alloc>, CharT* >
-            : boost_part::true_type
+        struct is_char_array_to_booststring< boost::container::basic_string<CharT, Traits, Alloc>, CharT* >
+            : boost::true_type
         {};
 
         template<typename CharT, typename Traits, typename Alloc>
-        struct is_char_array_to_booststring< boost_part::container::basic_string<CharT, Traits, Alloc>, const CharT* >
-            : boost_part::true_type
+        struct is_char_array_to_booststring< boost::container::basic_string<CharT, Traits, Alloc>, const CharT* >
+            : boost::true_type
         {};
 
         template <typename Target, typename Source>
@@ -160,34 +160,34 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
         template <typename Target, typename Source>
         inline bool try_lexical_convert(const Source& arg, Target& result)
         {
-            typedef BOOST_DEDUCED_TYPENAME boost_part::detail::array_to_pointer_decay<Source>::type src;
+            typedef BOOST_DEDUCED_TYPENAME boost::detail::array_to_pointer_decay<Source>::type src;
 
-            typedef boost_part::mpl::bool_<
-                boost_part::detail::is_xchar_to_xchar<Target, src >::value ||
-                boost_part::detail::is_char_array_to_stdstring<Target, src >::value ||
-                boost_part::detail::is_char_array_to_booststring<Target, src >::value ||
+            typedef boost::mpl::bool_<
+                boost::detail::is_xchar_to_xchar<Target, src >::value ||
+                boost::detail::is_char_array_to_stdstring<Target, src >::value ||
+                boost::detail::is_char_array_to_booststring<Target, src >::value ||
                 (
-                     boost_part::is_same<Target, src >::value &&
-                     (boost_part::detail::is_stdstring<Target >::value || boost_part::detail::is_booststring<Target >::value)
+                     boost::is_same<Target, src >::value &&
+                     (boost::detail::is_stdstring<Target >::value || boost::detail::is_booststring<Target >::value)
                 ) ||
                 (
-                     boost_part::is_same<Target, src >::value &&
-                     boost_part::detail::is_character<Target >::value
+                     boost::is_same<Target, src >::value &&
+                     boost::detail::is_character<Target >::value
                 )
             > shall_we_copy_t;
 
-            typedef boost_part::detail::is_arithmetic_and_not_xchars<Target, src >
+            typedef boost::detail::is_arithmetic_and_not_xchars<Target, src >
                 shall_we_copy_with_dynamic_check_t;
 
             // We do evaluate second `if_` lazily to avoid unnecessary instantiations
             // of `shall_we_copy_with_dynamic_check_t` and improve compilation times.
-            typedef BOOST_DEDUCED_TYPENAME boost_part::mpl::if_c<
+            typedef BOOST_DEDUCED_TYPENAME boost::mpl::if_c<
                 shall_we_copy_t::value,
-                boost_part::mpl::identity<boost_part::detail::copy_converter_impl<Target, src > >,
-                boost_part::mpl::if_<
+                boost::mpl::identity<boost::detail::copy_converter_impl<Target, src > >,
+                boost::mpl::if_<
                      shall_we_copy_with_dynamic_check_t,
-                     boost_part::detail::dynamic_num_converter_impl<Target, src >,
-                     boost_part::detail::lexical_converter_impl<Target, src >
+                     boost::detail::dynamic_num_converter_impl<Target, src >,
+                     boost::detail::lexical_converter_impl<Target, src >
                 >
             >::type caster_type_lazy;
 
@@ -200,11 +200,11 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
         inline bool try_lexical_convert(const CharacterT* chars, std::size_t count, Target& result)
         {
             BOOST_STATIC_ASSERT_MSG(
-                boost_part::detail::is_character<CharacterT>::value,
+                boost::detail::is_character<CharacterT>::value,
                 "This overload of try_lexical_convert is meant to be used only with arrays of characters."
             );
-            return ::boost_part::conversion::detail::try_lexical_convert(
-                ::boost_part::iterator_range<const CharacterT*>(chars, chars + count), result
+            return ::boost::conversion::detail::try_lexical_convert(
+                ::boost::iterator_range<const CharacterT*>(chars, chars + count), result
             );
         }
 
@@ -212,10 +212,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
     namespace conversion {
         // ADL barrier
-        using ::boost_part::conversion::detail::try_lexical_convert;
+        using ::boost::conversion::detail::try_lexical_convert;
     }
 
-} // namespace boost_part
+} // namespace boost
 
 #if defined(__clang__) || (defined(__GNUC__) && \
     !(defined(__INTEL_COMPILER) || defined(__ICL) || defined(__ICC) || defined(__ECC)) && \

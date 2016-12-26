@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_OPERATORS_IN_NAMESPACE
 #include "boost_no_ops_in_namespace.ipp"
 #else
-namespace boost_part_no_operators_in_namespace = empty_boost;
+namespace boost_no_operators_in_namespace = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_operators_in_namespace::test();
+   return boost_no_operators_in_namespace::test();
 }
 

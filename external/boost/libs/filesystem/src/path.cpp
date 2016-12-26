@@ -46,14 +46,14 @@
 # include <iomanip>
 #endif
 
-namespace fs = boost_part::filesystem;
+namespace fs = boost::filesystem;
 
-using boost_part::filesystem::path;
+using boost::filesystem::path;
 
 using std::string;
 using std::wstring;
 
-using boost_part::system::error_code;
+using boost::system::error_code;
 
 //--------------------------------------------------------------------------------------//
 //                                                                                      //
@@ -121,7 +121,7 @@ namespace
 //                                                                                      //
 //--------------------------------------------------------------------------------------//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace filesystem
 {
@@ -485,7 +485,7 @@ namespace filesystem
   }
 
 }  // namespace filesystem
-}  // namespace boost_part
+}  // namespace boost
   
 //--------------------------------------------------------------------------------------//
 //                                                                                      //
@@ -671,7 +671,7 @@ namespace
 }  // unnamed namespace
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace filesystem
 {
@@ -838,7 +838,7 @@ namespace filesystem
   }
 
 }  // namespace filesystem
-}  // namespace boost_part
+}  // namespace boost
 
 namespace
 {
@@ -890,7 +890,7 @@ namespace
     // Many thanks to Peter Dimov for digging out the above references!
 
     std::locale global_loc = std::locale();
-    return std::locale(global_loc, new boost_part::filesystem::detail::utf8_codecvt_facet);
+    return std::locale(global_loc, new boost::filesystem::detail::utf8_codecvt_facet);
 # else  // Other POSIX
     // ISO C calls std::locale("") "the locale-specific native environment", and this
     // locale is the default for many POSIX-based operating systems such as Linux.
@@ -923,7 +923,7 @@ namespace
 //              path::codecvt() and path::imbue() implementation                        //
 //--------------------------------------------------------------------------------------//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace filesystem
 {
@@ -934,7 +934,7 @@ namespace filesystem
 #ifdef BOOST_FILESYSTEM_DEBUG
     std::cout << "***** path::codecvt() called" << std::endl;
 #endif
-    BOOST_ASSERT_MSG(&path_locale(), "boost_part::filesystem::path locale initialization error");
+    BOOST_ASSERT_MSG(&path_locale(), "boost::filesystem::path locale initialization error");
 
     return std::use_facet<std::codecvt<wchar_t, char, std::mbstate_t> >(path_locale());
   }
@@ -950,4 +950,4 @@ namespace filesystem
   }
 
 }  // namespace filesystem
-}  // namespace boost_part
+}  // namespace boost

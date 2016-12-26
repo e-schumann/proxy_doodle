@@ -26,7 +26,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace detail {
     inline int monotonic_pthread_cond_init(pthread_cond_t& cond) {
@@ -58,7 +58,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         pthread_cond_t cond;
 
     public:
-    //private: // used by boost_part::thread::try_join_until
+    //private: // used by boost::thread::try_join_until
 
         inline bool do_wait_until(
             unique_lock<mutex>& lock,
@@ -68,7 +68,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             unique_lock<mutex>& lock,
             struct timespec const &timeout)
         {
-          return do_wait_until(lock, boost_part::detail::timespec_plus(timeout, boost_part::detail::timespec_now()));
+          return do_wait_until(lock, boost::detail::timespec_plus(timeout, boost::detail::timespec_now()));
         }
 
     public:
@@ -80,7 +80,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             res=pthread_mutex_init(&internal_mutex,NULL);
             if(res)
             {
-                boost_part::throw_exception(thread_resource_error(res, "boost_part::condition_variable::condition_variable() constructor failed in pthread_mutex_init"));
+                boost::throw_exception(thread_resource_error(res, "boost::condition_variable::condition_variable() constructor failed in pthread_mutex_init"));
             }
 #endif
             res = detail::monotonic_pthread_cond_init(cond);
@@ -89,7 +89,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
                 BOOST_VERIFY(!pthread_mutex_destroy(&internal_mutex));
 #endif
-                boost_part::throw_exception(thread_resource_error(res, "boost_part::condition_variable::condition_variable() constructor failed in detail::monotonic_pthread_cond_init"));
+                boost::throw_exception(thread_resource_error(res, "boost::condition_variable::condition_variable() constructor failed in detail::monotonic_pthread_cond_init"));
             }
         }
         ~condition_variable()
@@ -118,7 +118,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #if defined BOOST_THREAD_USES_DATETIME
         inline bool timed_wait(
             unique_lock<mutex>& m,
-            boost_part::system_time const& abs_time)
+            boost::system_time const& abs_time)
         {
 #if defined BOOST_THREAD_WAIT_BUG
             struct timespec const timeout=detail::to_timespec(abs_time + BOOST_THREAD_WAIT_BUG);
@@ -155,7 +155,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         template<typename predicate_type>
         bool timed_wait(
             unique_lock<mutex>& m,
-            boost_part::system_time const& abs_time,predicate_type pred)
+            boost::system_time const& abs_time,predicate_type pred)
         {
             while (!pred())
             {
@@ -248,7 +248,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
             using namespace chrono;
             nanoseconds d = tp.time_since_epoch();
-            timespec ts = boost_part::detail::to_timespec(d);
+            timespec ts = boost::detail::to_timespec(d);
             if (do_wait_until(lk, ts)) return cv_status::no_timeout;
             else return cv_status::timeout;
         }
@@ -303,7 +303,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
             using namespace chrono;
             nanoseconds d = tp.time_since_epoch();
-            timespec ts = boost_part::detail::to_timespec(d);
+            timespec ts = boost::detail::to_timespec(d);
             if (do_wait_until(lk, ts)) return cv_status::no_timeout;
             else return cv_status::timeout;
         }
@@ -334,7 +334,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 const chrono::duration<Rep, Period>& d,
                 Predicate pred)
         {
-          return wait_until(lock, chrono::steady_clock::now() + d, boost_part::move(pred));
+          return wait_until(lock, chrono::steady_clock::now() + d, boost::move(pred));
         }
 #endif
 

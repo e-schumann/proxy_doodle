@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_msvc_std_iterator::test();
+   return boost_msvc_std_iterator::test();
 }
 

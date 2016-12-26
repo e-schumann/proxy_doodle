@@ -12,7 +12,7 @@
 #include <cstdlib>
 
 
-namespace boost_part_has_ms_int64{
+namespace boost_has_ms_int64{
 
 int test()
 {

@@ -43,7 +43,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 namespace ut_detail {
@@ -212,7 +212,7 @@ unit_test_main( init_unit_test_func init_func, int argc, char* argv[] )
                 traverse_test_tree( framework::master_test_suite().p_id, reporter, true );
             }
 
-            return boost_part::exit_success;
+            return boost::exit_success;
         }
 
         if( runtime_config::get<bool>( runtime_config::LIST_LABELS ) ) {
@@ -225,7 +225,7 @@ unit_test_main( init_unit_test_func init_func, int argc, char* argv[] )
                        std::ostream_iterator<std::string>( results_reporter::get_stream(), "\n  " ) );
             results_reporter::get_stream() << "\n";
 
-            return boost_part::exit_success;
+            return boost::exit_success;
         }
 
         framework::run();
@@ -233,7 +233,7 @@ unit_test_main( init_unit_test_func init_func, int argc, char* argv[] )
         results_reporter::make_report();
 
         result_code = !runtime_config::get<bool>( runtime_config::RESULT_CODE )
-                        ? boost_part::exit_success
+                        ? boost::exit_success
                         : results_collector.results( framework::master_test_suite().p_id ).result_code();
     }
     BOOST_TEST_I_CATCH( framework::nothing_to_test, ex ) {
@@ -242,17 +242,17 @@ unit_test_main( init_unit_test_func init_func, int argc, char* argv[] )
     BOOST_TEST_I_CATCH( framework::internal_error, ex ) {
         results_reporter::get_stream() << "Boost.Test framework internal error: " << ex.what() << std::endl;
 
-        result_code = boost_part::exit_exception_failure;
+        result_code = boost::exit_exception_failure;
     }
     BOOST_TEST_I_CATCH( framework::setup_error, ex ) {
         results_reporter::get_stream() << "Test setup error: " << ex.what() << std::endl;
 
-        result_code = boost_part::exit_exception_failure;
+        result_code = boost::exit_exception_failure;
     }
     BOOST_TEST_I_CATCHALL() {
         results_reporter::get_stream() << "Boost.Test framework internal error: unknown reason" << std::endl;
 
-        result_code = boost_part::exit_exception_failure;
+        result_code = boost::exit_exception_failure;
     }
 
     framework::shutdown();
@@ -261,7 +261,7 @@ unit_test_main( init_unit_test_func init_func, int argc, char* argv[] )
 }
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #if !defined(BOOST_TEST_DYN_LINK) && !defined(BOOST_TEST_NO_MAIN)
 
@@ -276,14 +276,14 @@ main( int argc, char* argv[] )
 #ifdef BOOST_TEST_ALTERNATIVE_INIT_API
     extern bool init_unit_test();
 
-    boost_part::unit_test::init_unit_test_func init_func = &init_unit_test;
+    boost::unit_test::init_unit_test_func init_func = &init_unit_test;
 #else
-    extern ::boost_part::unit_test::test_suite* init_unit_test_suite( int argc, char* argv[] );
+    extern ::boost::unit_test::test_suite* init_unit_test_suite( int argc, char* argv[] );
 
-    boost_part::unit_test::init_unit_test_func init_func = &init_unit_test_suite;
+    boost::unit_test::init_unit_test_func init_func = &init_unit_test_suite;
 #endif
 
-    return ::boost_part::unit_test::unit_test_main( init_func, argc, argv );
+    return ::boost::unit_test::unit_test_main( init_func, argc, argv );
 }
 
 #endif // !BOOST_TEST_DYN_LINK && !BOOST_TEST_NO_MAIN

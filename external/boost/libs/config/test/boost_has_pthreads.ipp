@@ -12,7 +12,7 @@
 #include <pthread.h>
 
 
-namespace boost_part_has_pthreads{
+namespace boost_has_pthreads{
 
 extern "C" void* thread_proc(void* arg)
 {

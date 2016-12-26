@@ -13,7 +13,7 @@
 #include <boost/range/end.hpp>
 #include <boost/range/iterator_range.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     enum range_return_value
     {
@@ -33,13 +33,13 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     template< class SinglePassRange, range_return_value >
     struct range_return
     {
-        typedef boost_part::iterator_range<
+        typedef boost::iterator_range<
             BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type > type;
 
         static type pack(BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type found,
                          SinglePassRange& rng)
         {
-            return type(found, boost_part::end(rng));
+            return type(found, boost::end(rng));
         }
     };
 
@@ -61,9 +61,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         static type pack(type found, SinglePassRange& rng)
         {
-            return found == boost_part::end(rng)
+            return found == boost::end(rng)
                 ? found
-                : boost_part::next(found);
+                : boost::next(found);
         }
     };
 
@@ -74,104 +74,104 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         static type pack(type found, BidirectionalRange& rng)
         {
-            return found == boost_part::begin(rng)
+            return found == boost::begin(rng)
                 ? found
-                : boost_part::prior(found);
+                : boost::prior(found);
         }
     };
 
     template< class SinglePassRange >
     struct range_return< SinglePassRange, return_begin_found >
     {
-        typedef boost_part::iterator_range<
+        typedef boost::iterator_range<
             BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type > type;
 
         static type pack(BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type found,
                          SinglePassRange& rng)
         {
-            return type(boost_part::begin(rng), found);
+            return type(boost::begin(rng), found);
         }
     };
 
     template< class SinglePassRange >
     struct range_return< SinglePassRange, return_begin_next >
     {
-        typedef boost_part::iterator_range<
+        typedef boost::iterator_range<
             BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type > type;
 
         static type pack(BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type found,
                          SinglePassRange& rng)
         {
-            return type( boost_part::begin(rng), 
-                         found == boost_part::end(rng) ? found : boost_part::next(found) );
+            return type( boost::begin(rng), 
+                         found == boost::end(rng) ? found : boost::next(found) );
         }
     };
 
     template< class BidirectionalRange >
     struct range_return< BidirectionalRange, return_begin_prior >
     {
-        typedef boost_part::iterator_range<
+        typedef boost::iterator_range<
             BOOST_DEDUCED_TYPENAME range_iterator<BidirectionalRange>::type > type;
 
         static type pack(BOOST_DEDUCED_TYPENAME range_iterator<BidirectionalRange>::type found,
                          BidirectionalRange& rng)
         {
-            return type( boost_part::begin(rng),
-                         found == boost_part::begin(rng) ? found : boost_part::prior(found) );
+            return type( boost::begin(rng),
+                         found == boost::begin(rng) ? found : boost::prior(found) );
         }
     };
 
     template< class SinglePassRange >
     struct range_return< SinglePassRange, return_found_end >
     {
-        typedef boost_part::iterator_range<
+        typedef boost::iterator_range<
             BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type > type;
 
         static type pack(BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type found,
                          SinglePassRange& rng)
         {
-            return type(found, boost_part::end(rng));
+            return type(found, boost::end(rng));
         }
     };
 
     template< class SinglePassRange >
     struct range_return< SinglePassRange, return_next_end >
     {
-        typedef boost_part::iterator_range<
+        typedef boost::iterator_range<
             BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type > type;
 
         static type pack(BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type found,
                          SinglePassRange& rng)
         {
-            return type( found == boost_part::end(rng) ? found : boost_part::next(found),
-                         boost_part::end(rng) );
+            return type( found == boost::end(rng) ? found : boost::next(found),
+                         boost::end(rng) );
         }
     };
 
     template< class BidirectionalRange >
     struct range_return< BidirectionalRange, return_prior_end >
     {
-        typedef boost_part::iterator_range<
+        typedef boost::iterator_range<
             BOOST_DEDUCED_TYPENAME range_iterator<BidirectionalRange>::type > type;
 
         static type pack(BOOST_DEDUCED_TYPENAME range_iterator<BidirectionalRange>::type found,
                          BidirectionalRange& rng)
         {
-            return type( found == boost_part::begin(rng) ? found : boost_part::prior(found),
-                         boost_part::end(rng) );
+            return type( found == boost::begin(rng) ? found : boost::prior(found),
+                         boost::end(rng) );
         }
     };
 
     template< class SinglePassRange >
     struct range_return< SinglePassRange, return_begin_end >
     {
-        typedef boost_part::iterator_range<
+        typedef boost::iterator_range<
             BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type > type;
 
         static type pack(BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type,
                          SinglePassRange& rng)
         {
-            return type(boost_part::begin(rng), boost_part::end(rng));
+            return type(boost::begin(rng), boost::end(rng));
         }
     };
 

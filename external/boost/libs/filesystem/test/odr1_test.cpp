@@ -9,7 +9,7 @@
 
 #include <boost/filesystem.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace filesystem
   {
@@ -19,6 +19,6 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 int main()
 {
-  boost_part::filesystem::tu2();
+  boost::filesystem::tu2();
   return 0;
 }

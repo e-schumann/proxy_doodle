@@ -19,7 +19,7 @@
 //  http://www.boost.org/libs/assert/current_function.html
 //
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -70,6 +70,6 @@ inline void current_function_helper()
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // #ifndef BOOST_CURRENT_FUNCTION_HPP_INCLUDED

@@ -11,7 +11,7 @@
 
 #include <functional>
 
-namespace boost_part_no_cxx17_std_invoke {
+namespace boost_no_cxx17_std_invoke {
 
 int foo( int i, int j) {
     return i + j;

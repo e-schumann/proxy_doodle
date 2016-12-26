@@ -74,7 +74,7 @@
       #define BOOST_MOVE_ATTRIBUTE_MAY_ALIAS
    #endif
 
-   namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+   namespace boost {
 
    //////////////////////////////////////////////////////////////////////////////
    //
@@ -83,10 +83,10 @@
    //////////////////////////////////////////////////////////////////////////////
    template <class T>
    class rv
-      : public ::boost_part::move_detail::if_c
-         < ::boost_part::move_detail::is_class<T>::value
+      : public ::boost::move_detail::if_c
+         < ::boost::move_detail::is_class<T>::value
          , T
-         , ::boost_part::move_detail::nat
+         , ::boost::move_detail::nat
          >::type
    {
       rv();
@@ -108,7 +108,7 @@
    struct is_rv
         //Derive from integral constant because some Boost code assummes it has
         //a "type" internal typedef
-      : integral_constant<bool, ::boost_part::move_detail::is_rv_impl<T>::value >
+      : integral_constant<bool, ::boost::move_detail::is_rv_impl<T>::value >
    {};
 
    template <class T>
@@ -126,31 +126,31 @@
    //////////////////////////////////////////////////////////////////////////////
    template<class T>
    struct has_move_emulation_enabled
-      : ::boost_part::move_detail::has_move_emulation_enabled_impl<T>
+      : ::boost::move_detail::has_move_emulation_enabled_impl<T>
    {};
 
    template<class T>
    struct has_move_emulation_disabled
    {
-      static const bool value = !::boost_part::move_detail::has_move_emulation_enabled_impl<T>::value;
+      static const bool value = !::boost::move_detail::has_move_emulation_enabled_impl<T>::value;
    };
 
-   }  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+   }  //namespace boost {
 
    #define BOOST_RV_REF(TYPE)\
-      ::boost_part::rv< TYPE >& \
+      ::boost::rv< TYPE >& \
    //
 
    #define BOOST_RV_REF_2_TEMPL_ARGS(TYPE, ARG1, ARG2)\
-      ::boost_part::rv< TYPE<ARG1, ARG2> >& \
+      ::boost::rv< TYPE<ARG1, ARG2> >& \
    //
 
    #define BOOST_RV_REF_3_TEMPL_ARGS(TYPE, ARG1, ARG2, ARG3)\
-      ::boost_part::rv< TYPE<ARG1, ARG2, ARG3> >& \
+      ::boost::rv< TYPE<ARG1, ARG2, ARG3> >& \
    //
 
    #define BOOST_RV_REF_BEG\
-      ::boost_part::rv<   \
+      ::boost::rv<   \
    //
 
    #define BOOST_RV_REF_END\
@@ -170,11 +170,11 @@
    //
 
    #define BOOST_COPY_ASSIGN_REF(TYPE)\
-      const ::boost_part::rv< TYPE >& \
+      const ::boost::rv< TYPE >& \
    //
 
    #define BOOST_COPY_ASSIGN_REF_BEG \
-      const ::boost_part::rv<  \
+      const ::boost::rv<  \
    //
 
    #define BOOST_COPY_ASSIGN_REF_END \
@@ -182,24 +182,24 @@
    //
 
    #define BOOST_COPY_ASSIGN_REF_2_TEMPL_ARGS(TYPE, ARG1, ARG2)\
-      const ::boost_part::rv< TYPE<ARG1, ARG2> >& \
+      const ::boost::rv< TYPE<ARG1, ARG2> >& \
    //
 
    #define BOOST_COPY_ASSIGN_REF_3_TEMPL_ARGS(TYPE, ARG1, ARG2, ARG3)\
-      const ::boost_part::rv< TYPE<ARG1, ARG2, ARG3> >& \
+      const ::boost::rv< TYPE<ARG1, ARG2, ARG3> >& \
    //
 
    #define BOOST_CATCH_CONST_RLVALUE(TYPE)\
-      const ::boost_part::rv< TYPE >& \
+      const ::boost::rv< TYPE >& \
    //
 
-   namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+   namespace boost {
    namespace move_detail {
 
    template <class Ret, class T>
-   BOOST_MOVE_FORCEINLINE typename ::boost_part::move_detail::enable_if_c
-      <  ::boost_part::move_detail::is_lvalue_reference<Ret>::value ||
-        !::boost_part::has_move_emulation_enabled<T>::value
+   BOOST_MOVE_FORCEINLINE typename ::boost::move_detail::enable_if_c
+      <  ::boost::move_detail::is_lvalue_reference<Ret>::value ||
+        !::boost::has_move_emulation_enabled<T>::value
       , T&>::type
          move_return(T& x) BOOST_NOEXCEPT
    {
@@ -207,34 +207,34 @@
    }
 
    template <class Ret, class T>
-   BOOST_MOVE_FORCEINLINE typename ::boost_part::move_detail::enable_if_c
-      < !::boost_part::move_detail::is_lvalue_reference<Ret>::value &&
-         ::boost_part::has_move_emulation_enabled<T>::value
-      , ::boost_part::rv<T>&>::type
+   BOOST_MOVE_FORCEINLINE typename ::boost::move_detail::enable_if_c
+      < !::boost::move_detail::is_lvalue_reference<Ret>::value &&
+         ::boost::has_move_emulation_enabled<T>::value
+      , ::boost::rv<T>&>::type
          move_return(T& x) BOOST_NOEXCEPT
    {
-      return *BOOST_MOVE_TO_RV_CAST(::boost_part::rv<T>*, ::boost_part::move_detail::addressof(x));
+      return *BOOST_MOVE_TO_RV_CAST(::boost::rv<T>*, ::boost::move_detail::addressof(x));
    }
 
    template <class Ret, class T>
-   BOOST_MOVE_FORCEINLINE typename ::boost_part::move_detail::enable_if_c
-      < !::boost_part::move_detail::is_lvalue_reference<Ret>::value &&
-         ::boost_part::has_move_emulation_enabled<T>::value
-      , ::boost_part::rv<T>&>::type
-         move_return(::boost_part::rv<T>& x) BOOST_NOEXCEPT
+   BOOST_MOVE_FORCEINLINE typename ::boost::move_detail::enable_if_c
+      < !::boost::move_detail::is_lvalue_reference<Ret>::value &&
+         ::boost::has_move_emulation_enabled<T>::value
+      , ::boost::rv<T>&>::type
+         move_return(::boost::rv<T>& x) BOOST_NOEXCEPT
    {
       return x;
    }
 
    }  //namespace move_detail {
-   }  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+   }  //namespace boost {
 
    #define BOOST_MOVE_RET(RET_TYPE, REF)\
-      boost_part::move_detail::move_return< RET_TYPE >(REF)
+      boost::move_detail::move_return< RET_TYPE >(REF)
    //
 
    #define BOOST_MOVE_BASE(BASE_TYPE, ARG) \
-      ::boost_part::move((BASE_TYPE&)(ARG))
+      ::boost::move((BASE_TYPE&)(ARG))
    //
 
    //////////////////////////////////////////////////////////////////////////////
@@ -245,10 +245,10 @@
    #define BOOST_MOVABLE_BUT_NOT_COPYABLE(TYPE)\
       BOOST_MOVE_IMPL_NO_COPY_CTOR_OR_ASSIGN(TYPE)\
       public:\
-      BOOST_MOVE_FORCEINLINE operator ::boost_part::rv<TYPE>&() \
-      {  return *BOOST_MOVE_TO_RV_CAST(::boost_part::rv<TYPE>*, this);  }\
-      BOOST_MOVE_FORCEINLINE operator const ::boost_part::rv<TYPE>&() const \
-      {  return *BOOST_MOVE_TO_RV_CAST(const ::boost_part::rv<TYPE>*, this);  }\
+      BOOST_MOVE_FORCEINLINE operator ::boost::rv<TYPE>&() \
+      {  return *BOOST_MOVE_TO_RV_CAST(::boost::rv<TYPE>*, this);  }\
+      BOOST_MOVE_FORCEINLINE operator const ::boost::rv<TYPE>&() const \
+      {  return *BOOST_MOVE_TO_RV_CAST(const ::boost::rv<TYPE>*, this);  }\
       private:\
    //
 
@@ -263,23 +263,23 @@
       BOOST_MOVE_FORCEINLINE TYPE& operator=(TYPE &t)\
       {  this->operator=(const_cast<const TYPE&>(t)); return *this;}\
       public:\
-      BOOST_MOVE_FORCEINLINE operator ::boost_part::rv<TYPE>&() \
-      {  return *BOOST_MOVE_TO_RV_CAST(::boost_part::rv<TYPE>*, this);  }\
-      BOOST_MOVE_FORCEINLINE operator const ::boost_part::rv<TYPE>&() const \
-      {  return *BOOST_MOVE_TO_RV_CAST(const ::boost_part::rv<TYPE>*, this);  }\
+      BOOST_MOVE_FORCEINLINE operator ::boost::rv<TYPE>&() \
+      {  return *BOOST_MOVE_TO_RV_CAST(::boost::rv<TYPE>*, this);  }\
+      BOOST_MOVE_FORCEINLINE operator const ::boost::rv<TYPE>&() const \
+      {  return *BOOST_MOVE_TO_RV_CAST(const ::boost::rv<TYPE>*, this);  }\
       private:\
    //
 
    #define BOOST_COPYABLE_AND_MOVABLE_ALT(TYPE)\
       public:\
-      BOOST_MOVE_FORCEINLINE operator ::boost_part::rv<TYPE>&() \
-      {  return *BOOST_MOVE_TO_RV_CAST(::boost_part::rv<TYPE>*, this);  }\
-      BOOST_MOVE_FORCEINLINE operator const ::boost_part::rv<TYPE>&() const \
-      {  return *BOOST_MOVE_TO_RV_CAST(const ::boost_part::rv<TYPE>*, this);  }\
+      BOOST_MOVE_FORCEINLINE operator ::boost::rv<TYPE>&() \
+      {  return *BOOST_MOVE_TO_RV_CAST(::boost::rv<TYPE>*, this);  }\
+      BOOST_MOVE_FORCEINLINE operator const ::boost::rv<TYPE>&() const \
+      {  return *BOOST_MOVE_TO_RV_CAST(const ::boost::rv<TYPE>*, this);  }\
       private:\
    //
 
-   namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+   namespace boost{
    namespace move_detail{
 
    template< class T>
@@ -287,7 +287,7 @@
    { typedef const T &type; };
 
    template< class T>
-   struct forward_type< boost_part::rv<T> >
+   struct forward_type< boost::rv<T> >
    { typedef T type; };
 
    }}
@@ -315,7 +315,7 @@
    //
    #endif   //#if !defined(BOOST_MOVE_DOXYGEN_INVOKED)
 
-   namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+   namespace boost {
 
    //!This trait yields to a compile-time true boolean if T was marked as
    //!BOOST_MOVABLE_BUT_NOT_COPYABLE or BOOST_COPYABLE_AND_MOVABLE and
@@ -332,7 +332,7 @@
       static const bool value = true;
    };
 
-   }  //namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+   }  //namespace boost{
 
    //!This macro is used to achieve portable syntax in move
    //!constructors and assignments for classes marked as
@@ -447,12 +447,12 @@
 
       #include <boost/move/detail/meta_utils.hpp>
 
-      namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+      namespace boost {
       namespace move_detail {
 
       template <class Ret, class T>
-      BOOST_MOVE_FORCEINLINE typename ::boost_part::move_detail::enable_if_c
-         <  ::boost_part::move_detail::is_lvalue_reference<Ret>::value
+      BOOST_MOVE_FORCEINLINE typename ::boost::move_detail::enable_if_c
+         <  ::boost::move_detail::is_lvalue_reference<Ret>::value
          , T&>::type
             move_return(T& x) BOOST_NOEXCEPT
       {
@@ -460,8 +460,8 @@
       }
 
       template <class Ret, class T>
-      BOOST_MOVE_FORCEINLINE typename ::boost_part::move_detail::enable_if_c
-         < !::boost_part::move_detail::is_lvalue_reference<Ret>::value
+      BOOST_MOVE_FORCEINLINE typename ::boost::move_detail::enable_if_c
+         < !::boost::move_detail::is_lvalue_reference<Ret>::value
          , Ret && >::type
             move_return(T&& t) BOOST_NOEXCEPT
       {
@@ -469,10 +469,10 @@
       }
 
       }  //namespace move_detail {
-      }  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+      }  //namespace boost {
 
       #define BOOST_MOVE_RET(RET_TYPE, REF)\
-         boost_part::move_detail::move_return< RET_TYPE >(REF)
+         boost::move_detail::move_return< RET_TYPE >(REF)
       //
 
    #endif   //!defined(BOOST_MOVE_MSVC_AUTO_MOVE_RETURN_BUG) || defined(BOOST_MOVE_DOXYGEN_INVOKED)
@@ -480,15 +480,15 @@
    //!This macro is used to achieve portable optimal move constructors.
    //!
    //!When implementing the move constructor, in C++03 compilers the moved-from argument must be
-   //!cast to the base type before calling `::boost_part::move()` due to rvalue reference limitations.
+   //!cast to the base type before calling `::boost::move()` due to rvalue reference limitations.
    //!
    //!In C++11 compilers the cast from a rvalue reference of a derived type to a rvalue reference of
    //!a base type is implicit.
    #define BOOST_MOVE_BASE(BASE_TYPE, ARG) \
-      ::boost_part::move((BASE_TYPE&)(ARG))
+      ::boost::move((BASE_TYPE&)(ARG))
    //
 
-   namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+   namespace boost {
    namespace move_detail {
 
    template< class T> struct forward_type { typedef T type; };

@@ -14,7 +14,7 @@
 //                 then using'ed to boost.
 //                 Probably GCC specific.  See boost/operators.hpp for example.
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 //
 // the following is taken right out of <boost/operators.hpp>
@@ -33,9 +33,9 @@ spoiler1 operator+(const spoiler1&,const spoiler1&);
 bool operator !=(const spoiler1&, const spoiler1&);
 
 
-}  // namespace boost_part
+}  // namespace boost
 
-namespace boost_part_no_operators_in_namespace{
+namespace boost_no_operators_in_namespace{
 
 struct spoiler2
 {};
@@ -44,7 +44,7 @@ spoiler2 operator+(const spoiler2&,const spoiler2&);
 bool operator !=(const spoiler2&, const spoiler2&);
 
 
-class add : public boost_part::addable1<add>
+class add : public boost::addable1<add>
 {
    int val;
 public:

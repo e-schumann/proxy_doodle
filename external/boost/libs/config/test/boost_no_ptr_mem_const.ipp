@@ -18,7 +18,7 @@
 
 #include <functional>
 
-namespace boost_part_no_pointer_to_member_const{
+namespace boost_no_pointer_to_member_const{
 
 template <class S, class T>
 class const_mem_fun_t : public std::unary_function<const T*, S>
@@ -74,8 +74,8 @@ public:
 
 int test()
 {
-   boost_part_no_pointer_to_member_const::mem_fun(&tester::foo1);
-   boost_part_no_pointer_to_member_const::mem_fun(&tester::foo2);
+   boost_no_pointer_to_member_const::mem_fun(&tester::foo1);
+   boost_no_pointer_to_member_const::mem_fun(&tester::foo2);
    return 0;
 }
 

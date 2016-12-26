@@ -11,7 +11,7 @@ http://boost.org/LICENSE_1_0.txt
 
 #include <memory>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace alignment {
 
 using std::align;

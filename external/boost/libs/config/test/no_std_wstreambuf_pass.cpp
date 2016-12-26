@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_STD_WSTREAMBUF
 #include "boost_no_std_wstreambuf.ipp"
 #else
-namespace boost_part_no_std_wstreambuf = empty_boost;
+namespace boost_no_std_wstreambuf = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_std_wstreambuf::test();
+   return boost_no_std_wstreambuf::test();
 }
 

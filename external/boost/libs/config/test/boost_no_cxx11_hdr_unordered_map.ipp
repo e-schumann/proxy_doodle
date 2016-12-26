@@ -12,7 +12,7 @@
 
 #include <unordered_map>
 
-namespace boost_part_no_cxx11_hdr_unordered_map {
+namespace boost_no_cxx11_hdr_unordered_map {
 
 int test()
 {

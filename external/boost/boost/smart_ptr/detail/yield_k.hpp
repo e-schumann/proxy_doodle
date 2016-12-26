@@ -53,7 +53,7 @@ extern "C" void _mm_pause();
 # include <windows.h>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -103,7 +103,7 @@ inline void yield( unsigned k )
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
 #elif defined( BOOST_HAS_PTHREADS )
 
@@ -116,7 +116,7 @@ inline void yield( unsigned k )
 
 #include <time.h>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -154,11 +154,11 @@ inline void yield( unsigned k )
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
 #else
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -170,7 +170,7 @@ inline void yield( unsigned )
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
 #endif
 

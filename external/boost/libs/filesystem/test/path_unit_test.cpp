@@ -46,9 +46,9 @@
 #include <locale>
 #include <list>
 
-namespace fs = boost_part::filesystem;
-namespace bs = boost_part::system;
-using boost_part::filesystem::path;
+namespace fs = boost::filesystem;
+namespace bs = boost::system;
+using boost::filesystem::path;
 using std::cout;
 using std::endl;
 using std::string;
@@ -67,9 +67,9 @@ using std::wstring;
 namespace
 {
 
-  boost_part::system::error_code ec;
-  const boost_part::system::error_code ok;
-  const boost_part::system::error_code ng(-1, boost_part::system::system_category());
+  boost::system::error_code ec;
+  const boost::system::error_code ok;
+  const boost::system::error_code ng(-1, boost::system::system_category());
 
   std::string platform(BOOST_PLATFORM);
 
@@ -78,7 +78,7 @@ namespace
   {
     if (source == expected) return;
 
-    ++::boost_part::detail::test_errors();
+    ++::boost::detail::test_errors();
 
     std::cout << file;
     std::wcout << L'(' << line << L"): source.wstring(): \""
@@ -97,7 +97,7 @@ namespace
   {
     if (p.native() == expected) return;
 
-    ++::boost_part::detail::test_errors();
+    ++::boost::detail::test_errors();
 
     std::cout << file  << '(' << line << "): native() is not equal expected\n"
       "  native---: " << std::hex;
@@ -116,7 +116,7 @@ namespace
   {
     if (value == expected) return;
 
-    ++::boost_part::detail::test_errors();
+    ++::boost::detail::test_errors();
 
     std::cout << file;
 
@@ -129,7 +129,7 @@ namespace
   {
     if (ok_) return;
 
-    ++::boost_part::detail::test_errors();
+    ++::boost::detail::test_errors();
 
     std::cout << file << '(' << line << "): test failed\n";
   }
@@ -143,7 +143,7 @@ namespace
 
   class Base {};
   class Derived : public Base {};
-  void fun(const boost_part::shared_ptr< Base >&) {}
+  void fun(const boost::shared_ptr< Base >&) {}
 
   //  test_constructors  ---------------------------------------------------------------//
 
@@ -232,7 +232,7 @@ namespace
     // easy-to-make coding errors
     // path e1(x0, path::codecvt());  // fails to compile, and that is OK
 
-    boost_part::shared_ptr< Derived > pDerived( new Derived() ); 
+    boost::shared_ptr< Derived > pDerived( new Derived() ); 
     fun( pDerived );  // tests constructor member template enable_if working correctly;
                       // will fail to compile if enable_if not taking path off the table
   }
@@ -499,7 +499,7 @@ namespace
   {
     std::cout << "testing relationals..." << std::endl;
 
-    boost_part::hash<path> hash;
+    boost::hash<path> hash;
 
 # ifdef BOOST_WINDOWS_API
     // this is a critical use case to meet user expectations
@@ -1078,7 +1078,7 @@ namespace
 
 }  // unnamed namespace
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace filesystem
 {
@@ -1122,7 +1122,7 @@ namespace filesystem
     }
   }  // namespace path_traits
 }  // namespace filesystem
-}  // namespace boost_part
+}  // namespace boost
 
 namespace
 {
@@ -1218,5 +1218,5 @@ int test_main(int, char*[])
   if (foo == bar)
     cout << "unintended consequence\n";
 
-  return ::boost_part::report_errors();
+  return ::boost::report_errors();
 }

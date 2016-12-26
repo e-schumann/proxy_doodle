@@ -4,8 +4,8 @@
 # LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 run generate.cpp 
-   ../../regex/build//boost_part_regex 
-   ../../filesystem/build//boost_part_filesystem ../../system/build//boost_part_system 
+   ../../regex/build//boost_regex 
+   ../../filesystem/build//boost_filesystem ../../system/build//boost_system 
    : ../../..
 ;
 

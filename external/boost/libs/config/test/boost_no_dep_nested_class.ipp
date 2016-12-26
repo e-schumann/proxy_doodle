@@ -19,7 +19,7 @@
 #endif
 
 
-namespace boost_part_no_dependent_nested_derivations{
+namespace boost_no_dependent_nested_derivations{
 
 struct UDT1{};
 struct UDT2{};

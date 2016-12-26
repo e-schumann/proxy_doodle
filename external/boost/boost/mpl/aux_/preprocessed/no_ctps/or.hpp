@@ -9,7 +9,7 @@
 // Preprocessed version of "boost/mpl/or.hpp" header
 // -- DO NOT modify by hand!
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 namespace aux {
 template< bool C_ > struct or_impl

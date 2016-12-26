@@ -108,7 +108,7 @@ namespace std { using ::memset; using ::sprintf; }
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace debug {
 
 using unit_test::const_string;
@@ -1001,7 +1001,7 @@ break_memory_alloc( long mem_alloc_order_num )
 //____________________________________________________________________________//
 
 } // namespace debug
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

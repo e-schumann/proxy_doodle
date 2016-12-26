@@ -16,7 +16,7 @@
 #include <boost/range/iterator.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -34,11 +34,11 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         )
     {
         BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-        return std::rotate_copy(boost_part::begin(rng), middle, boost_part::end(rng), target);
+        return std::rotate_copy(boost::begin(rng), middle, boost::end(rng), target);
     }
 
     } // namespace range
     using range::rotate_copy;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

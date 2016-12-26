@@ -14,7 +14,7 @@
 #include <locale>
 
 
-namespace boost_part_has_stlp_use_facet{
+namespace boost_has_stlp_use_facet{
 
 int test()
 {

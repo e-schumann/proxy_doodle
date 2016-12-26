@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_has_static_assert::test();
+   return boost_has_static_assert::test();
 }
 

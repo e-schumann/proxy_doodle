@@ -25,7 +25,7 @@
 #include <boost/range/iterator.hpp>
 #include <boost/range/const_iterator.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 #if !BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x564))
@@ -110,7 +110,7 @@ inline BOOST_DEDUCED_TYPENAME range_iterator<const T>::type end( const T& r )
 
 #endif // BOOST_NO_FUNCTION_TEMPLATE_ORDERING
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_adl_barrier
     {
@@ -118,11 +118,11 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         inline BOOST_DEDUCED_TYPENAME range_iterator<const T>::type
         const_end( const T& r )
         {
-            return boost_part::range_adl_barrier::end( r );
+            return boost::range_adl_barrier::end( r );
         }
     } // namespace range_adl_barrier
     using namespace range_adl_barrier;
-} // namespace boost_part
+} // namespace boost
 
 #endif
 

@@ -11,7 +11,7 @@
 
 #include <regex>
 
-namespace boost_part_has_tr1_regex{
+namespace boost_has_tr1_regex{
 
 using std::tr1::regex;
 

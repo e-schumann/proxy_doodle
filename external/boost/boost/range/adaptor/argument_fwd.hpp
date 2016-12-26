@@ -18,7 +18,7 @@
 #pragma warning(disable : 4512) // assignment operator could not be generated
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {  

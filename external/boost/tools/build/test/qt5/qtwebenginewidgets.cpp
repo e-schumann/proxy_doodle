@@ -29,8 +29,8 @@ BOOST_AUTO_TEST_CASE( defines)
  */
 BOOST_AUTO_TEST_CASE( webengine_widgets )
 {
-    QApplication app(boost_part::unit_test::framework::master_test_suite().argc,
-                     boost_part::unit_test::framework::master_test_suite().argv);
+    QApplication app(boost::unit_test::framework::master_test_suite().argc,
+                     boost::unit_test::framework::master_test_suite().argv);
 
     QWebEngineSettings *defaultSettings = QWebEngineSettings::globalSettings();
     QWebEngineProfile *defaultProfile = QWebEngineProfile::defaultProfile();

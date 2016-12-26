@@ -18,7 +18,7 @@
 #include <boost/mpl/aux_/traits_lambda_spec.hpp>
 #include <boost/mpl/aux_/config/eti.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 // no default implementation; the definition is needed to make MSVC happy
 

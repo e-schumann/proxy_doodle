@@ -12,7 +12,7 @@
 #include <boost/smart_ptr/detail/array_allocator.hpp>
 #include <boost/smart_ptr/detail/sp_counted_impl.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace detail {
         template<class P, class A>
         class sp_counted_impl_pda<P, ms_in_allocator_tag, A>

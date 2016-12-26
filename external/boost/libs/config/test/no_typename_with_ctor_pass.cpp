@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_TYPENAME_WITH_CTOR
 #include "boost_no_typename_with_ctor.ipp"
 #else
-namespace boost_part_no_typename_with_ctor = empty_boost;
+namespace boost_no_typename_with_ctor = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_typename_with_ctor::test();
+   return boost_no_typename_with_ctor::test();
 }
 

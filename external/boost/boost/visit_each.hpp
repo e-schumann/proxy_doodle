@@ -10,7 +10,7 @@
 #ifndef BOOST_VISIT_EACH_HPP
 #define BOOST_VISIT_EACH_HPP
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
   template<typename Visitor, typename T>
   inline void visit_each(Visitor& visitor, const T& t, long)
   {

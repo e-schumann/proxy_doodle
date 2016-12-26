@@ -23,7 +23,7 @@ extern "C" void _mm_pause(void);
 #endif
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace atomics {
 namespace detail {
 
@@ -38,6 +38,6 @@ BOOST_FORCEINLINE void pause() BOOST_NOEXCEPT
 
 } // namespace detail
 } // namespace atomics
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_ATOMIC_DETAIL_PAUSE_HPP_INCLUDED_

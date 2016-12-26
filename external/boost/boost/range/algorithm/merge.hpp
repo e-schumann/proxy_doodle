@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -36,8 +36,8 @@ inline OutputIterator merge(const SinglePassRange1& rng1,
 {
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-    return std::merge(boost_part::begin(rng1), boost_part::end(rng1),
-                      boost_part::begin(rng2), boost_part::end(rng2), out);
+    return std::merge(boost::begin(rng1), boost::end(rng1),
+                      boost::begin(rng2), boost::end(rng2), out);
 }
 
 /// \overload
@@ -50,12 +50,12 @@ inline OutputIterator merge(const SinglePassRange1& rng1,
 {
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-    return std::merge(boost_part::begin(rng1), boost_part::end(rng1),
-                      boost_part::begin(rng2), boost_part::end(rng2), out, pred);
+    return std::merge(boost::begin(rng1), boost::end(rng1),
+                      boost::begin(rng2), boost::end(rng2), out, pred);
 }
 
     } // namespace range
     using range::merge;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

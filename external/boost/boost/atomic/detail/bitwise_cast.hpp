@@ -25,7 +25,7 @@
 #pragma once
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace atomics {
 namespace detail {
 
@@ -48,6 +48,6 @@ BOOST_FORCEINLINE To bitwise_cast(From const& from) BOOST_NOEXCEPT
 
 } // namespace detail
 } // namespace atomics
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_ATOMIC_DETAIL_BITWISE_CAST_HPP_INCLUDED_

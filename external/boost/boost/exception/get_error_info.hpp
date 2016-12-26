@@ -18,8 +18,8 @@
 #include <boost/exception/detail/shared_ptr.hpp>
 #include <boost/assert.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace
-boost_part
+namespace
+boost
     {
     namespace
     exception_detail
@@ -100,14 +100,14 @@ boost_part
     template <class ErrorInfo>
     inline
     typename ErrorInfo::value_type const *
-    get_error_info( boost_part::exception const & x )
+    get_error_info( boost::exception const & x )
         {
         return exception_detail::get_info<ErrorInfo>::get(x);
         }
     template <class ErrorInfo>
     inline
     typename ErrorInfo::value_type *
-    get_error_info( boost_part::exception & x )
+    get_error_info( boost::exception & x )
         {
         return exception_detail::get_info<ErrorInfo>::get(x);
         }

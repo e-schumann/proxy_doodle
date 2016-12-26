@@ -12,7 +12,7 @@
 
 #include <chrono>
 
-namespace boost_part_no_cxx11_hdr_chrono {
+namespace boost_no_cxx11_hdr_chrono {
 
 int test()
 {

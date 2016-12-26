@@ -14,7 +14,7 @@
 #include <boost/thread/condition_variable.hpp>
 #include <boost/thread/lock_types.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace this_thread
   {

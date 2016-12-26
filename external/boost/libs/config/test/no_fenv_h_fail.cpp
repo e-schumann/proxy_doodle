@@ -28,6 +28,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_fenv_h::test();
+   return boost_no_fenv_h::test();
 }
 

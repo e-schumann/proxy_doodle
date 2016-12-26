@@ -11,7 +11,7 @@
 //                 (14.5.4 [temp.class.spec]) not supported.
 
 
-namespace boost_part_no_template_partial_specialization{
+namespace boost_no_template_partial_specialization{
 
 template <class T>
 struct partial1

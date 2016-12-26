@@ -9,7 +9,7 @@
 //  http://www.boost.org/LICENSE_1_0.txt
 //
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 template<class T> struct type_identity
@@ -17,6 +17,6 @@ template<class T> struct type_identity
     typedef T type;
 };
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // #ifndef BOOST_TYPE_TRAITS_TYPE_IDENTITY_HPP_INCLUDED

@@ -11,7 +11,7 @@
 
 #include <string>
 
-namespace boost_part_no_cxx11_unified_initialization_syntax {
+namespace boost_no_cxx11_unified_initialization_syntax {
 
 struct BasicStruct
 {

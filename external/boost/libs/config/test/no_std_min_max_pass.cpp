@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_STD_MIN_MAX
 #include "boost_no_std_min_max.ipp"
 #else
-namespace boost_part_no_std_min_max = empty_boost;
+namespace boost_no_std_min_max = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_std_min_max::test();
+   return boost_no_std_min_max::test();
 }
 

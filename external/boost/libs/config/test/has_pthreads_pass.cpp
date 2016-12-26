@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_PTHREADS
 #include "boost_has_pthreads.ipp"
 #else
-namespace boost_part_has_pthreads = empty_boost;
+namespace boost_has_pthreads = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_pthreads::test();
+   return boost_has_pthreads::test();
 }
 

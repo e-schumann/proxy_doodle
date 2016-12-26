@@ -12,7 +12,7 @@
 
 #include <condition_variable>
 
-namespace boost_part_no_cxx11_hdr_condition_variable {
+namespace boost_no_cxx11_hdr_condition_variable {
 
 int test()
 {

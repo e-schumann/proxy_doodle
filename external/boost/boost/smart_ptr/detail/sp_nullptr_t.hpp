@@ -20,7 +20,7 @@
 
 #if !defined( BOOST_NO_CXX11_NULLPTR )
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -38,7 +38,7 @@ namespace detail
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // !defined( BOOST_NO_CXX11_NULLPTR )
 

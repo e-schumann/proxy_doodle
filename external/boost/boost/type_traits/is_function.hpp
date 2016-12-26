@@ -27,7 +27,7 @@
 // except that some compilers erroneously allow conversions from
 // function pointers to void*.
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 #if !defined( __CODEGEARC__ )
 
@@ -45,12 +45,12 @@ template <>
 struct is_function_chooser<false>
 {
     template< typename T > struct result_
-        : public ::boost_part::type_traits::is_function_ptr_helper<T*> {};
+        : public ::boost::type_traits::is_function_ptr_helper<T*> {};
 };
 
 template <typename T>
 struct is_function_impl
-    : public is_function_chooser< ::boost_part::is_reference<T>::value >
+    : public is_function_chooser< ::boost::is_reference<T>::value >
         ::BOOST_NESTED_TEMPLATE result_<T>
 {
 };
@@ -66,8 +66,8 @@ struct is_function_impl
 #endif
     static T* t;
     BOOST_STATIC_CONSTANT(
-        bool, value = sizeof(::boost_part::type_traits::is_function_ptr_tester(t))
-        == sizeof(::boost_part::type_traits::yes_type)
+        bool, value = sizeof(::boost::type_traits::is_function_ptr_tester(t))
+        == sizeof(::boost::type_traits::yes_type)
         );
 #if BOOST_WORKAROUND(BOOST_MSVC_FULL_VER, >= 140050000)
 #pragma warning(pop)
@@ -92,11 +92,11 @@ struct is_function_impl<T&&> : public false_type
 #if defined( __CODEGEARC__ )
 template <class T> struct is_function : integral_constant<bool, __is_function(T)> {};
 #else
-template <class T> struct is_function : integral_constant<bool, ::boost_part::detail::is_function_impl<T>::value> {};
+template <class T> struct is_function : integral_constant<bool, ::boost::detail::is_function_impl<T>::value> {};
 #ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
 template <class T> struct is_function<T&&> : public false_type {};
 #endif
 #endif
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_IS_FUNCTION_HPP_INCLUDED

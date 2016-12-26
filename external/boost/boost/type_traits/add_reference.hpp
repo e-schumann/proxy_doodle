@@ -12,7 +12,7 @@
 #include <boost/detail/workaround.hpp>
 #include <boost/config.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace detail {
 
@@ -39,7 +39,7 @@ struct add_reference_impl<T&&>
 
 template <class T> struct add_reference
 {
-   typedef typename boost_part::detail::add_reference_impl<T>::type type;
+   typedef typename boost::detail::add_reference_impl<T>::type type;
 };
 template <class T> struct add_reference<T&>
 {
@@ -54,6 +54,6 @@ template <> struct add_reference<const volatile void> { typedef const volatile v
 template <> struct add_reference<volatile void> { typedef volatile void type; };
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_ADD_REFERENCE_HPP_INCLUDED

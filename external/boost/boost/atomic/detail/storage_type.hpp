@@ -27,7 +27,7 @@
 #pragma once
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace atomics {
 namespace detail {
 
@@ -81,7 +81,7 @@ struct make_storage_type
 template< >
 struct make_storage_type< 1u, false >
 {
-    typedef boost_part::uint8_t type;
+    typedef boost::uint8_t type;
 
     struct aligned
     {
@@ -95,7 +95,7 @@ struct make_storage_type< 1u, false >
 template< >
 struct make_storage_type< 1u, true >
 {
-    typedef boost_part::int8_t type;
+    typedef boost::int8_t type;
 
     struct aligned
     {
@@ -109,7 +109,7 @@ struct make_storage_type< 1u, true >
 template< >
 struct make_storage_type< 2u, false >
 {
-    typedef boost_part::uint16_t type;
+    typedef boost::uint16_t type;
 
     struct aligned
     {
@@ -123,7 +123,7 @@ struct make_storage_type< 2u, false >
 template< >
 struct make_storage_type< 2u, true >
 {
-    typedef boost_part::int16_t type;
+    typedef boost::int16_t type;
 
     struct aligned
     {
@@ -137,7 +137,7 @@ struct make_storage_type< 2u, true >
 template< >
 struct make_storage_type< 4u, false >
 {
-    typedef boost_part::uint32_t type;
+    typedef boost::uint32_t type;
 
     struct aligned
     {
@@ -151,7 +151,7 @@ struct make_storage_type< 4u, false >
 template< >
 struct make_storage_type< 4u, true >
 {
-    typedef boost_part::int32_t type;
+    typedef boost::int32_t type;
 
     struct aligned
     {
@@ -165,7 +165,7 @@ struct make_storage_type< 4u, true >
 template< >
 struct make_storage_type< 8u, false >
 {
-    typedef boost_part::uint64_t type;
+    typedef boost::uint64_t type;
 
     struct aligned
     {
@@ -179,7 +179,7 @@ struct make_storage_type< 8u, false >
 template< >
 struct make_storage_type< 8u, true >
 {
-    typedef boost_part::int64_t type;
+    typedef boost::int64_t type;
 
     struct aligned
     {
@@ -195,7 +195,7 @@ struct make_storage_type< 8u, true >
 template< >
 struct make_storage_type< 16u, false >
 {
-    typedef boost_part::uint128_type type;
+    typedef boost::uint128_type type;
 
     struct aligned
     {
@@ -209,7 +209,7 @@ struct make_storage_type< 16u, false >
 template< >
 struct make_storage_type< 16u, true >
 {
-    typedef boost_part::int128_type type;
+    typedef boost::int128_type type;
 
     struct aligned
     {
@@ -224,7 +224,7 @@ struct make_storage_type< 16u, true >
 
 struct storage128_t
 {
-    boost_part::uint64_t data[2];
+    boost::uint64_t data[2];
 
     BOOST_FORCEINLINE bool operator! () const BOOST_NOEXCEPT
     {
@@ -275,6 +275,6 @@ struct storage_size_of
 
 } // namespace detail
 } // namespace atomics
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_ATOMIC_DETAIL_STORAGE_TYPE_HPP_INCLUDED_

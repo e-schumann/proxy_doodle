@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_COMPLEX_INVERSE_TRIG
 #include "boost_has_tr1_complex_trig.ipp"
 #else
-namespace boost_part_has_tr1_complex_inverse_trig = empty_boost;
+namespace boost_has_tr1_complex_inverse_trig = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_complex_inverse_trig::test();
+   return boost_has_tr1_complex_inverse_trig::test();
 }
 

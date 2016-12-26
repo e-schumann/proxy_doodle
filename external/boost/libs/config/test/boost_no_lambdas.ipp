@@ -14,7 +14,7 @@
 #  error This feature is not available in non-C++0x mode
 #endif
 
-namespace boost_part_no_cxx11_lambdas {
+namespace boost_no_cxx11_lambdas {
 
 template <class Func>
 int f(Func f)

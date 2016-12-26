@@ -12,7 +12,7 @@
 
 #include <type_traits>
 
-namespace boost_part_no_cxx11_hdr_type_traits {
+namespace boost_no_cxx11_hdr_type_traits {
 
 int test()
 {

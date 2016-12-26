@@ -28,7 +28,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 namespace {
@@ -83,10 +83,10 @@ public:
     ///
     /// This methhod return one of the result codes defined in @c boost/cstdlib.hpp
     /// @returns
-    ///   - @c boost_part::exit_success on success,
-    ///   - @c boost_part::exit_exception_failure in case test unit
+    ///   - @c boost::exit_success on success,
+    ///   - @c boost::exit_exception_failure in case test unit
     ///     was aborted for any reason (incuding uncaught exception)
-    ///   - and @c boost_part::exit_test_failure otherwise
+    ///   - and @c boost::exit_test_failure otherwise
     int             result_code() const;
 
     //! Combines the results of the current instance with another
@@ -105,7 +105,7 @@ public:
 /// test tree. The results_collector_t::results() function combines the test results on a subtree
 /// of the test tree.
 ///
-/// @see boost_part::unit_test::test_observer
+/// @see boost::unit_test::test_observer
 class BOOST_TEST_DECL results_collector_t : public test_observer, public singleton<results_collector_t> {
 public:
 
@@ -133,7 +133,7 @@ private:
 BOOST_TEST_SINGLETON_INST( results_collector )
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

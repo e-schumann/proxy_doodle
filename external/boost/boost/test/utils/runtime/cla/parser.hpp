@@ -34,7 +34,7 @@
 
 #include <boost/test/detail/suppress_warnings.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace runtime {
 namespace cla {
 
@@ -47,7 +47,7 @@ namespace rt_cla_detail {
 struct parameter_trie;
 typedef shared_ptr<parameter_trie> parameter_trie_ptr;
 typedef std::map<char,parameter_trie_ptr> trie_per_char;
-typedef std::vector<boost_part::reference_wrapper<parameter_cla_id const> > param_cla_id_list;
+typedef std::vector<boost::reference_wrapper<parameter_cla_id const> > param_cla_id_list;
 
 struct parameter_trie {
     parameter_trie() : m_has_final_candidate( false ) {}
@@ -515,7 +515,7 @@ private:
 
 } // namespace cla
 } // namespace runtime
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

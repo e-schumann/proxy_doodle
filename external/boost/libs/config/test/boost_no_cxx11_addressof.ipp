@@ -13,7 +13,7 @@
 
 #include <memory>
 
-namespace boost_part_no_cxx11_addressof {
+namespace boost_no_cxx11_addressof {
 
 void x3()
 {

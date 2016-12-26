@@ -12,7 +12,7 @@
 #include <windows.h>
 
 
-namespace boost_part_has_winthreads{
+namespace boost_has_winthreads{
 
 int test()
 {

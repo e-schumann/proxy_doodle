@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_STD_ITERATOR
 #include "boost_no_std_iterator.ipp"
 #else
-namespace boost_part_no_std_iterator = empty_boost;
+namespace boost_no_std_iterator = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_std_iterator::test();
+   return boost_no_std_iterator::test();
 }
 

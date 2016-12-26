@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_argument_dependent_lookup::test();
+   return boost_no_argument_dependent_lookup::test();
 }
 

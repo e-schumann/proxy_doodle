@@ -15,31 +15,31 @@
 #include <boost/range/concepts.hpp>
 #include <boost/iterator/reverse_iterator.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
         template< class R >
         struct reversed_range : 
-            public boost_part::iterator_range< 
-                      boost_part::reverse_iterator<
+            public boost::iterator_range< 
+                      boost::reverse_iterator<
                         BOOST_DEDUCED_TYPENAME range_iterator<R>::type 
                                               >
                                          >
         {
         private:
-            typedef boost_part::iterator_range< 
-                      boost_part::reverse_iterator<
+            typedef boost::iterator_range< 
+                      boost::reverse_iterator<
                         BOOST_DEDUCED_TYPENAME range_iterator<R>::type 
                                               >
                                          >
                 base;
             
         public:
-            typedef boost_part::reverse_iterator<BOOST_DEDUCED_TYPENAME range_iterator<R>::type> iterator;
+            typedef boost::reverse_iterator<BOOST_DEDUCED_TYPENAME range_iterator<R>::type> iterator;
 
             explicit reversed_range( R& r ) 
-                : base( iterator(boost_part::end(r)), iterator(boost_part::begin(r)) )
+                : base( iterator(boost::end(r)), iterator(boost::begin(r)) )
             { }
         };
 

@@ -34,7 +34,7 @@
 
 #include <boost/tuple/tuple.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace adaptors
     {
@@ -93,22 +93,22 @@ public:
     // member functions index(), value() (non-const and const)
     index_type index()
     {
-        return boost_part::tuples::get<0>(*this);
+        return boost::tuples::get<0>(*this);
     }
 
     const_index_type index() const
     {
-        return boost_part::tuples::get<0>(*this);
+        return boost::tuples::get<0>(*this);
     }
 
     value_type value()
     {
-        return boost_part::tuples::get<1>(*this);
+        return boost::tuples::get<1>(*this);
     }
 
     const_value_type value() const
     {
-        return boost_part::tuples::get<1>(*this);
+        return boost::tuples::get<1>(*this);
     }
 };
 
@@ -120,7 +120,7 @@ namespace range_detail
 template<typename Iter>
 struct indexed_iterator_value_type
 {
-    typedef ::boost_part::range::index_value<
+    typedef ::boost::range::index_value<
         typename iterator_reference<Iter>::type,
         typename iterator_difference<Iter>::type
     > type;
@@ -218,7 +218,7 @@ public:
     }
 
  private:
-    friend class boost_part::iterator_core_access;
+    friend class boost::iterator_core_access;
 
     reference dereference() const
     {
@@ -274,7 +274,7 @@ struct indexed_range
     > base_t;
 
     BOOST_RANGE_CONCEPT_ASSERT((
-        boost_part::SinglePassRangeConcept<SinglePassRange>));
+        boost::SinglePassRangeConcept<SinglePassRange>));
 public:
     typedef indexed_iterator<
         typename range_iterator<SinglePassRange>::type
@@ -289,8 +289,8 @@ public:
         SinglePassRange& r,
         single_pass_traversal_tag
         )
-        : base_t(iterator(boost_part::begin(r), i),
-                 iterator(boost_part::end(r), i))
+        : base_t(iterator(boost::begin(r), i),
+                 iterator(boost::end(r), i))
     {
     }
 
@@ -299,8 +299,8 @@ public:
         SinglePassRange& r,
         random_access_traversal_tag
         )
-        : base_t(iterator(boost_part::begin(r), i),
-                 iterator(boost_part::end(r), i + boost_part::size(r)))
+        : base_t(iterator(boost::begin(r), i),
+                 iterator(boost::end(r), i + boost::size(r)))
     {
     }
 };
@@ -317,7 +317,7 @@ inline indexed_range<SinglePassRange>
 operator|(SinglePassRange& r, indexed e)
 {
     BOOST_RANGE_CONCEPT_ASSERT((
-        boost_part::SinglePassRangeConcept<SinglePassRange>
+        boost::SinglePassRangeConcept<SinglePassRange>
     ));
     return indexed_range<SinglePassRange>(
                 e.val, r,
@@ -329,7 +329,7 @@ inline indexed_range<const SinglePassRange>
 operator|(const SinglePassRange& r, indexed e)
 {
     BOOST_RANGE_CONCEPT_ASSERT((
-        boost_part::SinglePassRangeConcept<const SinglePassRange>
+        boost::SinglePassRangeConcept<const SinglePassRange>
     ));
     return indexed_range<const SinglePassRange>(
                 e.val, r,
@@ -343,7 +343,7 @@ index(
     typename range_difference<SinglePassRange>::type index_value = 0)
 {
     BOOST_RANGE_CONCEPT_ASSERT((
-        boost_part::SinglePassRangeConcept<SinglePassRange>
+        boost::SinglePassRangeConcept<SinglePassRange>
     ));
     return indexed_range<SinglePassRange>(
                 index_value, rng,
@@ -357,7 +357,7 @@ index(
     typename range_difference<const SinglePassRange>::type index_value = 0)
 {
     BOOST_RANGE_CONCEPT_ASSERT((
-        boost_part::SinglePassRangeConcept<SinglePassRange>
+        boost::SinglePassRangeConcept<SinglePassRange>
     ));
     return indexed_range<const SinglePassRange>(
                 index_value, rng,
@@ -365,6 +365,6 @@ index(
 }
 
     } // namespace adaptors
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

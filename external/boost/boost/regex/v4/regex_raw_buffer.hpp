@@ -28,7 +28,7 @@
 #include <algorithm>
 #include <cstddef>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
    namespace BOOST_REGEX_DETAIL_NS{
 
 #ifdef BOOST_MSVC
@@ -199,7 +199,7 @@ inline raw_storage::raw_storage(size_type n)
 #endif
 
 } // namespace BOOST_REGEX_DETAIL_NS
-} // namespace boost_part
+} // namespace boost
 
 #endif
 

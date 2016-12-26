@@ -12,7 +12,7 @@ http://boost.org/LICENSE_1_0.txt
 #include <boost/config.hpp>
 #include <cstddef>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace alignment {
 namespace detail {
 

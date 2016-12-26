@@ -19,7 +19,7 @@
 #include <boost/mpl/aux_/config/msvc.hpp>
 #include <boost/mpl/aux_/config/workaround.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 template<
       typename Size

@@ -22,7 +22,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace ut_detail {
 
@@ -47,7 +47,7 @@ template <class T> inline void ignore_unused_variable_warning(const T&) {}
 
 } // namespace ut_detail
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 //____________________________________________________________________________//
 

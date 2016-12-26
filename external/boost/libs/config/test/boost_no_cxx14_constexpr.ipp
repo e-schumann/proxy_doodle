@@ -11,7 +11,7 @@
 //  TITLE:         C++14 relaxed constexpr unavailable
 //  DESCRIPTION:   The compiler does not support C++14 relaxed constexpr
 
-namespace boost_part_no_cxx14_constexpr
+namespace boost_no_cxx14_constexpr
 {
 
 namespace detail

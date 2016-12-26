@@ -13,7 +13,7 @@
   *   LOCATION:    see http://www.boost.org for most recent version.
   *   FILE:        fileiter.cpp
   *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: Implements file io primitives + directory searching for class boost_part::RegEx.
+  *   DESCRIPTION: Implements file io primitives + directory searching for class boost::RegEx.
   */
 
 
@@ -57,7 +57,7 @@ namespace std{
 #  pragma warning(disable: 4800)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
    namespace BOOST_REGEX_DETAIL_NS{
 // start with the operating system specific stuff:
 
@@ -110,7 +110,7 @@ void mapfile::open(const char* file)
          hmap = 0;
          hfile = 0;
          std::runtime_error err("Unable to create file mapping.");
-         boost_part::BOOST_REGEX_DETAIL_NS::raise_runtime_error(err);
+         boost::BOOST_REGEX_DETAIL_NS::raise_runtime_error(err);
       }
       _first = static_cast<const char*>(MapViewOfFile(hmap, FILE_MAP_READ, 0, 0, 0));
       if(_first == 0)

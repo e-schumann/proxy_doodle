@@ -32,13 +32,13 @@
 // Boost
 #include <boost/shared_ptr.hpp>
 #include <boost/io/ios_state.hpp>
-typedef ::boost_part::io::ios_base_all_saver io_saver_type;
+typedef ::boost::io::ios_base_all_saver io_saver_type;
 
 #include <boost/test/detail/suppress_warnings.hpp>
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 // ************************************************************************** //
@@ -85,8 +85,8 @@ namespace {
 
 // log data
 struct unit_test_log_data_helper_impl {
-  typedef boost_part::shared_ptr<unit_test_log_formatter> formatter_ptr;
-  typedef boost_part::shared_ptr<io_saver_type>           saver_ptr;
+  typedef boost::shared_ptr<unit_test_log_formatter> formatter_ptr;
+  typedef boost::shared_ptr<io_saver_type>           saver_ptr;
 
   bool                m_enabled;
   output_format       m_format;
@@ -667,7 +667,7 @@ unit_test_log_formatter::get_log_level() const
 //____________________________________________________________________________//
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

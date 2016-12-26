@@ -21,7 +21,7 @@
 #include <xutility>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -32,7 +32,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             template<typename Iterator, typename UnaryFunction>
             inline UnaryFunction
             for_each_impl(Iterator first, Iterator last, UnaryFunction fun,
-                          typename ::boost_part::enable_if<
+                          typename ::boost::enable_if<
                             is_reference_wrapper<UnaryFunction>,
                             void
                           >::type* = 0)
@@ -75,12 +75,12 @@ inline UnaryFunction for_each(SinglePassRange & rng, UnaryFunction fun)
         return for_each_detail::for_each_impl<
                 typename range_iterator<SinglePassRange>::type,
                 UnaryFunction
-        >(boost_part::begin(rng), boost_part::end(rng), fun);
+        >(boost::begin(rng), boost::end(rng), fun);
 #else
     return std::for_each<
         BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type,
         UnaryFunction
-    >(boost_part::begin(rng),boost_part::end(rng),fun);
+    >(boost::begin(rng),boost::end(rng),fun);
 #endif    
 }
 
@@ -94,17 +94,17 @@ inline UnaryFunction for_each(const SinglePassRange& rng, UnaryFunction fun)
         return for_each_detail::for_each_impl<
                 typename range_iterator<const SinglePassRange>::type,
                 UnaryFunction
-        >(boost_part::begin(rng), boost_part::end(rng), fun);
+        >(boost::begin(rng), boost::end(rng), fun);
 #else    
     return std::for_each<
         BOOST_DEDUCED_TYPENAME range_iterator<const SinglePassRange>::type,
         UnaryFunction
-    >(boost_part::begin(rng), boost_part::end(rng), fun);
+    >(boost::begin(rng), boost::end(rng), fun);
 #endif    
 }
 
     } // namespace range
     using range::for_each;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

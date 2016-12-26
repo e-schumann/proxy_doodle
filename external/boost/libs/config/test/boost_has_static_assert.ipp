@@ -9,7 +9,7 @@
 //  TITLE:         static assertions
 //  DESCRIPTION:   The compiler supports C++0x static assertions
 
-namespace boost_part_has_static_assert {
+namespace boost_has_static_assert {
 
 int test()
 {

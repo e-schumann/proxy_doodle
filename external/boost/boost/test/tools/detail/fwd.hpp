@@ -26,7 +26,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 class lazy_ostream;
@@ -114,7 +114,7 @@ equal_impl( char const* left, char const* right );
 
 } // namespace tt_detail
 } // namespace test_tools
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

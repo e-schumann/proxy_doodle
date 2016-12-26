@@ -11,7 +11,7 @@
 //                 exception handling.
 
 
-namespace boost_part_no_exceptions{
+namespace boost_no_exceptions{
 
 void throw_it(int i)
 {

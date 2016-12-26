@@ -25,7 +25,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace ut_detail {
 
@@ -62,7 +62,7 @@ throw_exception(E const& e) { throw e; }
 
 } // namespace ut_detail
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 //____________________________________________________________________________//
 

@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_RAW_LITERALS
 #include "boost_no_raw_literals.ipp"
 #else
-namespace boost_part_no_cxx11_raw_literals = empty_boost;
+namespace boost_no_cxx11_raw_literals = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_raw_literals::test();
+   return boost_no_cxx11_raw_literals::test();
 }
 

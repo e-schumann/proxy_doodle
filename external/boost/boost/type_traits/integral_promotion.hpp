@@ -13,12 +13,12 @@
 #include <boost/type_traits/is_volatile.hpp>
 #include <boost/type_traits/remove_cv.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace type_traits { namespace detail {
 
 // 4.5/2
-template <class T> struct need_promotion : public boost_part::is_enum<T> {};
+template <class T> struct need_promotion : public boost::is_enum<T> {};
 
 // 4.5/1
 template<> struct need_promotion<char              > : public true_type {};
@@ -53,8 +53,8 @@ BOOST_TT_AUX_PROMOTE_NONSTANDARD_TYPE(         __int64)
 #endif
 
 #if defined(BOOST_HAS_LONG_LONG)
-BOOST_TT_AUX_PROMOTE_NONSTANDARD_TYPE(boost_part::ulong_long_type)
-BOOST_TT_AUX_PROMOTE_NONSTANDARD_TYPE(boost_part::long_long_type )
+BOOST_TT_AUX_PROMOTE_NONSTANDARD_TYPE(boost::ulong_long_type)
+BOOST_TT_AUX_PROMOTE_NONSTANDARD_TYPE(boost::long_long_type )
 #elif defined(BOOST_HAS_MS_INT64)
 BOOST_TT_AUX_PROMOTE_NONSTANDARD_TYPE(unsigned __int64)
 BOOST_TT_AUX_PROMOTE_NONSTANDARD_TYPE(         __int64)
@@ -97,8 +97,8 @@ BOOST_TT_AUX_PROMOTE_FROM_INDEX(4, unsigned long)
 // introduce ambiguity, though.
 
 #if defined(BOOST_HAS_LONG_LONG)
-BOOST_TT_AUX_PROMOTE_FROM_INDEX(5, boost_part::long_long_type )
-BOOST_TT_AUX_PROMOTE_FROM_INDEX(6, boost_part::ulong_long_type)
+BOOST_TT_AUX_PROMOTE_FROM_INDEX(5, boost::long_long_type )
+BOOST_TT_AUX_PROMOTE_FROM_INDEX(6, boost::ulong_long_type)
 #elif defined(BOOST_HAS_MS_INT64)
 BOOST_TT_AUX_PROMOTE_FROM_INDEX(7, __int64         )
 BOOST_TT_AUX_PROMOTE_FROM_INDEX(8, unsigned __int64)
@@ -132,8 +132,8 @@ BOOST_TT_AUX_PROMOTED_INDEX_TESTER(3, long         )
 BOOST_TT_AUX_PROMOTED_INDEX_TESTER(4, unsigned long)
 
 #if defined(BOOST_HAS_LONG_LONG)
-BOOST_TT_AUX_PROMOTED_INDEX_TESTER(5, boost_part::long_long_type )
-BOOST_TT_AUX_PROMOTED_INDEX_TESTER(6, boost_part::ulong_long_type)
+BOOST_TT_AUX_PROMOTED_INDEX_TESTER(5, boost::long_long_type )
+BOOST_TT_AUX_PROMOTED_INDEX_TESTER(6, boost::ulong_long_type)
 #elif defined(BOOST_HAS_MS_INT64)
 BOOST_TT_AUX_PROMOTED_INDEX_TESTER(7, __int64         )
 BOOST_TT_AUX_PROMOTED_INDEX_TESTER(8, unsigned __int64)
@@ -156,9 +156,9 @@ template<class T>
 struct integral_promotion_impl
 {
     typedef BOOST_DEDUCED_TYPENAME promote_from_index<
-        (boost_part::type_traits::detail::promoted_index<T>::value)
-      , (boost_part::is_const<T>::value)
-      , (boost_part::is_volatile<T>::value)
+        (boost::type_traits::detail::promoted_index<T>::value)
+      , (boost::is_const<T>::value)
+      , (boost::is_volatile<T>::value)
       >::type type;
 };
 
@@ -170,9 +170,9 @@ template<class T> struct integral_promotion<T, true> : public integral_promotion
 template <class T> struct integral_promotion
 {
 private:
-   typedef boost_part::type_traits::detail::need_promotion<typename remove_cv<T>::type> tag_type;
+   typedef boost::type_traits::detail::need_promotion<typename remove_cv<T>::type> tag_type;
 public:
-   typedef typename boost_part::type_traits::detail::integral_promotion<T, tag_type::value>::type type;
+   typedef typename boost::type_traits::detail::integral_promotion<T, tag_type::value>::type type;
 };
 
 }

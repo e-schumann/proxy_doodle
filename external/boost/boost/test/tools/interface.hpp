@@ -41,7 +41,7 @@
 // ************************************************************************** //
 
 #define BOOST_TEST_BUILD_ASSERTION( P )             \
-    (::boost_part::test_tools::assertion::seed()->*P)    \
+    (::boost::test_tools::assertion::seed()->*P)    \
 /**/
 
 //____________________________________________________________________________//
@@ -49,16 +49,16 @@
 // Implementation based on direct predicate evaluation
 #define BOOST_TEST_TOOL_DIRECT_IMPL( P, level, M )              \
 do {                                                            \
-    ::boost_part::test_tools::assertion_result res = (P);            \
+    ::boost::test_tools::assertion_result res = (P);            \
     report_assertion(                                           \
         res,                                                    \
         BOOST_TEST_LAZY_MSG( M ),                               \
         BOOST_TEST_L(__FILE__),                                 \
         static_cast<std::size_t>(__LINE__),                     \
-        ::boost_part::test_tools::tt_detail::level,                  \
-        ::boost_part::test_tools::tt_detail::CHECK_MSG,              \
+        ::boost::test_tools::tt_detail::level,                  \
+        ::boost::test_tools::tt_detail::CHECK_MSG,              \
         0 );                                                    \
-} while( ::boost_part::test_tools::tt_detail::dummy_cond() )         \
+} while( ::boost::test_tools::tt_detail::dummy_cond() )         \
 /**/
 
 //____________________________________________________________________________//
@@ -68,16 +68,16 @@ do {                                                            \
 do {                                                            \
     BOOST_TEST_PASSPOINT();                                     \
                                                                 \
-    ::boost_part::test_tools::tt_detail::                            \
+    ::boost::test_tools::tt_detail::                            \
     report_assertion(                                           \
       BOOST_TEST_BUILD_ASSERTION( P ).evaluate(),               \
       BOOST_TEST_LAZY_MSG( BOOST_TEST_STRINGIZE( P ) ),         \
       BOOST_TEST_L(__FILE__),                                   \
       static_cast<std::size_t>(__LINE__),                       \
-      ::boost_part::test_tools::tt_detail::level,                    \
-      ::boost_part::test_tools::tt_detail::CHECK_BUILT_ASSERTION,    \
+      ::boost::test_tools::tt_detail::level,                    \
+      ::boost::test_tools::tt_detail::CHECK_BUILT_ASSERTION,    \
       0 );                                                      \
-} while( ::boost_part::test_tools::tt_detail::dummy_cond() )         \
+} while( ::boost::test_tools::tt_detail::dummy_cond() )         \
 /**/
 
 //____________________________________________________________________________//
@@ -87,21 +87,21 @@ do {                                                            \
 do {                                                            \
     BOOST_TEST_PASSPOINT();                                     \
                                                                 \
-    ::boost_part::test_tools::tt_detail::                            \
+    ::boost::test_tools::tt_detail::                            \
     report_assertion(                                           \
-      ::boost_part::test_tools::tt_detail::assertion_evaluate(       \
+      ::boost::test_tools::tt_detail::assertion_evaluate(       \
         BOOST_TEST_BUILD_ASSERTION( P ) )                       \
           << arg,                                               \
-      ::boost_part::test_tools::tt_detail::assertion_text(           \
+      ::boost::test_tools::tt_detail::assertion_text(           \
           BOOST_TEST_LAZY_MSG( BOOST_TEST_STRINGIZE(P) ),       \
           BOOST_TEST_LAZY_MSG( arg ) ),                         \
       BOOST_TEST_L(__FILE__),                                   \
       static_cast<std::size_t>(__LINE__),                       \
-      ::boost_part::test_tools::tt_detail::level,                    \
-      ::boost_part::test_tools::tt_detail::assertion_type()          \
+      ::boost::test_tools::tt_detail::level,                    \
+      ::boost::test_tools::tt_detail::assertion_type()          \
           << arg,                                               \
       0 );                                                      \
-} while( ::boost_part::test_tools::tt_detail::dummy_cond() )         \
+} while( ::boost::test_tools::tt_detail::dummy_cond() )         \
 /**/
 
 //____________________________________________________________________________//
@@ -120,11 +120,11 @@ do {                                                            \
 
 #define BOOST_TEST_TOOL_UNIV( level, P )                                    \
 do {                                                                        \
-    if( ::boost_part::debug::under_debugger() )                                  \
+    if( ::boost::debug::under_debugger() )                                  \
         BOOST_TEST_TOOL_DIRECT_IMPL( P, level, BOOST_TEST_STRINGIZE( P ) ); \
     else                                                                    \
         BOOST_TEST_TOOL_ET_IMPL( P, level );                                \
-} while( ::boost_part::test_tools::tt_detail::dummy_cond() )                     \
+} while( ::boost::test_tools::tt_detail::dummy_cond() )                     \
 /**/
 
 #define BOOST_TEST_TOOL_UNIV_EX( level, P, ... )                            \
@@ -166,7 +166,7 @@ do {                                                                        \
 
 //____________________________________________________________________________//
 
-#define BOOST_TEST_IS_DEFINED( symb ) ::boost_part::test_tools::tt_detail::is_defined_impl( symb, BOOST_STRINGIZE(= symb) )
+#define BOOST_TEST_IS_DEFINED( symb ) ::boost::test_tools::tt_detail::is_defined_impl( symb, BOOST_STRINGIZE(= symb) )
 
 //____________________________________________________________________________//
 
@@ -180,20 +180,20 @@ do { try {                                                                  \
     BOOST_TEST_TOOL_DIRECT_IMPL( Ppassed, TL, Mpassed );                    \
 } catch( E ) {                                                              \
     BOOST_TEST_TOOL_DIRECT_IMPL( Pcaught, TL, Mcaught );                    \
-}} while( ::boost_part::test_tools::tt_detail::dummy_cond() )                    \
+}} while( ::boost::test_tools::tt_detail::dummy_cond() )                    \
 /**/
 
 #elif defined(BOOST_TEST_TOOLS_DEBUGGABLE)
 
 #define BOOST_CHECK_THROW_IMPL(S, E, TL, Ppassed, Mpassed, Pcaught, Mcaught)\
 do { try {                                                                  \
-    if( ::boost_part::debug::under_debugger() )                                  \
+    if( ::boost::debug::under_debugger() )                                  \
         BOOST_TEST_PASSPOINT();                                             \
     S;                                                                      \
     BOOST_TEST_TOOL_DIRECT_IMPL( Ppassed, TL, Mpassed );                    \
 } catch( E ) {                                                              \
     BOOST_TEST_TOOL_DIRECT_IMPL( Pcaught, TL, Mcaught );                    \
-}} while( ::boost_part::test_tools::tt_detail::dummy_cond() )                    \
+}} while( ::boost::test_tools::tt_detail::dummy_cond() )                    \
 /**/
 
 #else
@@ -205,7 +205,7 @@ do { try {                                                                  \
     BOOST_TEST_TOOL_DIRECT_IMPL( Ppassed, TL, Mpassed );                    \
 } catch( E ) {                                                              \
     BOOST_TEST_TOOL_DIRECT_IMPL( Pcaught, TL, Mcaught );                    \
-}} while( ::boost_part::test_tools::tt_detail::dummy_cond() )                    \
+}} while( ::boost::test_tools::tt_detail::dummy_cond() )                    \
 /**/
 
 #endif
@@ -312,43 +312,43 @@ do { try {                                                                  \
 
 //____________________________________________________________________________//
 
-#define BOOST_WARN_CLOSE( L, R, T )         BOOST_TEST_WARN( L == R, T % ::boost_part::test_tools::tolerance() )
-#define BOOST_CHECK_CLOSE( L, R, T )        BOOST_TEST_CHECK( L == R, T % ::boost_part::test_tools::tolerance() )
-#define BOOST_REQUIRE_CLOSE( L, R, T )      BOOST_TEST_REQUIRE( L == R, T % ::boost_part::test_tools::tolerance() )
+#define BOOST_WARN_CLOSE( L, R, T )         BOOST_TEST_WARN( L == R, T % ::boost::test_tools::tolerance() )
+#define BOOST_CHECK_CLOSE( L, R, T )        BOOST_TEST_CHECK( L == R, T % ::boost::test_tools::tolerance() )
+#define BOOST_REQUIRE_CLOSE( L, R, T )      BOOST_TEST_REQUIRE( L == R, T % ::boost::test_tools::tolerance() )
 
-#define BOOST_WARN_CLOSE_FRACTION(L, R, T)  BOOST_TEST_WARN( L == R, ::boost_part::test_tools::tolerance( T ) )
-#define BOOST_CHECK_CLOSE_FRACTION(L, R, T) BOOST_TEST_CHECK( L == R, ::boost_part::test_tools::tolerance( T ) )
-#define BOOST_REQUIRE_CLOSE_FRACTION(L,R,T) BOOST_TEST_REQUIRE( L == R, ::boost_part::test_tools::tolerance( T ) )
+#define BOOST_WARN_CLOSE_FRACTION(L, R, T)  BOOST_TEST_WARN( L == R, ::boost::test_tools::tolerance( T ) )
+#define BOOST_CHECK_CLOSE_FRACTION(L, R, T) BOOST_TEST_CHECK( L == R, ::boost::test_tools::tolerance( T ) )
+#define BOOST_REQUIRE_CLOSE_FRACTION(L,R,T) BOOST_TEST_REQUIRE( L == R, ::boost::test_tools::tolerance( T ) )
 
-#define BOOST_WARN_SMALL( FPV, T )          BOOST_TEST_WARN( FPV == 0., ::boost_part::test_tools::tolerance( T ) )
-#define BOOST_CHECK_SMALL( FPV, T )         BOOST_TEST_CHECK( FPV == 0., ::boost_part::test_tools::tolerance( T ) )
-#define BOOST_REQUIRE_SMALL( FPV, T )       BOOST_TEST_REQUIRE( FPV == 0., ::boost_part::test_tools::tolerance( T ) )
+#define BOOST_WARN_SMALL( FPV, T )          BOOST_TEST_WARN( FPV == 0., ::boost::test_tools::tolerance( T ) )
+#define BOOST_CHECK_SMALL( FPV, T )         BOOST_TEST_CHECK( FPV == 0., ::boost::test_tools::tolerance( T ) )
+#define BOOST_REQUIRE_SMALL( FPV, T )       BOOST_TEST_REQUIRE( FPV == 0., ::boost::test_tools::tolerance( T ) )
 
 //____________________________________________________________________________//
 
 #define BOOST_WARN_EQUAL_COLLECTIONS( L_begin, L_end, R_begin, R_end )              \
-    BOOST_TEST_WARN( ::boost_part::test_tools::tt_detail::make_it_pair(L_begin, L_end) ==\
-                     ::boost_part::test_tools::tt_detail::make_it_pair(R_begin, R_end),  \
-                     ::boost_part::test_tools::per_element() )                           \
+    BOOST_TEST_WARN( ::boost::test_tools::tt_detail::make_it_pair(L_begin, L_end) ==\
+                     ::boost::test_tools::tt_detail::make_it_pair(R_begin, R_end),  \
+                     ::boost::test_tools::per_element() )                           \
 /**/
 
 #define BOOST_CHECK_EQUAL_COLLECTIONS( L_begin, L_end, R_begin, R_end )              \
-    BOOST_TEST_CHECK( ::boost_part::test_tools::tt_detail::make_it_pair(L_begin, L_end) ==\
-                      ::boost_part::test_tools::tt_detail::make_it_pair(R_begin, R_end),  \
-                      ::boost_part::test_tools::per_element() )                           \
+    BOOST_TEST_CHECK( ::boost::test_tools::tt_detail::make_it_pair(L_begin, L_end) ==\
+                      ::boost::test_tools::tt_detail::make_it_pair(R_begin, R_end),  \
+                      ::boost::test_tools::per_element() )                           \
 /**/
 
 #define BOOST_REQUIRE_EQUAL_COLLECTIONS( L_begin, L_end, R_begin, R_end )              \
-    BOOST_TEST_REQUIRE( ::boost_part::test_tools::tt_detail::make_it_pair(L_begin, L_end) ==\
-                        ::boost_part::test_tools::tt_detail::make_it_pair(R_begin, R_end),  \
-                        ::boost_part::test_tools::per_element() )                           \
+    BOOST_TEST_REQUIRE( ::boost::test_tools::tt_detail::make_it_pair(L_begin, L_end) ==\
+                        ::boost::test_tools::tt_detail::make_it_pair(R_begin, R_end),  \
+                        ::boost::test_tools::per_element() )                           \
 /**/
 
 //____________________________________________________________________________//
 
-#define BOOST_WARN_BITWISE_EQUAL( L, R )    BOOST_TEST_WARN( L == R, ::boost_part::test_tools::bitwise() )
-#define BOOST_CHECK_BITWISE_EQUAL( L, R )   BOOST_TEST_CHECK( L == R, ::boost_part::test_tools::bitwise() )
-#define BOOST_REQUIRE_BITWISE_EQUAL( L, R ) BOOST_TEST_REQUIRE( L == R, ::boost_part::test_tools::bitwise() )
+#define BOOST_WARN_BITWISE_EQUAL( L, R )    BOOST_TEST_WARN( L == R, ::boost::test_tools::bitwise() )
+#define BOOST_CHECK_BITWISE_EQUAL( L, R )   BOOST_TEST_CHECK( L == R, ::boost::test_tools::bitwise() )
+#define BOOST_REQUIRE_BITWISE_EQUAL( L, R ) BOOST_TEST_REQUIRE( L == R, ::boost::test_tools::bitwise() )
 
 //____________________________________________________________________________//
 
@@ -358,7 +358,7 @@ do { try {                                                                  \
 
 //____________________________________________________________________________//
 
-#define BOOST_IS_DEFINED( symb ) ::boost_part::test_tools::tt_detail::is_defined_impl( #symb, BOOST_STRINGIZE(= symb) )
+#define BOOST_IS_DEFINED( symb ) ::boost::test_tools::tt_detail::is_defined_impl( #symb, BOOST_STRINGIZE(= symb) )
 
 //____________________________________________________________________________//
 

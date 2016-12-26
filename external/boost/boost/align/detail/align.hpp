@@ -12,7 +12,7 @@ http://boost.org/LICENSE_1_0.txt
 #include <boost/align/detail/is_alignment.hpp>
 #include <boost/assert.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace alignment {
 
 inline void* align(std::size_t alignment, std::size_t size,

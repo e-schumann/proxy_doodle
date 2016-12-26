@@ -27,7 +27,7 @@
 #pragma warning(disable:4127 4244)  // Conditional expression is constant
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace integer
 {
@@ -55,7 +55,7 @@ public:
     result_type  operator ()( first_argument_type const &a,
      second_argument_type const &b ) const;
 
-};  // boost_part::integer::gcd_evaluator
+};  // boost::integer::gcd_evaluator
 
 
 //  Least common multiple evaluator class declaration  -----------------------//
@@ -71,7 +71,7 @@ public:
     result_type  operator ()( first_argument_type const &a,
      second_argument_type const &b ) const;
 
-};  // boost_part::integer::lcm_evaluator
+};  // boost::integer::lcm_evaluator
 
 
 //  Implementation details  --------------------------------------------------//
@@ -277,7 +277,7 @@ namespace detail
     BOOST_PRIVATE_GCD_UF( unsigned long );
 
 #ifdef BOOST_HAS_LONG_LONG
-    BOOST_PRIVATE_GCD_UF( boost_part::ulong_long_type );
+    BOOST_PRIVATE_GCD_UF( boost::ulong_long_type );
 #elif defined(BOOST_HAS_MS_INT64)
     BOOST_PRIVATE_GCD_UF( unsigned __int64 );
 #endif
@@ -305,7 +305,7 @@ namespace detail
 #endif
 
 #ifdef BOOST_HAS_LONG_LONG
-    BOOST_PRIVATE_GCD_SF( boost_part::long_long_type, boost_part::ulong_long_type );
+    BOOST_PRIVATE_GCD_SF( boost::long_long_type, boost::ulong_long_type );
 #elif defined(BOOST_HAS_MS_INT64)
     BOOST_PRIVATE_GCD_SF( __int64, unsigned __int64 );
 #endif
@@ -451,7 +451,7 @@ lcm
 
 
 }  // namespace integer
-}  // namespace boost_part
+}  // namespace boost
 
 #ifdef BOOST_MSVC
 #pragma warning(pop)

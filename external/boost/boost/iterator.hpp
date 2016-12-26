@@ -10,11 +10,11 @@
 #include <iterator>
 #include <cstddef>           // std::ptrdiff_t
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 using std::iterator;
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_ITERATOR_HPP

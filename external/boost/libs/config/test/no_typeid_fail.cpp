@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_typeid::test();
+   return boost_no_typeid::test();
 }
 

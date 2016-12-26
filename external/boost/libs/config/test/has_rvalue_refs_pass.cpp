@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_RVALUE_REFS
 #include "boost_has_rvalue_refs.ipp"
 #else
-namespace boost_part_has_rvalue_refs = empty_boost;
+namespace boost_has_rvalue_refs = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_rvalue_refs::test();
+   return boost_has_rvalue_refs::test();
 }
 

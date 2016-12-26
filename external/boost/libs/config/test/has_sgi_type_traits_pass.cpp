@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_SGI_TYPE_TRAITS
 #include "boost_has_sgi_type_traits.ipp"
 #else
-namespace boost_part_has_sgi_type_traits = empty_boost;
+namespace boost_has_sgi_type_traits = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_sgi_type_traits::test();
+   return boost_has_sgi_type_traits::test();
 }
 

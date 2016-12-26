@@ -11,7 +11,7 @@
 
 #include <unordered_set>
 
-namespace boost_part_has_tr1_unordered_set{
+namespace boost_has_tr1_unordered_set{
 
 using std::tr1::unordered_set;
 using std::tr1::unordered_multiset;

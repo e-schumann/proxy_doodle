@@ -12,7 +12,7 @@
 //                 see std::3.4.2 [basic.koenig.lookup]
 
 
-namespace boost_part_no_argument_dependent_lookup{
+namespace boost_no_argument_dependent_lookup{
 
 namespace foobar{
 

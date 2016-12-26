@@ -21,11 +21,11 @@ BOOST_AUTO_TEST_CASE (defines)
 
 BOOST_AUTO_TEST_CASE (simple_test)
 {
-    QGuiApplication app(boost_part::unit_test::framework::master_test_suite().argc,
-                        boost_part::unit_test::framework::master_test_suite().argv);
+    QGuiApplication app(boost::unit_test::framework::master_test_suite().argc,
+                        boost::unit_test::framework::master_test_suite().argv);
     QQuickView view;
 
-    QString fileName(boost_part::unit_test::framework::master_test_suite().argv[1]);
+    QString fileName(boost::unit_test::framework::master_test_suite().argv[1]);
 
     view.connect(view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
     view.setSource(QUrl::fromLocalFile(fileName)); \

@@ -16,8 +16,8 @@
 #include <boost/exception/detail/object_hex_dump.hpp>
 #include <boost/assert.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace
-boost_part
+namespace
+boost
     {
     namespace
     exception_detail

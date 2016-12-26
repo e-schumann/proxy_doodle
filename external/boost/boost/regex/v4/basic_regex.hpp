@@ -33,7 +33,7 @@
 #pragma warning(pop)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 #ifdef BOOST_MSVC
 #pragma warning(push)
 #pragma warning(disable : 4251 4231 4800)
@@ -67,7 +67,7 @@ void bubble_down_one(I first, I last)
 template <class Iterator>
 inline int hash_value_from_capture_name(Iterator i, Iterator j)
 {
-   std::size_t r = boost_part::hash_range(i, j);
+   std::size_t r = boost::hash_range(i, j);
    r %= ((std::numeric_limits<int>::max)() - 10001);
    r += 10000;
    return static_cast<int>(r);
@@ -162,14 +162,14 @@ struct regex_data : public named_subexpressions
    typedef regex_constants::syntax_option_type   flag_type;
    typedef std::size_t                           size_type;  
 
-   regex_data(const ::boost_part::shared_ptr<
-      ::boost_part::regex_traits_wrapper<traits> >& t) 
+   regex_data(const ::boost::shared_ptr<
+      ::boost::regex_traits_wrapper<traits> >& t) 
       : m_ptraits(t), m_expression(0), m_expression_len(0), m_disable_match_any(false) {}
    regex_data() 
-      : m_ptraits(new ::boost_part::regex_traits_wrapper<traits>()), m_expression(0), m_expression_len(0), m_disable_match_any(false) {}
+      : m_ptraits(new ::boost::regex_traits_wrapper<traits>()), m_expression(0), m_expression_len(0), m_disable_match_any(false) {}
 
-   ::boost_part::shared_ptr<
-      ::boost_part::regex_traits_wrapper<traits>
+   ::boost::shared_ptr<
+      ::boost::regex_traits_wrapper<traits>
       >                        m_ptraits;                 // traits class instance
    flag_type                   m_flags;                   // flags with which we were compiled
    int                         m_status;                  // error code (0 implies OK).
@@ -204,8 +204,8 @@ public:
    typedef const charT*                          const_iterator;
 
    basic_regex_implementation(){}
-   basic_regex_implementation(const ::boost_part::shared_ptr<
-      ::boost_part::regex_traits_wrapper<traits> >& t)
+   basic_regex_implementation(const ::boost::shared_ptr<
+      ::boost::regex_traits_wrapper<traits> >& t)
       : regex_data<charT, traits>(t) {}
    void assign(const charT* arg_first,
                           const charT* arg_last,
@@ -279,7 +279,7 @@ public:
    {
       return this->m_startmap;
    }
-   const ::boost_part::regex_traits_wrapper<traits>& get_traits()const
+   const ::boost::regex_traits_wrapper<traits>& get_traits()const
    {
       return *(this->m_ptraits);
    }
@@ -489,7 +489,7 @@ public:
    std::pair<const_iterator, const_iterator> BOOST_REGEX_CALL subexpression(std::size_t n)const
    {
       if(!m_pimpl.get())
-         boost_part::throw_exception(std::logic_error("Can't access subexpressions in an invalid regex."));
+         boost::throw_exception(std::logic_error("Can't access subexpressions in an invalid regex."));
       return m_pimpl->subexpression(n);
    }
    const_iterator BOOST_REGEX_CALL begin()const
@@ -613,7 +613,7 @@ public:
       BOOST_ASSERT(0 != m_pimpl.get());
       return m_pimpl->get_map();
    }
-   const ::boost_part::regex_traits_wrapper<traits>& get_traits()const
+   const ::boost::regex_traits_wrapper<traits>& get_traits()const
    {
       BOOST_ASSERT(0 != m_pimpl.get());
       return m_pimpl->get_traits();
@@ -628,7 +628,7 @@ public:
       BOOST_ASSERT(0 != m_pimpl.get());
       return m_pimpl->get_data();
    }
-   boost_part::shared_ptr<BOOST_REGEX_DETAIL_NS::named_subexpressions > get_named_subs()const
+   boost::shared_ptr<BOOST_REGEX_DETAIL_NS::named_subexpressions > get_named_subs()const
    {
       return m_pimpl;
    }
@@ -764,7 +764,7 @@ public:
 #pragma warning (pop)
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #ifdef BOOST_MSVC
 #pragma warning(push)

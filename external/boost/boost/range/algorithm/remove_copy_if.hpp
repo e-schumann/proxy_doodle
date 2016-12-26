@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     /// \brief template function remove_copy_if
     ///
@@ -31,7 +31,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     remove_copy_if(const SinglePassRange& rng, OutputIterator out_it, Predicate pred)
     {
         BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-        return std::remove_copy_if(boost_part::begin(rng), boost_part::end(rng), out_it, pred);
+        return std::remove_copy_if(boost::begin(rng), boost::end(rng), out_it, pred);
     }
 }
 

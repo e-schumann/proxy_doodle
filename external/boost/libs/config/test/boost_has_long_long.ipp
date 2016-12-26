@@ -12,7 +12,7 @@
 #include <cstdlib>
 
 
-namespace boost_part_has_long_long{
+namespace boost_has_long_long{
 
 int test()
 {

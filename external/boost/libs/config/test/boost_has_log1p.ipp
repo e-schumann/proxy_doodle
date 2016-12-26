@@ -11,7 +11,7 @@
 
 #include <math.h>
 
-namespace boost_part_has_log1p{
+namespace boost_has_log1p{
 
 int test()
 {

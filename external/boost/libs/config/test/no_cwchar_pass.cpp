@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_CWCHAR
 #include "boost_no_cwchar.ipp"
 #else
-namespace boost_part_no_cwchar = empty_boost;
+namespace boost_no_cwchar = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cwchar::test();
+   return boost_no_cwchar::test();
 }
 

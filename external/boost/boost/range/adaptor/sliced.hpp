@@ -16,7 +16,7 @@
 #include <boost/range/iterator_range.hpp>
 #include <boost/range/concepts.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace adaptors
     {
@@ -29,14 +29,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         };
 
         template< class RandomAccessRange >
-        class sliced_range : public boost_part::iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type >
+        class sliced_range : public boost::iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type >
         {
-            typedef boost_part::iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type > base_t;
+            typedef boost::iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type > base_t;
         public:
             template<typename Rng, typename T, typename U>
             sliced_range(Rng& rng, T t, U u)
-                : base_t(boost_part::next(boost_part::begin(rng), t),
-                         boost_part::next(boost_part::begin(rng), u))
+                : base_t(boost::next(boost::begin(rng), t),
+                         boost::next(boost::begin(rng), u))
             {
             }
         };
@@ -49,7 +49,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 RandomAccessRangeConcept<RandomAccessRange>));
 
             BOOST_ASSERT( t <= u && "error in slice indices" );
-            BOOST_ASSERT( static_cast<std::size_t>(boost_part::size(rng)) >= u &&
+            BOOST_ASSERT( static_cast<std::size_t>(boost::size(rng)) >= u &&
                           "second slice index out of bounds" );
 
             return sliced_range<RandomAccessRange>(rng, t, u);
@@ -63,7 +63,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 RandomAccessRangeConcept<const RandomAccessRange>));
 
             BOOST_ASSERT( t <= u && "error in slice indices" );
-            BOOST_ASSERT( static_cast<std::size_t>(boost_part::size(rng)) >= u &&
+            BOOST_ASSERT( static_cast<std::size_t>(boost::size(rng)) >= u &&
                           "second slice index out of bounds" );
 
             return sliced_range<const RandomAccessRange>(rng, t, u);
@@ -91,6 +91,6 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
     } // namespace adaptors
     using adaptors::sliced_range;
-} // namespace boost_part
+} // namespace boost
 
 #endif

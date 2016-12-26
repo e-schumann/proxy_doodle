@@ -10,7 +10,7 @@
 //  TITLE:         C++11 inline namespaces.
 //  DESCRIPTION:   The compiler does not support C++11 inline namespaces.
 
-namespace boost_part_no_cxx11_inline_namespaces {
+namespace boost_no_cxx11_inline_namespaces {
 
 inline namespace my_ns {
 

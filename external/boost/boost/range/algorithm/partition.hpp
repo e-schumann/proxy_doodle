@@ -16,7 +16,7 @@
 #include <boost/range/detail/range_return.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -31,7 +31,7 @@ inline BOOST_DEDUCED_TYPENAME range_iterator<ForwardRange>::type
 partition(ForwardRange& rng, UnaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return std::partition(boost_part::begin(rng),boost_part::end(rng),pred);
+    return std::partition(boost::begin(rng),boost::end(rng),pred);
 }
 
 /// \overload
@@ -40,7 +40,7 @@ inline BOOST_DEDUCED_TYPENAME range_iterator<ForwardRange>::type
 partition(const ForwardRange& rng, UnaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::partition(boost_part::begin(rng),boost_part::end(rng),pred);
+    return std::partition(boost::begin(rng),boost::end(rng),pred);
 }
 
 // range_return overloads
@@ -52,8 +52,8 @@ inline BOOST_DEDUCED_TYPENAME range_return<ForwardRange,re>::type
 partition(ForwardRange& rng, UnaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return boost_part::range_return<ForwardRange,re>::
-        pack(std::partition(boost_part::begin(rng), boost_part::end(rng), pred), rng);
+    return boost::range_return<ForwardRange,re>::
+        pack(std::partition(boost::begin(rng), boost::end(rng), pred), rng);
 }
 
 /// \overload
@@ -63,12 +63,12 @@ inline BOOST_DEDUCED_TYPENAME range_return<const ForwardRange,re>::type
 partition(const ForwardRange& rng, UnaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return boost_part::range_return<const ForwardRange,re>::
-        pack(std::partition(boost_part::begin(rng), boost_part::end(rng), pred), rng);
+    return boost::range_return<const ForwardRange,re>::
+        pack(std::partition(boost::begin(rng), boost::end(rng), pred), rng);
 }
 
     } // namespace range
     using range::partition;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

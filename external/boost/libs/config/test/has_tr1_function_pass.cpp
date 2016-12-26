@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_FUNCTION
 #include "boost_has_tr1_function.ipp"
 #else
-namespace boost_part_has_tr1_function = empty_boost;
+namespace boost_has_tr1_function = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_function::test();
+   return boost_has_tr1_function::test();
 }
 

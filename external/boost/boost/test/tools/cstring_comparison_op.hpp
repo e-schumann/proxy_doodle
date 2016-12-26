@@ -25,7 +25,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace test_tools {
 namespace assertion {
 namespace op {
@@ -36,7 +36,7 @@ namespace op {
 
 #define DEFINE_CSTRING_COMPARISON( oper, name, rev )                \
 template<typename Lhs,typename Rhs>                                 \
-struct name<Lhs,Rhs,typename boost_part::enable_if_c<                    \
+struct name<Lhs,Rhs,typename boost::enable_if_c<                    \
     (   unit_test::is_cstring<Lhs>::value                           \
      && unit_test::is_cstring<Rhs>::value)                          \
     >::type >                                                       \
@@ -79,7 +79,7 @@ BOOST_TEST_FOR_EACH_COMP_OP( DEFINE_CSTRING_COMPARISON )
 } // namespace op
 } // namespace assertion
 } // namespace test_tools
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

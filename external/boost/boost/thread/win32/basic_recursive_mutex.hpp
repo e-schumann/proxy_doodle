@@ -19,7 +19,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -59,7 +59,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 }
             }
 #if defined BOOST_THREAD_USES_DATETIME
-            bool timed_lock(::boost_part::system_time const& target)
+            bool timed_lock(::boost::system_time const& target)
             {
                 long const current_thread_id=win32::GetCurrentThreadId();
                 return try_recursive_lock(current_thread_id) || try_timed_lock(current_thread_id,target);
@@ -97,7 +97,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         private:
             bool try_recursive_lock(long current_thread_id) BOOST_NOEXCEPT
             {
-                if(::boost_part::detail::interlocked_read_acquire(&locking_thread_id)==current_thread_id)
+                if(::boost::detail::interlocked_read_acquire(&locking_thread_id)==current_thread_id)
                 {
                     ++recursion_count;
                     return true;
@@ -117,7 +117,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             }
 
 #if defined BOOST_THREAD_USES_DATETIME
-            bool try_timed_lock(long current_thread_id,::boost_part::system_time const& target)
+            bool try_timed_lock(long current_thread_id,::boost::system_time const& target)
             {
                 if(mutex.timed_lock(target))
                 {

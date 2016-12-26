@@ -14,7 +14,7 @@
   *   FILE         cregex.cpp
   *   VERSION      see <boost/version.hpp>
   *   DESCRIPTION: Declares POSIX API functions
-  *                + boost_part::RegEx high level wrapper.
+  *                + boost::RegEx high level wrapper.
   */
 
 #ifndef BOOST_RE_CREGEX_HPP_INCLUDED
@@ -45,7 +45,7 @@
 
 /* include these defs only for POSIX compatablity */
 #ifdef __cplusplus
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 extern "C" {
 #endif
 
@@ -206,7 +206,7 @@ BOOST_REGEX_DECL void BOOST_REGEX_CCALL regfreeW(regex_tW*);
  */
 #include <string>
 #include <vector>
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 #ifdef BOOST_MSVC
 #pragma warning(push)
@@ -313,7 +313,7 @@ public:
 #pragma warning(pop)
 #endif
 
-} /* namespace boost_part */
+} /* namespace boost */
 
 #endif /* __cplusplus */
 

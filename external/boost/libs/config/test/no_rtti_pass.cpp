@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_RTTI
 #include "boost_no_rtti.ipp"
 #else
-namespace boost_part_no_rtti = empty_boost;
+namespace boost_no_rtti = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_rtti::test();
+   return boost_no_rtti::test();
 }
 

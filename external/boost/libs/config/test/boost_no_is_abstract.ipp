@@ -10,7 +10,7 @@
 //  DESCRIPTION:   Some compilers can't handle the code used for is_abstract even if they support SFINAE.
 
 
-namespace boost_part_no_is_abstract{
+namespace boost_no_is_abstract{
 
 #if defined(__CODEGEARC__)
 template<class T>

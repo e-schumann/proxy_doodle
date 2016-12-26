@@ -27,7 +27,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 /// Main namespace for the Unit Test Framework interfaces and implementation
 namespace unit_test {
@@ -269,7 +269,7 @@ struct nothing_to_test {
 
 } // namespace framework
 } // unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_SIGACTION
 #include "boost_has_sigaction.ipp"
 #else
-namespace boost_part_has_sigaction = empty_boost;
+namespace boost_has_sigaction = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_sigaction::test();
+   return boost_has_sigaction::test();
 }
 

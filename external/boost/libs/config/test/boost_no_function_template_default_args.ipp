@@ -9,7 +9,7 @@
 //  TITLE:         Default template arguments for function templates
 //  DESCRIPTION:   Default template arguments for function templates are not supported.
 
-namespace boost_part_no_cxx11_function_template_default_args
+namespace boost_no_cxx11_function_template_default_args
 {
 
 template<typename T = int>
@@ -35,4 +35,4 @@ int test()
    return !is_same(foo<>(), 0) || is_same(foo<>(), 0L);
 }
 
-} // namespace boost_part_no_function_template_default_args
+} // namespace boost_no_function_template_default_args

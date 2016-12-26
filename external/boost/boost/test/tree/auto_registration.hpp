@@ -27,7 +27,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace ut_detail {
 
@@ -45,7 +45,7 @@ struct BOOST_TEST_DECL auto_test_unit_registrar {
 
 } // namespace ut_detail
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

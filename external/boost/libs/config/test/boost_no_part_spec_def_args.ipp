@@ -9,7 +9,7 @@
 //  TITLE:         Default arguments in partial specialization
 //  DESCRIPTION:   The compiler chokes if a partial specialization relies on default arguments in the primary template.
 
-namespace boost_part_no_partial_specialization_implicit_default_args{
+namespace boost_no_partial_specialization_implicit_default_args{
 
 template <class T>
 struct one

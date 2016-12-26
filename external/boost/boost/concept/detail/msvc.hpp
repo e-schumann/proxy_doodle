@@ -18,7 +18,7 @@
 #  pragma warning(disable:4100)
 # endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace concepts {
+namespace boost { namespace concepts {
 
 
 template <class Model>
@@ -97,7 +97,7 @@ struct require<void(*)(Model)>
 enum                                                \
 {                                                   \
     BOOST_PP_CAT(boost_concept_check,__LINE__) =    \
-    sizeof(::boost_part::concepts::require<ModelFnPtr>)    \
+    sizeof(::boost::concepts::require<ModelFnPtr>)    \
 }
   
 # else // Not vc-7.1
@@ -110,7 +110,7 @@ require_(void(*)(Model));
 enum                                                    \
 {                                                       \
     BOOST_PP_CAT(boost_concept_check,__LINE__) =        \
-      sizeof(::boost_part::concepts::require_((ModelFnPtr)0)) \
+      sizeof(::boost::concepts::require_((ModelFnPtr)0)) \
 }
   
 # endif

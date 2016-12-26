@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_deduced_typename::test();
+   return boost_deduced_typename::test();
 }
 

@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_STRINGSTREAM
 #include "boost_no_sstream.ipp"
 #else
-namespace boost_part_no_stringstream = empty_boost;
+namespace boost_no_stringstream = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_stringstream::test();
+   return boost_no_stringstream::test();
 }
 

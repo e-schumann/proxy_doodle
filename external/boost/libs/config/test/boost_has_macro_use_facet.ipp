@@ -17,7 +17,7 @@
 #error "macro _USE not defined"
 #endif
 
-namespace boost_part_has_macro_use_facet{
+namespace boost_has_macro_use_facet{
 
 int test()
 {

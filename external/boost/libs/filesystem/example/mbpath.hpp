@@ -18,7 +18,7 @@ namespace user
 {
   struct mbpath_traits;
   
-  typedef boost_part::filesystem::basic_path<std::wstring, mbpath_traits> mbpath;
+  typedef boost::filesystem::basic_path<std::wstring, mbpath_traits> mbpath;
 
   struct mbpath_traits
   {
@@ -34,7 +34,7 @@ namespace user
   };
 } // namespace user
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace filesystem
   {

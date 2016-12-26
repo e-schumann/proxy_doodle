@@ -12,7 +12,7 @@
 #include <signal.h>
 
 
-namespace boost_part_has_sigaction{
+namespace boost_has_sigaction{
 
 void f()
 {

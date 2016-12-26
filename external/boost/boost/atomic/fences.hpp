@@ -29,7 +29,7 @@
  *                      see comment for convert_memory_order_to_gcc in ops_gcc_atomic.hpp.
  */
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace atomics {
 
@@ -62,6 +62,6 @@ BOOST_FORCEINLINE void atomic_signal_fence(memory_order) BOOST_NOEXCEPT
 using atomics::atomic_thread_fence;
 using atomics::atomic_signal_fence;
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_ATOMIC_FENCES_HPP_INCLUDED_

@@ -18,11 +18,11 @@
 #include <iostream>
 
 using std::cout;
-using boost_part::filesystem::path;
-using boost_part::filesystem::filesystem_error;
-using boost_part::system::error_code;
-using boost_part::system::system_error;
-namespace fs = boost_part::filesystem;
+using boost::filesystem::path;
+using boost::filesystem::filesystem_error;
+using boost::system::error_code;
+using boost::system::system_error;
+namespace fs = boost::filesystem;
 
 namespace
 {

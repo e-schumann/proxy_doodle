@@ -20,7 +20,7 @@
 #include "boost/numeric/conversion/detail/udt_builtin_mixture.hpp"
 #include "boost/numeric/conversion/detail/is_subranged.hpp"
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace numeric { namespace convdetail
+namespace boost { namespace numeric { namespace convdetail
 {
   //-------------------------------------------------------------------
   // Implementation of the Conversion Traits for T != S
@@ -90,7 +90,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
     typedef typename mpl::if_<is_trivial,trivial_imp,non_trivial_imp>::type type ;
   } ;
 
-} } } // namespace boost_part::numeric::convdetail
+} } } // namespace boost::numeric::convdetail
 
 #endif
 

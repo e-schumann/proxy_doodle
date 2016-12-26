@@ -75,7 +75,7 @@ namespace std{
 }
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
   //===========================================================================
   // The escaped_list_separator class. Which is a model of TokenizerFunction
   // An escaped list is a super-set of what is commonly known as a comma
@@ -646,6 +646,6 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part{
   };
 
 
-} //namespace boost_part
+} //namespace boost
 
 #endif

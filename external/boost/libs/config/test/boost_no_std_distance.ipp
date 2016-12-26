@@ -13,7 +13,7 @@
 #include <iterator>
 
 
-namespace boost_part_no_std_distance{
+namespace boost_no_std_distance{
 
 int test()
 {

@@ -10,7 +10,7 @@
 //  TITLE:         C++11 ref-qualifiers on member functions.
 //  DESCRIPTION:   The compiler does not support the C++11 ref-qualifiers on member functions as described in N2439.
 
-namespace boost_part_no_cxx11_ref_qualifiers {
+namespace boost_no_cxx11_ref_qualifiers {
 
 struct G
 {

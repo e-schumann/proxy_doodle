@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_GETTIMEOFDAY
 #include "boost_has_gettimeofday.ipp"
 #else
-namespace boost_part_has_gettimeofday = empty_boost;
+namespace boost_has_gettimeofday = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_gettimeofday::test();
+   return boost_has_gettimeofday::test();
 }
 

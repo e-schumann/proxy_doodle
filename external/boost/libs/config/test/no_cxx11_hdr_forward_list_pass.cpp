@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_FORWARD_LIST
 #include "boost_no_cxx11_hdr_forward_list.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_forward_list = empty_boost;
+namespace boost_no_cxx11_hdr_forward_list = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_forward_list::test();
+   return boost_no_cxx11_hdr_forward_list::test();
 }
 

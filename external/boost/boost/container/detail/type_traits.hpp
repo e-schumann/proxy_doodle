@@ -26,45 +26,45 @@
 
 #include <boost/move/detail/type_traits.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 namespace container_detail {
 
-using ::boost_part::move_detail::enable_if;
-using ::boost_part::move_detail::enable_if_and;
-using ::boost_part::move_detail::is_same;
-using ::boost_part::move_detail::is_different;
-using ::boost_part::move_detail::is_pointer;
-using ::boost_part::move_detail::add_reference;
-using ::boost_part::move_detail::add_const;
-using ::boost_part::move_detail::add_const_reference;
-using ::boost_part::move_detail::remove_const;
-using ::boost_part::move_detail::remove_reference;
-using ::boost_part::move_detail::make_unsigned;
-using ::boost_part::move_detail::is_floating_point;
-using ::boost_part::move_detail::is_integral;
-using ::boost_part::move_detail::is_enum;
-using ::boost_part::move_detail::is_pod;
-using ::boost_part::move_detail::is_empty;
-using ::boost_part::move_detail::is_trivially_destructible;
-using ::boost_part::move_detail::is_trivially_default_constructible;
-using ::boost_part::move_detail::is_trivially_copy_constructible;
-using ::boost_part::move_detail::is_trivially_move_constructible;
-using ::boost_part::move_detail::is_trivially_copy_assignable;
-using ::boost_part::move_detail::is_trivially_move_assignable;
-using ::boost_part::move_detail::is_nothrow_default_constructible;
-using ::boost_part::move_detail::is_nothrow_copy_constructible;
-using ::boost_part::move_detail::is_nothrow_move_constructible;
-using ::boost_part::move_detail::is_nothrow_copy_assignable;
-using ::boost_part::move_detail::is_nothrow_move_assignable;
-using ::boost_part::move_detail::is_nothrow_swappable;
-using ::boost_part::move_detail::alignment_of;
-using ::boost_part::move_detail::aligned_storage;
-using ::boost_part::move_detail::nat;
-using ::boost_part::move_detail::max_align_t;
+using ::boost::move_detail::enable_if;
+using ::boost::move_detail::enable_if_and;
+using ::boost::move_detail::is_same;
+using ::boost::move_detail::is_different;
+using ::boost::move_detail::is_pointer;
+using ::boost::move_detail::add_reference;
+using ::boost::move_detail::add_const;
+using ::boost::move_detail::add_const_reference;
+using ::boost::move_detail::remove_const;
+using ::boost::move_detail::remove_reference;
+using ::boost::move_detail::make_unsigned;
+using ::boost::move_detail::is_floating_point;
+using ::boost::move_detail::is_integral;
+using ::boost::move_detail::is_enum;
+using ::boost::move_detail::is_pod;
+using ::boost::move_detail::is_empty;
+using ::boost::move_detail::is_trivially_destructible;
+using ::boost::move_detail::is_trivially_default_constructible;
+using ::boost::move_detail::is_trivially_copy_constructible;
+using ::boost::move_detail::is_trivially_move_constructible;
+using ::boost::move_detail::is_trivially_copy_assignable;
+using ::boost::move_detail::is_trivially_move_assignable;
+using ::boost::move_detail::is_nothrow_default_constructible;
+using ::boost::move_detail::is_nothrow_copy_constructible;
+using ::boost::move_detail::is_nothrow_move_constructible;
+using ::boost::move_detail::is_nothrow_copy_assignable;
+using ::boost::move_detail::is_nothrow_move_assignable;
+using ::boost::move_detail::is_nothrow_swappable;
+using ::boost::move_detail::alignment_of;
+using ::boost::move_detail::aligned_storage;
+using ::boost::move_detail::nat;
+using ::boost::move_detail::max_align_t;
 
 }  //namespace container_detail {
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #endif   //#ifndef BOOST_CONTAINER_CONTAINER_DETAIL_TYPE_TRAITS_HPP

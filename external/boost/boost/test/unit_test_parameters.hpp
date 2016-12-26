@@ -27,7 +27,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace runtime_config {
 
@@ -108,7 +108,7 @@ public:
         else if( stream_name == "stdout" )
             m_stream = &std::cout;
         else {
-            m_file = boost_part::make_shared<std::ofstream>();
+            m_file = boost::make_shared<std::ofstream>();
             m_file->open( std::string(stream_name.begin(), stream_name.end()).c_str() );
             m_stream = m_file.get();
         }
@@ -119,13 +119,13 @@ public:
 
 private:
     // Data members
-    boost_part::shared_ptr<std::ofstream>   m_file;
+    boost::shared_ptr<std::ofstream>   m_file;
     std::ostream*   m_stream;
 };
 
 } // namespace runtime_config
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 //____________________________________________________________________________//
 

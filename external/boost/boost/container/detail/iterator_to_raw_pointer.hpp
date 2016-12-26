@@ -22,7 +22,7 @@
 #include <boost/container/detail/to_raw_pointer.hpp>
 #include <boost/intrusive/pointer_traits.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 namespace container_detail {
 
@@ -31,15 +31,15 @@ inline T* iterator_to_pointer(T* i)
 {  return i; }
 
 template <class Iterator>
-inline typename boost_part::container::iterator_traits<Iterator>::pointer
+inline typename boost::container::iterator_traits<Iterator>::pointer
    iterator_to_pointer(const Iterator &i)
 {  return i.operator->();  }
 
 template <class Iterator>
 struct iterator_to_element_ptr
 {
-   typedef typename boost_part::container::iterator_traits<Iterator>::pointer      pointer;
-   typedef typename boost_part::intrusive::pointer_traits<pointer>::element_type   element_type;
+   typedef typename boost::container::iterator_traits<Iterator>::pointer      pointer;
+   typedef typename boost::intrusive::pointer_traits<pointer>::element_type   element_type;
    typedef element_type* type;
 };
 
@@ -47,12 +47,12 @@ template <class Iterator>
 inline typename iterator_to_element_ptr<Iterator>::type
    iterator_to_raw_pointer(const Iterator &i)
 {
-   return ::boost_part::intrusive::detail::to_raw_pointer
-      (  ::boost_part::container::container_detail::iterator_to_pointer(i)   );
+   return ::boost::intrusive::detail::to_raw_pointer
+      (  ::boost::container::container_detail::iterator_to_pointer(i)   );
 }
 
 }  //namespace container_detail {
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #endif   //#ifndef BOOST_CONTAINER_DETAIL_ITERATOR_TO_RAW_POINTER_HPP

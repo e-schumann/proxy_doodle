@@ -31,7 +31,7 @@
 #pragma warning(pop)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 namespace deprecated{
 //
@@ -64,7 +64,7 @@ public:
 };
 #endif
 } // namespace deprecated
-} // namespace boost_part
+} // namespace boost
 
 #ifdef BOOST_MSVC
 #pragma warning(push)

@@ -30,7 +30,7 @@
 # endif
 #endif
 
-using namespace boost_part::placeholders;
+using namespace boost::placeholders;
 
 #if defined(BOOST_CLANG)
 # pragma clang diagnostic pop

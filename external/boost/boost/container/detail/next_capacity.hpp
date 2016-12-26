@@ -23,7 +23,7 @@
 // container/detail
 #include <boost/container/detail/min_max.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 namespace container_detail {
 
@@ -41,7 +41,7 @@ struct next_capacity_calculator<SizeType, NextCapacityDouble>
    {
       const SizeType remaining = max_size - capacity;
       if ( remaining < n )
-         boost_part::container::throw_length_error("get_next_capacity, allocator's max_size reached");
+         boost::container::throw_length_error("get_next_capacity, allocator's max_size reached");
       const SizeType additional = max_value(n, capacity);
       return ( remaining < additional ) ? max_size : ( capacity + additional );
    }
@@ -56,7 +56,7 @@ struct next_capacity_calculator<SizeType, NextCapacity60Percent>
    {
       const SizeType remaining = max_size - capacity;
       if ( remaining < n )
-         boost_part::container::throw_length_error("get_next_capacity, allocator's max_size reached");
+         boost::container::throw_length_error("get_next_capacity, allocator's max_size reached");
       const SizeType m3 = max_size/3;
 
       if (capacity < m3)
@@ -70,6 +70,6 @@ struct next_capacity_calculator<SizeType, NextCapacity60Percent>
 
 }  //namespace container_detail {
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #endif   //#ifndef BOOST_CONTAINER_DETAIL_NEXT_CAPACITY_HPP

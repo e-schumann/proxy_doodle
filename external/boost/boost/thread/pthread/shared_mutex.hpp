@@ -24,7 +24,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     class shared_mutex
     {
@@ -157,10 +157,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 
         state_data state;
-        boost_part::mutex state_change;
-        boost_part::condition_variable shared_cond;
-        boost_part::condition_variable exclusive_cond;
-        boost_part::condition_variable upgrade_cond;
+        boost::mutex state_change;
+        boost::condition_variable shared_cond;
+        boost::condition_variable exclusive_cond;
+        boost::condition_variable upgrade_cond;
 
         void release_waiters()
         {
@@ -183,9 +183,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         void lock_shared()
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-            boost_part::this_thread::disable_interruption do_not_disturb;
+            boost::this_thread::disable_interruption do_not_disturb;
 #endif
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
             while(!state.can_lock_shared())
             {
                 shared_cond.wait(lk);
@@ -195,7 +195,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         bool try_lock_shared()
         {
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
 
             if(!state.can_lock_shared())
             {
@@ -209,9 +209,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         bool timed_lock_shared(system_time const& timeout)
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-            boost_part::this_thread::disable_interruption do_not_disturb;
+            boost::this_thread::disable_interruption do_not_disturb;
 #endif
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
 
             while(!state.can_lock_shared())
             {
@@ -240,9 +240,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         bool try_lock_shared_until(const chrono::time_point<Clock, Duration>& abs_time)
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-          boost_part::this_thread::disable_interruption do_not_disturb;
+          boost::this_thread::disable_interruption do_not_disturb;
 #endif
-          boost_part::unique_lock<boost_part::mutex> lk(state_change);
+          boost::unique_lock<boost::mutex> lk(state_change);
 
           while(!state.can_lock_shared())
           //while(state.exclusive || state.exclusive_waiting_blocked)
@@ -258,7 +258,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #endif
         void unlock_shared()
         {
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
             state.assert_lock_shared();
             state.unlock_shared();
             if (! state.more_shared())
@@ -284,9 +284,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         void lock()
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-            boost_part::this_thread::disable_interruption do_not_disturb;
+            boost::this_thread::disable_interruption do_not_disturb;
 #endif
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
 
             while (state.shared_count || state.exclusive)
             {
@@ -300,9 +300,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         bool timed_lock(system_time const& timeout)
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-            boost_part::this_thread::disable_interruption do_not_disturb;
+            boost::this_thread::disable_interruption do_not_disturb;
 #endif
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
 
             while(state.shared_count || state.exclusive)
             {
@@ -338,9 +338,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         bool try_lock_until(const chrono::time_point<Clock, Duration>& abs_time)
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-          boost_part::this_thread::disable_interruption do_not_disturb;
+          boost::this_thread::disable_interruption do_not_disturb;
 #endif
-          boost_part::unique_lock<boost_part::mutex> lk(state_change);
+          boost::unique_lock<boost::mutex> lk(state_change);
 
           while(state.shared_count || state.exclusive)
           {
@@ -363,7 +363,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         bool try_lock()
         {
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
 
             if(state.shared_count || state.exclusive)
             {
@@ -379,7 +379,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         void unlock()
         {
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
             state.assert_locked();
             state.exclusive=false;
             state.exclusive_waiting_blocked=false;
@@ -390,9 +390,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         void lock_upgrade()
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-            boost_part::this_thread::disable_interruption do_not_disturb;
+            boost::this_thread::disable_interruption do_not_disturb;
 #endif
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
             while(state.exclusive || state.exclusive_waiting_blocked || state.upgrade)
             {
                 shared_cond.wait(lk);
@@ -405,9 +405,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         bool timed_lock_upgrade(system_time const& timeout)
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-            boost_part::this_thread::disable_interruption do_not_disturb;
+            boost::this_thread::disable_interruption do_not_disturb;
 #endif
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
             while(state.exclusive || state.exclusive_waiting_blocked || state.upgrade)
             {
                 if(!shared_cond.timed_wait(lk,timeout))
@@ -440,9 +440,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         bool try_lock_upgrade_until(const chrono::time_point<Clock, Duration>& abs_time)
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-          boost_part::this_thread::disable_interruption do_not_disturb;
+          boost::this_thread::disable_interruption do_not_disturb;
 #endif
-          boost_part::unique_lock<boost_part::mutex> lk(state_change);
+          boost::unique_lock<boost::mutex> lk(state_change);
           while(state.exclusive || state.exclusive_waiting_blocked || state.upgrade)
           {
               if(cv_status::timeout == shared_cond.wait_until(lk,abs_time))
@@ -461,7 +461,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #endif
         bool try_lock_upgrade()
         {
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
             if(state.exclusive || state.exclusive_waiting_blocked || state.upgrade)
             {
                 return false;
@@ -477,7 +477,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         void unlock_upgrade()
         {
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
             //state.upgrade=false;
             state.unlock_upgrade();
             if(! state.more_shared() )
@@ -493,9 +493,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         void unlock_upgrade_and_lock()
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-            boost_part::this_thread::disable_interruption do_not_disturb;
+            boost::this_thread::disable_interruption do_not_disturb;
 #endif
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
             state.assert_lock_upgraded();
             state.unlock_shared();
             while (state.more_shared())
@@ -509,7 +509,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         void unlock_and_lock_upgrade()
         {
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
             state.assert_locked();
             state.exclusive=false;
             state.upgrade=true;
@@ -521,7 +521,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         bool try_unlock_upgrade_and_lock()
         {
-          boost_part::unique_lock<boost_part::mutex> lk(state_change);
+          boost::unique_lock<boost::mutex> lk(state_change);
           state.assert_lock_upgraded();
           if(    !state.exclusive
               && !state.exclusive_waiting_blocked
@@ -551,9 +551,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                           const chrono::time_point<Clock, Duration>& abs_time)
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-          boost_part::this_thread::disable_interruption do_not_disturb;
+          boost::this_thread::disable_interruption do_not_disturb;
 #endif
-          boost_part::unique_lock<boost_part::mutex> lk(state_change);
+          boost::unique_lock<boost::mutex> lk(state_change);
           state.assert_lock_upgraded();
           if (state.shared_count != 1)
           {
@@ -577,7 +577,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         // Shared <-> Exclusive
         void unlock_and_lock_shared()
         {
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
             state.assert_locked();
             state.exclusive=false;
             state.lock_shared();
@@ -588,7 +588,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #ifdef BOOST_THREAD_PROVIDES_SHARED_MUTEX_UPWARDS_CONVERSIONS
         bool try_unlock_shared_and_lock()
         {
-          boost_part::unique_lock<boost_part::mutex> lk(state_change);
+          boost::unique_lock<boost::mutex> lk(state_change);
           state.assert_lock_shared();
           if(    !state.exclusive
               && !state.exclusive_waiting_blocked
@@ -616,9 +616,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                           const chrono::time_point<Clock, Duration>& abs_time)
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-          boost_part::this_thread::disable_interruption do_not_disturb;
+          boost::this_thread::disable_interruption do_not_disturb;
 #endif
-          boost_part::unique_lock<boost_part::mutex> lk(state_change);
+          boost::unique_lock<boost::mutex> lk(state_change);
           state.assert_lock_shared();
           if (state.shared_count != 1)
           {
@@ -643,7 +643,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         // Shared <-> Upgrade
         void unlock_upgrade_and_lock_shared()
         {
-            boost_part::unique_lock<boost_part::mutex> lk(state_change);
+            boost::unique_lock<boost::mutex> lk(state_change);
             state.assert_lock_upgraded();
             state.upgrade=false;
             state.exclusive_waiting_blocked=false;
@@ -653,7 +653,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #ifdef BOOST_THREAD_PROVIDES_SHARED_MUTEX_UPWARDS_CONVERSIONS
         bool try_unlock_shared_and_lock_upgrade()
         {
-          boost_part::unique_lock<boost_part::mutex> lk(state_change);
+          boost::unique_lock<boost::mutex> lk(state_change);
           state.assert_lock_shared();
           if(    !state.exclusive
               && !state.exclusive_waiting_blocked
@@ -680,9 +680,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                           const chrono::time_point<Clock, Duration>& abs_time)
         {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-          boost_part::this_thread::disable_interruption do_not_disturb;
+          boost::this_thread::disable_interruption do_not_disturb;
 #endif
-          boost_part::unique_lock<boost_part::mutex> lk(state_change);
+          boost::unique_lock<boost::mutex> lk(state_change);
           state.assert_lock_shared();
           if(    state.exclusive
               || state.exclusive_waiting_blocked

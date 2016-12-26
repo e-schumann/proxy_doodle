@@ -8,7 +8,7 @@
 # include <boost/detail/iterator.hpp>
 # include <boost/detail/workaround.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace iterators {
 
 // Macro for supporting old compilers, no longer needed but kept
@@ -19,32 +19,32 @@ namespace iterators {
 template <class Iterator>
 struct iterator_value
 {
-    typedef typename boost_part::detail::iterator_traits<Iterator>::value_type type;
+    typedef typename boost::detail::iterator_traits<Iterator>::value_type type;
 };
 
 template <class Iterator>
 struct iterator_reference
 {
-    typedef typename boost_part::detail::iterator_traits<Iterator>::reference type;
+    typedef typename boost::detail::iterator_traits<Iterator>::reference type;
 };
 
 
 template <class Iterator>
 struct iterator_pointer
 {
-    typedef typename boost_part::detail::iterator_traits<Iterator>::pointer type;
+    typedef typename boost::detail::iterator_traits<Iterator>::pointer type;
 };
 
 template <class Iterator>
 struct iterator_difference
 {
-    typedef typename boost_part::detail::iterator_traits<Iterator>::difference_type type;
+    typedef typename boost::detail::iterator_traits<Iterator>::difference_type type;
 };
 
 template <class Iterator>
 struct iterator_category
 {
-    typedef typename boost_part::detail::iterator_traits<Iterator>::iterator_category type;
+    typedef typename boost::detail::iterator_traits<Iterator>::iterator_category type;
 };
 
 } // namespace iterators
@@ -55,6 +55,6 @@ using iterators::iterator_pointer;
 using iterators::iterator_difference;
 using iterators::iterator_category;
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // ITERATOR_TRAITS_DWA200347_HPP

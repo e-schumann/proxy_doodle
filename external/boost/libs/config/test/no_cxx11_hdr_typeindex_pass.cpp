@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_TYPEINDEX
 #include "boost_no_cxx11_hdr_typeindex.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_typeindex = empty_boost;
+namespace boost_no_cxx11_hdr_typeindex = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_typeindex::test();
+   return boost_no_cxx11_hdr_typeindex::test();
 }
 

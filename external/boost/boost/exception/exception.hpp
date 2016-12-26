@@ -14,14 +14,14 @@
 
 #ifdef BOOST_EXCEPTION_MINI_BOOST
 #include  <memory>
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace exception_detail { using std::shared_ptr; } }
+namespace boost { namespace exception_detail { using std::shared_ptr; } }
 #else
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { template <class T> class shared_ptr; };
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace exception_detail { using boost_part::shared_ptr; } }
+namespace boost { template <class T> class shared_ptr; };
+namespace boost { namespace exception_detail { using boost::shared_ptr; } }
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace
-boost_part
+namespace
+boost
     {
     namespace
     exception_detail
@@ -240,7 +240,7 @@ boost_part
             }
 
 #ifdef __HP_aCC
-        //On HP aCC, this protected copy constructor prevents throwing boost_part::exception.
+        //On HP aCC, this protected copy constructor prevents throwing boost::exception.
         //On all other platforms, the same effect is achieved by the pure virtual destructor.
         exception( exception const & x ) throw():
             data_(x.data_),

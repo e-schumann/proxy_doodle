@@ -18,7 +18,7 @@
 // C Runtime
 #include <cstddef>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace rtti {
 
 // ************************************************************************** //
@@ -52,12 +52,12 @@ type_id()
 
 //____________________________________________________________________________//
 
-#define BOOST_RTTI_SWITCH( type_id_ ) if( ::boost_part::rtti::id_t switch_by_id = type_id_ )
-#define BOOST_RTTI_CASE( type )       if( switch_by_id == ::boost_part::rtti::type_id<type>() )
+#define BOOST_RTTI_SWITCH( type_id_ ) if( ::boost::rtti::id_t switch_by_id = type_id_ )
+#define BOOST_RTTI_CASE( type )       if( switch_by_id == ::boost::rtti::type_id<type>() )
 
 //____________________________________________________________________________//
 
 } // namespace rtti
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TEST_UTILS_RTTI_HPP

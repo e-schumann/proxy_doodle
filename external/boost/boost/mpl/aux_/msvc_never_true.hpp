@@ -19,7 +19,7 @@
 
 #if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl { namespace aux {
+namespace boost { namespace mpl { namespace aux {
 
 template< typename T >
 struct msvc_never_true

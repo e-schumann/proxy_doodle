@@ -15,15 +15,15 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
-        typedef ::boost_part::detail::basic_timed_mutex underlying_mutex;
+        typedef ::boost::detail::basic_timed_mutex underlying_mutex;
     }
 
     class mutex:
-        public ::boost_part::detail::underlying_mutex
+        public ::boost::detail::underlying_mutex
     {
     public:
         BOOST_THREAD_NO_COPYABLE(mutex)
@@ -45,7 +45,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     typedef mutex try_mutex;
 
     class timed_mutex:
-        public ::boost_part::detail::basic_timed_mutex
+        public ::boost::detail::basic_timed_mutex
     {
     public:
         BOOST_THREAD_NO_COPYABLE(timed_mutex)

@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_TWO_PHASE_NAME_LOOKUP
 #include "boost_no_two_phase_lookup.ipp"
 #else
-namespace boost_part_no_two_phase_name_lookup = empty_boost;
+namespace boost_no_two_phase_name_lookup = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_two_phase_name_lookup::test();
+   return boost_no_two_phase_name_lookup::test();
 }
 

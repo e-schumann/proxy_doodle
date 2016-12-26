@@ -12,7 +12,7 @@
 #include <pthread.h>
 
 
-namespace boost_part_has_sched_yield{
+namespace boost_has_sched_yield{
 
 void f()
 {

@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_POINTER_TO_MEMBER_TEMPLATE_PARAMETERS
 #include "boost_no_mem_tem_pnts.ipp"
 #else
-namespace boost_part_no_pointer_to_member_template_parameters = empty_boost;
+namespace boost_no_pointer_to_member_template_parameters = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_pointer_to_member_template_parameters::test();
+   return boost_no_pointer_to_member_template_parameters::test();
 }
 

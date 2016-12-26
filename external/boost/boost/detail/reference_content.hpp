@@ -20,7 +20,7 @@
 
 #include "boost/mpl/void.hpp"
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace detail {
 
@@ -108,13 +108,13 @@ struct make_reference_content< mpl::void_ >
 
 template <typename T>
 struct has_nothrow_copy<
-      ::boost_part::detail::reference_content< T& >
+      ::boost::detail::reference_content< T& >
     >
     : mpl::true_
 {
 };
 
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_DETAIL_REFERENCE_CONTENT_HPP

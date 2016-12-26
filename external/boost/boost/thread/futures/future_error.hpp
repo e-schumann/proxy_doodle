@@ -15,7 +15,7 @@
 
 #include <stdexcept>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   class BOOST_SYMBOL_VISIBLE future_error
       : public std::logic_error

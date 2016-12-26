@@ -18,7 +18,7 @@
 
 #include <boost/config.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 template<class T> class optional ;
 
@@ -35,7 +35,7 @@ template<class T> void swap ( optional<T&>& , optional<T&>& ) BOOST_NOEXCEPT;
 
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif
 

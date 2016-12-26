@@ -20,7 +20,7 @@
 #define BOOST_REGEX_ERROR_TYPE_HPP
 
 #ifdef __cplusplus
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 #endif
 
 #ifdef __cplusplus

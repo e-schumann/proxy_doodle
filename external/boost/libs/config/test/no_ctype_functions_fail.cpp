@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_ctype_functions::test();
+   return boost_no_ctype_functions::test();
 }
 

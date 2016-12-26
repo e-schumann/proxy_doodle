@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX17_STD_APPLY
 #include "boost_no_cxx17_std_apply.ipp"
 #else
-namespace boost_part_no_cxx17_std_apply = empty_boost;
+namespace boost_no_cxx17_std_apply = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx17_std_apply::test();
+   return boost_no_cxx17_std_apply::test();
 }
 

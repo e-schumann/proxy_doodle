@@ -13,7 +13,7 @@
 #include <boost/config.hpp>
 #include <boost/range/config.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
@@ -67,6 +67,6 @@ private:
 };
 
     } // namespace range_detail
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

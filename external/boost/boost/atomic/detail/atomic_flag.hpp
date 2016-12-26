@@ -28,7 +28,7 @@
  *                      see comment for convert_memory_order_to_gcc in ops_gcc_atomic.hpp.
  */
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace atomics {
 
 #if defined(BOOST_NO_CXX11_CONSTEXPR) || defined(BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX)
@@ -65,6 +65,6 @@ struct atomic_flag
 };
 
 } // namespace atomics
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_ATOMIC_DETAIL_ATOMIC_FLAG_HPP_INCLUDED_

@@ -9,7 +9,7 @@
 // Preprocessed version of "boost/mpl/vector/vector10.hpp" header
 // -- DO NOT modify by hand!
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 template< typename V >
 struct v_at< V,0 >

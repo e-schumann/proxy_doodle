@@ -24,13 +24,13 @@
 #include <boost/cstdint.hpp>
 #include <boost/utility.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
 
         template<class SinglePassRange>
-        inline typename ::boost_part::enable_if<
+        inline typename ::boost::enable_if<
             has_member_size<SinglePassRange>,
             typename range_size<const SinglePassRange>::type
         >::type
@@ -46,7 +46,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         >::type
         range_calculate_size(const SinglePassRange& rng)
         {
-            return std::distance(boost_part::begin(rng), boost_part::end(rng));
+            return std::distance(boost::begin(rng), boost::end(rng));
         }
     }
 
@@ -59,7 +59,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 // working compiler but is vital for at least some compilers such as clang 4.2
 // but only on the Mac!
 #if BOOST_RANGE_ENABLE_CONCEPT_ASSERT == 1
-        BOOST_RANGE_CONCEPT_ASSERT((boost_part::SinglePassRangeConcept<SinglePassRange>));
+        BOOST_RANGE_CONCEPT_ASSERT((boost::SinglePassRangeConcept<SinglePassRange>));
 #endif
 
 #if !BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x564)) && \

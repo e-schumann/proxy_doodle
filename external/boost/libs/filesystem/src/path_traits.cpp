@@ -25,9 +25,9 @@
 #include <cstring>  // for strlen
 #include <cwchar>   // for wcslen
 
-namespace pt = boost_part::filesystem::path_traits;
-namespace fs = boost_part::filesystem;
-namespace bs = boost_part::system;
+namespace pt = boost::filesystem::path_traits;
+namespace fs = boost::filesystem;
+namespace bs = boost::system;
 
 //--------------------------------------------------------------------------------------//
 //                                  configuration                                       //
@@ -78,7 +78,7 @@ namespace {
     {
       //std::cout << " result is " << static_cast<int>(res) << std::endl;
       BOOST_FILESYSTEM_THROW(bs::system_error(res, fs::codecvt_error_category(),
-        "boost_part::filesystem::path codecvt to wstring"));
+        "boost::filesystem::path codecvt to wstring"));
     }
     target.append(to, to_next); 
   }
@@ -112,7 +112,7 @@ namespace {
     {
       //std::cout << " result is " << static_cast<int>(res) << std::endl;
       BOOST_FILESYSTEM_THROW(bs::system_error(res, fs::codecvt_error_category(),
-        "boost_part::filesystem::path codecvt to string"));
+        "boost::filesystem::path codecvt to string"));
     }
     target.append(to, to_next); 
   }
@@ -123,7 +123,7 @@ namespace {
 //                                   path_traits                                        //
 //--------------------------------------------------------------------------------------//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace filesystem { namespace path_traits {
+namespace boost { namespace filesystem { namespace path_traits {
 
 //--------------------------------------------------------------------------------------//
 //                          convert const char* to wstring                              //
@@ -149,7 +149,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
     //  dynamically allocate a buffer only if source is unusually large
     if (buf_size > default_codecvt_buf_size)
     {
-      boost_part::scoped_array< wchar_t > buf(new wchar_t [buf_size]);
+      boost::scoped_array< wchar_t > buf(new wchar_t [buf_size]);
       convert_aux(from, from_end, buf.get(), buf.get()+buf_size, to, cvt);
     }
     else
@@ -188,7 +188,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
     //  dynamically allocate a buffer only if source is unusually large
     if (buf_size > default_codecvt_buf_size)
     {
-      boost_part::scoped_array< char > buf(new char [buf_size]);
+      boost::scoped_array< char > buf(new char [buf_size]);
       convert_aux(from, from_end, buf.get(), buf.get()+buf_size, to, cvt);
     }
     else
@@ -197,4 +197,4 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
       convert_aux(from, from_end, buf, buf+default_codecvt_buf_size, to, cvt);
     }
   }
-}}} // namespace boost_part::filesystem::path_traits
+}}} // namespace boost::filesystem::path_traits

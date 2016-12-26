@@ -11,7 +11,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -23,7 +23,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             virtual void operator()(void* data)=0;
         };
 
-        BOOST_THREAD_DECL void set_tss_data(void const* key,boost_part::shared_ptr<tss_cleanup_function> func,void* tss_data,bool cleanup_existing);
+        BOOST_THREAD_DECL void set_tss_data(void const* key,boost::shared_ptr<tss_cleanup_function> func,void* tss_data,bool cleanup_existing);
         BOOST_THREAD_DECL void* get_tss_data(void const* key);
     }
 
@@ -59,7 +59,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         };
 
 
-        boost_part::shared_ptr<detail::tss_cleanup_function> cleanup;
+        boost::shared_ptr<detail::tss_cleanup_function> cleanup;
 
     public:
         typedef T element_type;
@@ -76,7 +76,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
         ~thread_specific_ptr()
         {
-            detail::set_tss_data(this,boost_part::shared_ptr<detail::tss_cleanup_function>(),0,true);
+            detail::set_tss_data(this,boost::shared_ptr<detail::tss_cleanup_function>(),0,true);
         }
 
         T* get() const
@@ -87,14 +87,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
             return get();
         }
-        typename boost_part::detail::sp_dereference< T >::type operator*() const
+        typename boost::detail::sp_dereference< T >::type operator*() const
         {
             return *get();
         }
         T* release()
         {
             T* const temp=get();
-            detail::set_tss_data(this,boost_part::shared_ptr<detail::tss_cleanup_function>(),0,false);
+            detail::set_tss_data(this,boost::shared_ptr<detail::tss_cleanup_function>(),0,false);
             return temp;
         }
         void reset(T* new_value=0)

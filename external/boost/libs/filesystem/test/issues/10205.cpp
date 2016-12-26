@@ -9,7 +9,7 @@ int main()
 {
   std::string pathname = "/some/filesystem/path/%%%%";
 
-  boost_part::filesystem::path path(pathname);
+  boost::filesystem::path path(pathname);
 
   std::wcout << path.wstring() << std::endl;
 

@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_SFINAE
 #include "boost_no_sfinae.ipp"
 #else
-namespace boost_part_no_sfinae = empty_boost;
+namespace boost_no_sfinae = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_sfinae::test();
+   return boost_no_sfinae::test();
 }
 

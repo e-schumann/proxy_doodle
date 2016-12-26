@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION
 #include "boost_no_cxx14_return_type_ded.ipp"
 #else
-namespace boost_part_no_cxx14_return_type_deduction = empty_boost;
+namespace boost_no_cxx14_return_type_deduction = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx14_return_type_deduction::test();
+   return boost_no_cxx14_return_type_deduction::test();
 }
 

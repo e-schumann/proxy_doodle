@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_EXCEPTIONS
 #include "boost_no_exceptions.ipp"
 #else
-namespace boost_part_no_exceptions = empty_boost;
+namespace boost_no_exceptions = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_exceptions::test();
+   return boost_no_exceptions::test();
 }
 

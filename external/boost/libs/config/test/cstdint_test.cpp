@@ -39,29 +39,29 @@
 //
 struct integral_constant_checker
 {
-  static const boost_part::int8_t          int8          = INT8_C(-127);
-  static const boost_part::int_least8_t    int_least8    = INT8_C(-127);
-  static const boost_part::int_fast8_t     int_fast8     = INT8_C(-127);
+  static const boost::int8_t          int8          = INT8_C(-127);
+  static const boost::int_least8_t    int_least8    = INT8_C(-127);
+  static const boost::int_fast8_t     int_fast8     = INT8_C(-127);
 
-  static const boost_part::uint8_t         uint8         = UINT8_C(255);
-  static const boost_part::uint_least8_t   uint_least8   = UINT8_C(255);
-  static const boost_part::uint_fast8_t    uint_fast8    = UINT8_C(255);
+  static const boost::uint8_t         uint8         = UINT8_C(255);
+  static const boost::uint_least8_t   uint_least8   = UINT8_C(255);
+  static const boost::uint_fast8_t    uint_fast8    = UINT8_C(255);
 
-  static const boost_part::int16_t         int16         = INT16_C(-32767);
-  static const boost_part::int_least16_t   int_least16   = INT16_C(-32767);
-  static const boost_part::int_fast16_t    int_fast16    = INT16_C(-32767);
+  static const boost::int16_t         int16         = INT16_C(-32767);
+  static const boost::int_least16_t   int_least16   = INT16_C(-32767);
+  static const boost::int_fast16_t    int_fast16    = INT16_C(-32767);
 
-  static const boost_part::uint16_t        uint16         = UINT16_C(65535);
-  static const boost_part::uint_least16_t  uint_least16   = UINT16_C(65535);
-  static const boost_part::uint_fast16_t   uint_fast16    = UINT16_C(65535);
+  static const boost::uint16_t        uint16         = UINT16_C(65535);
+  static const boost::uint_least16_t  uint_least16   = UINT16_C(65535);
+  static const boost::uint_fast16_t   uint_fast16    = UINT16_C(65535);
 
-  static const boost_part::int32_t         int32         = INT32_C(-2147483647);
-  static const boost_part::int_least32_t   int_least32   = INT32_C(-2147483647);
-  static const boost_part::int_fast32_t    int_fast32    = INT32_C(-2147483647);
+  static const boost::int32_t         int32         = INT32_C(-2147483647);
+  static const boost::int_least32_t   int_least32   = INT32_C(-2147483647);
+  static const boost::int_fast32_t    int_fast32    = INT32_C(-2147483647);
 
-  static const boost_part::uint32_t        uint32        = UINT32_C(4294967295);
-  static const boost_part::uint_least32_t  uint_least32  = UINT32_C(4294967295);
-  static const boost_part::uint_fast32_t   uint_fast32   = UINT32_C(4294967295);
+  static const boost::uint32_t        uint32        = UINT32_C(4294967295);
+  static const boost::uint_least32_t  uint_least32  = UINT32_C(4294967295);
+  static const boost::uint_fast32_t   uint_fast32   = UINT32_C(4294967295);
 
   static void check();
 };
@@ -148,55 +148,55 @@ int main(int, char*[])
   //
   // verify the types of the integral constants:
   //
-  integral_constant_type_check(boost_part::int8_t(0), INT8_C(0));
-  integral_constant_type_check(boost_part::uint8_t(0), UINT8_C(0));
-  integral_constant_type_check(boost_part::int16_t(0), INT16_C(0));
-  integral_constant_type_check(boost_part::uint16_t(0), UINT16_C(0));
-  integral_constant_type_check(boost_part::int32_t(0), INT32_C(0));
-  integral_constant_type_check(boost_part::uint32_t(0), UINT32_C(0));
+  integral_constant_type_check(boost::int8_t(0), INT8_C(0));
+  integral_constant_type_check(boost::uint8_t(0), UINT8_C(0));
+  integral_constant_type_check(boost::int16_t(0), INT16_C(0));
+  integral_constant_type_check(boost::uint16_t(0), UINT16_C(0));
+  integral_constant_type_check(boost::int32_t(0), INT32_C(0));
+  integral_constant_type_check(boost::uint32_t(0), UINT32_C(0));
 #ifndef BOOST_NO_INT64_T
-  integral_constant_type_check(boost_part::int64_t(0), INT64_C(0));
-  integral_constant_type_check(boost_part::uint64_t(0), UINT64_C(0));
+  integral_constant_type_check(boost::int64_t(0), INT64_C(0));
+  integral_constant_type_check(boost::uint64_t(0), UINT64_C(0));
 #endif
   //
-  boost_part::int8_t          int8          = INT8_C(-127);
-  boost_part::int_least8_t    int_least8    = INT8_C(-127);
-  boost_part::int_fast8_t     int_fast8     = INT8_C(-127);
+  boost::int8_t          int8          = INT8_C(-127);
+  boost::int_least8_t    int_least8    = INT8_C(-127);
+  boost::int_fast8_t     int_fast8     = INT8_C(-127);
 
-  boost_part::uint8_t         uint8         = UINT8_C(255);
-  boost_part::uint_least8_t   uint_least8   = UINT8_C(255);
-  boost_part::uint_fast8_t    uint_fast8    = UINT8_C(255);
+  boost::uint8_t         uint8         = UINT8_C(255);
+  boost::uint_least8_t   uint_least8   = UINT8_C(255);
+  boost::uint_fast8_t    uint_fast8    = UINT8_C(255);
 
-  boost_part::int16_t         int16         = INT16_C(-32767);
-  boost_part::int_least16_t   int_least16   = INT16_C(-32767);
-  boost_part::int_fast16_t    int_fast16    = INT16_C(-32767);
+  boost::int16_t         int16         = INT16_C(-32767);
+  boost::int_least16_t   int_least16   = INT16_C(-32767);
+  boost::int_fast16_t    int_fast16    = INT16_C(-32767);
 
-  boost_part::uint16_t        uint16         = UINT16_C(65535);
-  boost_part::uint_least16_t  uint_least16   = UINT16_C(65535);
-  boost_part::uint_fast16_t   uint_fast16    = UINT16_C(65535);
+  boost::uint16_t        uint16         = UINT16_C(65535);
+  boost::uint_least16_t  uint_least16   = UINT16_C(65535);
+  boost::uint_fast16_t   uint_fast16    = UINT16_C(65535);
 
-  boost_part::int32_t         int32         = INT32_C(-2147483647);
-  boost_part::int_least32_t   int_least32   = INT32_C(-2147483647);
-  boost_part::int_fast32_t    int_fast32    = INT32_C(-2147483647);
+  boost::int32_t         int32         = INT32_C(-2147483647);
+  boost::int_least32_t   int_least32   = INT32_C(-2147483647);
+  boost::int_fast32_t    int_fast32    = INT32_C(-2147483647);
 
-  boost_part::uint32_t        uint32        = UINT32_C(4294967295);
-  boost_part::uint_least32_t  uint_least32  = UINT32_C(4294967295);
-  boost_part::uint_fast32_t   uint_fast32   = UINT32_C(4294967295);
+  boost::uint32_t        uint32        = UINT32_C(4294967295);
+  boost::uint_least32_t  uint_least32  = UINT32_C(4294967295);
+  boost::uint_fast32_t   uint_fast32   = UINT32_C(4294967295);
 
 #ifndef BOOST_NO_INT64_T
-  boost_part::int64_t         int64         = INT64_C(-9223372036854775807);
-  boost_part::int_least64_t   int_least64   = INT64_C(-9223372036854775807);
-  boost_part::int_fast64_t    int_fast64    = INT64_C(-9223372036854775807);
+  boost::int64_t         int64         = INT64_C(-9223372036854775807);
+  boost::int_least64_t   int_least64   = INT64_C(-9223372036854775807);
+  boost::int_fast64_t    int_fast64    = INT64_C(-9223372036854775807);
 
-  boost_part::uint64_t        uint64        = UINT64_C(18446744073709551615);
-  boost_part::uint_least64_t  uint_least64  = UINT64_C(18446744073709551615);
-  boost_part::uint_fast64_t   uint_fast64   = UINT64_C(18446744073709551615);
+  boost::uint64_t        uint64        = UINT64_C(18446744073709551615);
+  boost::uint_least64_t  uint_least64  = UINT64_C(18446744073709551615);
+  boost::uint_fast64_t   uint_fast64   = UINT64_C(18446744073709551615);
 
-  boost_part::intmax_t        intmax        = INTMAX_C(-9223372036854775807);
-  boost_part::uintmax_t       uintmax       = UINTMAX_C(18446744073709551615);
+  boost::intmax_t        intmax        = INTMAX_C(-9223372036854775807);
+  boost::uintmax_t       uintmax       = UINTMAX_C(18446744073709551615);
 #else
-  boost_part::intmax_t        intmax        = INTMAX_C(-2147483647);
-  boost_part::uintmax_t       uintmax       = UINTMAX_C(4294967295);
+  boost::intmax_t        intmax        = INTMAX_C(-2147483647);
+  boost::uintmax_t       uintmax       = UINTMAX_C(4294967295);
 #endif
 
   BOOST_TEST( int8 == -127 );
@@ -234,5 +234,5 @@ int main(int, char*[])
 
 
   std::cout << "OK\n";
-  return boost_part::report_errors();
+  return boost::report_errors();
 }

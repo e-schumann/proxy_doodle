@@ -9,7 +9,7 @@
 //  TITLE:         rvalue references
 //  DESCRIPTION:   The compiler supports C++0x rvalue references
 
-namespace boost_part_has_rvalue_refs {
+namespace boost_has_rvalue_refs {
 
 void g(int&) {}
 

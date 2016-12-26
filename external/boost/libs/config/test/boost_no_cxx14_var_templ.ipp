@@ -11,7 +11,7 @@
 //  TITLE:         C++14 variable templates unavailable
 //  DESCRIPTION:   The compiler does not support C++14 variable templates
 
-namespace boost_part_no_cxx14_variable_templates
+namespace boost_no_cxx14_variable_templates
 {
 
 template <class T>

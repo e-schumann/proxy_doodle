@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_has_two_arg_use_facet::test();
+   return boost_has_two_arg_use_facet::test();
 }
 

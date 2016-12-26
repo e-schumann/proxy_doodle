@@ -15,16 +15,16 @@
 #if defined BOOST_NO_CXX11_ALLOCATOR
 #include <boost/container/scoped_allocator.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace csbl
   {
-    using ::boost_part::container::allocator_arg_t;
-    using ::boost_part::container::allocator_arg;
+    using ::boost::container::allocator_arg_t;
+    using ::boost::container::allocator_arg;
   }
 }
 #else
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace csbl
   {
@@ -33,9 +33,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
   }
 }
 #endif // BOOST_NO_CXX11_ALLOCATOR
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
-  using ::boost_part::csbl::allocator_arg_t;
-  using ::boost_part::csbl::allocator_arg;
+  using ::boost::csbl::allocator_arg_t;
+  using ::boost::csbl::allocator_arg;
 }
 #endif // header

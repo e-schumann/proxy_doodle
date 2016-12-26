@@ -25,15 +25,15 @@
 #include <boost/type_traits/has_minus.hpp>
 #include <boost/type_traits/has_minus_assign.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 //  Helper functions for classes like bidirectional iterators not supporting
 //  operator+ and operator-
 //
 //  Usage:
 //    const std::list<T>::iterator p = get_some_iterator();
-//    const std::list<T>::iterator prev = boost_part::prior(p);
-//    const std::list<T>::iterator next = boost_part::next(prev, 2);
+//    const std::list<T>::iterator prev = boost::prior(p);
+//    const std::list<T>::iterator next = boost::next(prev, 2);
 
 //  Contributed by Dave Abrahams
 
@@ -160,6 +160,6 @@ inline T prior(T x, Distance n)
     return next_prior_detail::prior_impl1< T, Distance >::call(x, n);
 }
 
-} // namespace boost_part
+} // namespace boost
 
 #endif  // BOOST_NEXT_PRIOR_HPP_INCLUDED

@@ -29,7 +29,7 @@
 #include <cwchar>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
@@ -90,7 +90,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         inline iterator_range<BOOST_DEDUCED_TYPENAME range_iterator<T>::type>
         make_range( T& r, long )
         {
-            return boost_part::make_iterator_range( r );
+            return boost::make_iterator_range( r );
         }
 
     }

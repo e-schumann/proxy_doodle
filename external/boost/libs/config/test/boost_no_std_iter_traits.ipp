@@ -15,7 +15,7 @@
 #include <iterator>
 #include <stddef.h>
 
-namespace boost_part_no_std_iterator_traits{
+namespace boost_no_std_iterator_traits{
 
 struct UDT_iterator
 {

@@ -12,7 +12,7 @@
 
 #include <memory>
 
-namespace boost_part_no_cxx11_user_defined_literals {
+namespace boost_no_cxx11_user_defined_literals {
 
 struct my_literal
 {

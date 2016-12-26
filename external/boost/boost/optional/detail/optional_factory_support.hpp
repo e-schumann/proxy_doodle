@@ -17,8 +17,8 @@
 // Daniel Wallin discovered that bind/apply.hpp badly interacts with the apply<>
 // member template of a factory as used in the optional<> implementation.
 // He proposed this simple fix which is to move the call to apply<> outside
-// namespace boost_part.
-namespace boost_part_optional_detail
+// namespace boost.
+namespace boost_optional_detail
 {
   template <class T, class Factory>
   inline void construct(Factory const& factory, void* address)
@@ -27,7 +27,7 @@ namespace boost_part_optional_detail
   }
 }
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   class in_place_factory_base ;
   class typed_in_place_factory_base ;

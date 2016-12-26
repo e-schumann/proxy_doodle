@@ -21,7 +21,7 @@
 #include <boost/range/empty.hpp>
 #include <boost/range/as_literal.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace algorithm {
         namespace detail {
 
@@ -41,7 +41,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 // Construction
                 template< typename SearchT >
                 first_finderF( const SearchT& Search, PredicateT Comp ) :
-                    m_Search(::boost_part::begin(Search), ::boost_part::end(Search)), m_Comp(Comp) {}
+                    m_Search(::boost::begin(Search), ::boost::end(Search)), m_Comp(Comp) {}
                 first_finderF(
                         search_iterator_type SearchBegin,
                         search_iterator_type SearchEnd,
@@ -64,7 +64,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                         ++OuterIt)
                     {
                         // Sanity check
-                        if( boost_part::empty(m_Search) )
+                        if( boost::empty(m_Search) )
                             return result_type( End, End );
 
                         input_iterator_type InnerIt=OuterIt;
@@ -108,7 +108,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 // Construction
                 template< typename SearchT >
                 last_finderF( const SearchT& Search, PredicateT Comp ) :
-                    m_Search(::boost_part::begin(Search), ::boost_part::end(Search)), m_Comp(Comp) {}
+                    m_Search(::boost::begin(Search), ::boost::end(Search)), m_Comp(Comp) {}
                 last_finderF(
                         search_iterator_type SearchBegin,
                         search_iterator_type SearchEnd,
@@ -124,10 +124,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 {
                     typedef iterator_range<ForwardIteratorT> result_type;
 
-                    if( boost_part::empty(m_Search) )
+                    if( boost::empty(m_Search) )
                         return result_type( End, End );
 
-                    typedef BOOST_STRING_TYPENAME boost_part::detail::
+                    typedef BOOST_STRING_TYPENAME boost::detail::
                         iterator_traits<ForwardIteratorT>::iterator_category category;
 
                     return findit( Begin, End, category() );
@@ -153,7 +153,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                     while( M )
                     {
                         Last=M;
-                        M=first_finder( ::boost_part::end(M), End );
+                        M=first_finder( ::boost::end(M), End );
                     }
 
                     return Last;
@@ -223,7 +223,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                         const SearchT& Search,
                         int Nth,
                         PredicateT Comp) :
-                    m_Search(::boost_part::begin(Search), ::boost_part::end(Search)),
+                    m_Search(::boost::begin(Search), ::boost::end(Search)),
                     m_Nth(Nth),
                     m_Comp(Comp) {}
                 nth_finderF(
@@ -265,7 +265,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                     typedef iterator_range<ForwardIteratorT> result_type;
 
                     // Sanity check
-                    if( boost_part::empty(m_Search) )
+                    if( boost::empty(m_Search) )
                         return result_type( End, End );
 
                     // Instantiate find functor
@@ -277,7 +277,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                     for( unsigned int n=0; n<=N; ++n )
                     {
                         // find next match
-                        M=first_finder( ::boost_part::end(M), End );
+                        M=first_finder( ::boost::end(M), End );
 
                         if ( !M )
                         {
@@ -299,7 +299,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                     typedef iterator_range<ForwardIteratorT> result_type;
 
                     // Sanity check
-                    if( boost_part::empty(m_Search) )
+                    if( boost::empty(m_Search) )
                         return result_type( End, End );
 
                     // Instantiate find functor
@@ -311,7 +311,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                     for( unsigned int n=1; n<=N; ++n )
                     {
                         // find next match
-                        M=last_finder( Begin, ::boost_part::begin(M) );
+                        M=last_finder( Begin, ::boost::begin(M) );
 
                         if ( !M )
                         {
@@ -375,10 +375,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 ForwardIteratorT End,
                 unsigned int N )
             {
-                typedef BOOST_STRING_TYPENAME boost_part::detail::
+                typedef BOOST_STRING_TYPENAME boost::detail::
                     iterator_traits<ForwardIteratorT>::iterator_category category;
 
-                return ::boost_part::algorithm::detail::find_head_impl( Begin, End, N, category() );
+                return ::boost::algorithm::detail::find_head_impl( Begin, End, N, category() );
             }
 
             template< typename ForwardIteratorT >
@@ -448,10 +448,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 ForwardIteratorT End,
                 unsigned int N )
             {
-                typedef BOOST_STRING_TYPENAME boost_part::detail::
+                typedef BOOST_STRING_TYPENAME boost::detail::
                     iterator_traits<ForwardIteratorT>::iterator_category category;
 
-                return ::boost_part::algorithm::detail::find_tail_impl( Begin, End, N, category() );
+                return ::boost::algorithm::detail::find_tail_impl( Begin, End, N, category() );
             }
 
 
@@ -479,14 +479,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 {
                     if(m_N>=0)
                     {
-                        return ::boost_part::algorithm::detail::find_head_impl( Begin, End, m_N );
+                        return ::boost::algorithm::detail::find_head_impl( Begin, End, m_N );
                     }
                     else
                     {
                         iterator_range<ForwardIteratorT> Res=
-                            ::boost_part::algorithm::detail::find_tail_impl( Begin, End, -m_N );
+                            ::boost::algorithm::detail::find_tail_impl( Begin, End, -m_N );
 
-                        return ::boost_part::make_iterator_range(Begin, Res.begin());
+                        return ::boost::make_iterator_range(Begin, Res.begin());
                     }
                 }
 
@@ -517,14 +517,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 {
                     if(m_N>=0)
                     {
-                        return ::boost_part::algorithm::detail::find_tail_impl( Begin, End, m_N );
+                        return ::boost::algorithm::detail::find_tail_impl( Begin, End, m_N );
                     }
                     else
                     {
                         iterator_range<ForwardIteratorT> Res=
-                            ::boost_part::algorithm::detail::find_head_impl( Begin, End, -m_N );
+                            ::boost::algorithm::detail::find_head_impl( Begin, End, -m_N );
 
-                        return ::boost_part::make_iterator_range(Res.end(), End);
+                        return ::boost::make_iterator_range(Res.end(), End);
                     }
                 }
 
@@ -634,6 +634,6 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
         } // namespace detail
     } // namespace algorithm
-} // namespace boost_part
+} // namespace boost
 
 #endif  // BOOST_STRING_FINDER_DETAIL_HPP

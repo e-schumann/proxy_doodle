@@ -12,7 +12,7 @@
 
 #include <regex>
 
-namespace boost_part_no_cxx11_hdr_regex {
+namespace boost_no_cxx11_hdr_regex {
 
 int test()
 {

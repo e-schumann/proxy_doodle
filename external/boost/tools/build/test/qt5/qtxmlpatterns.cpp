@@ -19,8 +19,8 @@
 struct Fixture
 {
     Fixture()
-        : application(boost_part::unit_test::framework::master_test_suite().argc,
-                      boost_part::unit_test::framework::master_test_suite().argv)
+        : application(boost::unit_test::framework::master_test_suite().argc,
+                      boost::unit_test::framework::master_test_suite().argv)
     {
         BOOST_TEST_MESSAGE( "setup QCoreApplication fixture" );
     }

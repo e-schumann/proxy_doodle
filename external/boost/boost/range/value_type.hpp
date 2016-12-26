@@ -20,7 +20,7 @@
 
 #include <boost/iterator/iterator_traits.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     template< class T >
     struct range_value : iterator_value< typename range_iterator<T>::type >

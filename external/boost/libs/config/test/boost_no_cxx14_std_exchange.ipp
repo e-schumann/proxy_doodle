@@ -11,7 +11,7 @@
 
 #include <utility>
 
-namespace boost_part_no_cxx14_std_exchange {
+namespace boost_no_cxx14_std_exchange {
 
 int test() {
     int * i = new int( 1);

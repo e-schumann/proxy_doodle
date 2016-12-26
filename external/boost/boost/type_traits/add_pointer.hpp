@@ -11,7 +11,7 @@
 
 #include <boost/type_traits/remove_reference.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 #if defined(__BORLANDC__) && (__BORLANDC__ < 0x5A0)
 //
@@ -56,6 +56,6 @@ struct add_pointer
 
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_ADD_POINTER_HPP_INCLUDED

@@ -12,7 +12,7 @@
 #include <windows.h>
 
 
-namespace boost_part_has_ftime{
+namespace boost_has_ftime{
 
 void f(FILETIME)
 {

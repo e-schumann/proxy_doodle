@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_STD_DISTANCE
 #include "boost_no_std_distance.ipp"
 #else
-namespace boost_part_no_std_distance = empty_boost;
+namespace boost_no_std_distance = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_std_distance::test();
+   return boost_no_std_distance::test();
 }
 

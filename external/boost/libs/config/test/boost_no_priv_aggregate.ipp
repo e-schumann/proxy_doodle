@@ -12,7 +12,7 @@
 //                 protected member functions.
 
 
-namespace boost_part_no_private_in_aggregate{
+namespace boost_no_private_in_aggregate{
 
 struct t
 {

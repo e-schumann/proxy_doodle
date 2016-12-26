@@ -29,7 +29,7 @@
 #pragma warning(disable:4251)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   class condition_variable;
   class mutex;
@@ -79,10 +79,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         struct thread_exit_callback_node;
         struct tss_data_node
         {
-            boost_part::shared_ptr<boost_part::detail::tss_cleanup_function> func;
+            boost::shared_ptr<boost::detail::tss_cleanup_function> func;
             void* value;
 
-            tss_data_node(boost_part::shared_ptr<boost_part::detail::tss_cleanup_function> func_,
+            tss_data_node(boost::shared_ptr<boost::detail::tss_cleanup_function> func_,
                           void* value_):
                 func(func_),value(value_)
             {}
@@ -104,9 +104,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             detail::win32::handle_manager thread_handle;
 #endif
 
-            boost_part::detail::thread_exit_callback_node* thread_exit_callbacks;
+            boost::detail::thread_exit_callback_node* thread_exit_callbacks;
             unsigned id;
-            std::map<void const*,boost_part::detail::tss_data_node> tss_data;
+            std::map<void const*,boost::detail::tss_data_node> tss_data;
             typedef std::vector<std::pair<condition_variable*, mutex*>
             //, hidden_allocator<std::pair<condition_variable*, mutex*> >
             > notify_list_t;
@@ -173,14 +173,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         };
         BOOST_THREAD_DECL thread_data_base* get_current_thread_data();
 
-        typedef boost_part::intrusive_ptr<detail::thread_data_base> thread_data_ptr;
+        typedef boost::intrusive_ptr<detail::thread_data_base> thread_data_ptr;
 
         struct BOOST_SYMBOL_VISIBLE timeout
         {
             win32::ticks_type start;
             uintmax_t milliseconds;
             bool relative;
-            boost_part::system_time abs_time;
+            boost::system_time abs_time;
 
             static unsigned long const max_non_infinite_wait=0xfffffffe;
 
@@ -189,10 +189,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 milliseconds(milliseconds_),
                 relative(true)
             //,
-            //    abs_time(boost_part::get_system_time())
+            //    abs_time(boost::get_system_time())
             {}
 
-            timeout(boost_part::system_time const& abs_time_):
+            timeout(boost::system_time const& abs_time_):
                 start(win32::GetTickCount64_()()),
                 milliseconds(0),
                 relative(false),

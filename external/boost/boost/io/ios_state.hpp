@@ -21,7 +21,7 @@
 #include <string>     // for std::char_traits
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace io
 {
@@ -433,7 +433,7 @@ private:
 
 
 }  // namespace io
-}  // namespace boost_part
+}  // namespace boost
 
 
 #endif  // BOOST_IO_IOS_STATE_HPP

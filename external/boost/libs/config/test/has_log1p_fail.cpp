@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_has_log1p::test();
+   return boost_has_log1p::test();
 }
 

@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_DEPENDENT_NESTED_DERIVATIONS
 #include "boost_no_dep_nested_class.ipp"
 #else
-namespace boost_part_no_dependent_nested_derivations = empty_boost;
+namespace boost_no_dependent_nested_derivations = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_dependent_nested_derivations::test();
+   return boost_no_dependent_nested_derivations::test();
 }
 

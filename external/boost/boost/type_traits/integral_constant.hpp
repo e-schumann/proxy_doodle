@@ -16,7 +16,7 @@
    || BOOST_WORKAROUND(BOOST_INTEL_CXX_VERSION, BOOST_TESTED_AT(810)) )
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
    namespace mpl
    {
       template <bool B> struct bool_;
@@ -34,7 +34,7 @@ namespace mpl_{
    struct integral_c_tag;
 }
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
    namespace mpl
    {
@@ -46,7 +46,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
    template <class T, T val>
    struct integral_constant

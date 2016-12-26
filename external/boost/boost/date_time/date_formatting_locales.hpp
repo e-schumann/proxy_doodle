@@ -22,7 +22,7 @@
 #include <iomanip>
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace date_time {
 
   //! Formats a month as as string into an ostream

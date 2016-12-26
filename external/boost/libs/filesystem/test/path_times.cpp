@@ -27,8 +27,8 @@
 
 #include <boost/detail/lightweight_main.hpp>
 
-namespace fs = boost_part::filesystem;
-using namespace boost_part::timer;
+namespace fs = boost::filesystem;
+using namespace boost::timer;
 
 #include <fstream>
 #include <iostream>
@@ -38,33 +38,33 @@ using std::endl;
 
 namespace
 {
-  boost_part::int64_t max_cycles;
+  boost::int64_t max_cycles;
 
   template <class STD_STRING>
   nanosecond_type time_ctor(const STD_STRING& s)
   {
-    boost_part::timer::auto_cpu_timer tmr;
-    boost_part::int64_t count = 0;
+    boost::timer::auto_cpu_timer tmr;
+    boost::int64_t count = 0;
     do
     {
       fs::path p(s);
       ++count;
     } while (count < max_cycles);
 
-    boost_part::timer::cpu_times elapsed = tmr.elapsed();
+    boost::timer::cpu_times elapsed = tmr.elapsed();
     return elapsed.user + elapsed.system;
   }
 
   nanosecond_type time_loop()
   {
-    boost_part::timer::auto_cpu_timer tmr;
-    boost_part::int64_t count = 0;
+    boost::timer::auto_cpu_timer tmr;
+    boost::int64_t count = 0;
     do
     {
       ++count;
     } while (count < max_cycles);
 
-    boost_part::timer::cpu_times elapsed = tmr.elapsed();
+    boost::timer::cpu_times elapsed = tmr.elapsed();
     return elapsed.user + elapsed.system;
   }
 }  // unnamed namespace

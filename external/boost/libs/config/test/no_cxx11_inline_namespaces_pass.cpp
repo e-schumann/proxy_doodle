@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_INLINE_NAMESPACES
 #include "boost_no_cxx11_inline_namespaces.ipp"
 #else
-namespace boost_part_no_cxx11_inline_namespaces = empty_boost;
+namespace boost_no_cxx11_inline_namespaces = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_inline_namespaces::test();
+   return boost_no_cxx11_inline_namespaces::test();
 }
 

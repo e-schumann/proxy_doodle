@@ -13,7 +13,7 @@
 
 #include <boost/config.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 // * convert a type T to a const volatile type - add_cv<T>
 // this is not required since the result is always
@@ -36,6 +36,6 @@ template <class T> struct add_cv{ typedef T const volatile type; };
 
 template <class T> struct add_cv<T&>{ typedef T& type; };
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_ADD_CV_HPP_INCLUDED

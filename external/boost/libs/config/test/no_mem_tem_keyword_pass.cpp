@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_MEMBER_TEMPLATE_KEYWORD
 #include "boost_no_mem_tem_keyword.ipp"
 #else
-namespace boost_part_no_member_template_keyword = empty_boost;
+namespace boost_no_member_template_keyword = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_member_template_keyword::test();
+   return boost_no_member_template_keyword::test();
 }
 

@@ -12,7 +12,7 @@
 #include <windows.h>
 
 
-namespace boost_part_has_getsystemtimeasfiletime{
+namespace boost_has_getsystemtimeasfiletime{
 
 void f()
 {

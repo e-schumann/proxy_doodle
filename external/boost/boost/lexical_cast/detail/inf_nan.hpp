@@ -36,7 +36,7 @@
 
 #include <boost/lexical_cast/detail/lcast_char_constants.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace detail
     {
         template <class CharT>
@@ -79,7 +79,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 }
 
                 if( !has_minus ) value = std::numeric_limits<T>::quiet_NaN();
-                else value = (boost_part::math::changesign) (std::numeric_limits<T>::quiet_NaN());
+                else value = (boost::math::changesign) (std::numeric_limits<T>::quiet_NaN());
                 return true;
             } else if (
                 ( /* 'INF' or 'inf' */
@@ -94,7 +94,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
              )
             {
                 if( !has_minus ) value = std::numeric_limits<T>::infinity();
-                else value = (boost_part::math::changesign) (std::numeric_limits<T>::infinity());
+                else value = (boost::math::changesign) (std::numeric_limits<T>::infinity());
                 return true;
             }
 
@@ -108,8 +108,8 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
         {
             using namespace std;
             const CharT minus = lcast_char_constants<CharT>::minus;
-            if ((boost_part::math::isnan)(value)) {
-                if ((boost_part::math::signbit)(value)) {
+            if ((boost::math::isnan)(value)) {
+                if ((boost::math::signbit)(value)) {
                     *begin = minus;
                     ++ begin;
                 }
@@ -117,8 +117,8 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 memcpy(begin, lc_nan, 3 * sizeof(CharT));
                 end = begin + 3;
                 return true;
-            } else if ((boost_part::math::isinf)(value)) {
-                if ((boost_part::math::signbit)(value)) {
+            } else if ((boost::math::isinf)(value)) {
+                if ((boost::math::signbit)(value)) {
                     *begin = minus;
                     ++ begin;
                 }
@@ -189,7 +189,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
             return put_inf_nan_impl(begin, end, value, "nan", "infinity");
         }
     }
-} // namespace boost_part
+} // namespace boost
 
 #undef BOOST_LCAST_NO_WCHAR_T
 

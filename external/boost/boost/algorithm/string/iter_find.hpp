@@ -38,7 +38,7 @@
     substrings, the other one over the gaps between these matches.
 */
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace algorithm {
 
 //  iterate find ---------------------------------------------------//
@@ -55,7 +55,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 Both outer and inner container must have constructor taking a pair
                 of iterators as an argument.
                 Typical type of the result is 
-                    \c std::vector<boost_part::iterator_range<iterator>>
+                    \c std::vector<boost::iterator_range<iterator>>
                 (each element of such a vector will container a range delimiting 
                 a match).
             \param Input A container which will be searched.
@@ -80,7 +80,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                     BOOST_STRING_TYPENAME range_iterator<RangeT>::type>
                 ));
 
-            iterator_range<BOOST_STRING_TYPENAME range_iterator<RangeT>::type> lit_input(::boost_part::as_literal(Input));
+            iterator_range<BOOST_STRING_TYPENAME range_iterator<RangeT>::type> lit_input(::boost::as_literal(Input));
 
             typedef BOOST_STRING_TYPENAME 
                 range_iterator<RangeT>::type input_iterator_type;
@@ -90,18 +90,18 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                     range_value<SequenceSequenceT>::type,
                 input_iterator_type> copy_range_type;
             
-            input_iterator_type InputEnd=::boost_part::end(lit_input);
+            input_iterator_type InputEnd=::boost::end(lit_input);
 
             typedef transform_iterator<copy_range_type, find_iterator_type>
                 transform_iter_type;
     
             transform_iter_type itBegin=
-                ::boost_part::make_transform_iterator( 
-                    find_iterator_type( ::boost_part::begin(lit_input), InputEnd, Finder ),
+                ::boost::make_transform_iterator( 
+                    find_iterator_type( ::boost::begin(lit_input), InputEnd, Finder ),
                     copy_range_type());
             
             transform_iter_type itEnd=
-                ::boost_part::make_transform_iterator( 
+                ::boost::make_transform_iterator( 
                     find_iterator_type(),
                     copy_range_type());
 
@@ -126,7 +126,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 Both outer and inner container must have constructor taking a pair
                 of iterators as an argument.
                 Typical type of the result is 
-                    \c std::vector<boost_part::iterator_range<iterator>>
+                    \c std::vector<boost::iterator_range<iterator>>
                 (each element of such a vector will container a range delimiting 
                 a match).
             \param Input A container which will be searched.
@@ -150,7 +150,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 BOOST_STRING_TYPENAME range_iterator<RangeT>::type>
                 ));
 
-            iterator_range<BOOST_STRING_TYPENAME range_iterator<RangeT>::type> lit_input(::boost_part::as_literal(Input));
+            iterator_range<BOOST_STRING_TYPENAME range_iterator<RangeT>::type> lit_input(::boost::as_literal(Input));
 
             typedef BOOST_STRING_TYPENAME 
                 range_iterator<RangeT>::type input_iterator_type;
@@ -160,18 +160,18 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                     range_value<SequenceSequenceT>::type,
                 input_iterator_type> copy_range_type;
             
-            input_iterator_type InputEnd=::boost_part::end(lit_input);
+            input_iterator_type InputEnd=::boost::end(lit_input);
 
             typedef transform_iterator<copy_range_type, find_iterator_type>
                 transform_iter_type;
     
             transform_iter_type itBegin=
-                ::boost_part::make_transform_iterator( 
-                    find_iterator_type( ::boost_part::begin(lit_input), InputEnd, Finder ),
+                ::boost::make_transform_iterator( 
+                    find_iterator_type( ::boost::begin(lit_input), InputEnd, Finder ),
                     copy_range_type() );
 
             transform_iter_type itEnd=
-                ::boost_part::make_transform_iterator( 
+                ::boost::make_transform_iterator( 
                     find_iterator_type(),
                     copy_range_type() );
             
@@ -187,7 +187,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
     using algorithm::iter_find;
     using algorithm::iter_split;
 
-} // namespace boost_part
+} // namespace boost
 
 
 #endif  // BOOST_STRING_ITER_FIND_HPP

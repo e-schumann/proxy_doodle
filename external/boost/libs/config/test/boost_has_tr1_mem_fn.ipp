@@ -11,7 +11,7 @@
 
 #include <functional>
 
-namespace boost_part_has_tr1_mem_fn{
+namespace boost_has_tr1_mem_fn{
 
 using std::tr1::mem_fn;
 

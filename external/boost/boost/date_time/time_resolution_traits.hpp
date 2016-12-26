@@ -15,7 +15,7 @@
 #include <boost/date_time/int_adapter.hpp>
 #include <boost/date_time/compiler_config.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace date_time {
 
   //! Simple function to calculate absolute value of a numeric type
@@ -29,32 +29,32 @@ namespace date_time {
 
   //! traits struct for time_resolution_traits implementation type
   struct time_resolution_traits_bi32_impl {
-    typedef boost_part::int32_t int_type;
-    typedef boost_part::int32_t impl_type;
+    typedef boost::int32_t int_type;
+    typedef boost::int32_t impl_type;
     static int_type as_number(impl_type i){ return i;}
     //! Used to determine if implemented type is int_adapter or int
     static bool is_adapted() { return false;}
   };
   //! traits struct for time_resolution_traits implementation type
   struct time_resolution_traits_adapted32_impl {
-    typedef boost_part::int32_t int_type;
-    typedef boost_part::date_time::int_adapter<boost_part::int32_t> impl_type;
+    typedef boost::int32_t int_type;
+    typedef boost::date_time::int_adapter<boost::int32_t> impl_type;
     static int_type as_number(impl_type i){ return i.as_number();}
     //! Used to determine if implemented type is int_adapter or int
     static bool is_adapted() { return true;}
   };
   //! traits struct for time_resolution_traits implementation type
   struct time_resolution_traits_bi64_impl {
-    typedef boost_part::int64_t int_type;
-    typedef boost_part::int64_t impl_type;
+    typedef boost::int64_t int_type;
+    typedef boost::int64_t impl_type;
     static int_type as_number(impl_type i){ return i;}
     //! Used to determine if implemented type is int_adapter or int
     static bool is_adapted() { return false;}
   };
   //! traits struct for time_resolution_traits implementation type
   struct time_resolution_traits_adapted64_impl {
-    typedef boost_part::int64_t int_type;
-    typedef boost_part::date_time::int_adapter<boost_part::int64_t> impl_type;
+    typedef boost::int64_t int_type;
+    typedef boost::date_time::int_adapter<boost::int64_t> impl_type;
     static int_type as_number(impl_type i){ return i.as_number();}
     //! Used to determine if implemented type is int_adapter or int
     static bool is_adapted() { return true;}
@@ -63,12 +63,12 @@ namespace date_time {
   template<typename frac_sec_type,
            time_resolutions res,
 #if (defined(BOOST_MSVC) && (_MSC_VER < 1300))
-           boost_part::int64_t resolution_adjust,
+           boost::int64_t resolution_adjust,
 #else
            typename frac_sec_type::int_type resolution_adjust,
 #endif
            unsigned short frac_digits,
-           typename var_type = boost_part::int32_t >
+           typename var_type = boost::int32_t >
   class time_resolution_traits {
   public:
     typedef typename frac_sec_type::int_type fractional_seconds_type;
@@ -91,7 +91,7 @@ namespace date_time {
 
     //Would like this to be frac_sec_type, but some compilers complain
 #if (defined(BOOST_MSVC) && (_MSC_VER < 1300))
-    BOOST_STATIC_CONSTANT(boost_part::int64_t, ticks_per_second = resolution_adjust);
+    BOOST_STATIC_CONSTANT(boost::int64_t, ticks_per_second = resolution_adjust);
 #else
     BOOST_STATIC_CONSTANT(fractional_seconds_type, ticks_per_second = resolution_adjust);
 #endif

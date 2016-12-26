@@ -22,7 +22,7 @@
 #include <boost/container/detail/config_begin.hpp>
 #include <boost/container/detail/workaround.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 
 #ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
@@ -51,7 +51,7 @@ static const allocation_type nothrow_allocation = (allocation_type)nothrow_alloc
 static const allocation_type zero_memory        = (allocation_type)zero_memory_v;
 
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #include <boost/container/detail/config_end.hpp>
 

@@ -13,7 +13,7 @@
 
 #include <boost/chrono/duration.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace chrono
   {
@@ -31,6 +31,6 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     }
 
   } // namespace chrono
-} // namespace boost_part
+} // namespace boost
 
 #endif

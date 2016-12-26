@@ -9,7 +9,7 @@
 //  TITLE:         SFINAE for expressions
 //  DESCRIPTION:   SFINAE for expressions not supported.
 
-namespace boost_part_no_sfinae_expr
+namespace boost_no_sfinae_expr
 {
 
 template<typename T>
@@ -34,4 +34,4 @@ int test()
    return has_foo<test1>::value || !has_foo<test2>::value;
 }
 
-} // namespace boost_part_no_sfinae_expr
+} // namespace boost_no_sfinae_expr

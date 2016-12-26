@@ -12,7 +12,7 @@
 #include <windows.h>
 #include <winnt.h>
 
-namespace fs = boost_part::filesystem;
+namespace fs = boost::filesystem;
 
 typedef std::basic_string<TCHAR> tstring;
 

@@ -22,7 +22,7 @@
 #include "boost/mpl/if.hpp"
 #include "boost/mpl/integral_c.hpp"
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace numeric
+namespace boost { namespace numeric
 {
 
 template<class S>
@@ -166,9 +166,9 @@ struct def_overflow_handler
            throw positive_overflow() ;
 #else
     if ( r == cNegOverflow )
-      ::boost_part::throw_exception(negative_overflow()) ;
+      ::boost::throw_exception(negative_overflow()) ;
     else if ( r == cPosOverflow )
-           ::boost_part::throw_exception(positive_overflow()) ;
+           ::boost::throw_exception(positive_overflow()) ;
 #endif
   }
 } ;
@@ -189,6 +189,6 @@ struct raw_converter
 
 struct UseInternalRangeChecker {} ;
 
-} } // namespace boost_part::numeric
+} } // namespace boost::numeric
 
 #endif

@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_THREAD_LOCAL
 #include "boost_no_cxx11_thread_local.ipp"
 #else
-namespace boost_part_no_cxx11_thread_local = empty_boost;
+namespace boost_no_cxx11_thread_local = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_thread_local::test();
+   return boost_no_cxx11_thread_local::test();
 }
 

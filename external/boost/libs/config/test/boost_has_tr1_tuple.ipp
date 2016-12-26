@@ -11,7 +11,7 @@
 
 #include <tuple>
 
-namespace boost_part_has_tr1_tuple{
+namespace boost_has_tr1_tuple{
 
 using std::tr1::tuple;
 

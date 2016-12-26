@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_POINTER_TO_MEMBER_CONST
 #include "boost_no_ptr_mem_const.ipp"
 #else
-namespace boost_part_no_pointer_to_member_const = empty_boost;
+namespace boost_no_pointer_to_member_const = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_pointer_to_member_const::test();
+   return boost_no_pointer_to_member_const::test();
 }
 

@@ -16,7 +16,7 @@
 
 #include <memory>
 
-namespace boost_part_no_std_allocator{
+namespace boost_no_std_allocator{
 
 #if defined(__GNUC__) && ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 7)))
 #  define BOOST_UNUSED_ATTRIBUTE __attribute__((unused))

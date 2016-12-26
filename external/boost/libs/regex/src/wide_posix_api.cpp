@@ -42,7 +42,7 @@ namespace std{
 #endif
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 namespace {
 
@@ -74,7 +74,7 @@ const wchar_t* wnames[] = {
 };
 }
 
-typedef boost_part::basic_regex<wchar_t, c_regex_traits<wchar_t> > wc_regex_type;
+typedef boost::basic_regex<wchar_t, c_regex_traits<wchar_t> > wc_regex_type;
 
 BOOST_REGEX_DECL int BOOST_REGEX_CCALL regcompW(regex_tW* expression, const wchar_t* ptr, int f)
 {
@@ -93,7 +93,7 @@ BOOST_REGEX_DECL int BOOST_REGEX_CCALL regcompW(regex_tW* expression, const wcha
       return REG_E_MEMORY;
 #endif
    // set default flags:
-   boost_part::uint_fast32_t flags = (f & REG_PERLEX) ? 0 : ((f & REG_EXTENDED) ? wregex::extended : wregex::basic);
+   boost::uint_fast32_t flags = (f & REG_PERLEX) ? 0 : ((f & REG_EXTENDED) ? wregex::extended : wregex::basic);
    expression->eflags = (f & REG_NEWLINE) ? match_not_dot_newline : match_default;
 
    // and translate those that are actually set:
@@ -136,7 +136,7 @@ BOOST_REGEX_DECL int BOOST_REGEX_CCALL regcompW(regex_tW* expression, const wcha
       result = static_cast<wc_regex_type*>(expression->guts)->error_code();
 #ifndef BOOST_NO_EXCEPTIONS
    } 
-   catch(const boost_part::regex_error& be)
+   catch(const boost::regex_error& be)
    {
       result = be.code();
    }
@@ -212,10 +212,10 @@ BOOST_REGEX_DECL regsize_t BOOST_REGEX_CCALL regerrorW(int code, const regex_tW*
    {
       std::string p;
       if((e) && (e->re_magic == wmagic_value))
-         p = static_cast<wc_regex_type*>(e->guts)->get_traits().error_string(static_cast< ::boost_part::regex_constants::error_type>(code));
+         p = static_cast<wc_regex_type*>(e->guts)->get_traits().error_string(static_cast< ::boost::regex_constants::error_type>(code));
       else
       {
-         p = BOOST_REGEX_DETAIL_NS::get_default_error_string(static_cast< ::boost_part::regex_constants::error_type>(code));
+         p = BOOST_REGEX_DETAIL_NS::get_default_error_string(static_cast< ::boost::regex_constants::error_type>(code));
       }
       std::size_t len = p.size();
       if(len < buf_size)
@@ -303,7 +303,7 @@ BOOST_REGEX_DECL void BOOST_REGEX_CCALL regfreeW(regex_tW* expression)
    expression->re_magic = 0;
 }
 
-} // namespace boost_part;
+} // namespace boost;
 
 #endif
 

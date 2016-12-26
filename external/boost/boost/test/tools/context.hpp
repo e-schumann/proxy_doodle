@@ -22,7 +22,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace test_tools {
 namespace tt_detail {
 
@@ -31,7 +31,7 @@ namespace tt_detail {
 // ************************************************************************** //
 
 struct BOOST_TEST_DECL context_frame {
-    explicit    context_frame( ::boost_part::unit_test::lazy_ostream const& context_descr );
+    explicit    context_frame( ::boost::unit_test::lazy_ostream const& context_descr );
     ~context_frame();
 
     operator    bool();
@@ -44,21 +44,21 @@ private:
 //____________________________________________________________________________//
 
 #define BOOST_TEST_INFO( context_descr )                                                        \
-    ::boost_part::unit_test::framework::add_context( BOOST_TEST_LAZY_MSG( context_descr ) , false )  \
+    ::boost::unit_test::framework::add_context( BOOST_TEST_LAZY_MSG( context_descr ) , false )  \
 /**/
 
 //____________________________________________________________________________//
 
 #define BOOST_TEST_CONTEXT( context_descr )                                                     \
-    if( ::boost_part::test_tools::tt_detail::context_frame BOOST_JOIN( context_frame_, __LINE__ ) =  \
-        ::boost_part::test_tools::tt_detail::context_frame( BOOST_TEST_LAZY_MSG( context_descr ) ) ) \
+    if( ::boost::test_tools::tt_detail::context_frame BOOST_JOIN( context_frame_, __LINE__ ) =  \
+        ::boost::test_tools::tt_detail::context_frame( BOOST_TEST_LAZY_MSG( context_descr ) ) ) \
 /**/
 
 //____________________________________________________________________________//
 
 } // namespace tt_detail
 } // namespace test_tools
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

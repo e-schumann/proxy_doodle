@@ -18,31 +18,31 @@
 #include <boost/detail/sp_typeinfo.hpp>
 #include <boost/cstdint.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
 {
 
-typedef _Atomic( boost_part::int_least32_t ) atomic_int_least32_t;
+typedef _Atomic( boost::int_least32_t ) atomic_int_least32_t;
 
 inline void atomic_increment( atomic_int_least32_t * pw )
 {
     __c11_atomic_fetch_add( pw, 1, __ATOMIC_RELAXED );
 }
 
-inline boost_part::int_least32_t atomic_decrement( atomic_int_least32_t * pw )
+inline boost::int_least32_t atomic_decrement( atomic_int_least32_t * pw )
 {
     return __c11_atomic_fetch_sub( pw, 1, __ATOMIC_ACQ_REL );
 }
 
-inline boost_part::int_least32_t atomic_conditional_increment( atomic_int_least32_t * pw )
+inline boost::int_least32_t atomic_conditional_increment( atomic_int_least32_t * pw )
 {
     // long r = *pw;
     // if( r != 0 ) ++*pw;
     // return r;
 
-    boost_part::int_least32_t r = __c11_atomic_load( pw, __ATOMIC_RELAXED );
+    boost::int_least32_t r = __c11_atomic_load( pw, __ATOMIC_RELAXED );
 
     for( ;; )
     {
@@ -144,6 +144,6 @@ public:
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
 #endif  // #ifndef BOOST_SMART_PTR_DETAIL_SP_COUNTED_BASE_CLANG_HPP_INCLUDED

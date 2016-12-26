@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <string>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace gregorian {
 
   //! Exception type for day of year (1..366)

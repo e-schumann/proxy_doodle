@@ -48,7 +48,7 @@
 #   define BOOST_MPL_CFG_NO_APPLY_TEMPLATE
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 // local macro, #undef-ined at the end of the header
 #   define AUX778076_APPLY_DEF_PARAMS(param, value) \

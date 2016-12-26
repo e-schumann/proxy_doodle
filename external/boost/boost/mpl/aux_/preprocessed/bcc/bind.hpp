@@ -10,7 +10,7 @@
 // *Preprocessed* version of the main "bind.hpp" header
 // -- DO NOT modify by hand!
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 namespace aux {
 

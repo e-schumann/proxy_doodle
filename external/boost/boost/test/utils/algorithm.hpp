@@ -21,7 +21,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace utils {
 
@@ -313,7 +313,7 @@ replace_all_occurrences_with_wildcards(
 
 } // namespace utils
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

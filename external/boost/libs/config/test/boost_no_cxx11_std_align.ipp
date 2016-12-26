@@ -13,7 +13,7 @@
 
 #include <memory>
 
-namespace boost_part_no_cxx11_std_align {
+namespace boost_no_cxx11_std_align {
 
 int test()
 {

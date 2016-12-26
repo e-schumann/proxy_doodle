@@ -23,7 +23,7 @@
 # pragma warn -8026     // Functions with excep. spec. are not expanded inline
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 // The standard library that comes with Borland C++ 5.5.1, 5.6.4
@@ -59,7 +59,7 @@ public:
 # pragma option pop
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #ifdef __BORLANDC__
 # pragma warn .8026     // Functions with excep. spec. are not expanded inline

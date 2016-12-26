@@ -33,7 +33,7 @@ void B::t()
 {
 }
 
-namespace boost_part_no_rtti
+namespace boost_no_rtti
 {
 
 int check_f(const A& a)

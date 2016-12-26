@@ -19,7 +19,7 @@
 #include <boost/mpl/aux_/config/msvc.hpp>
 #include <boost/mpl/aux_/config/ctps.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 template< typename T >
 struct is_na

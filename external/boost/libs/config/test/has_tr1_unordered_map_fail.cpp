@@ -33,6 +33,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_unordered_map::test();
+   return boost_has_tr1_unordered_map::test();
 }
 

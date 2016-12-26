@@ -13,7 +13,7 @@
 //                 14.5.3, not supported.
 
 
-namespace boost_part_no_member_template_friends{
+namespace boost_no_member_template_friends{
 
 template <class T>
 class foobar;

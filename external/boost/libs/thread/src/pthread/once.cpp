@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <memory>
 #include <string.h> // memcmp.
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace thread_detail
     {

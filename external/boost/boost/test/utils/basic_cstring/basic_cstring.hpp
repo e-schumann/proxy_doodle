@@ -30,7 +30,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace unit_test {
 
@@ -729,7 +729,7 @@ operator+( std::basic_string<CharT1> const& lhs, basic_cstring<CharT2> const& rh
 
 } // namespace unit_test
 
-} // namespace boost_part
+} // namespace boost
 
 //____________________________________________________________________________//
 

@@ -11,7 +11,7 @@
 //  DESCRIPTION:   Named return value optimisation.
 
 
-namespace boost_part_has_nrvo
+namespace boost_has_nrvo
 {
 
 class test_class
@@ -44,7 +44,7 @@ int test()
   return test_class::copy_count;
 }
 
-} // namespace boost_part_has_nrvo
+} // namespace boost_has_nrvo
 
 
 

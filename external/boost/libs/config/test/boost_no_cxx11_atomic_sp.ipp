@@ -12,7 +12,7 @@
 
 #include <memory>
 
-namespace boost_part_no_cxx11_atomic_smart_ptr {
+namespace boost_no_cxx11_atomic_smart_ptr {
 
 int test()
 {

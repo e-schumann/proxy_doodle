@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_COMPLEX_OVERLOADS
 #include "boost_has_tr1_complex_over.ipp"
 #else
-namespace boost_part_has_tr1_complex_overloads = empty_boost;
+namespace boost_has_tr1_complex_overloads = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_complex_overloads::test();
+   return boost_has_tr1_complex_overloads::test();
 }
 

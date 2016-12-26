@@ -20,7 +20,7 @@
 #include <set>
 #include <ctime>
 
-namespace fs = boost_part::filesystem;
+namespace fs = boost::filesystem;
 
 fs::path config_path;
 
@@ -60,9 +60,9 @@ void write_config_info()
    }
    std::string macros = ss.str();
    // scan for Boost macro block:
-   boost_part::regex re("BEGIN\\s+GENERATED\\s+BLOCK\\s+DO\\s+NOT\\s+EDIT\\s+THIS[^\\n]+\\n(.*?)\\n\\s+//\\s*END\\s+GENERATED\\s+BLOCK");
-   boost_part::smatch what;
-   if(boost_part::regex_search(file_text, what, re))
+   boost::regex re("BEGIN\\s+GENERATED\\s+BLOCK\\s+DO\\s+NOT\\s+EDIT\\s+THIS[^\\n]+\\n(.*?)\\n\\s+//\\s*END\\s+GENERATED\\s+BLOCK");
+   boost::smatch what;
+   if(boost::regex_search(file_text, what, re))
    {
       std::string new_text;
       new_text.append(what.prefix().first, what[1].first);
@@ -158,7 +158,7 @@ void write_test_file(const fs::path& file,
          "#  undef BOOST_ASSERT_CONFIG\n"
          "#endif\n\n";
 
-      static const boost_part::regex tr1_exp("BOOST_HAS_TR1.*");
+      static const boost::regex tr1_exp("BOOST_HAS_TR1.*");
 
       ofs << "#include <boost/config.hpp>\n";
 
@@ -236,13 +236,13 @@ void process_ipp_file(const fs::path& file, bool positive_test)
    std::copy(std::istreambuf_iterator<char>(ifs), std::istreambuf_iterator<char>(), std::back_inserter(file_text));
    ifs.close();
    // scan for the macro name:
-   boost_part::regex macro_regex("//\\s*MACRO\\s*:\\s*(\\w+)");
-   boost_part::smatch macro_match;
-   if(boost_part::regex_search(file_text, macro_match, macro_regex))
+   boost::regex macro_regex("//\\s*MACRO\\s*:\\s*(\\w+)");
+   boost::smatch macro_match;
+   if(boost::regex_search(file_text, macro_match, macro_regex))
    {
       macro_name = macro_match[1];
       macro_list.insert(macro_name);
-      namespace_name = boost_part::regex_replace(file_text, macro_regex, "\\L$1", boost_part::format_first_only | boost_part::format_no_copy);
+      namespace_name = boost::regex_replace(file_text, macro_regex, "\\L$1", boost::format_first_only | boost::format_no_copy);
    }
    if(macro_name.empty())
    {
@@ -254,9 +254,9 @@ void process_ipp_file(const fs::path& file, bool positive_test)
    }
 
    // get the output filesnames:
-   boost_part::regex file_regex("boost_([^.]+)\\.ipp");
-   positive_file = file.branch_path() / boost_part::regex_replace(file.leaf().string(), file_regex, "$1_pass.cpp");
-   negative_file = file.branch_path() / boost_part::regex_replace(file.leaf().string(), file_regex, "$1_fail.cpp");
+   boost::regex file_regex("boost_([^.]+)\\.ipp");
+   positive_file = file.branch_path() / boost::regex_replace(file.leaf().string(), file_regex, "$1_pass.cpp");
+   negative_file = file.branch_path() / boost::regex_replace(file.leaf().string(), file_regex, "$1_fail.cpp");
    write_test_file(positive_file, macro_name, namespace_name, file.leaf().string(), positive_test, true);
    write_test_file(negative_file, macro_name, namespace_name, file.leaf().string(), positive_test, false);
    
@@ -292,8 +292,8 @@ void process_ipp_file(const fs::path& file, bool positive_test)
    build_config_test << "namespace test = " << namespace_name << ";\n#endif\n";
 
    // Generate data for the build-checks Jamfile:
-   static const boost_part::regex feature_regex("boost_(?:no|has)_(.*)");
-   std::string feature_name = boost_part::regex_replace(namespace_name, feature_regex, "\\1");
+   static const boost::regex feature_regex("boost_(?:no|has)_(.*)");
+   std::string feature_name = boost::regex_replace(namespace_name, feature_regex, "\\1");
    build_config_jamfile << "run-simple <define>TEST_" << macro_name << " : " << feature_name << " ;\n";
 }
 
@@ -316,13 +316,13 @@ int cpp_main(int argc, char* argv[])
    std::cout << "Info: Boost.Config test path set as: " << config_path.string() << std::endl;
 
    // enumerate *.ipp files and store them in a map for now:
-   boost_part::regex ipp_mask("boost_(?:(has)|no).*\\.ipp");
-   boost_part::smatch ipp_match;
+   boost::regex ipp_mask("boost_(?:(has)|no).*\\.ipp");
+   boost::smatch ipp_match;
    fs::directory_iterator i(config_path), j;
    std::map<fs::path, bool> files_to_process;
    while(i != j)
    {
-      if(boost_part::regex_match(i->path().leaf().string(), ipp_match, ipp_mask))
+      if(boost::regex_match(i->path().leaf().string(), ipp_match, ipp_mask))
       {
          files_to_process[*i] = ipp_match[1].matched;
       }

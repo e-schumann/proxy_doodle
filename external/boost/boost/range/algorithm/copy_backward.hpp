@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -33,11 +33,11 @@ copy_backward(const BidirectionalRange& rng,
               BidirectionalTraversalWriteableIterator out)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<const BidirectionalRange> ));
-    return std::copy_backward(boost_part::begin(rng), boost_part::end(rng), out);
+    return std::copy_backward(boost::begin(rng), boost::end(rng), out);
 }
 
     } // namespace range
     using range::copy_backward;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

@@ -22,7 +22,7 @@
 #include <boost/type_traits/detail/mp_defer.hpp>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 // variadic common_type
@@ -73,7 +73,7 @@ struct common_type: common_type<typename common_type<T1, T2>::type, T3, T4, T5, 
 
 // one argument
 
-template<class T> struct common_type<T>: boost_part::decay<T>
+template<class T> struct common_type<T>: boost::decay<T>
 {
 };
 
@@ -92,7 +92,7 @@ namespace type_traits_detail
 
 // internal compiler error on msvc-12.0
 
-template<class T1, class T2> using builtin_common_type = typename boost_part::decay<decltype( boost_part::declval<bool>()? boost_part::declval<T1>(): boost_part::declval<T2>() )>::type;
+template<class T1, class T2> using builtin_common_type = typename boost::decay<decltype( boost::declval<bool>()? boost::declval<T1>(): boost::declval<T2>() )>::type;
 
 template<class T1, class T2> struct common_type_impl: mp_defer<builtin_common_type, T1, T2>
 {
@@ -100,13 +100,13 @@ template<class T1, class T2> struct common_type_impl: mp_defer<builtin_common_ty
 
 #else
 
-template<class T1, class T2> using builtin_common_type = decltype( boost_part::declval<bool>()? boost_part::declval<T1>(): boost_part::declval<T2>() );
+template<class T1, class T2> using builtin_common_type = decltype( boost::declval<bool>()? boost::declval<T1>(): boost::declval<T2>() );
 
 template<class T1, class T2> struct common_type_impl_2: mp_defer<builtin_common_type, T1, T2>
 {
 };
 
-template<class T1, class T2> using decay_common_type = typename boost_part::decay<typename common_type_impl_2<T1, T2>::type>::type;
+template<class T1, class T2> using decay_common_type = typename boost::decay<typename common_type_impl_2<T1, T2>::type>::type;
 
 template<class T1, class T2> struct common_type_impl: mp_defer<decay_common_type, T1, T2>
 {
@@ -116,7 +116,7 @@ template<class T1, class T2> struct common_type_impl: mp_defer<decay_common_type
 
 #else
 
-template<class T1, class T2> struct common_type_impl: boost_part::decay<decltype( boost_part::declval<bool>()? boost_part::declval<T1>(): boost_part::declval<T2>() )>
+template<class T1, class T2> struct common_type_impl: boost::decay<decltype( boost::declval<bool>()? boost::declval<T1>(): boost::declval<T2>() )>
 {
 };
 
@@ -126,7 +126,7 @@ template<class T1, class T2> struct common_type_impl: boost_part::decay<decltype
 
 // decay helper
 
-template<class T1, class T2, class T1d = typename boost_part::decay<T1>::type, class T2d = typename boost_part::decay<T2>::type> struct common_type_decay_helper: boost_part::common_type<T1d, T2d>
+template<class T1, class T2, class T1d = typename boost::decay<T1>::type, class T2d = typename boost::decay<T2>::type> struct common_type_decay_helper: boost::common_type<T1d, T2d>
 {
 };
 
@@ -140,6 +140,6 @@ template<class T1, class T2> struct common_type<T1, T2>: type_traits_detail::com
 {
 };
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // #ifndef BOOST_TYPE_TRAITS_COMMON_TYPE_HPP_INCLUDED

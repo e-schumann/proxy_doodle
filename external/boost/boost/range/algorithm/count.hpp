@@ -16,7 +16,7 @@
 #include <boost/range/difference_type.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -31,7 +31,7 @@ inline BOOST_DEDUCED_TYPENAME range_difference<SinglePassRange>::type
 count(SinglePassRange& rng, const Value& val)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange> ));
-    return std::count(boost_part::begin(rng), boost_part::end(rng), val);
+    return std::count(boost::begin(rng), boost::end(rng), val);
 }
 
 /// \overload
@@ -40,11 +40,11 @@ inline BOOST_DEDUCED_TYPENAME range_difference<SinglePassRange const>::type
 count(const SinglePassRange& rng, const Value& val)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return std::count(boost_part::begin(rng), boost_part::end(rng), val);
+    return std::count(boost::begin(rng), boost::end(rng), val);
 }
 
     } // namespace range
     using range::count;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

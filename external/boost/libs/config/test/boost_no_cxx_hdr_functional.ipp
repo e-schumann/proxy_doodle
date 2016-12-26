@@ -14,7 +14,7 @@
 
 void f(int, float){}
 
-namespace boost_part_no_cxx11_hdr_functional {
+namespace boost_no_cxx11_hdr_functional {
 
 int test()
 {

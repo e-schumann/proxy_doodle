@@ -15,7 +15,7 @@
 #include <iostream>
 
 
-namespace boost_part_no_std_output_iterator_assign {
+namespace boost_no_std_output_iterator_assign {
 
 int test()
 {

@@ -20,7 +20,7 @@
 # include <boost/mpl/if.hpp>
 # include <boost/mpl/eval_if.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace detail
 {
@@ -49,7 +49,7 @@ namespace detail
 
       typedef typename mpl::if_c<
 #  if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x551))
-          ::boost_part::detail::iterator_pointee<Iterator>::is_constant
+          ::boost::detail::iterator_pointee<Iterator>::is_constant
 #  else
           is_constant
 #  endif
@@ -69,6 +69,6 @@ struct pointee
 {
 };
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // POINTEE_DWA200415_HPP

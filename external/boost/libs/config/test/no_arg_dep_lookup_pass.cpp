@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
 #include "boost_no_arg_dep_lookup.ipp"
 #else
-namespace boost_part_no_argument_dependent_lookup = empty_boost;
+namespace boost_no_argument_dependent_lookup = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_argument_dependent_lookup::test();
+   return boost_no_argument_dependent_lookup::test();
 }
 

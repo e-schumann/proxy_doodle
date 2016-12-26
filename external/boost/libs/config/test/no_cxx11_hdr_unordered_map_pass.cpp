@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_UNORDERED_MAP
 #include "boost_no_cxx11_hdr_unordered_map.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_unordered_map = empty_boost;
+namespace boost_no_cxx11_hdr_unordered_map = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_unordered_map::test();
+   return boost_no_cxx11_hdr_unordered_map::test();
 }
 

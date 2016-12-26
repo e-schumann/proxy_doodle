@@ -37,7 +37,7 @@
 #  pragma warning(disable: 4800 4706)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 namespace BOOST_REGEX_DETAIL_NS{
 
 template <class T>
@@ -174,7 +174,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::match_all_states()
       // Although this next line *should* be evaluated at compile time, in practice
       // some compilers (VC++) emit run-time initialisation which breaks thread
       // safety, so use a dispatch function instead:
-      //(::boost_part::is_random_access_iterator<BidiIterator>::value ? &perl_matcher<BidiIterator, Allocator, traits>::match_dot_repeat_fast : &perl_matcher<BidiIterator, Allocator, traits>::match_dot_repeat_slow),
+      //(::boost::is_random_access_iterator<BidiIterator>::value ? &perl_matcher<BidiIterator, Allocator, traits>::match_dot_repeat_fast : &perl_matcher<BidiIterator, Allocator, traits>::match_dot_repeat_slow),
       &perl_matcher<BidiIterator, Allocator, traits>::match_dot_repeat_dispatch,
       &perl_matcher<BidiIterator, Allocator, traits>::match_char_repeat,
       &perl_matcher<BidiIterator, Allocator, traits>::match_set_repeat,
@@ -695,7 +695,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::match_dot_repeat_fast()
 
    const re_repeat* rep = static_cast<const re_repeat*>(pstate);
    bool greedy = (rep->greedy) && (!(m_match_flags & regex_constants::match_any) || m_independent);   
-   unsigned count = static_cast<unsigned>((std::min)(static_cast<unsigned>(::boost_part::BOOST_REGEX_DETAIL_NS::distance(position, last)), static_cast<unsigned>(greedy ? rep->max : rep->min)));
+   unsigned count = static_cast<unsigned>((std::min)(static_cast<unsigned>(::boost::BOOST_REGEX_DETAIL_NS::distance(position, last)), static_cast<unsigned>(greedy ? rep->max : rep->min)));
    if(rep->min > count)
    {
       position = last;
@@ -743,12 +743,12 @@ bool perl_matcher<BidiIterator, Allocator, traits>::match_char_repeat()
    //
    bool greedy = (rep->greedy) && (!(m_match_flags & regex_constants::match_any) || m_independent);   
    std::size_t desired = greedy ? rep->max : rep->min;
-   if(::boost_part::is_random_access_iterator<BidiIterator>::value)
+   if(::boost::is_random_access_iterator<BidiIterator>::value)
    {
       BidiIterator end = position;
       // Move end forward by "desired", preferably without using distance or advance if we can
       // as these can be slow for some iterator types.
-      std::size_t len = (desired == (std::numeric_limits<std::size_t>::max)()) ? 0u : ::boost_part::BOOST_REGEX_DETAIL_NS::distance(position, last);
+      std::size_t len = (desired == (std::numeric_limits<std::size_t>::max)()) ? 0u : ::boost::BOOST_REGEX_DETAIL_NS::distance(position, last);
       if(desired >= len)
          end = last;
       else
@@ -758,7 +758,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::match_char_repeat()
       {
          ++position;
       }
-      count = (unsigned)::boost_part::BOOST_REGEX_DETAIL_NS::distance(origin, position);
+      count = (unsigned)::boost::BOOST_REGEX_DETAIL_NS::distance(origin, position);
    }
    else
    {
@@ -817,12 +817,12 @@ bool perl_matcher<BidiIterator, Allocator, traits>::match_set_repeat()
    //
    bool greedy = (rep->greedy) && (!(m_match_flags & regex_constants::match_any) || m_independent);   
    std::size_t desired = greedy ? rep->max : rep->min;
-   if(::boost_part::is_random_access_iterator<BidiIterator>::value)
+   if(::boost::is_random_access_iterator<BidiIterator>::value)
    {
       BidiIterator end = position;
       // Move end forward by "desired", preferably without using distance or advance if we can
       // as these can be slow for some iterator types.
-      std::size_t len = (desired == (std::numeric_limits<std::size_t>::max)()) ? 0u : ::boost_part::BOOST_REGEX_DETAIL_NS::distance(position, last);
+      std::size_t len = (desired == (std::numeric_limits<std::size_t>::max)()) ? 0u : ::boost::BOOST_REGEX_DETAIL_NS::distance(position, last);
       if(desired >= len)
          end = last;
       else
@@ -832,7 +832,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::match_set_repeat()
       {
          ++position;
       }
-      count = (unsigned)::boost_part::BOOST_REGEX_DETAIL_NS::distance(origin, position);
+      count = (unsigned)::boost::BOOST_REGEX_DETAIL_NS::distance(origin, position);
    }
    else
    {
@@ -892,12 +892,12 @@ bool perl_matcher<BidiIterator, Allocator, traits>::match_long_set_repeat()
    //
    bool greedy = (rep->greedy) && (!(m_match_flags & regex_constants::match_any) || m_independent);   
    std::size_t desired = greedy ? rep->max : rep->min;
-   if(::boost_part::is_random_access_iterator<BidiIterator>::value)
+   if(::boost::is_random_access_iterator<BidiIterator>::value)
    {
       BidiIterator end = position;
       // Move end forward by "desired", preferably without using distance or advance if we can
       // as these can be slow for some iterator types.
-      std::size_t len = (desired == (std::numeric_limits<std::size_t>::max)()) ? 0u : ::boost_part::BOOST_REGEX_DETAIL_NS::distance(position, last);
+      std::size_t len = (desired == (std::numeric_limits<std::size_t>::max)()) ? 0u : ::boost::BOOST_REGEX_DETAIL_NS::distance(position, last);
       if(desired >= len)
          end = last;
       else
@@ -907,7 +907,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::match_long_set_repeat()
       {
          ++position;
       }
-      count = (unsigned)::boost_part::BOOST_REGEX_DETAIL_NS::distance(origin, position);
+      count = (unsigned)::boost::BOOST_REGEX_DETAIL_NS::distance(origin, position);
    }
    else
    {
@@ -1208,7 +1208,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::unwind_case(bool)
 {
    saved_change_case* pmp = static_cast<saved_change_case*>(m_backup_state);
    icase = pmp->icase;
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
    m_backup_state = pmp;
    return true;
 }
@@ -1232,14 +1232,14 @@ bool perl_matcher<BidiIterator, Allocator, traits>::unwind_paren(bool have_match
 #endif
    // unwind stack:
    m_backup_state = pmp+1;
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp);
    return true; // keep looking
 }
 
 template <class BidiIterator, class Allocator, class traits>
 bool perl_matcher<BidiIterator, Allocator, traits>::unwind_recursion_stopper(bool)
 {
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(m_backup_state++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(m_backup_state++);
    pstate = 0;   // nothing left to search
    return false; // end of stack nothing more to search
 }
@@ -1252,7 +1252,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::unwind_assertion(bool r)
    position = pmp->position;
    bool result = (r == pmp->positive);
    m_recursive_result = pmp->positive ? r : !r;
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
    m_backup_state = pmp;
    m_unwound_lookahead = true;
    return !result; // return false if the assertion was matched to stop search.
@@ -1267,7 +1267,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::unwind_alt(bool r)
       pstate = pmp->pstate;
       position = pmp->position;
    }
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
    m_backup_state = pmp;
    m_unwound_alt = !r;
    return r; 
@@ -1277,7 +1277,7 @@ template <class BidiIterator, class Allocator, class traits>
 bool perl_matcher<BidiIterator, Allocator, traits>::unwind_repeater_counter(bool)
 {
    saved_repeater<BidiIterator>* pmp = static_cast<saved_repeater<BidiIterator>*>(m_backup_state);
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
    m_backup_state = pmp;
    return true; // keep looking
 }
@@ -1289,7 +1289,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::unwind_extra_block(bool)
    void* condemmed = m_stack_base;
    m_stack_base = pmp->base;
    m_backup_state = pmp->end;
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp);
    put_mem_block(condemmed);
    return true; // keep looking
 }
@@ -1298,7 +1298,7 @@ template <class BidiIterator, class Allocator, class traits>
 inline void perl_matcher<BidiIterator, Allocator, traits>::destroy_single_repeat()
 {
    saved_single_repeat<BidiIterator>* p = static_cast<saved_single_repeat<BidiIterator>*>(m_backup_state);
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(p++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(p++);
    m_backup_state = p;
 }
 
@@ -1690,7 +1690,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::unwind_non_greedy_repeat(boo
       pstate = pmp->pstate;
       ++(*next_count);
    }
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
    m_backup_state = pmp;
    return r;
 }
@@ -1706,7 +1706,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::unwind_recursion(bool r)
       recursion_stack.back().preturn_address = pmp->preturn_address;
       recursion_stack.back().results = pmp->results;
    }
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
    m_backup_state = pmp;
    return true;
 }
@@ -1719,7 +1719,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::unwind_recursion_pop(bool r)
    {
       recursion_stack.pop_back();
    }
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
    m_backup_state = pmp;
    return true;
 }
@@ -1742,7 +1742,7 @@ void perl_matcher<BidiIterator, Allocator, traits>::push_recursion_pop()
 template <class BidiIterator, class Allocator, class traits>
 bool perl_matcher<BidiIterator, Allocator, traits>::unwind_commit(bool b)
 {
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(m_backup_state++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(m_backup_state++);
    while(unwind(b) && !m_unwound_lookahead){}
    if(m_unwound_lookahead && pstate)
    {
@@ -1770,7 +1770,7 @@ template <class BidiIterator, class Allocator, class traits>
 bool perl_matcher<BidiIterator, Allocator, traits>::unwind_then(bool b)
 {
    // Unwind everything till we hit an alternative:
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(m_backup_state++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(m_backup_state++);
    bool result = false;
    while((result = unwind(b)) && !m_unwound_alt){}
    // We're now pointing at the next alternative, need one more backtrack 
@@ -1789,7 +1789,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::unwind_parenthesis_pop(bool 
    {
       --parenthesis_stack_position;
    }
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
    m_backup_state = pmp;
    return true;
 }
@@ -1817,7 +1817,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::unwind_parenthesis_push(bool
    {
       parenthesis_stack[parenthesis_stack_position++] = pmp->position;
    }
-   boost_part::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
+   boost::BOOST_REGEX_DETAIL_NS::inplace_destroy(pmp++);
    m_backup_state = pmp;
    return true;
 }
@@ -1838,7 +1838,7 @@ inline void perl_matcher<BidiIterator, Allocator, traits>::push_parenthesis_push
 }
 */
 } // namespace BOOST_REGEX_DETAIL_NS
-} // namespace boost_part
+} // namespace boost
 
 #ifdef BOOST_MSVC
 #  pragma warning(pop)

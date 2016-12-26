@@ -15,7 +15,7 @@
 #pragma once
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
    namespace math
    { 
@@ -34,9 +34,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
    long ltrunc(const T& v);
 #ifdef BOOST_HAS_LONG_LONG
    template <class T, class Policy>
-   boost_part::long_long_type lltrunc(const T& v, const Policy& pol);
+   boost::long_long_type lltrunc(const T& v, const Policy& pol);
    template <class T>
-   boost_part::long_long_type lltrunc(const T& v);
+   boost::long_long_type lltrunc(const T& v);
 #endif
    template <class T, class Policy>
    typename tools::promote_args<T>::type round(const T& v, const Policy& pol);
@@ -52,9 +52,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
    long lround(const T& v);
 #ifdef BOOST_HAS_LONG_LONG
    template <class T, class Policy>
-   boost_part::long_long_type llround(const T& v, const Policy& pol);
+   boost::long_long_type llround(const T& v, const Policy& pol);
    template <class T>
-   boost_part::long_long_type llround(const T& v);
+   boost::long_long_type llround(const T& v);
 #endif
    template <class T, class Policy>
    T modf(const T& v, T* ipart, const Policy& pol);
@@ -70,9 +70,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
    T modf(const T& v, long* ipart);
 #ifdef BOOST_HAS_LONG_LONG
    template <class T, class Policy>
-   T modf(const T& v, boost_part::long_long_type* ipart, const Policy& pol);
+   T modf(const T& v, boost::long_long_type* ipart, const Policy& pol);
    template <class T>
-   T modf(const T& v, boost_part::long_long_type* ipart);
+   T modf(const T& v, boost::long_long_type* ipart);
 #endif
 
    }
@@ -80,13 +80,13 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #undef BOOST_MATH_STD_USING
 #define BOOST_MATH_STD_USING BOOST_MATH_STD_USING_CORE\
-   using boost_part::math::round;\
-   using boost_part::math::iround;\
-   using boost_part::math::lround;\
-   using boost_part::math::trunc;\
-   using boost_part::math::itrunc;\
-   using boost_part::math::ltrunc;\
-   using boost_part::math::modf;
+   using boost::math::round;\
+   using boost::math::iround;\
+   using boost::math::lround;\
+   using boost::math::trunc;\
+   using boost::math::itrunc;\
+   using boost::math::ltrunc;\
+   using boost::math::modf;
 
 
 #endif // BOOST_MATH_SPECIAL_ROUND_FWD_HPP

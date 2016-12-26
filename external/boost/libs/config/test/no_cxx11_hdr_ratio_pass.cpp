@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_RATIO
 #include "boost_no_cxx11_hdr_ratio.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_ratio = empty_boost;
+namespace boost_no_cxx11_hdr_ratio = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_ratio::test();
+   return boost_no_cxx11_hdr_ratio::test();
 }
 

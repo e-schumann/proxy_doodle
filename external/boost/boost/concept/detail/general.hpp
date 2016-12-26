@@ -15,7 +15,7 @@
 
 // This implementation works on Comeau and GCC, all the way back to
 // 2.95
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace concepts {
+namespace boost { namespace concepts {
 
 template <class ModelFn>
 struct requirement_;
@@ -67,8 +67,8 @@ struct requirement_<void(*)(Model)>
 # endif
 
 #  define BOOST_CONCEPT_ASSERT_FN( ModelFnPtr )             \
-    typedef ::boost_part::concepts::detail::instantiate<          \
-    &::boost_part::concepts::requirement_<ModelFnPtr>::failed>    \
+    typedef ::boost::concepts::detail::instantiate<          \
+    &::boost::concepts::requirement_<ModelFnPtr>::failed>    \
       BOOST_PP_CAT(boost_concept_check,__LINE__)             \
       BOOST_ATTRIBUTE_UNUSED
 

@@ -20,7 +20,7 @@
 #include <boost/type_traits/remove_reference.hpp>
 #include <boost/utility/enable_if.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
@@ -28,14 +28,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         template<class T, class Enabler = void>
         struct has_range_iterator_impl
-            : boost_part::mpl::false_
+            : boost::mpl::false_
         {
         };
 
         template<class T>
         struct has_range_iterator_impl<
             T,
-            BOOST_DEDUCED_TYPENAME ::boost_part::enable_if<
+            BOOST_DEDUCED_TYPENAME ::boost::enable_if<
                 BOOST_DEDUCED_TYPENAME mpl::eval_if<is_const<T>,
                     has_type<range_const_iterator<
                                 BOOST_DEDUCED_TYPENAME remove_const<T>::type> >,
@@ -43,24 +43,24 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 >::type
             >::type
         >
-            : boost_part::mpl::true_
+            : boost::mpl::true_
         {
         };
 
         template<class T, class Enabler = void>
         struct has_range_const_iterator_impl
-            : boost_part::mpl::false_
+            : boost::mpl::false_
         {
         };
 
         template<class T>
         struct has_range_const_iterator_impl<
             T,
-            BOOST_DEDUCED_TYPENAME ::boost_part::enable_if<
+            BOOST_DEDUCED_TYPENAME ::boost::enable_if<
                 has_type<range_const_iterator<T> >
             >::type
         >
-            : boost_part::mpl::true_
+            : boost::mpl::true_
         {
         };
 
@@ -77,7 +77,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         : range_detail::has_range_const_iterator_impl<
             BOOST_DEDUCED_TYPENAME remove_reference<T>::type>
     {};
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard
 

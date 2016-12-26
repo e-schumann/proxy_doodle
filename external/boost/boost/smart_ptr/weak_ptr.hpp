@@ -17,7 +17,7 @@
 #include <boost/smart_ptr/detail/shared_count.hpp>
 #include <boost/smart_ptr/shared_ptr.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 template<class T> class weak_ptr
@@ -29,7 +29,7 @@ private:
 
 public:
 
-    typedef typename boost_part::detail::sp_element< T >::type element_type;
+    typedef typename boost::detail::sp_element< T >::type element_type;
 
     weak_ptr() BOOST_NOEXCEPT : px(0), pn() // never throws in 1.30+
     {
@@ -74,7 +74,7 @@ public:
     template<class Y>
 #if !defined( BOOST_SP_NO_SP_CONVERTIBLE )
 
-    weak_ptr( weak_ptr<Y> const & r, typename boost_part::detail::sp_enable_if_convertible<Y,T>::type = boost_part::detail::sp_empty() )
+    weak_ptr( weak_ptr<Y> const & r, typename boost::detail::sp_enable_if_convertible<Y,T>::type = boost::detail::sp_empty() )
 
 #else
 
@@ -83,7 +83,7 @@ public:
 #endif
     BOOST_NOEXCEPT : px(r.lock().get()), pn(r.pn)
     {
-        boost_part::detail::sp_assert_convertible< Y, T >();
+        boost::detail::sp_assert_convertible< Y, T >();
     }
 
 #if !defined( BOOST_NO_CXX11_RVALUE_REFERENCES )
@@ -91,22 +91,22 @@ public:
     template<class Y>
 #if !defined( BOOST_SP_NO_SP_CONVERTIBLE )
 
-    weak_ptr( weak_ptr<Y> && r, typename boost_part::detail::sp_enable_if_convertible<Y,T>::type = boost_part::detail::sp_empty() )
+    weak_ptr( weak_ptr<Y> && r, typename boost::detail::sp_enable_if_convertible<Y,T>::type = boost::detail::sp_empty() )
 
 #else
 
     weak_ptr( weak_ptr<Y> && r )
 
 #endif
-    BOOST_NOEXCEPT : px( r.lock().get() ), pn( static_cast< boost_part::detail::weak_count && >( r.pn ) )
+    BOOST_NOEXCEPT : px( r.lock().get() ), pn( static_cast< boost::detail::weak_count && >( r.pn ) )
     {
-        boost_part::detail::sp_assert_convertible< Y, T >();
+        boost::detail::sp_assert_convertible< Y, T >();
         r.px = 0;
     }
 
     // for better efficiency in the T == Y case
     weak_ptr( weak_ptr && r )
-    BOOST_NOEXCEPT : px( r.px ), pn( static_cast< boost_part::detail::weak_count && >( r.pn ) )
+    BOOST_NOEXCEPT : px( r.px ), pn( static_cast< boost::detail::weak_count && >( r.pn ) )
     {
         r.px = 0;
     }
@@ -124,7 +124,7 @@ public:
     template<class Y>
 #if !defined( BOOST_SP_NO_SP_CONVERTIBLE )
 
-    weak_ptr( shared_ptr<Y> const & r, typename boost_part::detail::sp_enable_if_convertible<Y,T>::type = boost_part::detail::sp_empty() )
+    weak_ptr( shared_ptr<Y> const & r, typename boost::detail::sp_enable_if_convertible<Y,T>::type = boost::detail::sp_empty() )
 
 #else
 
@@ -133,7 +133,7 @@ public:
 #endif
     BOOST_NOEXCEPT : px( r.px ), pn( r.pn )
     {
-        boost_part::detail::sp_assert_convertible< Y, T >();
+        boost::detail::sp_assert_convertible< Y, T >();
     }
 
 #if !defined(BOOST_MSVC) || (BOOST_MSVC >= 1300)
@@ -141,7 +141,7 @@ public:
     template<class Y>
     weak_ptr & operator=( weak_ptr<Y> const & r ) BOOST_NOEXCEPT
     {
-        boost_part::detail::sp_assert_convertible< Y, T >();
+        boost::detail::sp_assert_convertible< Y, T >();
 
         px = r.lock().get();
         pn = r.pn;
@@ -163,7 +163,7 @@ public:
     template<class Y>
     weak_ptr & operator=( shared_ptr<Y> const & r ) BOOST_NOEXCEPT
     {
-        boost_part::detail::sp_assert_convertible< Y, T >();
+        boost::detail::sp_assert_convertible< Y, T >();
 
         px = r.px;
         pn = r.pn;
@@ -175,7 +175,7 @@ public:
 
     shared_ptr<T> lock() const BOOST_NOEXCEPT
     {
-        return shared_ptr<T>( *this, boost_part::detail::sp_nothrow_tag() );
+        return shared_ptr<T>( *this, boost::detail::sp_nothrow_tag() );
     }
 
     long use_count() const BOOST_NOEXCEPT
@@ -234,7 +234,7 @@ private:
 #endif
 
     element_type * px;            // contained pointer
-    boost_part::detail::weak_count pn; // reference counter
+    boost::detail::weak_count pn; // reference counter
 
 };  // weak_ptr
 
@@ -248,6 +248,6 @@ template<class T> void swap(weak_ptr<T> & a, weak_ptr<T> & b) BOOST_NOEXCEPT
     a.swap(b);
 }
 
-} // namespace boost_part
+} // namespace boost
 
 #endif  // #ifndef BOOST_SMART_PTR_WEAK_PTR_HPP_INCLUDED

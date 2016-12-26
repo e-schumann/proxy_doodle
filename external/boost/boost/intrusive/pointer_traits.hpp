@@ -28,7 +28,7 @@
 #  pragma once
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace intrusive {
 namespace detail {
 
@@ -96,22 +96,22 @@ struct pointer_traits
       typedef Ptr                                                             pointer;
       //
       typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_EVAL_DEFAULT
-         ( boost_part::intrusive::detail::, Ptr, element_type
-         , boost_part::intrusive::detail::first_param<Ptr>)                        element_type;
+         ( boost::intrusive::detail::, Ptr, element_type
+         , boost::intrusive::detail::first_param<Ptr>)                        element_type;
       //
       typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT
-         (boost_part::intrusive::detail::, Ptr, difference_type, std::ptrdiff_t)   difference_type;
+         (boost::intrusive::detail::, Ptr, difference_type, std::ptrdiff_t)   difference_type;
 
       typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT
-         (boost_part::intrusive::detail::, Ptr, reference, typename boost_part::intrusive::detail::unvoid_ref<element_type>::type)   reference;
+         (boost::intrusive::detail::, Ptr, reference, typename boost::intrusive::detail::unvoid_ref<element_type>::type)   reference;
       //
       template <class U> struct rebind_pointer
       {
-         typedef typename boost_part::intrusive::pointer_rebind<Ptr, U>::type  type;
+         typedef typename boost::intrusive::pointer_rebind<Ptr, U>::type  type;
       };
 
       #if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-         template <class U> using rebind = typename boost_part::intrusive::pointer_rebind<Ptr, U>::type;
+         template <class U> using rebind = typename boost::intrusive::pointer_rebind<Ptr, U>::type;
       #endif
    #endif   //#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
 
@@ -127,10 +127,10 @@ struct pointer_traits
    {
       //Non-standard extension, it does not require Ptr::pointer_to. If not present
       //tries to converts &r to pointer.
-      const bool value = boost_part::intrusive::detail::
+      const bool value = boost::intrusive::detail::
          has_member_function_callable_with_pointer_to
             <Ptr, Ptr (*)(reference)>::value;
-      boost_part::intrusive::detail::bool_<value> flag;
+      boost::intrusive::detail::bool_<value> flag;
       return pointer_traits::priv_pointer_to(flag, r);
    }
 
@@ -146,13 +146,13 @@ struct pointer_traits
    static pointer static_cast_from(const UPtr &uptr)
    {
       typedef const UPtr &RefArg;
-      const bool value = boost_part::intrusive::detail::
+      const bool value = boost::intrusive::detail::
          has_member_function_callable_with_static_cast_from
             <pointer, pointer(*)(RefArg)>::value
-         || boost_part::intrusive::detail::
+         || boost::intrusive::detail::
                has_member_function_callable_with_static_cast_from
                   <pointer, pointer(*)(UPtr)>::value;
-      return pointer_traits::priv_static_cast_from(boost_part::intrusive::detail::bool_<value>(), uptr);
+      return pointer_traits::priv_static_cast_from(boost::intrusive::detail::bool_<value>(), uptr);
    }
 
    //! <b>Remark</b>: Non-standard extension.
@@ -167,13 +167,13 @@ struct pointer_traits
    static pointer const_cast_from(const UPtr &uptr)
    {
       typedef const UPtr &RefArg;
-      const bool value = boost_part::intrusive::detail::
+      const bool value = boost::intrusive::detail::
          has_member_function_callable_with_const_cast_from
             <pointer, pointer(*)(RefArg)>::value
-         || boost_part::intrusive::detail::
+         || boost::intrusive::detail::
                has_member_function_callable_with_const_cast_from
                   <pointer, pointer(*)(UPtr)>::value;
-      return pointer_traits::priv_const_cast_from(boost_part::intrusive::detail::bool_<value>(), uptr);
+      return pointer_traits::priv_const_cast_from(boost::intrusive::detail::bool_<value>(), uptr);
    }
 
    //! <b>Remark</b>: Non-standard extension.
@@ -188,13 +188,13 @@ struct pointer_traits
    static pointer dynamic_cast_from(const UPtr &uptr)
    {
       typedef const UPtr &RefArg;
-      const bool value = boost_part::intrusive::detail::
+      const bool value = boost::intrusive::detail::
          has_member_function_callable_with_dynamic_cast_from
             <pointer, pointer(*)(RefArg)>::value
-         || boost_part::intrusive::detail::
+         || boost::intrusive::detail::
                has_member_function_callable_with_dynamic_cast_from
                   <pointer, pointer(*)(UPtr)>::value;
-      return pointer_traits::priv_dynamic_cast_from(boost_part::intrusive::detail::bool_<value>(), uptr);
+      return pointer_traits::priv_dynamic_cast_from(boost::intrusive::detail::bool_<value>(), uptr);
    }
 
    ///@cond
@@ -210,37 +210,37 @@ struct pointer_traits
    {  return pointer_traits::to_raw_pointer(p.operator->());  }
 
    //priv_pointer_to
-   static pointer priv_pointer_to(boost_part::intrusive::detail::true_, reference r)
+   static pointer priv_pointer_to(boost::intrusive::detail::true_, reference r)
    { return Ptr::pointer_to(r); }
 
-   static pointer priv_pointer_to(boost_part::intrusive::detail::false_, reference r)
-   { return pointer(boost_part::intrusive::detail::addressof(r)); }
+   static pointer priv_pointer_to(boost::intrusive::detail::false_, reference r)
+   { return pointer(boost::intrusive::detail::addressof(r)); }
 
    //priv_static_cast_from
    template<class UPtr>
-   static pointer priv_static_cast_from(boost_part::intrusive::detail::true_, const UPtr &uptr)
+   static pointer priv_static_cast_from(boost::intrusive::detail::true_, const UPtr &uptr)
    { return Ptr::static_cast_from(uptr); }
 
    template<class UPtr>
-   static pointer priv_static_cast_from(boost_part::intrusive::detail::false_, const UPtr &uptr)
+   static pointer priv_static_cast_from(boost::intrusive::detail::false_, const UPtr &uptr)
    {  return uptr ? pointer_to(*static_cast<element_type*>(to_raw_pointer(uptr))) : pointer();  }
 
    //priv_const_cast_from
    template<class UPtr>
-   static pointer priv_const_cast_from(boost_part::intrusive::detail::true_, const UPtr &uptr)
+   static pointer priv_const_cast_from(boost::intrusive::detail::true_, const UPtr &uptr)
    { return Ptr::const_cast_from(uptr); }
 
    template<class UPtr>
-   static pointer priv_const_cast_from(boost_part::intrusive::detail::false_, const UPtr &uptr)
+   static pointer priv_const_cast_from(boost::intrusive::detail::false_, const UPtr &uptr)
    {  return uptr ? pointer_to(const_cast<element_type&>(*uptr)) : pointer();  }
 
    //priv_dynamic_cast_from
    template<class UPtr>
-   static pointer priv_dynamic_cast_from(boost_part::intrusive::detail::true_, const UPtr &uptr)
+   static pointer priv_dynamic_cast_from(boost::intrusive::detail::true_, const UPtr &uptr)
    { return Ptr::dynamic_cast_from(uptr); }
 
    template<class UPtr>
-   static pointer priv_dynamic_cast_from(boost_part::intrusive::detail::false_, const UPtr &uptr)
+   static pointer priv_dynamic_cast_from(boost::intrusive::detail::false_, const UPtr &uptr)
    {  return uptr ? pointer_to(dynamic_cast<element_type&>(*uptr)) : pointer();  }
    ///@endcond
 };
@@ -277,7 +277,7 @@ struct pointer_traits<T*>
       //!shall be used instead of rebind<U> to obtain a pointer to U.
       template <class U> using rebind = U*;
    #else
-      typedef typename boost_part::intrusive::detail::unvoid_ref<element_type>::type reference;
+      typedef typename boost::intrusive::detail::unvoid_ref<element_type>::type reference;
       #if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
          template <class U> using rebind = U*;
       #endif
@@ -289,7 +289,7 @@ struct pointer_traits<T*>
    //! <b>Returns</b>: addressof(r)
    //!
    BOOST_INTRUSIVE_FORCEINLINE static pointer pointer_to(reference r)
-   { return boost_part::intrusive::detail::addressof(r); }
+   { return boost::intrusive::detail::addressof(r); }
 
    //! <b>Returns</b>: static_cast<pointer>(uptr)
    //!
@@ -311,7 +311,7 @@ struct pointer_traits<T*>
 };
 
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #include <boost/intrusive/detail/config_end.hpp>
 

@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_STD_ALIGN
 #include "boost_no_cxx11_std_align.ipp"
 #else
-namespace boost_part_no_cxx11_std_align = empty_boost;
+namespace boost_no_cxx11_std_align = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_std_align::test();
+   return boost_no_cxx11_std_align::test();
 }
 

@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_member_template_friends::test();
+   return boost_no_member_template_friends::test();
 }
 

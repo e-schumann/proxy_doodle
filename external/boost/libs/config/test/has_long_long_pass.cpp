@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_LONG_LONG
 #include "boost_has_long_long.ipp"
 #else
-namespace boost_part_has_long_long = empty_boost;
+namespace boost_has_long_long = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_long_long::test();
+   return boost_has_long_long::test();
 }
 

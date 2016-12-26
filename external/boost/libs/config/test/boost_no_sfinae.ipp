@@ -9,7 +9,7 @@
 //  DESCRIPTION:   SFINAE not supported.
 
 
-namespace boost_part_no_sfinae {
+namespace boost_no_sfinae {
 
 namespace f1_a {
 template <typename T>

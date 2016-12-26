@@ -9,7 +9,7 @@
 //  TITLE:         Working ADL barriers.
 //  DESCRIPTION:   If the compiler correctly handles ADL.
 
-namespace boost_part_no_adl_barrier{
+namespace boost_no_adl_barrier{
 
 namespace xxx {
     namespace nested {

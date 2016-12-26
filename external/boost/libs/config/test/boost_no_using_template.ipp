@@ -26,17 +26,17 @@ struct op
    };
 };
 
-namespace boost_part_no_using_template{
+namespace boost_no_using_template{
 
 using ::global_foo;
 using ::op;
 
 int test()
 {
-   boost_part_no_using_template::op<int, int> a;
-   boost_part_no_using_template::op<int, int> b;
+   boost_no_using_template::op<int, int> a;
+   boost_no_using_template::op<int, int> b;
    a+b;
-   return boost_part_no_using_template::global_foo(0);
+   return boost_no_using_template::global_foo(0);
 }
 
 }

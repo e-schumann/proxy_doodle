@@ -11,7 +11,7 @@
 //                 to members, fail to work correctly.
 
 
-namespace boost_part_no_pointer_to_member_template_parameters{
+namespace boost_no_pointer_to_member_template_parameters{
 
 struct pair
 {

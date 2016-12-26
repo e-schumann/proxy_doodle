@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_TEMPLATE_TEMPLATES
 #include "boost_no_template_template.ipp"
 #else
-namespace boost_part_no_template_templates = empty_boost;
+namespace boost_no_template_templates = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_template_templates::test();
+   return boost_no_template_templates::test();
 }
 

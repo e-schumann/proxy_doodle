@@ -41,14 +41,14 @@
 #define SOLARIS_EXTRA_CHECK
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 template <typename T>
 struct has_trivial_move_assign : public integral_constant<bool,
 #ifdef BOOST_HAS_TRIVIAL_MOVE_ASSIGN
    BOOST_HAS_TRIVIAL_MOVE_ASSIGN(T)
 #else
-   ::boost_part::is_pod<T>::value && !::boost_part::is_const<T>::value && !::boost_part::is_volatile<T>::value SOLARIS_EXTRA_CHECK
+   ::boost::is_pod<T>::value && !::boost::is_const<T>::value && !::boost::is_volatile<T>::value SOLARIS_EXTRA_CHECK
 #endif
    > {};
 
@@ -66,7 +66,7 @@ template <class T> struct has_trivial_move_assign<T&&> : public false_type{};
 template <class T, std::size_t N> struct has_trivial_move_assign<T[N]> : public false_type{};
 template <class T> struct has_trivial_move_assign<T[]> : public false_type{};
 
-} // namespace boost_part
+} // namespace boost
 
 #undef SOLARIS_EXTRA_CHECK
 

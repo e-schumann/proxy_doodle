@@ -16,7 +16,7 @@
   reprsentations.
 */
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace date_time {
 
   //!Defines some nice types for handling time level resolutions

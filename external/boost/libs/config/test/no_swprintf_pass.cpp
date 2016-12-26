@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_SWPRINTF
 #include "boost_no_swprintf.ipp"
 #else
-namespace boost_part_no_swprintf = empty_boost;
+namespace boost_no_swprintf = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_swprintf::test();
+   return boost_no_swprintf::test();
 }
 

@@ -28,7 +28,7 @@
 #include <boost/config/abi_prefix.hpp> // must be the last #include
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace chrono {
+namespace boost { namespace chrono {
 
     class BOOST_CHRONO_DECL process_real_cpu_clock {
     public:
@@ -243,7 +243,7 @@ namespace chrono
   operator==(const duration<process_times<Rep1>, Period1>& lhs,
         const duration<process_times<Rep2>, Period2>& rhs)
   {
-      return boost_part::chrono::detail::duration_eq<
+      return boost::chrono::detail::duration_eq<
           duration<Rep1, Period1>, duration<Rep2, Period2>
         >()(duration<Rep1, Period1>(lhs.count().real), duration<Rep2, Period2>(rhs.count().real));
   }
@@ -254,7 +254,7 @@ namespace chrono
   operator==(const duration<process_times<Rep1>, Period1>& lhs,
         const duration<Rep2, Period2>& rhs)
   {
-      return boost_part::chrono::detail::duration_eq<
+      return boost::chrono::detail::duration_eq<
           duration<Rep1, Period1>, duration<Rep2, Period2> >()(duration<Rep1, Period1>(lhs.count().real), rhs);
   }
 
@@ -276,7 +276,7 @@ namespace chrono
   operator< (const duration<process_times<Rep1>, Period1>& lhs,
         const duration<Rep2, Period2>& rhs)
   {
-      return boost_part::chrono::detail::duration_lt<
+      return boost::chrono::detail::duration_lt<
         duration<Rep1, Period1>, duration<Rep2, Period2> >()(duration<Rep1, Period1>(lhs.count().real), rhs);
   }
 
@@ -286,7 +286,7 @@ namespace chrono
   operator< (const duration<Rep1, Period1>& lhs,
         const duration<process_times<Rep2>, Period2>& rhs)
   {
-      return boost_part::chrono::detail::duration_lt<
+      return boost::chrono::detail::duration_lt<
         duration<Rep1, Period1>, duration<Rep2, Period2> >()(lhs, duration<Rep2, Period2>(rhs.count().real));
   }
 
@@ -296,7 +296,7 @@ namespace chrono
   operator< (const duration<process_times<Rep1>, Period1>& lhs,
         const duration<process_times<Rep2>, Period2>& rhs)
   {
-    return boost_part::chrono::detail::duration_lt<
+    return boost::chrono::detail::duration_lt<
         duration<Rep1, Period1>, duration<Rep2, Period2>
       >()(duration<Rep1, Period1>(lhs.count().real), duration<Rep2, Period2>(rhs.count().real));
   }
@@ -309,7 +309,7 @@ namespace chrono
     public:
 
         typedef process_cpu_clock_times times;
-        typedef boost_part::chrono::duration<times,  nano>                duration;
+        typedef boost::chrono::duration<times,  nano>                duration;
         typedef duration::rep                       rep;
         typedef duration::period                    period;
         typedef chrono::time_point<process_cpu_clock>  time_point;
@@ -453,14 +453,14 @@ namespace chrono
 #endif
 
 } // namespace chrono
-} // namespace boost_part
+} // namespace boost
 
 namespace std {
 
     template <typename Rep>
-    struct numeric_limits<boost_part::chrono::process_times<Rep> >
+    struct numeric_limits<boost::chrono::process_times<Rep> >
     {
-        typedef boost_part::chrono::process_times<Rep> Res;
+        typedef boost::chrono::process_times<Rep> Res;
 
         public:
         static const bool is_specialized = true;

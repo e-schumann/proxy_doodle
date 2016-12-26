@@ -14,7 +14,7 @@
 
 #include <ctype.h>
 
-namespace boost_part_no_ctype_functions {
+namespace boost_no_ctype_functions {
 
 extern "C" {
   typedef int (* character_classify_function)(int);

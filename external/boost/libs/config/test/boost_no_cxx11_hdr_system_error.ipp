@@ -12,7 +12,7 @@
 
 #include <system_error>
 
-namespace boost_part_no_cxx11_hdr_system_error {
+namespace boost_no_cxx11_hdr_system_error {
 
 int test()
 {

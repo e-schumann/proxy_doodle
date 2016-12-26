@@ -16,7 +16,7 @@
 #define BOOST_NESTED_TEMPLATE template
 #endif
 
-namespace boost_part_msvc6_member_templates{
+namespace boost_msvc6_member_templates{
 
 template <class T>
 struct foo

@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_PARTIAL_SPECIALIZATION_IMPLICIT_DEFAULT_ARGS
 #include "boost_no_part_spec_def_args.ipp"
 #else
-namespace boost_part_no_partial_specialization_implicit_default_args = empty_boost;
+namespace boost_no_partial_specialization_implicit_default_args = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_partial_specialization_implicit_default_args::test();
+   return boost_no_partial_specialization_implicit_default_args::test();
 }
 

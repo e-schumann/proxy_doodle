@@ -45,12 +45,12 @@
 #pragma system_header
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace atomics {
 namespace detail {
 
 /*!
- * The function converts \c boost_part::memory_order values to the compiler-specific constants.
+ * The function converts \c boost::memory_order values to the compiler-specific constants.
  *
  * NOTE: The intention is that the function is optimized away by the compiler, and the
  *       compiler-specific constants are passed to the intrinsics. I know constexpr doesn't
@@ -395,6 +395,6 @@ BOOST_FORCEINLINE void signal_fence(memory_order order) BOOST_NOEXCEPT
 
 } // namespace detail
 } // namespace atomics
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_ATOMIC_DETAIL_OPS_GCC_ATOMIC_HPP_INCLUDED_

@@ -15,7 +15,7 @@
 #include <functional>
 #include <boost/range/iterator_range_core.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace algorithm {
         namespace detail {
 
@@ -100,7 +100,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
         } // namespace detail
     } // namespace algorithm
-} // namespace boost_part
+} // namespace boost
 
 
 #endif  // BOOST_STRING_UTIL_DETAIL_HPP

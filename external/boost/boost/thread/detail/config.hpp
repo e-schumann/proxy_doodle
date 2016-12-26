@@ -29,11 +29,11 @@
 
 #if defined BOOST_THREAD_THROW_IF_PRECONDITION_NOT_SATISFIED
 #define BOOST_THREAD_ASSERT_PRECONDITION(EXPR, EX) \
-        if (EXPR) {} else boost_part::throw_exception(EX)
+        if (EXPR) {} else boost::throw_exception(EX)
 #define BOOST_THREAD_VERIFY_PRECONDITION(EXPR, EX) \
-        if (EXPR) {} else boost_part::throw_exception(EX)
+        if (EXPR) {} else boost::throw_exception(EX)
 #define BOOST_THREAD_THROW_ELSE_RETURN(EX, RET) \
-        boost_part::throw_exception(EX)
+        boost::throw_exception(EX)
 #else
 #define BOOST_THREAD_ASSERT_PRECONDITION(EXPR, EX)
 #define BOOST_THREAD_VERIFY_PRECONDITION(EXPR, EX) \
@@ -453,7 +453,7 @@
 #if defined(BOOST_THREAD_LIB_NAME)
 #    define BOOST_LIB_NAME BOOST_THREAD_LIB_NAME
 #else
-#    define BOOST_LIB_NAME boost_part_thread
+#    define BOOST_LIB_NAME boost_thread
 #endif
 //
 // If we're importing code from a dll, then tell auto_link.hpp about it:

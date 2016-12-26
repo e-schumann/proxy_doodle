@@ -20,14 +20,14 @@
 
 #include <boost/intrusive/detail/to_raw_pointer.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 namespace container_detail {
 
-using ::boost_part::intrusive::detail::to_raw_pointer;
+using ::boost::intrusive::detail::to_raw_pointer;
 
 }  //namespace container_detail {
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #endif   //#ifndef BOOST_CONTAINER_DETAIL_TO_RAW_POINTER_HPP

@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_HASH
 #include "boost_has_hash.ipp"
 #else
-namespace boost_part_has_hash = empty_boost;
+namespace boost_has_hash = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_hash::test();
+   return boost_has_hash::test();
 }
 

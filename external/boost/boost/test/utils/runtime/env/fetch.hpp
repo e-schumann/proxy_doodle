@@ -24,7 +24,7 @@
 // C Runtime
 #include <stdlib.h>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace runtime {
 namespace env {
 
@@ -101,7 +101,7 @@ fetch_absent( parameters_store const& params, runtime::arguments_store& args )
 
 } // namespace env
 } // namespace runtime
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

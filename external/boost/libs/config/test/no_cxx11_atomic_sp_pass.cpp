@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_ATOMIC_SMART_PTR
 #include "boost_no_cxx11_atomic_sp.ipp"
 #else
-namespace boost_part_no_cxx11_atomic_smart_ptr = empty_boost;
+namespace boost_no_cxx11_atomic_smart_ptr = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_atomic_smart_ptr::test();
+   return boost_no_cxx11_atomic_smart_ptr::test();
 }
 

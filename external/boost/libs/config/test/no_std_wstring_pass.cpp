@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_STD_WSTRING
 #include "boost_no_std_wstring.ipp"
 #else
-namespace boost_part_no_std_wstring = empty_boost;
+namespace boost_no_std_wstring = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_std_wstring::test();
+   return boost_no_std_wstring::test();
 }
 

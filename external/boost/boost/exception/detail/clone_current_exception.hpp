@@ -16,8 +16,8 @@
 #    error This header requires exception handling to be enabled.
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace
-boost_part
+namespace
+boost
     {
     namespace
     exception_detail

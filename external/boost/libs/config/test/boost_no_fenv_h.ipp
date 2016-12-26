@@ -14,7 +14,7 @@
 
 #include <fenv.h>
 
-namespace boost_part_no_fenv_h {
+namespace boost_no_fenv_h {
 
 int test()
 {

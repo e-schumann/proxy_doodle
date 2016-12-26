@@ -12,7 +12,7 @@
 
 #include <iterator>
 
-namespace boost_part_msvc_std_iterator{
+namespace boost_msvc_std_iterator{
 
 int test()
 {

@@ -27,11 +27,11 @@
 #ifdef BOOST_HAS_GETSYSTEMTIMEASFILETIME
 #include "boost_has_getsystemtimeasfiletime.ipp"
 #else
-namespace boost_part_has_getsystemtimeasfiletime = empty_boost;
+namespace boost_has_getsystemtimeasfiletime = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_getsystemtimeasfiletime::test();
+   return boost_has_getsystemtimeasfiletime::test();
 }
 

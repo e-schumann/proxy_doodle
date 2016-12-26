@@ -11,7 +11,7 @@
 
 #include <utility>
 
-namespace boost_part_has_tr1_utility{
+namespace boost_has_tr1_utility{
 
 using std::tr1::get;
 using std::tr1::tuple_size;

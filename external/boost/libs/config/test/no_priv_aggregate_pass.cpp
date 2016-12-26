@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_PRIVATE_IN_AGGREGATE
 #include "boost_no_priv_aggregate.ipp"
 #else
-namespace boost_part_no_private_in_aggregate = empty_boost;
+namespace boost_no_private_in_aggregate = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_private_in_aggregate::test();
+   return boost_no_private_in_aggregate::test();
 }
 

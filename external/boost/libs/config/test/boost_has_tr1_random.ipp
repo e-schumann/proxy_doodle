@@ -11,7 +11,7 @@
 
 #include <random>
 
-namespace boost_part_has_tr1_random{
+namespace boost_has_tr1_random{
 
 using std::tr1::variate_generator;
 

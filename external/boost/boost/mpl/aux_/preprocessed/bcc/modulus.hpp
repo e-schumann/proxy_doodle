@@ -9,7 +9,7 @@
 // *Preprocessed* version of the main "modulus.hpp" header
 // -- DO NOT modify by hand!
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 template<
       typename Tag1
@@ -79,7 +79,7 @@ BOOST_MPL_AUX_NA_SPEC2(2, 2, modulus)
 
 }}
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 template<>
 struct modulus_impl< integral_c_tag,integral_c_tag >
 {

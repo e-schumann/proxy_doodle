@@ -19,7 +19,7 @@
 # include <pthread.h>
 # include <mach/thread_act.h>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace chrono {
+namespace boost { namespace chrono {
 
     thread_clock::time_point thread_clock::now( ) BOOST_NOEXCEPT
     {
@@ -60,7 +60,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
         {
             if (BOOST_CHRONO_IS_THROWS(ec))
             {
-                boost_part::throw_exception(
+                boost::throw_exception(
                         system::system_error(
                                 EINVAL,
                                 BOOST_CHRONO_SYSTEM_CATEGORY,

@@ -34,7 +34,7 @@
 # define BOOST_FILESYSTEM_C_STR c_str()
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace filesystem
 {
@@ -176,7 +176,7 @@ namespace filesystem
   typedef basic_fstream<wchar_t> wfstream;
   
 } // namespace filesystem
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/config/abi_suffix.hpp> // pops abi_prefix.hpp pragmas
 #endif  // BOOST_FILESYSTEM3_FSTREAM_HPP

@@ -36,7 +36,7 @@
 #pragma warning(disable: 4324)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace atomics {
 namespace detail {
 
@@ -154,7 +154,7 @@ BOOST_ATOMIC_DECL void lockpool::signal_fence() BOOST_NOEXCEPT
 
 } // namespace detail
 } // namespace atomics
-} // namespace boost_part
+} // namespace boost
 
 #if defined(BOOST_MSVC)
 #pragma warning(pop)

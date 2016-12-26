@@ -21,7 +21,7 @@
 #include <cctype>
 #include <ctype.h>
 
-namespace boost_part_no_cwctype{
+namespace boost_no_cwctype{
 
 int test()
 {

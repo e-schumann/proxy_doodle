@@ -15,7 +15,7 @@
 #if defined( BOOST_USE_WINDOWS_H )
 # include <windows.h>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -34,7 +34,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 # undef HeapAlloc
 # endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -54,7 +54,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -63,7 +63,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             void* const heap_memory=detail::win32::HeapAlloc(detail::win32::GetProcessHeap(),0,size);
             if(!heap_memory)
             {
-                boost_part::throw_exception(std::bad_alloc());
+                boost::throw_exception(std::bad_alloc());
             }
             return heap_memory;
         }

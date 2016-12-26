@@ -19,13 +19,13 @@
 #include <boost/range/begin.hpp>
 #include <boost/range/end.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part 
+namespace boost 
 { 
 
     template< class T >
     inline bool empty( const T& r )
     {
-        return boost_part::begin( r ) == boost_part::end( r );
+        return boost::begin( r ) == boost::end( r );
     }
 
 } // namespace 'boost'

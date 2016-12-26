@@ -26,7 +26,7 @@
 #include <boost/container/detail/type_traits.hpp>
 #include <cstddef>   //std::size_t
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 namespace container_detail {
 
@@ -49,7 +49,7 @@ class tuple<Head, Tail...>
 
    template<class U, class ...Args>
    tuple(U &&u, Args && ...args)
-      : inherited(::boost_part::forward<Args>(args)...), m_head(::boost_part::forward<U>(u))
+      : inherited(::boost::forward<Args>(args)...), m_head(::boost::forward<U>(u))
    {}
 
    // Construct tuple from another tuple.
@@ -79,7 +79,7 @@ class tuple<Head, Tail...>
 
 template<typename... Values>
 tuple<Values&&...> forward_as_tuple(Values&&... values)
-{ return tuple<Values&&...>(::boost_part::forward<Values>(values)...); }
+{ return tuple<Values&&...>(::boost::forward<Values>(values)...); }
 
 template<int I, typename Tuple>
 struct tuple_element;
@@ -156,7 +156,7 @@ struct build_number_seq
 template<> struct build_number_seq<0> : index_tuple<>{};
 template<> struct build_number_seq<1> : index_tuple<0>{};
 
-}}}   //namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace container { namespace container_detail {
+}}}   //namespace boost { namespace container { namespace container_detail {
 
 #include <boost/container/detail/config_end.hpp>
 

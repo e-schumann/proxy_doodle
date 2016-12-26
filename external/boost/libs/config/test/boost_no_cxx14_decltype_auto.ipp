@@ -11,7 +11,7 @@
 //  TITLE:         C++14 decltype(auto) unavailable
 //  DESCRIPTION:   The compiler does not support C++14 decltype(auto)
 
-namespace boost_part_no_cxx14_decltype_auto
+namespace boost_no_cxx14_decltype_auto
 {
 
 void quiet_warning(int){}

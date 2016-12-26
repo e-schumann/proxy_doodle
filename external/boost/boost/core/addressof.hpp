@@ -16,7 +16,7 @@
 # include <boost/detail/workaround.hpp>
 # include <cstddef>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -109,11 +109,11 @@ T * addressof( T & v )
 {
 #if (defined( __BORLANDC__ ) && BOOST_WORKAROUND( __BORLANDC__, BOOST_TESTED_AT( 0x610 ) ) ) || (defined(__SUNPRO_CC) && BOOST_WORKAROUND(__SUNPRO_CC, <= 0x5120))
 
-    return boost_part::detail::addressof_impl<T>::f( v, 0 );
+    return boost::detail::addressof_impl<T>::f( v, 0 );
 
 #else
 
-    return boost_part::detail::addressof_impl<T>::f( boost_part::detail::addr_impl_ref<T>( v ), 0 );
+    return boost::detail::addressof_impl<T>::f( boost::detail::addr_impl_ref<T>( v ), 0 );
 
 #endif
 }
@@ -157,6 +157,6 @@ const T (*addressof(const T (&t)[N]))[N]
 }
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_CORE_ADDRESSOF_HPP

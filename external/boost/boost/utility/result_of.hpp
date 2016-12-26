@@ -63,7 +63,7 @@
 #  endif
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 template<typename F> struct result_of;
 template<typename F> struct tr1_result_of; // a TR1-style implementation of result_of

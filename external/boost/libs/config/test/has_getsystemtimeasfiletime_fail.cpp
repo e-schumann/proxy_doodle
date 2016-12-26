@@ -32,6 +32,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_has_getsystemtimeasfiletime::test();
+   return boost_has_getsystemtimeasfiletime::test();
 }
 

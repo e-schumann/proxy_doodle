@@ -427,7 +427,7 @@ extern "C" long __cdecl _InterlockedExchange( long volatile *, long );
 #define BOOST_ATOMIC_INTERLOCKED_IMPORT __declspec(dllimport)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace atomics {
 namespace detail {
 
@@ -437,9 +437,9 @@ BOOST_ATOMIC_INTERLOCKED_IMPORT long __stdcall InterlockedCompareExchange(long v
 BOOST_ATOMIC_INTERLOCKED_IMPORT long __stdcall InterlockedExchange(long volatile*, long);
 BOOST_ATOMIC_INTERLOCKED_IMPORT long __stdcall InterlockedExchangeAdd(long volatile*, long);
 
-#define BOOST_ATOMIC_INTERLOCKED_COMPARE_EXCHANGE(dest, exchange, compare) boost_part::atomics::detail::InterlockedCompareExchange((long*)(dest), (long)(exchange), (long)(compare))
-#define BOOST_ATOMIC_INTERLOCKED_EXCHANGE(dest, newval) boost_part::atomics::detail::InterlockedExchange((long*)(dest), (long)(newval))
-#define BOOST_ATOMIC_INTERLOCKED_EXCHANGE_ADD(dest, addend) boost_part::atomics::detail::InterlockedExchangeAdd((long*)(dest), (long)(addend))
+#define BOOST_ATOMIC_INTERLOCKED_COMPARE_EXCHANGE(dest, exchange, compare) boost::atomics::detail::InterlockedCompareExchange((long*)(dest), (long)(exchange), (long)(compare))
+#define BOOST_ATOMIC_INTERLOCKED_EXCHANGE(dest, newval) boost::atomics::detail::InterlockedExchange((long*)(dest), (long)(newval))
+#define BOOST_ATOMIC_INTERLOCKED_EXCHANGE_ADD(dest, addend) boost::atomics::detail::InterlockedExchangeAdd((long*)(dest), (long)(addend))
 
 #if defined(_WIN64)
 
@@ -450,12 +450,12 @@ BOOST_ATOMIC_INTERLOCKED_IMPORT __int64 __stdcall InterlockedExchangeAdd64(__int
 BOOST_ATOMIC_INTERLOCKED_IMPORT void* __stdcall InterlockedCompareExchangePointer(void* volatile *, void*, void*);
 BOOST_ATOMIC_INTERLOCKED_IMPORT void* __stdcall InterlockedExchangePointer(void* volatile *, void*);
 
-#define BOOST_ATOMIC_INTERLOCKED_COMPARE_EXCHANGE64(dest, exchange, compare) boost_part::atomics::detail::InterlockedCompareExchange64((__int64*)(dest), (__int64)(exchange), (__int64)(compare))
-#define BOOST_ATOMIC_INTERLOCKED_EXCHANGE64(dest, newval) boost_part::atomics::detail::InterlockedExchange64((__int64*)(dest), (__int64)(newval))
-#define BOOST_ATOMIC_INTERLOCKED_EXCHANGE_ADD64(dest, addend) boost_part::atomics::detail::InterlockedExchangeAdd64((__int64*)(dest), (__int64)(addend))
+#define BOOST_ATOMIC_INTERLOCKED_COMPARE_EXCHANGE64(dest, exchange, compare) boost::atomics::detail::InterlockedCompareExchange64((__int64*)(dest), (__int64)(exchange), (__int64)(compare))
+#define BOOST_ATOMIC_INTERLOCKED_EXCHANGE64(dest, newval) boost::atomics::detail::InterlockedExchange64((__int64*)(dest), (__int64)(newval))
+#define BOOST_ATOMIC_INTERLOCKED_EXCHANGE_ADD64(dest, addend) boost::atomics::detail::InterlockedExchangeAdd64((__int64*)(dest), (__int64)(addend))
 
-#define BOOST_ATOMIC_INTERLOCKED_COMPARE_EXCHANGE_POINTER(dest, exchange, compare) boost_part::atomics::detail::InterlockedCompareExchangePointer((void**)(dest), (void*)(exchange), (void*)(compare))
-#define BOOST_ATOMIC_INTERLOCKED_EXCHANGE_POINTER(dest, newval) boost_part::atomics::detail::InterlockedExchangePointer((void**)(dest), (void*)(newval))
+#define BOOST_ATOMIC_INTERLOCKED_COMPARE_EXCHANGE_POINTER(dest, exchange, compare) boost::atomics::detail::InterlockedCompareExchangePointer((void**)(dest), (void*)(exchange), (void*)(compare))
+#define BOOST_ATOMIC_INTERLOCKED_EXCHANGE_POINTER(dest, newval) boost::atomics::detail::InterlockedExchangePointer((void**)(dest), (void*)(newval))
 #define BOOST_ATOMIC_INTERLOCKED_EXCHANGE_ADD_POINTER(dest, byte_offset) ((void*)BOOST_ATOMIC_INTERLOCKED_EXCHANGE_ADD64(dest, byte_offset))
 
 #else // defined(_WIN64)
@@ -470,7 +470,7 @@ BOOST_ATOMIC_INTERLOCKED_IMPORT void* __stdcall InterlockedExchangePointer(void*
 
 } // namespace detail
 } // namespace atomics
-} // namespace boost_part
+} // namespace boost
 
 #undef BOOST_ATOMIC_INTERLOCKED_IMPORT
 

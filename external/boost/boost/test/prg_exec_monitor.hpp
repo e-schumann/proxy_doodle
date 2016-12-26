@@ -12,7 +12,7 @@
 /// function for you. If you prefer to use your own main you are free to do so, but you need to define
 /// BOOST_TEST_NO_MAIN before incuding this header. To initiate your main program body execution you
 /// would use statement like this:
-/// @code ::boost_part::prg_exec_monitor_main( &my_main, argc, argv ); @endcode
+/// @code ::boost::prg_exec_monitor_main( &my_main, argc, argv ); @endcode
 /// Also this header facilitate auto linking with the Program Execution Monitor library if this feature
 /// is supported
 // ***************************************************************************
@@ -31,7 +31,7 @@
 // Automatically link to the correct build variant where possible.
 #if !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_TEST_NO_LIB) && \
     !defined(BOOST_TEST_SOURCE) && !defined(BOOST_TEST_INCLUDED)
-#  define BOOST_LIB_NAME boost_part_prg_exec_monitor
+#  define BOOST_LIB_NAME boost_prg_exec_monitor
 
 // If we're importing code from a dll, then tell auto_link.hpp about it:
 #  if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_TEST_DYN_LINK)
@@ -46,7 +46,7 @@
 // **************               prg_exec_monitor_main          ************** //
 // ************************************************************************** //
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 /// @brief Wrapper around the main function
 ///
@@ -71,7 +71,7 @@ int cpp_main( int argc, char* argv[] );
 int BOOST_TEST_CALL_DECL
 main( int argc, char* argv[] )
 {
-    return ::boost_part::prg_exec_monitor_main( &cpp_main, argc, argv );
+    return ::boost::prg_exec_monitor_main( &cpp_main, argc, argv );
 }
 
 //____________________________________________________________________________//

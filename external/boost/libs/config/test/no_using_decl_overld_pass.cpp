@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_USING_DECLARATION_OVERLOADS_FROM_TYPENAME_BASE
 #include "boost_no_using_decl_overld.ipp"
 #else
-namespace boost_part_no_using_declaration_overloads_from_typename_base = empty_boost;
+namespace boost_no_using_declaration_overloads_from_typename_base = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_using_declaration_overloads_from_typename_base::test();
+   return boost_no_using_declaration_overloads_from_typename_base::test();
 }
 

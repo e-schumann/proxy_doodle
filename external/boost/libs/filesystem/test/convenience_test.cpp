@@ -31,9 +31,9 @@
 #include <fstream>
 #include <iostream>
 
-namespace fs = boost_part::filesystem;
+namespace fs = boost::filesystem;
 using fs::path;
-namespace sys = boost_part::system;
+namespace sys = boost::system;
 
 namespace
 {
@@ -90,9 +90,9 @@ int cpp_main(int, char*[])
     BOOST_TEST(!!f);
   }
   BOOST_TEST(throws_fs_error(
-    boost_part::bind(fs::create_directories, is_a_file)));
+    boost::bind(fs::create_directories, is_a_file)));
   BOOST_TEST(throws_fs_error(
-    boost_part::bind(fs::create_directories, is_a_file / "aa")));
+    boost::bind(fs::create_directories, is_a_file / "aa")));
 
 // recursive_directory_iterator tests ----------------------------------------//
 
@@ -101,7 +101,7 @@ int cpp_main(int, char*[])
   BOOST_TEST(ec);
 
   BOOST_TEST(throws_fs_error(
-    boost_part::bind(create_recursive_iterator, "/no-such-path")));
+    boost::bind(create_recursive_iterator, "/no-such-path")));
 
   fs::remove(unique_dir / "uu");
 
@@ -173,5 +173,5 @@ int cpp_main(int, char*[])
 
   fs::remove_all(unique_dir);  // clean up behind ourselves
 
-  return ::boost_part::report_errors();
+  return ::boost::report_errors();
 }

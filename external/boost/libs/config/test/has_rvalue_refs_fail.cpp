@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_has_rvalue_refs::test();
+   return boost_has_rvalue_refs::test();
 }
 

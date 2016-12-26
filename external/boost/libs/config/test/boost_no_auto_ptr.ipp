@@ -12,7 +12,7 @@
 
 #include <memory>
 
-namespace boost_part_no_auto_ptr{
+namespace boost_no_auto_ptr{
 
 template <class T>
 class my_ptr

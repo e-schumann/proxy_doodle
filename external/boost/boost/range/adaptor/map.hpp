@@ -17,7 +17,7 @@
 #include <boost/range/reference.hpp>
 #include <boost/range/concepts.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
@@ -125,7 +125,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 SinglePassRangeConcept<const StdPairRng>));
 
             return operator|( r,
-                boost_part::adaptors::transformed( select_first<StdPairRng>() ) );
+                boost::adaptors::transformed( select_first<StdPairRng>() ) );
         }
 
         template< class StdPairRng >
@@ -135,7 +135,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<StdPairRng>));
 
             return operator|( r,
-                boost_part::adaptors::transformed( select_second_mutable<StdPairRng>() ) );
+                boost::adaptors::transformed( select_second_mutable<StdPairRng>() ) );
         }
 
         template< class StdPairRng >
@@ -146,7 +146,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 SinglePassRangeConcept<const StdPairRng>));
 
             return operator|( r,
-                boost_part::adaptors::transformed( select_second_const<StdPairRng>() ) );
+                boost::adaptors::transformed( select_second_const<StdPairRng>() ) );
         }
 
     } // 'range_detail'

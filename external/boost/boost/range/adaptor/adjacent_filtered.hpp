@@ -26,28 +26,28 @@
 #include <boost/next_prior.hpp>
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
         template< class Iter, class Pred, bool default_pass >
         class skip_iterator
-          : public boost_part::iterator_adaptor<
+          : public boost::iterator_adaptor<
                     skip_iterator<Iter,Pred,default_pass>,
                     Iter,
                     BOOST_DEDUCED_TYPENAME std::iterator_traits<Iter>::value_type,
-                    boost_part::forward_traversal_tag,
+                    boost::forward_traversal_tag,
                     BOOST_DEDUCED_TYPENAME std::iterator_traits<Iter>::reference,
                     BOOST_DEDUCED_TYPENAME std::iterator_traits<Iter>::difference_type
                 >
           , private Pred
         {
         private:
-            typedef boost_part::iterator_adaptor<
+            typedef boost::iterator_adaptor<
                         skip_iterator<Iter,Pred,default_pass>,
                         Iter,
                         BOOST_DEDUCED_TYPENAME std::iterator_traits<Iter>::value_type,
-                        boost_part::forward_traversal_tag,
+                        boost::forward_traversal_tag,
                         BOOST_DEDUCED_TYPENAME std::iterator_traits<Iter>::reference,
                         BOOST_DEDUCED_TYPENAME std::iterator_traits<Iter>::difference_type
                     > base_t;
@@ -130,8 +130,8 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         public:
             adjacent_filtered_range( const P& p, R& r )
-            : base_range(skip_iter(boost_part::begin(r), boost_part::end(r), p),
-                         skip_iter(boost_part::end(r), boost_part::end(r), p))
+            : base_range(skip_iter(boost::begin(r), boost::end(r), p),
+                         skip_iter(boost::end(r), boost::end(r), p))
             {
             }
         };

@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_MS_INT64
 #include "boost_has_ms_int64.ipp"
 #else
-namespace boost_part_has_ms_int64 = empty_boost;
+namespace boost_has_ms_int64 = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_ms_int64::test();
+   return boost_has_ms_int64::test();
 }
 

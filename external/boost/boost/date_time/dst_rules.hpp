@@ -18,7 +18,7 @@
 #include "boost/date_time/date_defs.hpp"
 #include <stdexcept>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
   namespace date_time {
 
     enum time_is_dst_result {is_not_in_dst, is_in_dst, 

@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_SCHED_YIELD
 #include "boost_has_sched_yield.ipp"
 #else
-namespace boost_part_has_sched_yield = empty_boost;
+namespace boost_has_sched_yield = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_sched_yield::test();
+   return boost_has_sched_yield::test();
 }
 

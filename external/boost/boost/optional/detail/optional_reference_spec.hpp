@@ -19,7 +19,7 @@
 
 # if 1
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace detail {
 
@@ -29,17 +29,17 @@ template <class From>
 void prevent_binding_rvalue()
 {
 #ifndef BOOST_OPTIONAL_CONFIG_ALLOW_BINDING_TO_RVALUES
-    BOOST_STATIC_ASSERT_MSG(boost_part::is_lvalue_reference<From>::value, 
+    BOOST_STATIC_ASSERT_MSG(boost::is_lvalue_reference<From>::value, 
                             "binding rvalue references to optional lvalue references is disallowed");
 #endif    
 }
 
 template <class T>
-BOOST_DEDUCED_TYPENAME boost_part::remove_reference<T>::type& forward_reference(T&& r)
+BOOST_DEDUCED_TYPENAME boost::remove_reference<T>::type& forward_reference(T&& r)
 {
-    BOOST_STATIC_ASSERT_MSG(boost_part::is_lvalue_reference<T>::value, 
+    BOOST_STATIC_ASSERT_MSG(boost::is_lvalue_reference<T>::value, 
                             "binding rvalue references to optional lvalue references is disallowed");
-    return boost_part::forward<T>(r);
+    return boost::forward<T>(r);
 }
 
 #endif // BOOST_OPTIONAL_DETAIL_NO_RVALUE_REFERENCES
@@ -48,14 +48,14 @@ BOOST_DEDUCED_TYPENAME boost_part::remove_reference<T>::type& forward_reference(
 template <class T>
 struct is_const_integral
 {
-  static const bool value = boost_part::is_const<T>::value && boost_part::is_integral<T>::value;
+  static const bool value = boost::is_const<T>::value && boost::is_integral<T>::value;
 };
 
 template <class T>
 struct is_const_integral_bad_for_conversion
 {
 #if (!defined BOOST_OPTIONAL_CONFIG_ALLOW_BINDING_TO_RVALUES) && (defined BOOST_OPTIONAL_CONFIG_NO_PROPER_CONVERT_FROM_CONST_INT)
-  static const bool value = boost_part::is_const<T>::value && boost_part::is_integral<T>::value;
+  static const bool value = boost::is_const<T>::value && boost::is_integral<T>::value;
 #else
   static const bool value = false;
 #endif
@@ -82,7 +82,7 @@ struct is_optional_
 };
 
 template <class U>
-struct is_optional_< ::boost_part::optional<U> >
+struct is_optional_< ::boost::optional<U> >
 {
   static const bool value = true;
 };
@@ -90,15 +90,15 @@ struct is_optional_< ::boost_part::optional<U> >
 template <class T>
 struct is_no_optional
 {
-  static const bool value = !is_optional_<BOOST_DEDUCED_TYPENAME boost_part::decay<T>::type>::value;
+  static const bool value = !is_optional_<BOOST_DEDUCED_TYPENAME boost::decay<T>::type>::value;
 };
 
 
 template <class T, class U>
   struct is_same_decayed
   {
-    static const bool value = ::boost_part::is_same<T, BOOST_DEDUCED_TYPENAME ::boost_part::remove_reference<U>::type>::value
-                           || ::boost_part::is_same<T, const BOOST_DEDUCED_TYPENAME ::boost_part::remove_reference<U>::type>::value;
+    static const bool value = ::boost::is_same<T, BOOST_DEDUCED_TYPENAME ::boost::remove_reference<U>::type>::value
+                           || ::boost::is_same<T, const BOOST_DEDUCED_TYPENAME ::boost::remove_reference<U>::type>::value;
   };
 
 template <class T, class U>
@@ -132,12 +132,12 @@ public:
     
     // the following two implement a 'conditionally explicit' constructor: condition is a hack for buggy compilers with srewed conversion construction from const int
     template <class U>
-      explicit optional(U& rhs, BOOST_DEDUCED_TYPENAME boost_part::enable_if_c<detail::is_same_decayed<T, U>::value && detail::is_const_integral_bad_for_conversion<U>::value>::type* = 0) BOOST_NOEXCEPT
-      : ptr_(boost_part::addressof(rhs)) {}
+      explicit optional(U& rhs, BOOST_DEDUCED_TYPENAME boost::enable_if_c<detail::is_same_decayed<T, U>::value && detail::is_const_integral_bad_for_conversion<U>::value>::type* = 0) BOOST_NOEXCEPT
+      : ptr_(boost::addressof(rhs)) {}
       
     template <class U>
-      optional(U& rhs, BOOST_DEDUCED_TYPENAME boost_part::enable_if_c<detail::is_same_decayed<T, U>::value && !detail::is_const_integral_bad_for_conversion<U>::value>::type* = 0) BOOST_NOEXCEPT
-      : ptr_(boost_part::addressof(rhs)) {}
+      optional(U& rhs, BOOST_DEDUCED_TYPENAME boost::enable_if_c<detail::is_same_decayed<T, U>::value && !detail::is_const_integral_bad_for_conversion<U>::value>::type* = 0) BOOST_NOEXCEPT
+      : ptr_(boost::addressof(rhs)) {}
 
     optional& operator=(const optional& rhs) BOOST_NOEXCEPT { ptr_ = rhs.get_ptr(); return *this; }
     template <class U>
@@ -165,32 +165,32 @@ public:
     optional(T&& /* rhs */) BOOST_NOEXCEPT { detail::prevent_binding_rvalue<T&&>(); }
     
     template <class R>
-        optional(R&& r, BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::no_unboxing_cond<T, R> >::type* = 0) BOOST_NOEXCEPT
-        : ptr_(boost_part::addressof(r)) { detail::prevent_binding_rvalue<R>(); }
+        optional(R&& r, BOOST_DEDUCED_TYPENAME boost::enable_if<detail::no_unboxing_cond<T, R> >::type* = 0) BOOST_NOEXCEPT
+        : ptr_(boost::addressof(r)) { detail::prevent_binding_rvalue<R>(); }
         
     template <class R>
-        optional(bool cond, R&& r, BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<R> >::type* = 0) BOOST_NOEXCEPT
-        : ptr_(cond ? boost_part::addressof(r) : 0) { detail::prevent_binding_rvalue<R>(); }
+        optional(bool cond, R&& r, BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<R> >::type* = 0) BOOST_NOEXCEPT
+        : ptr_(cond ? boost::addressof(r) : 0) { detail::prevent_binding_rvalue<R>(); }
         
     template <class R>
-        BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<R>, optional<T&>&>::type
-        operator=(R&& r) BOOST_NOEXCEPT { detail::prevent_binding_rvalue<R>(); ptr_ = boost_part::addressof(r); return *this; }
+        BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<R>, optional<T&>&>::type
+        operator=(R&& r) BOOST_NOEXCEPT { detail::prevent_binding_rvalue<R>(); ptr_ = boost::addressof(r); return *this; }
         
     template <class R>
-        void emplace(R&& r, BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<R> >::type* = 0) BOOST_NOEXCEPT
-        { detail::prevent_binding_rvalue<R>(); ptr_ = boost_part::addressof(r); }
+        void emplace(R&& r, BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<R> >::type* = 0) BOOST_NOEXCEPT
+        { detail::prevent_binding_rvalue<R>(); ptr_ = boost::addressof(r); }
         
     template <class R>
-      T& get_value_or(R&& r, BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<R> >::type* = 0) const BOOST_NOEXCEPT
+      T& get_value_or(R&& r, BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<R> >::type* = 0) const BOOST_NOEXCEPT
       { detail::prevent_binding_rvalue<R>(); return ptr_ ? *ptr_ : r; }
       
     template <class R>
-        T& value_or(R&& r, BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<R> >::type* = 0) const BOOST_NOEXCEPT
+        T& value_or(R&& r, BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<R> >::type* = 0) const BOOST_NOEXCEPT
         { detail::prevent_binding_rvalue<R>(); return ptr_ ? *ptr_ : r; }
         
     template <class R>
-      void reset(R&& r, BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<R> >::type* = 0) BOOST_NOEXCEPT
-      { detail::prevent_binding_rvalue<R>(); ptr_ = boost_part::addressof(r); }
+      void reset(R&& r, BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<R> >::type* = 0) BOOST_NOEXCEPT
+      { detail::prevent_binding_rvalue<R>(); ptr_ = boost::addressof(r); }
       
     template <class F>
         T& value_or_eval(F f) const { return ptr_ ? *ptr_ : detail::forward_reference(f()); }
@@ -200,39 +200,39 @@ public:
     
     // the following two implement a 'conditionally explicit' constructor
     template <class U>
-      explicit optional(U& v, BOOST_DEDUCED_TYPENAME boost_part::enable_if_c<detail::no_unboxing_cond<T, U>::value && detail::is_const_integral_bad_for_conversion<U>::value >::type* = 0) BOOST_NOEXCEPT
-      : ptr_(boost_part::addressof(v)) { }
+      explicit optional(U& v, BOOST_DEDUCED_TYPENAME boost::enable_if_c<detail::no_unboxing_cond<T, U>::value && detail::is_const_integral_bad_for_conversion<U>::value >::type* = 0) BOOST_NOEXCEPT
+      : ptr_(boost::addressof(v)) { }
       
     template <class U>
-      optional(U& v, BOOST_DEDUCED_TYPENAME boost_part::enable_if_c<detail::no_unboxing_cond<T, U>::value && !detail::is_const_integral_bad_for_conversion<U>::value >::type* = 0) BOOST_NOEXCEPT
-      : ptr_(boost_part::addressof(v)) { }
+      optional(U& v, BOOST_DEDUCED_TYPENAME boost::enable_if_c<detail::no_unboxing_cond<T, U>::value && !detail::is_const_integral_bad_for_conversion<U>::value >::type* = 0) BOOST_NOEXCEPT
+      : ptr_(boost::addressof(v)) { }
         
     template <class U>
-      optional(bool cond, U& v, BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<U> >::type* = 0) BOOST_NOEXCEPT : ptr_(cond ? boost_part::addressof(v) : 0) {}
+      optional(bool cond, U& v, BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<U> >::type* = 0) BOOST_NOEXCEPT : ptr_(cond ? boost::addressof(v) : 0) {}
 
     template <class U>
-      BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<U>, optional<T&>&>::type
+      BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<U>, optional<T&>&>::type
       operator=(U& v) BOOST_NOEXCEPT
       {
         detail::prevent_assignment_from_false_const_integral<U>();
-        ptr_ = boost_part::addressof(v); return *this;
+        ptr_ = boost::addressof(v); return *this;
       }
 
     template <class U>
-        void emplace(U& v, BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<U> >::type* = 0) BOOST_NOEXCEPT
-        { ptr_ = boost_part::addressof(v); }
+        void emplace(U& v, BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<U> >::type* = 0) BOOST_NOEXCEPT
+        { ptr_ = boost::addressof(v); }
         
     template <class U>
-      T& get_value_or(U& v, BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<U> >::type* = 0) const BOOST_NOEXCEPT
+      T& get_value_or(U& v, BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<U> >::type* = 0) const BOOST_NOEXCEPT
       { return ptr_ ? *ptr_ : v; }
       
     template <class U>
-        T& value_or(U& v, BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<U> >::type* = 0) const BOOST_NOEXCEPT
+        T& value_or(U& v, BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<U> >::type* = 0) const BOOST_NOEXCEPT
         { return ptr_ ? *ptr_ : v; }
         
     template <class U>
-      void reset(U& v, BOOST_DEDUCED_TYPENAME boost_part::enable_if<detail::is_no_optional<U> >::type* = 0) BOOST_NOEXCEPT
-      { ptr_ = boost_part::addressof(v); }
+      void reset(U& v, BOOST_DEDUCED_TYPENAME boost::enable_if<detail::is_no_optional<U> >::type* = 0) BOOST_NOEXCEPT
+      { ptr_ = boost::addressof(v); }
       
     template <class F>
       T& value_or_eval(F f) const { return ptr_ ? *ptr_ : f(); }
@@ -246,7 +246,7 @@ template <class T>
   x.swap(y);
 }
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // 1/0
 

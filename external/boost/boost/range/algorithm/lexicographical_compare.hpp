@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -33,8 +33,8 @@ inline bool lexicographical_compare(const SinglePassRange1& rng1,
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
     return std::lexicographical_compare(
-        boost_part::begin(rng1), boost_part::end(rng1),
-        boost_part::begin(rng2), boost_part::end(rng2));
+        boost::begin(rng1), boost::end(rng1),
+        boost::begin(rng2), boost::end(rng2));
 }
 
 /// \overload
@@ -47,12 +47,12 @@ inline bool lexicographical_compare(const SinglePassRange1& rng1,
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
     return std::lexicographical_compare(
-        boost_part::begin(rng1), boost_part::end(rng1),
-        boost_part::begin(rng2), boost_part::end(rng2), pred);
+        boost::begin(rng1), boost::end(rng1),
+        boost::begin(rng2), boost::end(rng2), pred);
 }
 
     } // namespace range
     using range::lexicographical_compare;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

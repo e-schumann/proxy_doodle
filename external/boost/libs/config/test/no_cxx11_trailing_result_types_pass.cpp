@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_TRAILING_RESULT_TYPES
 #include "boost_no_cxx11_trailing_result_types.ipp"
 #else
-namespace boost_part_no_cxx11_trailing_result_types = empty_boost;
+namespace boost_no_cxx11_trailing_result_types = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_trailing_result_types::test();
+   return boost_no_cxx11_trailing_result_types::test();
 }
 

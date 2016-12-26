@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_ADDRESSOF
 #include "boost_no_cxx11_addressof.ipp"
 #else
-namespace boost_part_no_cxx11_addressof = empty_boost;
+namespace boost_no_cxx11_addressof = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_addressof::test();
+   return boost_no_cxx11_addressof::test();
 }
 

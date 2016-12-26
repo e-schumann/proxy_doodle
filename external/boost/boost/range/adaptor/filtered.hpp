@@ -17,22 +17,22 @@
 #include <boost/range/concepts.hpp>
 #include <boost/iterator/filter_iterator.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
         template< class P, class R >
         struct filtered_range :
-            boost_part::iterator_range<
-                boost_part::filter_iterator<
+            boost::iterator_range<
+                boost::filter_iterator<
                     typename default_constructible_unary_fn_gen<P, bool>::type,
                     typename range_iterator<R>::type
                 >
             >
         {
         private:
-            typedef boost_part::iterator_range<
-                boost_part::filter_iterator<
+            typedef boost::iterator_range<
+                boost::filter_iterator<
                     typename default_constructible_unary_fn_gen<P, bool>::type,
                     typename range_iterator<R>::type
                 >
@@ -43,9 +43,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
             filtered_range(P p, R& r)
             : base(make_filter_iterator(pred_t(p),
-                                        boost_part::begin(r), boost_part::end(r)),
+                                        boost::begin(r), boost::end(r)),
                    make_filter_iterator(pred_t(p),
-                                        boost_part::end(r), boost_part::end(r)))
+                                        boost::end(r), boost::end(r)))
             { }
         };
 

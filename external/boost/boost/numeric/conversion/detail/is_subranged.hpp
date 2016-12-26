@@ -25,7 +25,7 @@
 #include "boost/numeric/conversion/detail/sign_mixture.hpp"
 #include "boost/numeric/conversion/detail/udt_builtin_mixture.hpp"
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace numeric { namespace convdetail
+namespace boost { namespace numeric { namespace convdetail
 {
   //---------------------------------------------------------------
   // Implementations of the compile time predicate "T is subranged"
@@ -227,7 +227,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
     typedef typename selected::type type ;
   } ;
 
-} } } // namespace boost_part::numeric::convdetail
+} } } // namespace boost::numeric::convdetail
 
 #endif
 

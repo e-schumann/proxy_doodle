@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_NESTED_FRIENDSHIP
 #include "boost_no_nested_friendship.ipp"
 #else
-namespace boost_part_no_nested_friendship = empty_boost;
+namespace boost_no_nested_friendship = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_nested_friendship::test();
+   return boost_no_nested_friendship::test();
 }
 

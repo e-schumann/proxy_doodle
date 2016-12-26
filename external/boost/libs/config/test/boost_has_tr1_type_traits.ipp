@@ -11,7 +11,7 @@
 
 #include <type_traits>
 
-namespace boost_part_has_tr1_type_traits{
+namespace boost_has_tr1_type_traits{
 
 using std::tr1::is_void;
 

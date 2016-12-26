@@ -9,7 +9,7 @@
 	
 	
 	
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace numeric {
+namespace boost { namespace numeric {
     
     template <>
     struct numeric_cast_traits

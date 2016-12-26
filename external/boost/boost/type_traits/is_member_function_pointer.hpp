@@ -30,14 +30,14 @@
 #   include <boost/type_traits/detail/is_mem_fun_pointer_tester.hpp>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 #if defined( __CODEGEARC__ )
 template <class T> struct is_member_function_pointer : public integral_constant<bool, __is_member_function_pointer( T )> {};
 #elif !BOOST_WORKAROUND(__BORLANDC__, < 0x600) && !defined(BOOST_TT_TEST_MS_FUNC_SIGS)
 
 template <class T> struct is_member_function_pointer 
-   : public ::boost_part::integral_constant<bool, ::boost_part::type_traits::is_mem_fun_pointer_impl<typename remove_cv<T>::type>::value>{};
+   : public ::boost::integral_constant<bool, ::boost::type_traits::is_mem_fun_pointer_impl<typename remove_cv<T>::type>::value>{};
 
 #else
 
@@ -65,7 +65,7 @@ struct is_mem_fun_pointer_select<false>
 
         BOOST_STATIC_CONSTANT(
             bool, value = (
-                1 == sizeof(::boost_part::type_traits::is_mem_fun_pointer_tester(self_type::make_t))
+                1 == sizeof(::boost::type_traits::is_mem_fun_pointer_tester(self_type::make_t))
             ));
 #if BOOST_WORKAROUND(BOOST_MSVC_FULL_VER, >= 140050000)
 #pragma warning(pop)
@@ -76,7 +76,7 @@ struct is_mem_fun_pointer_select<false>
 template <typename T>
 struct is_member_function_pointer_impl
     : public is_mem_fun_pointer_select< 
-      ::boost_part::is_reference<T>::value || ::boost_part::is_array<T>::value>::template result_<T>{};
+      ::boost::is_reference<T>::value || ::boost::is_array<T>::value>::template result_<T>{};
 
 template <typename T>
 struct is_member_function_pointer_impl<T&> : public false_type{};
@@ -111,10 +111,10 @@ template<> struct is_member_function_pointer_impl<void volatile> : public false_
 
 template <class T>
 struct is_member_function_pointer
-   : public integral_constant<bool, ::boost_part::detail::is_member_function_pointer_impl<T>::value>{};
+   : public integral_constant<bool, ::boost::detail::is_member_function_pointer_impl<T>::value>{};
 
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_IS_MEMBER_FUNCTION_POINTER_HPP_INCLUDED

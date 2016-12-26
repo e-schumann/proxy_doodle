@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_MEM_FN
 #include "boost_has_tr1_mem_fn.ipp"
 #else
-namespace boost_part_has_tr1_mem_fn = empty_boost;
+namespace boost_has_tr1_mem_fn = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_mem_fn::test();
+   return boost_has_tr1_mem_fn::test();
 }
 

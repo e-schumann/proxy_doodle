@@ -18,7 +18,7 @@
 #   error Configuration not supported: Boost.Filesystem V3 and later requires std::wstring support
 # endif
 
-namespace fs = boost_part::filesystem;
+namespace fs = boost::filesystem;
 
 #include <iostream>
 

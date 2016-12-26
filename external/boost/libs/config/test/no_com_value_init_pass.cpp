@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_COMPLETE_VALUE_INITIALIZATION
 #include "boost_no_com_value_init.ipp"
 #else
-namespace boost_part_no_complete_value_initialization = empty_boost;
+namespace boost_no_complete_value_initialization = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_complete_value_initialization::test();
+   return boost_no_complete_value_initialization::test();
 }
 

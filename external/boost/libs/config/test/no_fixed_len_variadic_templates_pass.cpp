@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_FIXED_LENGTH_VARIADIC_TEMPLATE_EXPANSION_PACKS
 #include "boost_no_fixed_len_variadic_templates.ipp"
 #else
-namespace boost_part_no_cxx11_fixed_length_variadic_template_expansion_packs = empty_boost;
+namespace boost_no_cxx11_fixed_length_variadic_template_expansion_packs = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_fixed_length_variadic_template_expansion_packs::test();
+   return boost_no_cxx11_fixed_length_variadic_template_expansion_packs::test();
 }
 

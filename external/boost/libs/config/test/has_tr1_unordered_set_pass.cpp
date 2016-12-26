@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_UNORDERED_SET
 #include "boost_has_tr1_unordered_set.ipp"
 #else
-namespace boost_part_has_tr1_unordered_set = empty_boost;
+namespace boost_has_tr1_unordered_set = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_unordered_set::test();
+   return boost_has_tr1_unordered_set::test();
 }
 

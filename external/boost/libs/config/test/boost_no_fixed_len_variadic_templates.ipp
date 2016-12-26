@@ -9,7 +9,7 @@
 //  TITLE:         C++0x variadic templates unavailable
 //  DESCRIPTION:   The compiler does not support C++0x variadic templates
 
-namespace boost_part_no_cxx11_fixed_length_variadic_template_expansion_packs {
+namespace boost_no_cxx11_fixed_length_variadic_template_expansion_packs {
 
 template<char one, char two, char... Others> struct char_tuple {};
 

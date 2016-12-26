@@ -40,7 +40,7 @@ namespace std{
 }
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{ namespace BOOST_REGEX_DETAIL_NS{
+namespace boost{ namespace BOOST_REGEX_DETAIL_NS{
 
 #ifdef BOOST_NO_ANSI_APIS
 UINT get_code_page_for_locale_id(lcid_type idx)
@@ -63,12 +63,12 @@ void w32_regex_traits_char_layer<char>::init()
    std::string cat_name(w32_regex_traits<char>::get_catalog_name());
    if(cat_name.size())
    {
-      cat = ::boost_part::BOOST_REGEX_DETAIL_NS::w32_cat_open(cat_name);
+      cat = ::boost::BOOST_REGEX_DETAIL_NS::w32_cat_open(cat_name);
       if(!cat)
       {
          std::string m("Unable to open message catalog: ");
          std::runtime_error err(m + cat_name);
-         ::boost_part::BOOST_REGEX_DETAIL_NS::raise_runtime_error(err);
+         ::boost::BOOST_REGEX_DETAIL_NS::raise_runtime_error(err);
       }
    }
    //
@@ -78,7 +78,7 @@ void w32_regex_traits_char_layer<char>::init()
    {
       for(regex_constants::syntax_type i = 1; i < regex_constants::syntax_max; ++i)
       {
-         string_type mss = ::boost_part::BOOST_REGEX_DETAIL_NS::w32_cat_get(cat, this->m_locale, i, get_default_syntax(i));
+         string_type mss = ::boost::BOOST_REGEX_DETAIL_NS::w32_cat_get(cat, this->m_locale, i, get_default_syntax(i));
          for(string_type::size_type j = 0; j < mss.size(); ++j)
          {
             m_char_map[static_cast<unsigned char>(mss[j])] = i;
@@ -105,9 +105,9 @@ void w32_regex_traits_char_layer<char>::init()
    {
       if(m_char_map[i] == 0)
       {
-         if(::boost_part::BOOST_REGEX_DETAIL_NS::w32_is(this->m_locale, 0x0002u, (char)i)) 
+         if(::boost::BOOST_REGEX_DETAIL_NS::w32_is(this->m_locale, 0x0002u, (char)i)) 
             m_char_map[i] = regex_constants::escape_type_class;
-         else if(::boost_part::BOOST_REGEX_DETAIL_NS::w32_is(this->m_locale, 0x0001u, (char)i)) 
+         else if(::boost::BOOST_REGEX_DETAIL_NS::w32_is(this->m_locale, 0x0001u, (char)i)) 
             m_char_map[i] = regex_constants::escape_type_not_class;
       }
    }while(0xFF != i++);
@@ -595,7 +595,7 @@ BOOST_REGEX_DECL unsigned short BOOST_REGEX_CALL w32_toupper(unsigned short c, l
 }
 #endif
 #endif
-BOOST_REGEX_DECL bool BOOST_REGEX_CALL w32_is(lcid_type idx, boost_part::uint32_t m, char c)
+BOOST_REGEX_DECL bool BOOST_REGEX_CALL w32_is(lcid_type idx, boost::uint32_t m, char c)
 {
    WORD mask;
 #ifndef BOOST_NO_ANSI_APIS
@@ -619,7 +619,7 @@ BOOST_REGEX_DECL bool BOOST_REGEX_CALL w32_is(lcid_type idx, boost_part::uint32_
 }
 
 #ifndef BOOST_NO_WREGEX
-BOOST_REGEX_DECL bool BOOST_REGEX_CALL w32_is(lcid_type idx, boost_part::uint32_t m, wchar_t c)
+BOOST_REGEX_DECL bool BOOST_REGEX_CALL w32_is(lcid_type idx, boost::uint32_t m, wchar_t c)
 {
    WORD mask;
    if(::GetStringTypeExW(idx, CT_CTYPE1, &c, 1, &mask) && (mask & m & w32_regex_traits_implementation<wchar_t>::mask_base))
@@ -631,7 +631,7 @@ BOOST_REGEX_DECL bool BOOST_REGEX_CALL w32_is(lcid_type idx, boost_part::uint32_
    return false;
 }
 #ifdef BOOST_REGEX_HAS_OTHER_WCHAR_T
-BOOST_REGEX_DECL bool BOOST_REGEX_CALL w32_is(lcid_type idx, boost_part::uint32_t m, unsigned short c)
+BOOST_REGEX_DECL bool BOOST_REGEX_CALL w32_is(lcid_type idx, boost::uint32_t m, unsigned short c)
 {
    WORD mask;
    if(::GetStringTypeExW(idx, CT_CTYPE1, (wchar_t const*)&c, 1, &mask) && (mask & m & w32_regex_traits_implementation<wchar_t>::mask_base))

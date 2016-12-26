@@ -24,7 +24,7 @@
 #  include <windows.h>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -114,6 +114,6 @@ public:
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // #ifndef BOOST_SMART_PTR_DETAIL_LWM_WIN32_CS_HPP_INCLUDED

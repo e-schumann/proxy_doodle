@@ -29,15 +29,15 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace detail
   {
 #if defined BOOST_THREAD_USES_DATETIME
-    inline struct timespec to_timespec(boost_part::system_time const& abs_time)
+    inline struct timespec to_timespec(boost::system_time const& abs_time)
     {
       struct timespec timeout = { 0,0};
-      boost_part::posix_time::time_duration const time_since_epoch=abs_time-boost_part::posix_time::from_time_t(0);
+      boost::posix_time::time_duration const time_since_epoch=abs_time-boost::posix_time::from_time_t(0);
 
       timeout.tv_sec=time_since_epoch.total_seconds();
       timeout.tv_nsec=(long)(time_since_epoch.fractional_seconds()*(1000000000l/time_since_epoch.ticks_per_second()));
@@ -55,17 +55,17 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #endif
 
-    inline timespec to_timespec(boost_part::intmax_t const& ns)
+    inline timespec to_timespec(boost::intmax_t const& ns)
     {
-      boost_part::intmax_t s = ns / 1000000000l;
+      boost::intmax_t s = ns / 1000000000l;
       struct timespec ts;
       ts.tv_sec = static_cast<long> (s);
       ts.tv_nsec = static_cast<long> (ns - s * 1000000000l);
       return ts;
     }
-    inline boost_part::intmax_t to_nanoseconds_int_max(timespec const& ts)
+    inline boost::intmax_t to_nanoseconds_int_max(timespec const& ts)
     {
-      return static_cast<boost_part::intmax_t>(ts.tv_sec) * 1000000000l + ts.tv_nsec;
+      return static_cast<boost::intmax_t>(ts.tv_sec) * 1000000000l + ts.tv_nsec;
     }
     inline bool timespec_ge_zero(timespec const& ts)
     {

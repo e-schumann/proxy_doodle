@@ -16,7 +16,7 @@
 #include <boost/range/detail/range_return.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -34,8 +34,8 @@ search(ForwardRange1& rng1, const ForwardRange2& rng2)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange2> ));
-    return std::search(boost_part::begin(rng1),boost_part::end(rng1),
-                       boost_part::begin(rng2),boost_part::end(rng2));
+    return std::search(boost::begin(rng1),boost::end(rng1),
+                       boost::begin(rng2),boost::end(rng2));
 }
 
 /// \overload
@@ -45,8 +45,8 @@ search(const ForwardRange1& rng1, const ForwardRange2& rng2)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange2> ));
-    return std::search(boost_part::begin(rng1), boost_part::end(rng1),
-                       boost_part::begin(rng2), boost_part::end(rng2));
+    return std::search(boost::begin(rng1), boost::end(rng1),
+                       boost::begin(rng2), boost::end(rng2));
 }
 
 /// \overload
@@ -56,8 +56,8 @@ search(ForwardRange1& rng1, const ForwardRange2& rng2, BinaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange2> ));
-    return std::search(boost_part::begin(rng1),boost_part::end(rng1),
-                       boost_part::begin(rng2),boost_part::end(rng2),pred);
+    return std::search(boost::begin(rng1),boost::end(rng1),
+                       boost::begin(rng2),boost::end(rng2),pred);
 }
 
 /// \overload
@@ -67,8 +67,8 @@ search(const ForwardRange1& rng1, const ForwardRange2& rng2, BinaryPredicate pre
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange2> ));
-    return std::search(boost_part::begin(rng1), boost_part::end(rng1),
-                       boost_part::begin(rng2), boost_part::end(rng2), pred);
+    return std::search(boost::begin(rng1), boost::end(rng1),
+                       boost::begin(rng2), boost::end(rng2), pred);
 }
 
 // range_return overloads
@@ -81,8 +81,8 @@ search(ForwardRange1& rng1, const ForwardRange2& rng2)
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange2> ));
     return range_return<ForwardRange1,re>::
-        pack(std::search(boost_part::begin(rng1),boost_part::end(rng1),
-                         boost_part::begin(rng2),boost_part::end(rng2)),
+        pack(std::search(boost::begin(rng1),boost::end(rng1),
+                         boost::begin(rng2),boost::end(rng2)),
              rng1);
 }
 
@@ -94,8 +94,8 @@ search(const ForwardRange1& rng1, const ForwardRange2& rng2)
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange2> ));
     return range_return<const ForwardRange1,re>::
-        pack(std::search(boost_part::begin(rng1),boost_part::end(rng1),
-                         boost_part::begin(rng2),boost_part::end(rng2)),
+        pack(std::search(boost::begin(rng1),boost::end(rng1),
+                         boost::begin(rng2),boost::end(rng2)),
              rng1);
 }
 
@@ -108,8 +108,8 @@ search(ForwardRange1& rng1, const ForwardRange2& rng2, BinaryPredicate pred)
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange2> ));
     return range_return<ForwardRange1,re>::
-        pack(std::search(boost_part::begin(rng1),boost_part::end(rng1),
-                         boost_part::begin(rng2),boost_part::end(rng2),pred),
+        pack(std::search(boost::begin(rng1),boost::end(rng1),
+                         boost::begin(rng2),boost::end(rng2),pred),
              rng1);
 }
 
@@ -122,13 +122,13 @@ search(const ForwardRange1& rng1, const ForwardRange2& rng2, BinaryPredicate pre
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange1> ));
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange2> ));
     return range_return<const ForwardRange1,re>::
-        pack(std::search(boost_part::begin(rng1),boost_part::end(rng1),
-                         boost_part::begin(rng2),boost_part::end(rng2),pred),
+        pack(std::search(boost::begin(rng1),boost::end(rng1),
+                         boost::begin(rng2),boost::end(rng2),pred),
              rng1);
 }
 
     } // namespace range
     using range::search;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

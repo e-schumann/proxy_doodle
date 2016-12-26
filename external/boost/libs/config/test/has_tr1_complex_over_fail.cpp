@@ -33,6 +33,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_complex_overloads::test();
+   return boost_has_tr1_complex_overloads::test();
 }
 

@@ -11,7 +11,7 @@
 
 #include <limits>
 
-namespace boost_part_no_limits{
+namespace boost_no_limits{
 
 int test()
 {

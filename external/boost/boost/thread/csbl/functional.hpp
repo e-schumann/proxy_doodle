@@ -20,12 +20,12 @@
 #include <boost/function.hpp>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace csbl
   {
 #if defined BOOST_THREAD_USES_BOOST_FUNCTIONAL
-    using ::boost_part::function;
+    using ::boost::function;
 #else
     // D.8.1, base (deprecated):
     // 20.9.3, reference_wrapper:

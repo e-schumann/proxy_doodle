@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_SYSTEM_ERROR
 #include "boost_no_cxx11_hdr_system_error.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_system_error = empty_boost;
+namespace boost_no_cxx11_hdr_system_error = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_system_error::test();
+   return boost_no_cxx11_hdr_system_error::test();
 }
 

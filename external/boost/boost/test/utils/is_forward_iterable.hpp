@@ -48,7 +48,7 @@
 #endif
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 // ************************************************************************** //
@@ -97,7 +97,7 @@ template <class T>
 struct has_member_size {
 private:
     struct nil_t {};
-    template<typename U> static auto  test( U* ) -> decltype(boost_part::declval<U>().size());
+    template<typename U> static auto  test( U* ) -> decltype(boost::declval<U>().size());
     template<typename>   static nil_t test( ... );
 
 public:
@@ -110,7 +110,7 @@ template <class T>
 struct has_member_begin {
 private:
     struct nil_t {};
-    template<typename U>  static auto  test( U* ) -> decltype(boost_part::declval<U>().begin());
+    template<typename U>  static auto  test( U* ) -> decltype(boost::declval<U>().begin());
     template<typename>    static nil_t test( ... );
 public:
     static bool const value = !std::is_same< decltype(test<T>( nullptr )), nil_t>::value;
@@ -122,7 +122,7 @@ template <class T>
 struct has_member_end {
 private:
     struct nil_t {};
-    template<typename U>  static auto  test( U* ) -> decltype(boost_part::declval<U>().end());
+    template<typename U>  static auto  test( U* ) -> decltype(boost::declval<U>().end());
     template<typename>    static nil_t test( ... );
 public:
     static bool const value = !std::is_same< decltype(test<T>( nullptr )), nil_t>::value;
@@ -166,6 +166,6 @@ struct is_forward_iterable {
 #endif /* defined(BOOST_TEST_FWD_ITERABLE_CXX03) */
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TEST_UTILS_IS_FORWARD_ITERABLE_HPP

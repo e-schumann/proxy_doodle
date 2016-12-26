@@ -15,7 +15,7 @@
 #include <stdexcept>
 #include <string>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace gregorian {
 
   //bring enum values into the namespace
@@ -40,7 +40,7 @@ namespace gregorian {
   //! Represent a day within a week (range 0==Sun to 6==Sat)
   class BOOST_DATE_TIME_DECL greg_weekday : public greg_weekday_rep {
   public:
-    typedef boost_part::date_time::weekdays weekday_enum;
+    typedef boost::date_time::weekdays weekday_enum;
     greg_weekday(unsigned short day_of_week_num) :
       greg_weekday_rep(day_of_week_num)
     {}

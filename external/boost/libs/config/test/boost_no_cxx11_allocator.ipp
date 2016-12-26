@@ -12,7 +12,7 @@
 
 #include <memory>
 
-namespace boost_part_no_cxx11_allocator {
+namespace boost_no_cxx11_allocator {
 
 int test()
 {

@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_has_ms_int64::test();
+   return boost_has_ms_int64::test();
 }
 

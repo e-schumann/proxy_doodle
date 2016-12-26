@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_RANDOM
 #include "boost_no_cxx11_hdr_random.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_random = empty_boost;
+namespace boost_no_cxx11_hdr_random = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_random::test();
+   return boost_no_cxx11_hdr_random::test();
 }
 

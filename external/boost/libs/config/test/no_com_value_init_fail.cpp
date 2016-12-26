@@ -32,6 +32,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_complete_value_initialization::test();
+   return boost_no_complete_value_initialization::test();
 }
 

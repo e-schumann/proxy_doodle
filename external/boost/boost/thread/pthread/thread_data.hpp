@@ -35,7 +35,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     class thread_attributes {
     public:
@@ -88,32 +88,32 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         struct thread_exit_callback_node;
         struct tss_data_node
         {
-            boost_part::shared_ptr<boost_part::detail::tss_cleanup_function> func;
+            boost::shared_ptr<boost::detail::tss_cleanup_function> func;
             void* value;
 
-            tss_data_node(boost_part::shared_ptr<boost_part::detail::tss_cleanup_function> func_,
+            tss_data_node(boost::shared_ptr<boost::detail::tss_cleanup_function> func_,
                           void* value_):
                 func(func_),value(value_)
             {}
         };
 
         struct thread_data_base;
-        typedef boost_part::shared_ptr<thread_data_base> thread_data_ptr;
+        typedef boost::shared_ptr<thread_data_base> thread_data_ptr;
 
         struct BOOST_THREAD_DECL thread_data_base:
             enable_shared_from_this<thread_data_base>
         {
             thread_data_ptr self;
             pthread_t thread_handle;
-            boost_part::mutex data_mutex;
-            boost_part::condition_variable done_condition;
-            boost_part::mutex sleep_mutex;
-            boost_part::condition_variable sleep_condition;
+            boost::mutex data_mutex;
+            boost::condition_variable done_condition;
+            boost::mutex sleep_mutex;
+            boost::condition_variable sleep_condition;
             bool done;
             bool join_started;
             bool joined;
-            boost_part::detail::thread_exit_callback_node* thread_exit_callbacks;
-            std::map<void const*,boost_part::detail::tss_data_node> tss_data;
+            boost::detail::thread_exit_callback_node* thread_exit_callbacks;
+            std::map<void const*,boost::detail::tss_data_node> tss_data;
 
 //#if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
             // These data must be at the end so that the access to the other fields doesn't change
@@ -240,7 +240,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         inline
         void BOOST_SYMBOL_VISIBLE sleep_for(const chrono::nanoseconds& ns)
         {
-            return boost_part::this_thread::hidden::sleep_for(boost_part::detail::to_timespec(ns));
+            return boost::this_thread::hidden::sleep_for(boost::detail::to_timespec(ns));
         }
 #endif
 #endif // BOOST_THREAD_USES_CHRONO
@@ -259,7 +259,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
           inline
           void BOOST_SYMBOL_VISIBLE sleep_for(const chrono::nanoseconds& ns)
           {
-              return boost_part::this_thread::no_interruption_point::hidden::sleep_for(boost_part::detail::to_timespec(ns));
+              return boost::this_thread::no_interruption_point::hidden::sleep_for(boost::detail::to_timespec(ns));
           }
     #endif
     #endif // BOOST_THREAD_USES_CHRONO
@@ -275,7 +275,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #endif
         inline void sleep(system_time const& abs_time)
         {
-          return boost_part::this_thread::hidden::sleep_until(boost_part::detail::to_timespec(abs_time));
+          return boost::this_thread::hidden::sleep_until(boost::detail::to_timespec(abs_time));
         }
 
         template<typename TimeDuration>

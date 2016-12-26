@@ -12,7 +12,7 @@
 #pragma once
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{ namespace math
+namespace boost{ namespace math
 {
   namespace tools
   {
@@ -23,7 +23,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part{ name
     }
   } // namespace tools
 } // namespace math
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_MATH_TOOLS_REAL_CAST_HPP
 

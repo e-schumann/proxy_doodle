@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_function_scope_using_declaration_breaks_adl::test();
+   return boost_function_scope_using_declaration_breaks_adl::test();
 }
 

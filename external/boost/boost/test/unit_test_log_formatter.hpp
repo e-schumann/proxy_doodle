@@ -29,7 +29,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 // ************************************************************************** //
@@ -103,7 +103,7 @@ struct BOOST_TEST_DECL log_checkpoint_data
 /// - Each formatter may manage its own log level through the getter/setter @c get_log_level and @c set_log_level .
 ///
 /// @see
-/// - boost_part::unit_test::test_observer for an indication of the calls of the test observer interface
+/// - boost::unit_test::test_observer for an indication of the calls of the test observer interface
 class BOOST_TEST_DECL unit_test_log_formatter {
 public:
     /// Types of log entries (messages written into a log)
@@ -310,7 +310,7 @@ protected:
 };
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 //____________________________________________________________________________//
 

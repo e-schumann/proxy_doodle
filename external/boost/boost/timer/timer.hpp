@@ -26,14 +26,14 @@
 
 //--------------------------------------------------------------------------------------//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace timer
 {
   class cpu_timer;
   class auto_cpu_timer;
 
-  typedef boost_part::int_least64_t nanosecond_type;
+  typedef boost::int_least64_t nanosecond_type;
 
   struct cpu_times
   {
@@ -65,9 +65,9 @@ namespace timer
     bool          is_stopped() const BOOST_NOEXCEPT              { return m_is_stopped; }
     cpu_times     elapsed() const BOOST_NOEXCEPT;  // does not stop()
     std::string   format(short places, const std::string& format) const
-                        { return ::boost_part::timer::format(elapsed(), places, format); }
+                        { return ::boost::timer::format(elapsed(), places, format); }
     std::string   format(short places = default_places) const
-                        { return ::boost_part::timer::format(elapsed(), places); }
+                        { return ::boost::timer::format(elapsed(), places); }
     //  actions
     void          start() BOOST_NOEXCEPT;
     void          stop() BOOST_NOEXCEPT;
@@ -121,7 +121,7 @@ namespace timer
   };
    
 } // namespace timer
-} // namespace boost_part
+} // namespace boost
 
 #   if defined(_MSC_VER)
 #     pragma warning(pop) // restore warning settings.

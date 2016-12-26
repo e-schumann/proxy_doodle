@@ -11,7 +11,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   template <typename Lockable>
   class testable_mutex;

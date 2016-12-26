@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -31,12 +31,12 @@ replace_copy(const ForwardRange& rng, OutputIterator out_it, const Value& what,
         const Value& with_what)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::replace_copy(boost_part::begin(rng), boost_part::end(rng), out_it,
+    return std::replace_copy(boost::begin(rng), boost::end(rng), out_it,
         what, with_what);
 }
 
     } // namespace range
     using range::replace_copy;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

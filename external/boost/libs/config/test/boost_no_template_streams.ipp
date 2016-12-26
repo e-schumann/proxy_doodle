@@ -12,7 +12,7 @@
 #include <iostream>
 
 
-namespace boost_part_no_templated_iostreams{
+namespace boost_no_templated_iostreams{
 
 int test()
 {

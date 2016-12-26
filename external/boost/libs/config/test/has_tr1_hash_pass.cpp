@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_HASH
 #include "boost_has_tr1_hash.ipp"
 #else
-namespace boost_part_has_tr1_hash = empty_boost;
+namespace boost_has_tr1_hash = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_hash::test();
+   return boost_has_tr1_hash::test();
 }
 

@@ -17,14 +17,14 @@
 # include <boost/mpl/eval_if.hpp>
 # include <boost/pointee.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace detail
 {
   template <class P>
   struct smart_ptr_reference
   {
-      typedef typename boost_part::pointee<P>::type& type;
+      typedef typename boost::pointee<P>::type& type;
   };
 }
 
@@ -38,6 +38,6 @@ struct indirect_reference
 {
 };
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // INDIRECT_REFERENCE_DWA200415_HPP

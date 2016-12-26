@@ -11,11 +11,11 @@
 
 #include <boost/type_traits/remove_extent.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part 
+namespace boost 
 {
 
 template <class T> struct remove_bounds : public remove_extent<T> {};
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_REMOVE_BOUNDS_HPP_INCLUDED

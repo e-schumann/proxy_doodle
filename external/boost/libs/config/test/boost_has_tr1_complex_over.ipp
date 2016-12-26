@@ -11,7 +11,7 @@
 
 #include <complex>
 
-namespace boost_part_has_tr1_complex_overloads{
+namespace boost_has_tr1_complex_overloads{
 
 
 int test()

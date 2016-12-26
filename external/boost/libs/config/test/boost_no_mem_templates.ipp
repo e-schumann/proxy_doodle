@@ -14,7 +14,7 @@
 #endif
 
 
-namespace boost_part_no_member_templates{
+namespace boost_no_member_templates{
 
 template <class T>
 struct foo

@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_UNORDERED_MAP
 #include "boost_has_tr1_unordered_map.ipp"
 #else
-namespace boost_part_has_tr1_unordered_map = empty_boost;
+namespace boost_has_tr1_unordered_map = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_unordered_map::test();
+   return boost_has_tr1_unordered_map::test();
 }
 

@@ -12,7 +12,7 @@
 #include <string>
 
 
-namespace boost_part_no_cxx11_thread_local{
+namespace boost_no_cxx11_thread_local{
 
 int test()
 {

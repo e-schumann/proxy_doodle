@@ -15,9 +15,9 @@
 #ifndef BOOST_UTILITY_VALUE_INIT_21AGO2002_HPP
 #define BOOST_UTILITY_VALUE_INIT_21AGO2002_HPP
 
-// Note: The implementation of boost_part::value_initialized had to deal with the
+// Note: The implementation of boost::value_initialized had to deal with the
 // fact that various compilers haven't fully implemented value-initialization.
-// The constructor of boost_part::value_initialized<T> works around these compiler
+// The constructor of boost::value_initialized<T> works around these compiler
 // issues, by clearing the bytes of T, before constructing the T object it
 // contains. More details on these issues are at libs/utility/value_init.htm
 
@@ -58,7 +58,7 @@
   #endif
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 template<class T>
 class initialized
@@ -151,7 +151,7 @@ class initialized
     BOOST_GPU_ENABLED
     void swap(initialized & arg)
     {
-      ::boost_part::swap( this->data(), arg.data() );
+      ::boost::swap( this->data(), arg.data() );
     }
 
     BOOST_GPU_ENABLED
@@ -272,7 +272,7 @@ class initialized_value_t
 initialized_value_t const initialized_value = {} ;
 
 
-} // namespace boost_part
+} // namespace boost
 
 #ifdef BOOST_MSVC
 #pragma warning(pop)

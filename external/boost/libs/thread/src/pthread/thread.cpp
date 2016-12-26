@@ -37,7 +37,7 @@
 #include <vector>
 #include <string.h> // memcmp.
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -58,10 +58,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         struct thread_exit_callback_node
         {
-            boost_part::detail::thread_exit_function_base* func;
+            boost::detail::thread_exit_function_base* func;
             thread_exit_callback_node* next;
 
-            thread_exit_callback_node(boost_part::detail::thread_exit_function_base* func_,
+            thread_exit_callback_node(boost::detail::thread_exit_function_base* func_,
                                       thread_exit_callback_node* next_):
                 func(func_),next(next_)
             {}
@@ -70,9 +70,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         namespace
         {
 #ifdef BOOST_THREAD_PROVIDES_ONCE_CXX11
-          boost_part::once_flag current_thread_tls_init_flag;
+          boost::once_flag current_thread_tls_init_flag;
 #else
-            boost_part::once_flag current_thread_tls_init_flag=BOOST_ONCE_INIT;
+            boost::once_flag current_thread_tls_init_flag=BOOST_ONCE_INIT;
 #endif
             pthread_key_t current_thread_tls_key;
 
@@ -80,8 +80,8 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             {
                 static void tls_destructor(void* data)
                 {
-                    //boost_part::detail::thread_data_base* thread_info=static_cast<boost_part::detail::thread_data_base*>(data);
-                    boost_part::detail::thread_data_ptr thread_info = static_cast<boost_part::detail::thread_data_base*>(data)->shared_from_this();
+                    //boost::detail::thread_data_base* thread_info=static_cast<boost::detail::thread_data_base*>(data);
+                    boost::detail::thread_data_ptr thread_info = static_cast<boost::detail::thread_data_base*>(data)->shared_from_this();
 
                     if(thread_info)
                     {
@@ -123,8 +123,8 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 }
                 ~delete_current_thread_tls_key_on_dlclose_t()
                 {
-                    const boost_part::once_flag uninitialized = BOOST_ONCE_INIT;
-                    if (memcmp(&current_thread_tls_init_flag, &uninitialized, sizeof(boost_part::once_flag)))
+                    const boost::once_flag uninitialized = BOOST_ONCE_INIT;
+                    if (memcmp(&current_thread_tls_init_flag, &uninitialized, sizeof(boost::once_flag)))
                     {
                         void* data = pthread_getspecific(current_thread_tls_key);
                         if (data)
@@ -141,15 +141,15 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             }
         }
 
-        boost_part::detail::thread_data_base* get_current_thread_data()
+        boost::detail::thread_data_base* get_current_thread_data()
         {
-            boost_part::call_once(current_thread_tls_init_flag,create_current_thread_tls_key);
-            return (boost_part::detail::thread_data_base*)pthread_getspecific(current_thread_tls_key);
+            boost::call_once(current_thread_tls_init_flag,create_current_thread_tls_key);
+            return (boost::detail::thread_data_base*)pthread_getspecific(current_thread_tls_key);
         }
 
         void set_current_thread_data(detail::thread_data_base* new_data)
         {
-            boost_part::call_once(current_thread_tls_init_flag,create_current_thread_tls_key);
+            boost::call_once(current_thread_tls_init_flag,create_current_thread_tls_key);
             BOOST_VERIFY(!pthread_setspecific(current_thread_tls_key,new_data));
         }
     }
@@ -160,8 +160,8 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
             static void* thread_proxy(void* param)
             {
-                //boost_part::detail::thread_data_ptr thread_info = static_cast<boost_part::detail::thread_data_base*>(param)->self;
-                boost_part::detail::thread_data_ptr thread_info = static_cast<boost_part::detail::thread_data_base*>(param)->shared_from_this();
+                //boost::detail::thread_data_ptr thread_info = static_cast<boost::detail::thread_data_base*>(param)->self;
+                boost::detail::thread_data_ptr thread_info = static_cast<boost::detail::thread_data_base*>(param)->shared_from_this();
                 thread_info->self.reset();
                 detail::set_current_thread_data(thread_info.get());
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
@@ -187,7 +187,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #endif
                 detail::tls_destructor(thread_info.get());
                 detail::set_current_thread_data(0);
-                boost_part::lock_guard<boost_part::mutex> lock(thread_info->data_mutex);
+                boost::lock_guard<boost::mutex> lock(thread_info->data_mutex);
                 thread_info->done=true;
                 thread_info->done_condition.notify_all();
 
@@ -435,7 +435,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
           void BOOST_THREAD_DECL sleep_for(const timespec& ts)
           {
 
-                if (boost_part::detail::timespec_ge(ts, boost_part::detail::timespec_zero()))
+                if (boost::detail::timespec_ge(ts, boost::detail::timespec_zero()))
                 {
 
     #   if defined(BOOST_HAS_PTHREAD_DELAY_NP)
@@ -459,19 +459,19 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
           void BOOST_THREAD_DECL sleep_until(const timespec& ts)
           {
-                timespec now = boost_part::detail::timespec_now();
-                if (boost_part::detail::timespec_gt(ts, now))
+                timespec now = boost::detail::timespec_now();
+                if (boost::detail::timespec_gt(ts, now))
                 {
                   for (int foo=0; foo < 5; ++foo)
                   {
 
     #   if defined(BOOST_HAS_PTHREAD_DELAY_NP)
-                    timespec d = boost_part::detail::timespec_minus(ts, now);
+                    timespec d = boost::detail::timespec_minus(ts, now);
                     BOOST_VERIFY(!pthread_delay_np(&d));
     #   elif defined(BOOST_HAS_NANOSLEEP)
                     //  nanosleep takes a timespec that is an offset, not
                     //  an absolute time.
-                    timespec d = boost_part::detail::timespec_minus(ts, now);
+                    timespec d = boost::detail::timespec_minus(ts, now);
                     nanosleep(&d, 0);
     #   else
                     mutex mx;
@@ -479,8 +479,8 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                     condition_variable cond;
                     cond.do_wait_until(lock, ts);
     #   endif
-                    timespec now2 = boost_part::detail::timespec_now();
-                    if (boost_part::detail::timespec_ge(now2, ts))
+                    timespec now2 = boost::detail::timespec_now();
+                    if (boost::detail::timespec_ge(now2, ts))
                     {
                       return;
                     }
@@ -494,7 +494,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       {
         void BOOST_THREAD_DECL sleep_for(const timespec& ts)
         {
-            boost_part::detail::thread_data_base* const thread_info=boost_part::detail::get_current_thread_data();
+            boost::detail::thread_data_base* const thread_info=boost::detail::get_current_thread_data();
 
             if(thread_info)
             {
@@ -503,13 +503,13 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             }
             else
             {
-              boost_part::this_thread::no_interruption_point::hidden::sleep_for(ts);
+              boost::this_thread::no_interruption_point::hidden::sleep_for(ts);
             }
         }
 
         void BOOST_THREAD_DECL sleep_until(const timespec& ts)
         {
-            boost_part::detail::thread_data_base* const thread_info=boost_part::detail::get_current_thread_data();
+            boost::detail::thread_data_base* const thread_info=boost::detail::get_current_thread_data();
 
             if(thread_info)
             {
@@ -518,7 +518,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             }
             else
             {
-              boost_part::this_thread::no_interruption_point::hidden::sleep_until(ts);
+              boost::this_thread::no_interruption_point::hidden::sleep_until(ts);
             }
         }
       } // hidden
@@ -586,23 +586,23 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                     continue;
 
                 vector<string> key_val(2);
-                boost_part::split(key_val, line, boost_part::is_any_of(":"));
+                boost::split(key_val, line, boost::is_any_of(":"));
 
                 if (key_val.size() != 2)
                   return hardware_concurrency();
 
                 string key   = key_val[0];
                 string value = key_val[1];
-                boost_part::trim(key);
-                boost_part::trim(value);
+                boost::trim(key);
+                boost::trim(value);
 
                 if (key == physical_id) {
-                    current_core_entry.first = boost_part::lexical_cast<unsigned>(value);
+                    current_core_entry.first = boost::lexical_cast<unsigned>(value);
                     continue;
                 }
 
                 if (key == core_id) {
-                    current_core_entry.second = boost_part::lexical_cast<unsigned>(value);
+                    current_core_entry.second = boost::lexical_cast<unsigned>(value);
                     cores.insert(current_core_entry);
                     continue;
                 }
@@ -632,7 +632,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             local_thread_info->interrupt_requested=true;
             if(local_thread_info->current_cond)
             {
-                boost_part::pthread::pthread_mutex_scoped_lock internal_lock(local_thread_info->cond_mutex);
+                boost::pthread::pthread_mutex_scoped_lock internal_lock(local_thread_info->cond_mutex);
                 BOOST_VERIFY(!pthread_cond_broadcast(local_thread_info->current_cond));
             }
         }
@@ -675,7 +675,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         void interruption_point()
         {
 #ifndef BOOST_NO_EXCEPTIONS
-            boost_part::detail::thread_data_base* const thread_info=detail::get_current_thread_data();
+            boost::detail::thread_data_base* const thread_info=detail::get_current_thread_data();
             if(thread_info && thread_info->interrupt_enabled)
             {
                 lock_guard<mutex> lg(thread_info->data_mutex);
@@ -690,13 +690,13 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         bool interruption_enabled() BOOST_NOEXCEPT
         {
-            boost_part::detail::thread_data_base* const thread_info=detail::get_current_thread_data();
+            boost::detail::thread_data_base* const thread_info=detail::get_current_thread_data();
             return thread_info && thread_info->interrupt_enabled;
         }
 
         bool interruption_requested() BOOST_NOEXCEPT
         {
-            boost_part::detail::thread_data_base* const thread_info=detail::get_current_thread_data();
+            boost::detail::thread_data_base* const thread_info=detail::get_current_thread_data();
             if(!thread_info)
             {
                 return false;
@@ -778,7 +778,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
 
         void add_new_tss_node(void const* key,
-                              boost_part::shared_ptr<tss_cleanup_function> func,
+                              boost::shared_ptr<tss_cleanup_function> func,
                               void* tss_data)
         {
             detail::thread_data_base* const current_thread_data(get_or_make_current_thread_data());
@@ -795,7 +795,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
 
         void set_tss_data(void const* key,
-                          boost_part::shared_ptr<tss_cleanup_function> func,
+                          boost::shared_ptr<tss_cleanup_function> func,
                           void* tss_data,bool cleanup_existing)
         {
             if(tss_data_node* const current_node=find_tss_data(key))

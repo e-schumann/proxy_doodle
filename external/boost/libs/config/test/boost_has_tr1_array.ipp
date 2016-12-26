@@ -11,7 +11,7 @@
 
 #include <array>
 
-namespace boost_part_has_tr1_array{
+namespace boost_has_tr1_array{
 
 using std::tr1::array;
 

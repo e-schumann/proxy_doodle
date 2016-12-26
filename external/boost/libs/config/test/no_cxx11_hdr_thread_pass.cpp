@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_THREAD
 #include "boost_no_cxx11_hdr_thread.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_thread = empty_boost;
+namespace boost_no_cxx11_hdr_thread = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_thread::test();
+   return boost_no_cxx11_hdr_thread::test();
 }
 

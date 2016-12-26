@@ -12,7 +12,7 @@
 
 #include <limits>
 
-namespace boost_part_no_ms_int64_numeric_limits{
+namespace boost_no_ms_int64_numeric_limits{
 
 int test()
 {

@@ -190,7 +190,7 @@ namespace { void _set_se_translator( void* ) {} }
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 // ************************************************************************** //
 // **************                 throw_exception              ************** //
@@ -220,12 +220,12 @@ namespace detail {
 
 template <typename ErrorInfo>
 typename ErrorInfo::value_type
-extract( boost_part::exception const* ex )
+extract( boost::exception const* ex )
 {
     if( !ex )
         return 0;
 
-    typename ErrorInfo::value_type const * val = boost_part::get_error_info<ErrorInfo>( *ex );
+    typename ErrorInfo::value_type const * val = boost::get_error_info<ErrorInfo>( *ex );
 
     return val ? *val : 0;
 }
@@ -233,7 +233,7 @@ extract( boost_part::exception const* ex )
 //____________________________________________________________________________//
 
 static void
-report_error( execution_exception::error_code ec, boost_part::exception const* be, char const* format, va_list* args )
+report_error( execution_exception::error_code ec, boost::exception const* be, char const* format, va_list* args )
 {
     static const int REPORT_ERROR_BUFFER_SIZE = 4096;
     static char buf[REPORT_ERROR_BUFFER_SIZE];
@@ -251,7 +251,7 @@ report_error( execution_exception::error_code ec, boost_part::exception const* b
 //____________________________________________________________________________//
 
 static void
-report_error( execution_exception::error_code ec, boost_part::exception const* be, char const* format, ... )
+report_error( execution_exception::error_code ec, boost::exception const* be, char const* format, ... )
 {
     va_list args;
     va_start( args, format );
@@ -314,7 +314,7 @@ template<typename T>
 std::string
 typeid_name( T const& t )
 {
-    return boost_part::core::demangle(typeid(t).name());
+    return boost::core::demangle(typeid(t).name());
 }
 #endif
 
@@ -329,7 +329,7 @@ typeid_name( T const& t )
 namespace detail {
 
 // ************************************************************************** //
-// **************    boost_part::detail::system_signal_exception    ************** //
+// **************    boost::detail::system_signal_exception    ************** //
 // ************************************************************************** //
 
 class system_signal_exception {
@@ -607,7 +607,7 @@ system_signal_exception::report() const
 //____________________________________________________________________________//
 
 // ************************************************************************** //
-// **************         boost_part::detail::signal_action         ************** //
+// **************         boost::detail::signal_action         ************** //
 // ************************************************************************** //
 
 // Forward declaration
@@ -680,7 +680,7 @@ signal_action::~signal_action()
 //____________________________________________________________________________//
 
 // ************************************************************************** //
-// **************        boost_part::detail::signal_handler         ************** //
+// **************        boost::detail::signal_handler         ************** //
 // ************************************************************************** //
 
 class signal_handler {
@@ -839,7 +839,7 @@ static void boost_execution_monitor_attaching_signal_handler( int sig, siginfo_t
 // ************************************************************************** //
 
 int
-execution_monitor::catch_signals( boost_part::function<int ()> const& F )
+execution_monitor::catch_signals( boost::function<int ()> const& F )
 {
     using namespace detail;
 
@@ -881,7 +881,7 @@ namespace { void _set_se_translator( void* ) {} }
 namespace detail {
 
 // ************************************************************************** //
-// **************    boost_part::detail::system_signal_exception    ************** //
+// **************    boost::detail::system_signal_exception    ************** //
 // ************************************************************************** //
 
 class system_signal_exception {
@@ -1112,7 +1112,7 @@ invalid_param_handler( wchar_t const* /* expr */,
 // ************************************************************************** //
 
 int
-execution_monitor::catch_signals( boost_part::function<int ()> const& F )
+execution_monitor::catch_signals( boost::function<int ()> const& F )
 {
     _invalid_parameter_handler old_iph = _invalid_parameter_handler();
     BOOST_TEST_CRT_HOOK_TYPE old_crt_hook = 0;
@@ -1167,7 +1167,7 @@ public:
 } // namespace detail
 
 int
-execution_monitor::catch_signals( boost_part::function<int ()> const& F )
+execution_monitor::catch_signals( boost::function<int ()> const& F )
 {
     return detail::do_invoke( m_custom_translators , F );
 }
@@ -1191,7 +1191,7 @@ execution_monitor::execution_monitor()
 //____________________________________________________________________________//
 
 int
-execution_monitor::execute( boost_part::function<int ()> const& F )
+execution_monitor::execute( boost::function<int ()> const& F )
 {
     if( debug::under_debugger() )
         p_catch_system_errors.value = false;
@@ -1222,14 +1222,14 @@ execution_monitor::execute( boost_part::function<int ()> const& F )
 #define CATCH_AND_REPORT_STD_EXCEPTION( ex_name )                           \
     catch( ex_name const& ex )                                              \
        { detail::report_error( execution_exception::cpp_exception_error,    \
-                          current_exception_cast<boost_part::exception const>(), \
+                          current_exception_cast<boost::exception const>(), \
                           #ex_name ": %s", ex.what() ); }                   \
 /**/
 #else
 #define CATCH_AND_REPORT_STD_EXCEPTION( ex_name )                           \
     catch( ex_name const& ex )                                              \
         { detail::report_error( execution_exception::cpp_exception_error,   \
-                          current_exception_cast<boost_part::exception const>(), \
+                          current_exception_cast<boost::exception const>(), \
                           "%s: %s", detail::typeid_name(ex).c_str(), ex.what() ); } \
 /**/
 #endif
@@ -1257,11 +1257,11 @@ execution_monitor::execute( boost_part::function<int ()> const& F )
     CATCH_AND_REPORT_STD_EXCEPTION( std::exception )
 #undef CATCH_AND_REPORT_STD_EXCEPTION
 
-    catch( boost_part::exception const& ex )
+    catch( boost::exception const& ex )
       { detail::report_error( execution_exception::cpp_exception_error,
                               &ex,
 #if defined(BOOST_NO_TYPEID) || defined(BOOST_NO_RTTI)
-                              "unknown boost_part::exception" ); }
+                              "unknown boost::exception" ); }
 #else
                               typeid(ex).name()          ); }
 #endif
@@ -1295,16 +1295,16 @@ execution_monitor::execute( boost_part::function<int ()> const& F )
 namespace detail {
 
 struct forward {
-    explicit    forward( boost_part::function<void ()> const& F ) : m_F( F ) {}
+    explicit    forward( boost::function<void ()> const& F ) : m_F( F ) {}
 
     int         operator()() { m_F(); return 0; }
 
-    boost_part::function<void ()> const& m_F;
+    boost::function<void ()> const& m_F;
 };
 
 } // namespace detail
 void
-execution_monitor::vexecute( boost_part::function<void ()> const& F )
+execution_monitor::vexecute( boost::function<void ()> const& F )
 {
     execute( detail::forward( F ) );
 }
@@ -1353,7 +1353,7 @@ namespace fpe {
 unsigned
 enable( unsigned mask )
 {
-    boost_part::ignore_unused(mask);
+    boost::ignore_unused(mask);
 
 #if defined(UNDER_CE)
     /* Not Implemented in Windows CE */
@@ -1393,7 +1393,7 @@ enable( unsigned mask )
 unsigned
 disable( unsigned mask )
 {
-    boost_part::ignore_unused(mask);
+    boost::ignore_unused(mask);
 
 #if defined(UNDER_CE)
     /* Not Implemented in Windows CE */
@@ -1432,7 +1432,7 @@ disable( unsigned mask )
 
 } // namespace fpe
 
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

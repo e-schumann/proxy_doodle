@@ -11,7 +11,7 @@
 
 #include <locale>
 
-namespace boost_part_no_std_use_facet{
+namespace boost_no_std_use_facet{
 
 int test()
 {

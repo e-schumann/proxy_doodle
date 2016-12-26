@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_LIMITS
 #include "boost_no_limits.ipp"
 #else
-namespace boost_part_no_limits = empty_boost;
+namespace boost_no_limits = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_limits::test();
+   return boost_no_limits::test();
 }
 

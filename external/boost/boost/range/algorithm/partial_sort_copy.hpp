@@ -16,7 +16,7 @@
 #include <boost/range/value_type.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -34,8 +34,8 @@ partial_sort_copy(const SinglePassRange& rng1, RandomAccessRange& rng2)
 {
     BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<const SinglePassRange>));
 
-    return std::partial_sort_copy(boost_part::begin(rng1), boost_part::end(rng1),
-        boost_part::begin(rng2), boost_part::end(rng2));
+    return std::partial_sort_copy(boost::begin(rng1), boost::end(rng1),
+        boost::begin(rng2), boost::end(rng2));
 }
 
 /// \overload
@@ -45,8 +45,8 @@ partial_sort_copy(const SinglePassRange& rng1, const RandomAccessRange& rng2)
 {
     BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<const SinglePassRange>));
 
-    return std::partial_sort_copy(boost_part::begin(rng1), boost_part::end(rng1),
-        boost_part::begin(rng2), boost_part::end(rng2));
+    return std::partial_sort_copy(boost::begin(rng1), boost::end(rng1),
+        boost::begin(rng2), boost::end(rng2));
 }
 
 /// \overload
@@ -58,8 +58,8 @@ partial_sort_copy(const SinglePassRange& rng1, RandomAccessRange& rng2,
 {
     BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<const SinglePassRange>));
 
-    return std::partial_sort_copy(boost_part::begin(rng1), boost_part::end(rng1),
-        boost_part::begin(rng2), boost_part::end(rng2), pred);
+    return std::partial_sort_copy(boost::begin(rng1), boost::end(rng1),
+        boost::begin(rng2), boost::end(rng2), pred);
 }
 
 /// \overload
@@ -71,12 +71,12 @@ partial_sort_copy(const SinglePassRange& rng1, const RandomAccessRange& rng2,
 {
     BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<const SinglePassRange>));
 
-    return std::partial_sort_copy(boost_part::begin(rng1), boost_part::end(rng1),
-        boost_part::begin(rng2), boost_part::end(rng2), pred);
+    return std::partial_sort_copy(boost::begin(rng1), boost::end(rng1),
+        boost::begin(rng2), boost::end(rng2), pred);
 }
 
     } // namespace range
     using range::partial_sort_copy;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

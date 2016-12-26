@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_bcb_partial_specialization_bug::test();
+   return boost_bcb_partial_specialization_bug::test();
 }
 

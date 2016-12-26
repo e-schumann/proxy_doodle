@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_IS_ABSTRACT
 #include "boost_no_is_abstract.ipp"
 #else
-namespace boost_part_no_is_abstract = empty_boost;
+namespace boost_no_is_abstract = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_is_abstract::test();
+   return boost_no_is_abstract::test();
 }
 

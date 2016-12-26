@@ -17,7 +17,7 @@
 #include <wchar.h>
 #endif
 
-namespace boost_part_no_intrinsic_wchar_t{
+namespace boost_no_intrinsic_wchar_t{
 
 template <class T>
 struct is_int{ int i; };

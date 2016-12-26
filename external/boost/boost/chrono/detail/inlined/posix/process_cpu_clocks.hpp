@@ -19,7 +19,7 @@
 #include <time.h>  // for clock_gettime
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace chrono {
+namespace boost { namespace chrono {
 namespace chrono_detail
 {
   inline nanoseconds::rep tick_factor()        // multiplier to convert ticks
@@ -75,7 +75,7 @@ process_real_cpu_clock::time_point process_real_cpu_clock::now(
     {
         if (BOOST_CHRONO_IS_THROWS(ec))
         {
-            boost_part::throw_exception(
+            boost::throw_exception(
                     system::system_error(
                             errno,
                             BOOST_CHRONO_SYSTEM_CATEGORY,
@@ -102,7 +102,7 @@ process_real_cpu_clock::time_point process_real_cpu_clock::now(
         {
             if (BOOST_CHRONO_IS_THROWS(ec))
             {
-                boost_part::throw_exception(
+                boost::throw_exception(
                         system::system_error(
                                 errno,
                                 BOOST_CHRONO_SYSTEM_CATEGORY,
@@ -151,7 +151,7 @@ process_user_cpu_clock::time_point process_user_cpu_clock::now(
     {
         if (BOOST_CHRONO_IS_THROWS(ec))
         {
-            boost_part::throw_exception(
+            boost::throw_exception(
                     system::system_error(
                             errno,
                             BOOST_CHRONO_SYSTEM_CATEGORY,
@@ -178,7 +178,7 @@ process_user_cpu_clock::time_point process_user_cpu_clock::now(
         {
             if (BOOST_CHRONO_IS_THROWS(ec))
             {
-                boost_part::throw_exception(
+                boost::throw_exception(
                         system::system_error(
                                 errno,
                                 BOOST_CHRONO_SYSTEM_CATEGORY,
@@ -228,7 +228,7 @@ process_system_cpu_clock::time_point process_system_cpu_clock::now(
     {
         if (BOOST_CHRONO_IS_THROWS(ec))
         {
-            boost_part::throw_exception(
+            boost::throw_exception(
                     system::system_error(
                             errno,
                             BOOST_CHRONO_SYSTEM_CATEGORY,
@@ -255,7 +255,7 @@ process_system_cpu_clock::time_point process_system_cpu_clock::now(
         {
             if (BOOST_CHRONO_IS_THROWS(ec))
             {
-                boost_part::throw_exception(
+                boost::throw_exception(
                         system::system_error(
                                 errno,
                                 BOOST_CHRONO_SYSTEM_CATEGORY,
@@ -308,7 +308,7 @@ process_cpu_clock::time_point process_cpu_clock::now(
     {
         if (BOOST_CHRONO_IS_THROWS(ec))
         {
-            boost_part::throw_exception(
+            boost::throw_exception(
                     system::system_error(
                             errno,
                             BOOST_CHRONO_SYSTEM_CATEGORY,
@@ -334,7 +334,7 @@ process_cpu_clock::time_point process_cpu_clock::now(
         {
             if (BOOST_CHRONO_IS_THROWS(ec))
             {
-                boost_part::throw_exception(
+                boost::throw_exception(
                         system::system_error(
                                 errno,
                                 BOOST_CHRONO_SYSTEM_CATEGORY,

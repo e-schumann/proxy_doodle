@@ -239,7 +239,7 @@
 #endif
 
 #if !defined(BOOST_REGEX_NO_LIB) && !defined(BOOST_REGEX_SOURCE) && !defined(BOOST_ALL_NO_LIB) && defined(__cplusplus)
-#  define BOOST_LIB_NAME boost_part_regex
+#  define BOOST_LIB_NAME boost_regex
 #  if defined(BOOST_REGEX_DYN_LINK) || defined(BOOST_ALL_DYN_LINK)
 #     define BOOST_DYN_LINK
 #  endif
@@ -345,7 +345,7 @@ if(0 == (x))\
    std::string s("Error: critical regex++ failure in: ");\
    s.append(#x);\
    std::runtime_error e(s);\
-   boost_part::throw_exception(e);\
+   boost::throw_exception(e);\
 }
 #else
 /*
@@ -375,7 +375,7 @@ if(0 == (x))\
 
 #if defined(__cplusplus) && defined(BOOST_REGEX_HAS_MS_STACK_GUARD)
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 namespace BOOST_REGEX_DETAIL_NS{
 
 BOOST_REGEX_DECL void BOOST_REGEX_CALL reset_stack_guard_page();
@@ -429,7 +429,7 @@ BOOST_REGEX_DECL void BOOST_REGEX_CALL reset_stack_guard_page();
  ****************************************************************************/
 
 #if defined(__cplusplus) && defined(BOOST_REGEX_NON_RECURSIVE)
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{ namespace BOOST_REGEX_DETAIL_NS{
+namespace boost{ namespace BOOST_REGEX_DETAIL_NS{
 
 BOOST_REGEX_DECL void* BOOST_REGEX_CALL get_mem_block();
 BOOST_REGEX_DECL void BOOST_REGEX_CALL put_mem_block(void*);

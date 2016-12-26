@@ -20,9 +20,9 @@
 
 #include <cstdlib>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
-    void boost_parttss_cleanup_implemented() {}
+    void tss_cleanup_implemented() {}
 }
 
 namespace {
@@ -32,7 +32,7 @@ namespace {
         {
         case DLL_THREAD_DETACH:
         {
-            boost_part::boost_parton_thread_exit();
+            boost::on_thread_exit();
             break;
         }
         }
@@ -48,9 +48,9 @@ extern "C"
 #else
 extern "C" {
 
-    void (* after_ctors )() __attribute__((section(".ctors")))     = boost_part::boost_parton_process_enter;
-    void (* before_dtors)() __attribute__((section(".dtors")))     = boost_part::boost_parton_thread_exit;
-    void (* after_dtors )() __attribute__((section(".dtors.zzz"))) = boost_part::boost_parton_process_exit;
+    void (* after_ctors )() __attribute__((section(".ctors")))     = boost::on_process_enter;
+    void (* before_dtors)() __attribute__((section(".dtors")))     = boost::on_thread_exit;
+    void (* after_dtors )() __attribute__((section(".dtors.zzz"))) = boost::on_process_exit;
 
     ULONG __tls_index__ = 0;
     char __tls_end__ __attribute__((section(".tls$zzz"))) = 0;
@@ -236,7 +236,7 @@ extern BOOL (WINAPI * const _pDefaultRawDllMainOrig)(HANDLE, DWORD, LPVOID) = NU
 
         PVAPI on_process_init()
         {
-            //Schedule boost_parton_thread_exit() to be called for the main
+            //Schedule on_thread_exit() to be called for the main
             //thread before destructors of global objects have been
             //called.
 
@@ -245,18 +245,18 @@ extern BOOL (WINAPI * const _pDefaultRawDllMainOrig)(HANDLE, DWORD, LPVOID) = NU
             //for destructors of global objects, so that
             //shouldn't be a problem.
 
-            atexit(boost_part::boost_parton_thread_exit);
+            atexit(boost::on_thread_exit);
 
             //Call Boost process entry callback here
 
-            boost_part::boost_parton_process_enter();
+            boost::on_process_enter();
 
             return INIRETSUCCESS;
         }
 
         PVAPI on_process_term()
         {
-            boost_part::boost_parton_process_exit();
+            boost::on_process_exit();
             return INIRETSUCCESS;
         }
 
@@ -265,7 +265,7 @@ extern BOOL (WINAPI * const _pDefaultRawDllMainOrig)(HANDLE, DWORD, LPVOID) = NU
             switch (dwReason)
             {
             case DLL_THREAD_DETACH:
-                boost_part::boost_parton_thread_exit();
+                boost::on_thread_exit();
                 break;
             }
         }
@@ -279,10 +279,10 @@ extern BOOL (WINAPI * const _pDefaultRawDllMainOrig)(HANDLE, DWORD, LPVOID) = NU
             switch (dwReason)
             {
             case DLL_THREAD_DETACH:
-                boost_part::boost_parton_thread_exit();
+                boost::on_thread_exit();
                 break;
             case DLL_PROCESS_DETACH:
-                boost_part::boost_parton_process_exit();
+                boost::on_process_exit();
                 break;
             }
 
@@ -300,16 +300,16 @@ extern "C"
 {
     extern BOOL (WINAPI * const _pRawDllMain)(HANDLE, DWORD, LPVOID)=&dll_callback;
 }
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
-    void boost_parttss_cleanup_implemented()
+    void tss_cleanup_implemented()
     {
         /*
         This function's sole purpose is to cause a link error in cases where
         automatic tss cleanup is not implemented by Boost.Threads as a
         reminder that user code is responsible for calling the necessary
         functions at the appropriate times (and for implementing an a
-        boost_parttss_cleanup_implemented() function to eliminate the linker's
+        tss_cleanup_implemented() function to eliminate the linker's
         missing symbol error).
 
         If Boost.Threads later implements automatic tss cleanup in cases

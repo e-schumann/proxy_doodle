@@ -11,7 +11,7 @@
 //  TITLE:         C++14 return type deduction unavailable
 //  DESCRIPTION:   The compiler does not support C++14 return type deduction
 
-namespace boost_part_no_cxx14_return_type_deduction
+namespace boost_no_cxx14_return_type_deduction
 {
 
 template<typename T>

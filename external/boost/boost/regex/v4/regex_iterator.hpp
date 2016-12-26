@@ -21,7 +21,7 @@
 
 #include <boost/shared_ptr.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 #ifdef BOOST_MSVC
 #pragma warning(push)
@@ -195,7 +195,7 @@ inline regex_iterator<typename std::basic_string<charT, ST, SA>::const_iterator,
 #pragma warning(pop)
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_REGEX_V4_REGEX_ITERATOR_HPP
 

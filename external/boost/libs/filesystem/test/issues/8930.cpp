@@ -2,6 +2,6 @@
 
 #include <boost/filesystem.hpp>
 int main() {
-  boost_part::filesystem::path("/abc").root_directory();
+  boost::filesystem::path("/abc").root_directory();
 }
 

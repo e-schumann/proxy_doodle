@@ -10,7 +10,7 @@
 //  TITLE:         C++11 final class-virt-specifier
 //  DESCRIPTION:   The compiler does not support the C++ class-virt-specifier final
 
-namespace boost_part_no_cxx11_final {
+namespace boost_no_cxx11_final {
 
 struct X final {};
 

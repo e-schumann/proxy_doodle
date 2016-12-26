@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_EXPM1
 #include "boost_has_expm1.ipp"
 #else
-namespace boost_part_has_expm1 = empty_boost;
+namespace boost_has_expm1 = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_expm1::test();
+   return boost_has_expm1::test();
 }
 

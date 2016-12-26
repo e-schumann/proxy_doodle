@@ -12,7 +12,7 @@
 
 #include <vector>
 
-namespace boost_part_bcb_partial_specialization_bug{
+namespace boost_bcb_partial_specialization_bug{
 
 
 template<class T1,class T2>

@@ -19,17 +19,17 @@
 
 #include <boost/core/typeinfo.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
 {
 
-typedef boost_part::core::typeinfo sp_typeinfo;
+typedef boost::core::typeinfo sp_typeinfo;
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
 #define BOOST_SP_TYPEID(T) BOOST_CORE_TYPEID(T)
 

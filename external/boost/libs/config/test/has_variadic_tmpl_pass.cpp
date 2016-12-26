@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_VARIADIC_TMPL
 #include "boost_has_variadic_tmpl.ipp"
 #else
-namespace boost_part_has_variadic_tmpl = empty_boost;
+namespace boost_has_variadic_tmpl = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_variadic_tmpl::test();
+   return boost_has_variadic_tmpl::test();
 }
 

@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_STLP_USE_FACET
 #include "boost_has_stlp_use_facet.ipp"
 #else
-namespace boost_part_has_stlp_use_facet = empty_boost;
+namespace boost_has_stlp_use_facet = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_stlp_use_facet::test();
+   return boost_has_stlp_use_facet::test();
 }
 

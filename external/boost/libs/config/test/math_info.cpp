@@ -156,7 +156,7 @@ void print_limits(T, const char* name)
    std::cout << 
       "    sizeof(" << name << ") = " << sizeof(T) << std::endl;
    std::cout << 
-      "    alignment_of<" << name << "> = " << boost_part::alignment_of<T>::value << std::endl << std::endl;
+      "    alignment_of<" << name << "> = " << boost::alignment_of<T>::value << std::endl << std::endl;
 }
 /*
 template <class T>

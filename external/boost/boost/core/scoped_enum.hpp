@@ -16,7 +16,7 @@
 #pragma once
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 #ifdef BOOST_NO_CXX11_SCOPED_ENUMS

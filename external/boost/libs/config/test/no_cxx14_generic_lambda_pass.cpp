@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX14_GENERIC_LAMBDAS
 #include "boost_no_cxx14_generic_lambda.ipp"
 #else
-namespace boost_part_no_cxx14_generic_lambdas = empty_boost;
+namespace boost_no_cxx14_generic_lambdas = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx14_generic_lambdas::test();
+   return boost_no_cxx14_generic_lambdas::test();
 }
 

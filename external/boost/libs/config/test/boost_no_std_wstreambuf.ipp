@@ -13,7 +13,7 @@
 #include <streambuf>
 #include <string>
 
-namespace boost_part_no_std_wstreambuf{
+namespace boost_no_std_wstreambuf{
 
 template <class charT,
           class traits = ::std::char_traits<charT> >

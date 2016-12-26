@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_CV_SPECIALIZATIONS
 #include "boost_no_cv_spec.ipp"
 #else
-namespace boost_part_no_cv_specializations = empty_boost;
+namespace boost_no_cv_specializations = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cv_specializations::test();
+   return boost_no_cv_specializations::test();
 }
 

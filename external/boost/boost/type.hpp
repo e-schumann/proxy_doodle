@@ -6,7 +6,7 @@
 #ifndef BOOST_TYPE_DWA20010120_HPP
 # define BOOST_TYPE_DWA20010120_HPP
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
   // Just a simple "type envelope". Useful in various contexts, mostly to work
   // around some MSVC deficiencies.

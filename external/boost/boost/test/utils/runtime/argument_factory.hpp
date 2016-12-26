@@ -32,7 +32,7 @@
 
 #include <boost/test/detail/suppress_warnings.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace runtime {
 
 // ************************************************************************** //
@@ -235,7 +235,7 @@ private:
 //____________________________________________________________________________//
 
 } // namespace runtime
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

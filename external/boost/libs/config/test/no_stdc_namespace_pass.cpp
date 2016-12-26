@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_STDC_NAMESPACE
 #include "boost_no_stdc_namespace.ipp"
 #else
-namespace boost_part_no_stdc_namespace = empty_boost;
+namespace boost_no_stdc_namespace = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_stdc_namespace::test();
+   return boost_no_stdc_namespace::test();
 }
 

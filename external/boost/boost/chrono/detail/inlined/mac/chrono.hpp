@@ -15,7 +15,7 @@
 #include <mach/mach_time.h>  // mach_absolute_time, mach_timebase_info_data_t
 #include <boost/assert.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace chrono
 {
@@ -133,7 +133,7 @@ steady_full_ec(system::error_code & ec)
     {
         if (BOOST_CHRONO_IS_THROWS(ec))
         {
-            boost_part::throw_exception(
+            boost::throw_exception(
                     system::system_error(
                             err,
                             BOOST_CHRONO_SYSTEM_CATEGORY,
@@ -219,7 +219,7 @@ steady_clock::now(system::error_code & ec)
     {
         if (BOOST_CHRONO_IS_THROWS(ec))
         {
-            boost_part::throw_exception(
+            boost::throw_exception(
                     system::system_error(
                             err,
                             BOOST_CHRONO_SYSTEM_CATEGORY,
@@ -239,4 +239,4 @@ steady_clock::now(system::error_code & ec)
 }
 #endif
 }  // namespace chrono
-}  // namespace boost_part
+}  // namespace boost

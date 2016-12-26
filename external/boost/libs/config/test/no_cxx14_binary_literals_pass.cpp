@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX14_BINARY_LITERALS
 #include "boost_no_cxx14_binary_literals.ipp"
 #else
-namespace boost_part_no_cxx14_binary_literals = empty_boost;
+namespace boost_no_cxx14_binary_literals = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx14_binary_literals::test();
+   return boost_no_cxx14_binary_literals::test();
 }
 

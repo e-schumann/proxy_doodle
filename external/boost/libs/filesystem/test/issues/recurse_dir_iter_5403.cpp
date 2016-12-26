@@ -28,10 +28,10 @@
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/detail/lightweight_main.hpp>
 
-namespace fs = boost_part::filesystem;
-using boost_part::system::error_code;
-using boost_part::system::system_category;
-using boost_part::system::system_error;
+namespace fs = boost::filesystem;
+using boost::system::error_code;
+using boost::system::system_category;
+using boost::system::system_error;
 
 #include <iostream>
 
@@ -128,5 +128,5 @@ int cpp_main(int argc, char* argv[])
   }
 
   cout << "returning from main()" << endl;
-  return ::boost_part::report_errors();
+  return ::boost::report_errors();
 } // main

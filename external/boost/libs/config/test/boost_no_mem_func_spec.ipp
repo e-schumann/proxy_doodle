@@ -11,7 +11,7 @@
 //                 of template classes work OK.
 
 
-namespace boost_part_no_member_function_specializations{
+namespace boost_no_member_function_specializations{
 
 
 template<class T>

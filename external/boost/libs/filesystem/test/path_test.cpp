@@ -66,10 +66,10 @@
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/detail/lightweight_main.hpp>
 
-namespace fs = boost_part::filesystem;
-using boost_part::filesystem::path;
-using boost_part::next;
-using boost_part::prior;
+namespace fs = boost::filesystem;
+using boost::filesystem::path;
+using boost::next;
+using boost::prior;
 
 #ifdef BOOST_WINDOWS_API
 # define BOOST_DIR_SEP "\\"
@@ -94,7 +94,7 @@ namespace
               << "\" != expected: \"" << expected
               << "\"" << std::endl;
 
-    ++::boost_part::detail::test_errors();
+    ++::boost::detail::test_errors();
   }
 
   path p1("fe/fi/fo/fum");
@@ -109,7 +109,7 @@ namespace
   {
     std::cout << "exception_tests..." << std::endl;
     const std::string str_1("string-1");
-    boost_part::system::error_code ec(12345, boost_part::system::system_category());
+    boost::system::error_code ec(12345, boost::system::system_category());
     try { throw fs::filesystem_error(str_1, ec); }
     catch (const fs::filesystem_error & ex)
     {
@@ -174,18 +174,18 @@ namespace
 
     itr_ck = "foo";
     BOOST_TEST(*itr_ck.begin() == std::string("foo"));
-    BOOST_TEST(boost_part::next(itr_ck.begin()) == itr_ck.end());
-    BOOST_TEST(*boost_part::prior(itr_ck.end()) == std::string("foo"));
-    BOOST_TEST(boost_part::prior(itr_ck.end()) == itr_ck.begin());
+    BOOST_TEST(boost::next(itr_ck.begin()) == itr_ck.end());
+    BOOST_TEST(*boost::prior(itr_ck.end()) == std::string("foo"));
+    BOOST_TEST(boost::prior(itr_ck.end()) == itr_ck.begin());
 
     itr_ck = path("/foo");
     BOOST_TEST((itr_ck.begin())->string() == "/");
-    BOOST_TEST(*boost_part::next(itr_ck.begin()) == std::string("foo"));
-    BOOST_TEST(boost_part::next(boost_part::next(itr_ck.begin())) == itr_ck.end());
-    BOOST_TEST(boost_part::next(itr_ck.begin()) == boost_part::prior(itr_ck.end()));
-    BOOST_TEST(*boost_part::prior(itr_ck.end()) == std::string("foo"));
-    BOOST_TEST(*boost_part::prior(boost_part::prior(itr_ck.end())) == std::string("/"));
-    BOOST_TEST(boost_part::prior(boost_part::prior(itr_ck.end())) == itr_ck.begin());
+    BOOST_TEST(*boost::next(itr_ck.begin()) == std::string("foo"));
+    BOOST_TEST(boost::next(boost::next(itr_ck.begin())) == itr_ck.end());
+    BOOST_TEST(boost::next(itr_ck.begin()) == boost::prior(itr_ck.end()));
+    BOOST_TEST(*boost::prior(itr_ck.end()) == std::string("foo"));
+    BOOST_TEST(*boost::prior(boost::prior(itr_ck.end())) == std::string("/"));
+    BOOST_TEST(boost::prior(boost::prior(itr_ck.end())) == itr_ck.begin());
 
     itr_ck = "/foo/bar";
     itr = itr_ck.begin();
@@ -1935,9 +1935,9 @@ namespace
 
 } // unnamed namespace
 
-static boost_part::filesystem::path ticket_6737 = "FilePath";  // #6737 reported this crashed
+static boost::filesystem::path ticket_6737 = "FilePath";  // #6737 reported this crashed
                                                           // on VC++ debug mode build 
-const boost_part::filesystem::path ticket_6690("test");  // #6690 another V++ static init crash
+const boost::filesystem::path ticket_6690("test");  // #6690 another V++ static init crash
 
 //--------------------------------------------------------------------------------------//
 //                                                                                      //
@@ -2028,5 +2028,5 @@ int cpp_main(int, char*[])
   std::cout << round_trip.string() << "..." << round_trip << " complete\n";
 # endif
 
-  return ::boost_part::report_errors();
+  return ::boost::report_errors();
 }

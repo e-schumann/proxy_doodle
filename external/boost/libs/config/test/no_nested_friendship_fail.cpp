@@ -32,6 +32,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_nested_friendship::test();
+   return boost_no_nested_friendship::test();
 }
 

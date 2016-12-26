@@ -18,7 +18,7 @@
 #include <boost/mpl/identity.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part 
+namespace boost 
 {
     namespace range_detail
     {

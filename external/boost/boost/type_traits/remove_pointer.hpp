@@ -16,7 +16,7 @@
 #include <boost/type_traits/is_pointer.hpp>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 #if BOOST_WORKAROUND(BOOST_MSVC, < 1900)
 
@@ -44,7 +44,7 @@ namespace detail{
    template <class T, bool b> 
    struct remove_pointer_imp3
    {
-      typedef typename remove_pointer_imp<typename boost_part::remove_cv<T>::type>::type type;
+      typedef typename remove_pointer_imp<typename boost::remove_cv<T>::type>::type type;
    };
 
    template <class T> 
@@ -56,11 +56,11 @@ namespace detail{
    template <class T> 
    struct remove_pointer_imp2
    {
-      typedef typename remove_pointer_imp3<T, ::boost_part::is_pointer<T>::value>::type type;
+      typedef typename remove_pointer_imp3<T, ::boost::is_pointer<T>::value>::type type;
    };
 }
 
-template <class T> struct remove_pointer{ typedef typename boost_part::detail::remove_pointer_imp2<T>::type type; };
+template <class T> struct remove_pointer{ typedef typename boost::detail::remove_pointer_imp2<T>::type type; };
 
 #else
 
@@ -72,6 +72,6 @@ template <class T> struct remove_pointer<T*const volatile>{ typedef T type; };
 
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_REMOVE_POINTER_HPP_INCLUDED

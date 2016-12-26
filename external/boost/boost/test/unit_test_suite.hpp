@@ -33,11 +33,11 @@
 // ************************************************************************** //
 
 #define BOOST_TEST_CASE( test_function )                                   \
-boost_part::unit_test::make_test_case( boost_part::function<void ()>(test_function), \
+boost::unit_test::make_test_case( boost::function<void ()>(test_function), \
                                   BOOST_TEST_STRINGIZE( test_function ),   \
                                   __FILE__, __LINE__ )
 #define BOOST_CLASS_TEST_CASE( test_function, tc_instance )                \
-boost_part::unit_test::make_test_case( (test_function),                         \
+boost::unit_test::make_test_case( (test_function),                         \
                                   BOOST_TEST_STRINGIZE( test_function ),   \
                                   __FILE__, __LINE__, tc_instance )
 
@@ -46,7 +46,7 @@ boost_part::unit_test::make_test_case( (test_function),                         
 // ************************************************************************** //
 
 #define BOOST_TEST_SUITE( testsuite_name ) \
-( new boost_part::unit_test::test_suite( testsuite_name, __FILE__, __LINE__ ) )
+( new boost::unit_test::test_suite( testsuite_name, __FILE__, __LINE__ ) )
 
 // ************************************************************************** //
 // **************             BOOST_AUTO_TEST_SUITE            ************** //
@@ -63,7 +63,7 @@ BOOST_AUTO_TU_REGISTRAR( suite_name )(                                  \
 #define BOOST_AUTO_TEST_SUITE_NO_DECOR( suite_name )                    \
     BOOST_AUTO_TEST_SUITE_WITH_DECOR(                                   \
         suite_name,                                                     \
-        boost_part::unit_test::decorator::collector::instance() )            \
+        boost::unit_test::decorator::collector::instance() )            \
 /**/
 
 #if BOOST_PP_VARIADICS
@@ -131,7 +131,7 @@ BOOST_AUTO_TU_REGISTRAR( BOOST_JOIN( end_suite, __LINE__ ) )( 1 );      \
 
 /// @deprecated use decorator instead
 #define BOOST_AUTO_TEST_CASE_EXPECTED_FAILURES( test_name, n )          \
-BOOST_TEST_DECORATOR( * boost_part::unit_test::expected_failures( n ) )      \
+BOOST_TEST_DECORATOR( * boost::unit_test::expected_failures( n ) )      \
 /**/
 
 // ************************************************************************** //
@@ -153,7 +153,7 @@ static void BOOST_AUTO_TC_INVOKER( test_name )()                        \
 struct BOOST_AUTO_TC_UNIQUE_ID( test_name ) {};                         \
                                                                         \
 BOOST_AUTO_TU_REGISTRAR( test_name )(                                   \
-    boost_part::unit_test::make_test_case(                                   \
+    boost::unit_test::make_test_case(                                   \
         &BOOST_AUTO_TC_INVOKER( test_name ),                            \
         #test_name, __FILE__, __LINE__ ),                               \
         decorators );                                                   \
@@ -163,7 +163,7 @@ void test_name::test_method()                                           \
 
 #define BOOST_FIXTURE_TEST_CASE_NO_DECOR( test_name, F )                \
 BOOST_FIXTURE_TEST_CASE_WITH_DECOR( test_name, F,                       \
-    boost_part::unit_test::decorator::collector::instance() )                \
+    boost::unit_test::decorator::collector::instance() )                \
 /**/
 
 #if BOOST_PP_VARIADICS
@@ -227,7 +227,7 @@ struct test_name : public F                                             \
                                                                         \
 struct BOOST_AUTO_TC_INVOKER( test_name ) {                             \
     template<typename TestType>                                         \
-    static void run( boost_part::type<TestType>* = 0 )                       \
+    static void run( boost::type<TestType>* = 0 )                       \
     {                                                                   \
         BOOST_TEST_CHECKPOINT('"' << #test_name <<"\" fixture entry."); \
         test_name<TestType> t;                                          \
@@ -238,10 +238,10 @@ struct BOOST_AUTO_TC_INVOKER( test_name ) {                             \
 };                                                                      \
                                                                         \
 BOOST_AUTO_TU_REGISTRAR( test_name )(                                   \
-    boost_part::unit_test::ut_detail::template_test_case_gen<                \
+    boost::unit_test::ut_detail::template_test_case_gen<                \
         BOOST_AUTO_TC_INVOKER( test_name ),TL >(                        \
           BOOST_STRINGIZE( test_name ), __FILE__, __LINE__ ),           \
-    boost_part::unit_test::decorator::collector::instance() );               \
+    boost::unit_test::decorator::collector::instance() );               \
                                                                         \
 template<typename type_name>                                            \
 void test_name<type_name>::test_method()                                \
@@ -261,7 +261,7 @@ BOOST_FIXTURE_TEST_CASE_TEMPLATE( test_name, type_name, TL,             \
 // ************************************************************************** //
 
 #define BOOST_TEST_CASE_TEMPLATE( name, typelist )                      \
-    boost_part::unit_test::ut_detail::template_test_case_gen<name,typelist>( \
+    boost::unit_test::ut_detail::template_test_case_gen<name,typelist>( \
         BOOST_TEST_STRINGIZE( name ), __FILE__, __LINE__ )              \
 /**/
 
@@ -271,18 +271,18 @@ BOOST_FIXTURE_TEST_CASE_TEMPLATE( test_name, type_name, TL,             \
 
 #define BOOST_TEST_CASE_TEMPLATE_FUNCTION( name, type_name )            \
 template<typename type_name>                                            \
-void BOOST_JOIN( name, _impl )( boost_part::type<type_name>* );              \
+void BOOST_JOIN( name, _impl )( boost::type<type_name>* );              \
                                                                         \
 struct name {                                                           \
     template<typename TestType>                                         \
-    static void run( boost_part::type<TestType>* frwrd = 0 )                 \
+    static void run( boost::type<TestType>* frwrd = 0 )                 \
     {                                                                   \
        BOOST_JOIN( name, _impl )( frwrd );                              \
     }                                                                   \
 };                                                                      \
                                                                         \
 template<typename type_name>                                            \
-void BOOST_JOIN( name, _impl )( boost_part::type<type_name>* )               \
+void BOOST_JOIN( name, _impl )( boost::type<type_name>* )               \
 /**/
 
 // ************************************************************************** //
@@ -290,7 +290,7 @@ void BOOST_JOIN( name, _impl )( boost_part::type<type_name>* )               \
 // ************************************************************************** //
 
 #define BOOST_GLOBAL_FIXTURE( F ) \
-static boost_part::unit_test::ut_detail::global_fixture_impl<F> BOOST_JOIN( gf_, F ) \
+static boost::unit_test::ut_detail::global_fixture_impl<F> BOOST_JOIN( gf_, F ) \
 /**/
 
 // ************************************************************************** //
@@ -298,7 +298,7 @@ static boost_part::unit_test::ut_detail::global_fixture_impl<F> BOOST_JOIN( gf_,
 // ************************************************************************** //
 
 #define BOOST_TEST_DECORATOR( D )                                       \
-static boost_part::unit_test::decorator::collector const&                    \
+static boost::unit_test::decorator::collector const&                    \
 BOOST_JOIN(decorator_collector,__LINE__) = D;                           \
 /**/
 
@@ -306,23 +306,23 @@ BOOST_JOIN(decorator_collector,__LINE__) = D;                           \
 // **************         BOOST_AUTO_TEST_CASE_FIXTURE         ************** //
 // ************************************************************************** //
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace unit_test { namespace ut_detail {
+namespace boost { namespace unit_test { namespace ut_detail {
 
 struct nil_t {};
 
 } // namespace ut_detail
 } // unit_test
-} // namespace boost_part
+} // namespace boost
 
 // Intentionally is in global namespace, so that FIXTURE_TEST_SUITE can reset it in user code.
-typedef ::boost_part::unit_test::ut_detail::nil_t BOOST_AUTO_TEST_CASE_FIXTURE;
+typedef ::boost::unit_test::ut_detail::nil_t BOOST_AUTO_TEST_CASE_FIXTURE;
 
 // ************************************************************************** //
 // **************   Auto registration facility helper macros   ************** //
 // ************************************************************************** //
 
 #define BOOST_AUTO_TU_REGISTRAR( test_name )                    \
-static boost_part::unit_test::ut_detail::auto_test_unit_registrar    \
+static boost::unit_test::ut_detail::auto_test_unit_registrar    \
 BOOST_JOIN( BOOST_JOIN( test_name, _registrar ), __LINE__ )     \
 /**/
 #define BOOST_AUTO_TC_INVOKER( test_name )      BOOST_JOIN( test_name, _invoker )
@@ -337,12 +337,12 @@ BOOST_JOIN( BOOST_JOIN( test_name, _registrar ), __LINE__ )     \
 #ifdef BOOST_TEST_ALTERNATIVE_INIT_API
 bool init_unit_test()                   {
 #else
-::boost_part::unit_test::test_suite*
+::boost::unit_test::test_suite*
 init_unit_test_suite( int, char* [] )   {
 #endif
 
 #ifdef BOOST_TEST_MODULE
-    using namespace ::boost_part::unit_test;
+    using namespace ::boost::unit_test;
     assign_op( framework::master_test_suite().p_name.value, BOOST_TEST_STRINGIZE( BOOST_TEST_MODULE ).trim( "\"" ), 0 );
 
 #endif

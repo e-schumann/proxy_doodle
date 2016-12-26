@@ -5,7 +5,7 @@
 
 void myFunc()
 {
-   using namespace boost_part::filesystem;
+   using namespace boost::filesystem;
 
    copy_option opt(copy_option::overwrite_if_exists);
 

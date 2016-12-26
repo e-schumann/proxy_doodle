@@ -50,21 +50,21 @@
 #ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
 
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_FUNCNAME allocate
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_BEG namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace container { namespace container_detail {
+#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_BEG namespace boost { namespace container { namespace container_detail {
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_END   }}}
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MIN 2
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MAX 2
 #include <boost/intrusive/detail/has_member_function_callable_with.hpp>
 
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_FUNCNAME destroy
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_BEG namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace container { namespace container_detail {
+#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_BEG namespace boost { namespace container { namespace container_detail {
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_END   }}}
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MIN 1
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MAX 1
 #include <boost/intrusive/detail/has_member_function_callable_with.hpp>
 
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_FUNCNAME construct
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_BEG namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace container { namespace container_detail {
+#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_BEG namespace boost { namespace container { namespace container_detail {
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_END   }}}
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MIN 1
 #define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MAX 9
@@ -72,7 +72,7 @@
 
 #endif   //#ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 
 #ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
@@ -196,75 +196,75 @@ struct allocator_traits
       {  typedef see_documentation type;  };
    #else
       //pointer
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost_part::container::container_detail::, Allocator,
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost::container::container_detail::, Allocator,
          pointer, value_type*)
             pointer;
       //const_pointer
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_EVAL_DEFAULT(boost_part::container::container_detail::, Allocator,
-         const_pointer, typename boost_part::intrusive::pointer_traits<pointer>::template
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_EVAL_DEFAULT(boost::container::container_detail::, Allocator,
+         const_pointer, typename boost::intrusive::pointer_traits<pointer>::template
             rebind_pointer<const value_type>)
                const_pointer;
       //reference
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost_part::container::container_detail::, Allocator,
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost::container::container_detail::, Allocator,
          reference, typename container_detail::unvoid_ref<value_type>::type)
             reference;
       //const_reference
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost_part::container::container_detail::, Allocator,
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost::container::container_detail::, Allocator,
          const_reference, typename container_detail::unvoid_ref<const value_type>::type)
                const_reference;
       //void_pointer
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_EVAL_DEFAULT(boost_part::container::container_detail::, Allocator,
-         void_pointer, typename boost_part::intrusive::pointer_traits<pointer>::template
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_EVAL_DEFAULT(boost::container::container_detail::, Allocator,
+         void_pointer, typename boost::intrusive::pointer_traits<pointer>::template
             rebind_pointer<void>)
                void_pointer;
       //const_void_pointer
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_EVAL_DEFAULT(boost_part::container::container_detail::, Allocator,
-         const_void_pointer, typename boost_part::intrusive::pointer_traits<pointer>::template
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_EVAL_DEFAULT(boost::container::container_detail::, Allocator,
+         const_void_pointer, typename boost::intrusive::pointer_traits<pointer>::template
             rebind_pointer<const void>)
                const_void_pointer;
       //difference_type
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost_part::container::container_detail::, Allocator,
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost::container::container_detail::, Allocator,
          difference_type, std::ptrdiff_t)
             difference_type;
       //size_type
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost_part::container::container_detail::, Allocator,
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost::container::container_detail::, Allocator,
          size_type, std::size_t)
             size_type;
       //propagate_on_container_copy_assignment
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost_part::container::container_detail::, Allocator,
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost::container::container_detail::, Allocator,
          propagate_on_container_copy_assignment, container_detail::false_type)
             propagate_on_container_copy_assignment;
       //propagate_on_container_move_assignment
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost_part::container::container_detail::, Allocator,
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost::container::container_detail::, Allocator,
          propagate_on_container_move_assignment, container_detail::false_type)
             propagate_on_container_move_assignment;
       //propagate_on_container_swap
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost_part::container::container_detail::, Allocator,
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost::container::container_detail::, Allocator,
          propagate_on_container_swap, container_detail::false_type)
             propagate_on_container_swap;
       //is_always_equal
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost_part::container::container_detail::, Allocator,
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost::container::container_detail::, Allocator,
          is_always_equal, container_detail::is_empty<Allocator>)
             is_always_equal;
       //is_partially_propagable
-      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost_part::container::container_detail::, Allocator,
+      typedef BOOST_INTRUSIVE_OBTAIN_TYPE_WITH_DEFAULT(boost::container::container_detail::, Allocator,
          is_partially_propagable, container_detail::false_type)
             is_partially_propagable;
 
       //rebind_alloc & rebind_traits
       #if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
          //C++11
-         template <typename T> using rebind_alloc  = typename boost_part::intrusive::pointer_rebind<Allocator, T>::type;
+         template <typename T> using rebind_alloc  = typename boost::intrusive::pointer_rebind<Allocator, T>::type;
          template <typename T> using rebind_traits = allocator_traits< rebind_alloc<T> >;
       #else    // #if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
          //Some workaround for C++03 or C++11 compilers with no template aliases
          template <typename T>
-         struct rebind_alloc : boost_part::intrusive::pointer_rebind<Allocator,T>::type
+         struct rebind_alloc : boost::intrusive::pointer_rebind<Allocator,T>::type
          {
-            typedef typename boost_part::intrusive::pointer_rebind<Allocator,T>::type Base;
+            typedef typename boost::intrusive::pointer_rebind<Allocator,T>::type Base;
             #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
                template <typename... Args>
-               rebind_alloc(BOOST_FWD_REF(Args)... args) : Base(boost_part::forward<Args>(args)...) {}
+               rebind_alloc(BOOST_FWD_REF(Args)... args) : Base(boost::forward<Args>(args)...) {}
             #else    // #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
                #define BOOST_CONTAINER_ALLOCATOR_TRAITS_REBIND_ALLOC(N) \
                BOOST_MOVE_TMPL_LT##N BOOST_MOVE_CLASS##N BOOST_MOVE_GT##N\
@@ -277,14 +277,14 @@ struct allocator_traits
 
          template <typename T>
          struct rebind_traits
-            : allocator_traits<typename boost_part::intrusive::pointer_rebind<Allocator, T>::type>
+            : allocator_traits<typename boost::intrusive::pointer_rebind<Allocator, T>::type>
          {};
       #endif   // #if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
 
       //portable_rebind_alloc
       template <class T>
       struct portable_rebind_alloc
-      {  typedef typename boost_part::intrusive::pointer_rebind<Allocator, T>::type type;  };
+      {  typedef typename boost::intrusive::pointer_rebind<Allocator, T>::type type;  };
    #endif   //BOOST_CONTAINER_DOXYGEN_INVOKED
 
    //! <b>Returns</b>: <code>a.allocate(n)</code>
@@ -302,7 +302,7 @@ struct allocator_traits
    //! otherwise, invokes <code>a.allocate(n)</code>
    static pointer allocate(Allocator &a, size_type n, const_void_pointer p)
    {
-      const bool value = boost_part::container::container_detail::
+      const bool value = boost::container::container_detail::
          has_member_function_callable_with_allocate
             <Allocator, const size_type, const const_void_pointer>::value;
       container_detail::bool_<value> flag;
@@ -315,7 +315,7 @@ struct allocator_traits
    static void destroy(Allocator &a, T*p) BOOST_NOEXCEPT_OR_NOTHROW
    {
       typedef T* destroy_pointer;
-      const bool value = boost_part::container::container_detail::
+      const bool value = boost::container::container_detail::
          has_member_function_callable_with_destroy
             <Allocator, const destroy_pointer>::value;
       container_detail::bool_<value> flag;
@@ -351,13 +351,13 @@ struct allocator_traits
       template <class T, class ...Args>
       static void construct(Allocator & a, T* p, BOOST_FWD_REF(Args)... args)
       {
-         static const bool value = ::boost_part::move_detail::and_
+         static const bool value = ::boost::move_detail::and_
             < container_detail::is_not_std_allocator<Allocator>
-            , boost_part::container::container_detail::has_member_function_callable_with_construct
+            , boost::container::container_detail::has_member_function_callable_with_construct
                   < Allocator, T*, Args... >
             >::value;
          container_detail::bool_<value> flag;
-         allocator_traits::priv_construct(flag, a, p, ::boost_part::forward<Args>(args)...);
+         allocator_traits::priv_construct(flag, a, p, ::boost::forward<Args>(args)...);
       }
    #endif
 
@@ -408,11 +408,11 @@ struct allocator_traits
    #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
       template<class T, class ...Args>
       static void priv_construct(container_detail::true_type, Allocator &a, T *p, BOOST_FWD_REF(Args) ...args)
-      {  a.construct( p, ::boost_part::forward<Args>(args)...);  }
+      {  a.construct( p, ::boost::forward<Args>(args)...);  }
 
       template<class T, class ...Args>
       static void priv_construct(container_detail::false_type, Allocator &, T *p, BOOST_FWD_REF(Args) ...args)
-      {  ::new((void*)p, boost_container_new_t()) T(::boost_part::forward<Args>(args)...); }
+      {  ::new((void*)p, boost_container_new_t()) T(::boost::forward<Args>(args)...); }
    #else // #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
       public:
 
@@ -420,9 +420,9 @@ struct allocator_traits
       template<class T BOOST_MOVE_I##N BOOST_MOVE_CLASS##N >\
       static void construct(Allocator &a, T *p BOOST_MOVE_I##N BOOST_MOVE_UREF##N)\
       {\
-         static const bool value = ::boost_part::move_detail::and_ \
+         static const bool value = ::boost::move_detail::and_ \
             < container_detail::is_not_std_allocator<Allocator> \
-            , boost_part::container::container_detail::has_member_function_callable_with_construct \
+            , boost::container::container_detail::has_member_function_callable_with_construct \
                   < Allocator, T* BOOST_MOVE_I##N BOOST_MOVE_FWD_T##N > \
             >::value; \
          container_detail::bool_<value> flag;\
@@ -451,7 +451,7 @@ struct allocator_traits
    #endif   // #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
 
    template<class T>
-   static void priv_construct(container_detail::false_type, Allocator &, T *p, const ::boost_part::container::default_init_t&)
+   static void priv_construct(container_detail::false_type, Allocator &, T *p, const ::boost::container::default_init_t&)
    {  ::new((void*)p, boost_container_new_t()) T; }
 
    static bool priv_storage_is_unpropagable(container_detail::true_type, const Allocator &a, pointer p)
@@ -470,7 +470,7 @@ struct allocator_traits
 };
 
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #include <boost/container/detail/config_end.hpp>
 

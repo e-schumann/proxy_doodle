@@ -16,7 +16,7 @@
 #include <boost/thread/csbl/memory/shared_ptr.hpp>
 #include <boost/type_traits/decay.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace detail
   {
@@ -44,7 +44,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {}
 #endif
         impl_type(BOOST_THREAD_RV_REF(F) f_)
-          : f(boost_part::move(f_))
+          : f(boost::move(f_))
         {}
 
         void call()
@@ -78,7 +78,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #endif
       template<typename F>
       nullary_function(BOOST_THREAD_RV_REF(F) f):
-      impl(new impl_type<typename decay<F>::type>(thread_detail::decay_copy(boost_part::forward<F>(f))))
+      impl(new impl_type<typename decay<F>::type>(thread_detail::decay_copy(boost::forward<F>(f))))
       {}
 
       nullary_function()
@@ -96,7 +96,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         BOOST_THREAD_RV(other).impl.reset();
       }
 #else
-      impl(boost_part::move(other.impl))
+      impl(boost::move(other.impl))
       {
       }
 #endif
@@ -115,7 +115,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         impl=BOOST_THREAD_RV(other).impl;
         BOOST_THREAD_RV(other).impl.reset();
 #else
-        impl = boost_part::move(other.impl);
+        impl = boost::move(other.impl);
 #endif
         return *this;
       }
@@ -147,7 +147,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {}
 #endif
         impl_type(BOOST_THREAD_RV_REF(F) f_)
-          : f(boost_part::move(f_))
+          : f(boost::move(f_))
         {}
 
         R call()
@@ -181,7 +181,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #endif
       template<typename F>
       nullary_function(BOOST_THREAD_RV_REF(F) f):
-      impl(new impl_type<typename decay<F>::type>(thread_detail::decay_copy(boost_part::forward<F>(f))))
+      impl(new impl_type<typename decay<F>::type>(thread_detail::decay_copy(boost::forward<F>(f))))
       {}
 
       nullary_function(nullary_function const& other) BOOST_NOEXCEPT :
@@ -195,7 +195,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         BOOST_THREAD_RV(other).impl.reset();
       }
 #else
-      impl(boost_part::move(other.impl))
+      impl(boost::move(other.impl))
       {
       }
 #endif
@@ -218,7 +218,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         impl=BOOST_THREAD_RV(other).impl;
         BOOST_THREAD_RV(other).impl.reset();
 #else
-        impl = boost_part::move(other.impl);
+        impl = boost::move(other.impl);
 #endif
         return *this;
       }

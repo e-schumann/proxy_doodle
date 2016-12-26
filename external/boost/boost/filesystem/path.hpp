@@ -42,7 +42,7 @@
 
 #include <boost/config/abi_prefix.hpp> // must be the last #include
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace filesystem
 {
@@ -138,8 +138,8 @@ namespace filesystem
 
     template <class Source>
     path(Source const& source,
-      typename boost_part::enable_if<path_traits::is_pathable<
-        typename boost_part::decay<Source>::type> >::type* =0)
+      typename boost::enable_if<path_traits::is_pathable<
+        typename boost::decay<Source>::type> >::type* =0)
     {
       path_traits::dispatch(source, m_pathname);
     }
@@ -198,8 +198,8 @@ namespace filesystem
     }
 
     template <class Source>
-      typename boost_part::enable_if<path_traits::is_pathable<
-        typename boost_part::decay<Source>::type>, path&>::type
+      typename boost::enable_if<path_traits::is_pathable<
+        typename boost::decay<Source>::type>, path&>::type
     operator=(Source const& source)
     {
       m_pathname.clear();
@@ -255,8 +255,8 @@ namespace filesystem
     //  -----  concatenation  -----
 
     template <class Source>
-      typename boost_part::enable_if<path_traits::is_pathable<
-        typename boost_part::decay<Source>::type>, path&>::type
+      typename boost::enable_if<path_traits::is_pathable<
+        typename boost::decay<Source>::type>, path&>::type
     operator+=(Source const& source)
     {
       return concat(source);
@@ -271,7 +271,7 @@ namespace filesystem
     path& operator+=(value_type c)          { m_pathname += c; return *this; }
 
     template <class CharT>
-      typename boost_part::enable_if<is_integral<CharT>, path&>::type
+      typename boost::enable_if<is_integral<CharT>, path&>::type
     operator+=(CharT c)
     {
       CharT tmp[2];
@@ -324,8 +324,8 @@ namespace filesystem
     path& operator/=(const path& p);
 
     template <class Source>
-      typename boost_part::enable_if<path_traits::is_pathable<
-        typename boost_part::decay<Source>::type>, path&>::type
+      typename boost::enable_if<path_traits::is_pathable<
+        typename boost::decay<Source>::type>, path&>::type
     operator/=(Source const& source)
     {
       return append(source);
@@ -667,15 +667,15 @@ namespace filesystem
   //------------------------------------------------------------------------------------//
  
   class path::iterator
-    : public boost_part::iterator_facade<
+    : public boost::iterator_facade<
       path::iterator,
       path const,
-      boost_part::bidirectional_traversal_tag >
+      boost::bidirectional_traversal_tag >
   {
   private:
-    friend class boost_part::iterator_core_access;
-    friend class boost_part::filesystem::path;
-    friend class boost_part::filesystem::path::reverse_iterator;
+    friend class boost::iterator_core_access;
+    friend class boost::filesystem::path;
+    friend class boost::filesystem::path::reverse_iterator;
     friend void m_path_iterator_increment(path::iterator & it);
     friend void m_path_iterator_decrement(path::iterator & it);
 
@@ -706,10 +706,10 @@ namespace filesystem
   //------------------------------------------------------------------------------------//
  
   class path::reverse_iterator
-    : public boost_part::iterator_facade<
+    : public boost::iterator_facade<
       path::reverse_iterator,
       path const,
-      boost_part::bidirectional_traversal_tag >
+      boost::bidirectional_traversal_tag >
   {
   public:
 
@@ -719,8 +719,8 @@ namespace filesystem
         m_element = *--itr;
     }
   private:
-    friend class boost_part::iterator_core_access;
-    friend class boost_part::filesystem::path;
+    friend class boost::iterator_core_access;
+    friend class boost::filesystem::path;
 
     const path& dereference() const { return m_element; }
     bool equal(const reverse_iterator& rhs) const { return m_itr == rhs.m_itr; }
@@ -792,7 +792,7 @@ namespace filesystem
   inline path operator/(const path& lhs, const path& rhs)  { return path(lhs) /= rhs; }
 
   //  inserters and extractors
-  //    use boost_part::io::quoted() to handle spaces in paths
+  //    use boost::io::quoted() to handle spaces in paths
   //    use '&' as escape character to ease use for Windows paths
 
   template <class Char, class Traits>
@@ -800,7 +800,7 @@ namespace filesystem
   operator<<(std::basic_ostream<Char, Traits>& os, const path& p)
   {
     return os
-      << boost_part::io::quoted(p.template string<std::basic_string<Char> >(), static_cast<Char>('&'));
+      << boost::io::quoted(p.template string<std::basic_string<Char> >(), static_cast<Char>('&'));
   }
   
   template <class Char, class Traits>
@@ -808,7 +808,7 @@ namespace filesystem
   operator>>(std::basic_istream<Char, Traits>& is, path& p)
   {
     std::basic_string<Char> str;
-    is >> boost_part::io::quoted(str, static_cast<Char>('&'));
+    is >> boost::io::quoted(str, static_cast<Char>('&'));
     p = str;
     return is;
   }
@@ -1006,7 +1006,7 @@ namespace path_traits
   }
 }  // namespace path_traits
 }  // namespace filesystem
-}  // namespace boost_part
+}  // namespace boost
 
 //----------------------------------------------------------------------------//
 

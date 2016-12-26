@@ -32,7 +32,7 @@ namespace std{
 #endif
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 namespace{
 
@@ -64,7 +64,7 @@ const char* names[] = {
 };
 } // namespace
 
-typedef boost_part::basic_regex<char, c_regex_traits<char> > c_regex_type;
+typedef boost::basic_regex<char, c_regex_traits<char> > c_regex_type;
 
 BOOST_REGEX_DECL int BOOST_REGEX_CCALL regcompA(regex_tA* expression, const char* ptr, int f)
 {
@@ -83,7 +83,7 @@ BOOST_REGEX_DECL int BOOST_REGEX_CCALL regcompA(regex_tA* expression, const char
       return REG_E_MEMORY;
 #endif
    // set default flags:
-   boost_part::uint_fast32_t flags = (f & REG_PERLEX) ? 0 : ((f & REG_EXTENDED) ? regex::extended : regex::basic);
+   boost::uint_fast32_t flags = (f & REG_PERLEX) ? 0 : ((f & REG_EXTENDED) ? regex::extended : regex::basic);
    expression->eflags = (f & REG_NEWLINE) ? match_not_dot_newline : match_default;
    // and translate those that are actually set:
 
@@ -126,7 +126,7 @@ BOOST_REGEX_DECL int BOOST_REGEX_CCALL regcompA(regex_tA* expression, const char
       result = static_cast<c_regex_type*>(expression->guts)->error_code();
 #ifndef BOOST_NO_EXCEPTIONS
    } 
-   catch(const boost_part::regex_error& be)
+   catch(const boost::regex_error& be)
    {
       result = be.code();
    }
@@ -196,10 +196,10 @@ BOOST_REGEX_DECL regsize_t BOOST_REGEX_CCALL regerrorA(int code, const regex_tA*
    {
       std::string p;
       if((e) && (e->re_magic == magic_value))
-         p = static_cast<c_regex_type*>(e->guts)->get_traits().error_string(static_cast< ::boost_part::regex_constants::error_type>(code));
+         p = static_cast<c_regex_type*>(e->guts)->get_traits().error_string(static_cast< ::boost::regex_constants::error_type>(code));
       else
       {
-         p = BOOST_REGEX_DETAIL_NS::get_default_error_string(static_cast< ::boost_part::regex_constants::error_type>(code));
+         p = BOOST_REGEX_DETAIL_NS::get_default_error_string(static_cast< ::boost::regex_constants::error_type>(code));
       }
       std::size_t len = p.size();
       if(len < buf_size)
@@ -288,7 +288,7 @@ BOOST_REGEX_DECL void BOOST_REGEX_CCALL regfreeA(regex_tA* expression)
    expression->re_magic = 0;
 }
 
-} // namespace boost_part
+} // namespace boost
 
 
 

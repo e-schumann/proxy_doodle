@@ -13,10 +13,10 @@
 
 #include <boost/core/enable_if.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   template<typename Iterator>
-  typename boost_part::disable_if<is_future_type<Iterator>,void>::type wait_for_all(Iterator begin,Iterator end)
+  typename boost::disable_if<is_future_type<Iterator>,void>::type wait_for_all(Iterator begin,Iterator end)
   {
       for(Iterator current=begin;current!=end;++current)
       {
@@ -26,7 +26,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #ifdef BOOST_NO_CXX11_VARIADIC_TEMPLATES
     template<typename F1,typename F2>
-    typename boost_part::enable_if<is_future_type<F1>,void>::type wait_for_all(F1& f1,F2& f2)
+    typename boost::enable_if<is_future_type<F1>,void>::type wait_for_all(F1& f1,F2& f2)
     {
         f1.wait();
         f2.wait();

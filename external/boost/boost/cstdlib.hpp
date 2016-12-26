@@ -14,7 +14,7 @@
 
 #include <cstdlib>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
    //  The intent is to propose the following for addition to namespace std
    //  in the C++ Standard Library, and to then deprecate EXIT_SUCCESS and

@@ -21,7 +21,7 @@
 #   include <stdint.h>
 # endif
 
-namespace boost_part_has_stdint_h{
+namespace boost_has_stdint_h{
 
 int test()
 {

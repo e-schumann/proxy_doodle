@@ -13,7 +13,7 @@
 
 #include <boost/mpl/int.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace mpl {
 
 struct rational_c_tag : int_<10> {};

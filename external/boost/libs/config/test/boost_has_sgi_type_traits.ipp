@@ -12,7 +12,7 @@
 #include <type_traits.h>
 
 
-namespace boost_part_has_sgi_type_traits{
+namespace boost_has_sgi_type_traits{
 
 struct foo_type{};
 

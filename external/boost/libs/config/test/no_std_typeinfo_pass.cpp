@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_STD_TYPEINFO
 #include "boost_no_std_typeinfo.ipp"
 #else
-namespace boost_part_no_std_typeinfo = empty_boost;
+namespace boost_no_std_typeinfo = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_std_typeinfo::test();
+   return boost_no_std_typeinfo::test();
 }
 

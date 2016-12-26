@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_SHARED_PTR
 #include "boost_has_tr1_shared_ptr.ipp"
 #else
-namespace boost_part_has_tr1_shared_ptr = empty_boost;
+namespace boost_has_tr1_shared_ptr = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_shared_ptr::test();
+   return boost_has_tr1_shared_ptr::test();
 }
 

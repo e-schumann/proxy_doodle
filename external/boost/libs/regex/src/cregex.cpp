@@ -13,7 +13,7 @@
   *   LOCATION:    see http://www.boost.org for most recent version.
   *   FILE:        cregex.cpp
   *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: Implements high level class boost_part::RexEx
+  *   DESCRIPTION: Implements high level class boost::RexEx
   */
 
 
@@ -25,7 +25,7 @@
 #include <map>
 #include <list>
 #include <boost/regex/v4/fileiter.hpp>
-typedef boost_part::match_flag_type match_flag_type;
+typedef boost::match_flag_type match_flag_type;
 #include <cstdio>
 
 #ifdef BOOST_MSVC
@@ -35,7 +35,7 @@ typedef boost_part::match_flag_type match_flag_type;
 #pragma warning(disable:981 383)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 #ifdef __BORLANDC__
 #if __BORLANDC__ < 0x530
@@ -180,7 +180,7 @@ RegEx& RegEx::operator=(const char* p)
 
 unsigned int RegEx::SetExpression(const char* p, bool icase)
 {
-   boost_part::uint_fast32_t f = icase ? regex::normal | regex::icase : regex::normal;
+   boost::uint_fast32_t f = icase ? regex::normal | regex::icase : regex::normal;
    return pdata->e.set_expression(p, f);
 }
 
@@ -581,7 +581,7 @@ std::string RegEx::What(int i)const
 
 const std::size_t RegEx::npos = ~static_cast<std::size_t>(0);
 
-} // namespace boost_part
+} // namespace boost
 
 #if defined(__BORLANDC__) && (__BORLANDC__ >= 0x550) && (__BORLANDC__ <= 0x551) && !defined(_RWSTD_COMPILE_INSTANTIATE)
 //

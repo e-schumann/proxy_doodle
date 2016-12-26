@@ -17,7 +17,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 enum xtime_clock_types
 {
@@ -46,21 +46,21 @@ struct xtime
 
     operator system_time() const
     {
-        return boost_part::posix_time::from_time_t(0)+
-            boost_part::posix_time::seconds(static_cast<long>(sec))+
+        return boost::posix_time::from_time_t(0)+
+            boost::posix_time::seconds(static_cast<long>(sec))+
 #ifdef BOOST_DATE_TIME_HAS_NANOSECONDS
-            boost_part::posix_time::nanoseconds(nsec);
+            boost::posix_time::nanoseconds(nsec);
 #else
-        boost_part::posix_time::microseconds((nsec+500)/1000);
+        boost::posix_time::microseconds((nsec+500)/1000);
 #endif
     }
 
 };
 
-inline xtime get_xtime(boost_part::system_time const& abs_time)
+inline xtime get_xtime(boost::system_time const& abs_time)
 {
     xtime res;
-    boost_part::posix_time::time_duration const time_since_epoch=abs_time-boost_part::posix_time::from_time_t(0);
+    boost::posix_time::time_duration const time_since_epoch=abs_time-boost::posix_time::from_time_t(0);
 
     res.sec=static_cast<xtime::xtime_sec_t>(time_since_epoch.total_seconds());
     res.nsec=static_cast<xtime::xtime_nsec_t>(time_since_epoch.fractional_seconds()*(1000000000/time_since_epoch.ticks_per_second()));
@@ -86,7 +86,7 @@ inline int xtime_cmp(const xtime& xt1, const xtime& xt2)
         return (xt1.sec > xt2.sec) ? 1 : -1;
 }
 
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/config/abi_suffix.hpp>
 #endif

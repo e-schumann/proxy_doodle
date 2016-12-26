@@ -20,7 +20,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
     namespace this_thread
@@ -60,7 +60,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #if defined BOOST_THREAD_THROW_IF_PRECONDITION_NOT_SATISFIED
         if(! m.owns_lock())
         {
-            boost_part::throw_exception(condition_error(-1, "boost_part::condition_variable::wait() failed precondition mutex not owned"));
+            boost::throw_exception(condition_error(-1, "boost::condition_variable::wait() failed precondition mutex not owned"));
         }
 #endif
         int res=0;
@@ -80,7 +80,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #endif
         if(res && res != EINTR)
         {
-            boost_part::throw_exception(condition_error(res, "boost_part::condition_variable::wait failed in pthread_cond_wait"));
+            boost::throw_exception(condition_error(res, "boost::condition_variable::wait failed in pthread_cond_wait"));
         }
     }
 
@@ -91,7 +91,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #if defined BOOST_THREAD_THROW_IF_PRECONDITION_NOT_SATISFIED
         if (!m.owns_lock())
         {
-            boost_part::throw_exception(condition_error(EPERM, "boost_part::condition_variable::do_wait_until() failed precondition mutex not owned"));
+            boost::throw_exception(condition_error(EPERM, "boost::condition_variable::do_wait_until() failed precondition mutex not owned"));
         }
 #endif
         int cond_res;
@@ -115,7 +115,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
         if(cond_res)
         {
-            boost_part::throw_exception(condition_error(cond_res, "boost_part::condition_variable::do_wait_until failed in pthread_cond_timedwait"));
+            boost::throw_exception(condition_error(cond_res, "boost::condition_variable::do_wait_until failed in pthread_cond_timedwait"));
         }
         return true;
     }
@@ -123,7 +123,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     inline void condition_variable::notify_one() BOOST_NOEXCEPT
     {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-        boost_part::pthread::pthread_mutex_scoped_lock internal_lock(&internal_mutex);
+        boost::pthread::pthread_mutex_scoped_lock internal_lock(&internal_mutex);
 #endif
         BOOST_VERIFY(!pthread_cond_signal(&cond));
     }
@@ -131,7 +131,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     inline void condition_variable::notify_all() BOOST_NOEXCEPT
     {
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-        boost_part::pthread::pthread_mutex_scoped_lock internal_lock(&internal_mutex);
+        boost::pthread::pthread_mutex_scoped_lock internal_lock(&internal_mutex);
 #endif
         BOOST_VERIFY(!pthread_cond_broadcast(&cond));
     }
@@ -148,13 +148,13 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             int const res=pthread_mutex_init(&internal_mutex,NULL);
             if(res)
             {
-                boost_part::throw_exception(thread_resource_error(res, "boost_part::condition_variable_any::condition_variable_any() failed in pthread_mutex_init"));
+                boost::throw_exception(thread_resource_error(res, "boost::condition_variable_any::condition_variable_any() failed in pthread_mutex_init"));
             }
             int const res2 = detail::monotonic_pthread_cond_init(cond);
             if(res2)
             {
                 BOOST_VERIFY(!pthread_mutex_destroy(&internal_mutex));
-                boost_part::throw_exception(thread_resource_error(res2, "boost_part::condition_variable_any::condition_variable_any() failed in detail::monotonic_pthread_cond_init"));
+                boost::throw_exception(thread_resource_error(res2, "boost::condition_variable_any::condition_variable_any() failed in detail::monotonic_pthread_cond_init"));
             }
         }
         ~condition_variable_any()
@@ -172,7 +172,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
                 detail::interruption_checker check_for_interruption(&internal_mutex,&cond);
 #else
-                boost_part::pthread::pthread_mutex_scoped_lock check_for_interruption(&internal_mutex);
+                boost::pthread::pthread_mutex_scoped_lock check_for_interruption(&internal_mutex);
 #endif
                 guard.activate(m);
                 res=pthread_cond_wait(&cond,&internal_mutex);
@@ -182,7 +182,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #endif
             if(res)
             {
-                boost_part::throw_exception(condition_error(res, "boost_part::condition_variable_any::wait() failed in pthread_cond_wait"));
+                boost::throw_exception(condition_error(res, "boost::condition_variable_any::wait() failed in pthread_cond_wait"));
             }
         }
 
@@ -194,7 +194,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #if defined BOOST_THREAD_USES_DATETIME
         template<typename lock_type>
-        bool timed_wait(lock_type& m,boost_part::system_time const& abs_time)
+        bool timed_wait(lock_type& m,boost::system_time const& abs_time)
         {
             struct timespec const timeout=detail::to_timespec(abs_time);
             return do_wait_until(m, timeout);
@@ -212,7 +212,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
 
         template<typename lock_type,typename predicate_type>
-        bool timed_wait(lock_type& m,boost_part::system_time const& abs_time, predicate_type pred)
+        bool timed_wait(lock_type& m,boost::system_time const& abs_time, predicate_type pred)
         {
             while (!pred())
             {
@@ -286,7 +286,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
             using namespace chrono;
             nanoseconds d = tp.time_since_epoch();
-            timespec ts = boost_part::detail::to_timespec(d);
+            timespec ts = boost::detail::to_timespec(d);
             if (do_wait_until(lk, ts)) return cv_status::no_timeout;
             else return cv_status::timeout;
         }
@@ -341,7 +341,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
             using namespace chrono;
             nanoseconds d = tp.time_since_epoch();
-            timespec ts = boost_part::detail::to_timespec(d);
+            timespec ts = boost::detail::to_timespec(d);
             if (do_wait_until(lock, ts)) return cv_status::no_timeout;
             else return cv_status::timeout;
         }
@@ -372,22 +372,22 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 const chrono::duration<Rep, Period>& d,
                 Predicate pred)
         {
-          return wait_until(lock, chrono::steady_clock::now() + d, boost_part::move(pred));
+          return wait_until(lock, chrono::steady_clock::now() + d, boost::move(pred));
         }
 #endif
 
         void notify_one() BOOST_NOEXCEPT
         {
-            boost_part::pthread::pthread_mutex_scoped_lock internal_lock(&internal_mutex);
+            boost::pthread::pthread_mutex_scoped_lock internal_lock(&internal_mutex);
             BOOST_VERIFY(!pthread_cond_signal(&cond));
         }
 
         void notify_all() BOOST_NOEXCEPT
         {
-            boost_part::pthread::pthread_mutex_scoped_lock internal_lock(&internal_mutex);
+            boost::pthread::pthread_mutex_scoped_lock internal_lock(&internal_mutex);
             BOOST_VERIFY(!pthread_cond_broadcast(&cond));
         }
-    private: // used by boost_part::thread::try_join_until
+    private: // used by boost::thread::try_join_until
 
         template <class lock_type>
         bool do_wait_until(
@@ -400,7 +400,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
               detail::interruption_checker check_for_interruption(&internal_mutex,&cond);
 #else
-              boost_part::pthread::pthread_mutex_scoped_lock check_for_interruption(&internal_mutex);
+              boost::pthread::pthread_mutex_scoped_lock check_for_interruption(&internal_mutex);
 #endif
               guard.activate(m);
               res=pthread_cond_timedwait(&cond,&internal_mutex,&timeout);
@@ -414,7 +414,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
           }
           if(res)
           {
-              boost_part::throw_exception(condition_error(res, "boost_part::condition_variable_any::do_wait_until() failed in pthread_cond_timedwait"));
+              boost::throw_exception(condition_error(res, "boost::condition_variable_any::do_wait_until() failed in pthread_cond_timedwait"));
           }
           return true;
         }

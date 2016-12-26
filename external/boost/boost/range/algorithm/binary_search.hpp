@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -30,7 +30,7 @@ template<class ForwardRange, class Value>
 inline bool binary_search(const ForwardRange& rng, const Value& val)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::binary_search(boost_part::begin(rng), boost_part::end(rng), val);
+    return std::binary_search(boost::begin(rng), boost::end(rng), val);
 }
 
 /// \overload
@@ -39,11 +39,11 @@ inline bool binary_search(const ForwardRange& rng, const Value& val,
                           BinaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::binary_search(boost_part::begin(rng), boost_part::end(rng), val, pred);
+    return std::binary_search(boost::begin(rng), boost::end(rng), val, pred);
 }
 
     } // namespace range
     using range::binary_search;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

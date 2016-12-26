@@ -15,7 +15,7 @@
 #include <boost/test/utils/basic_cstring/basic_cstring.hpp>
 #include <boost/test/detail/workaround.hpp>
 
-#define BOOST_TEST_L( s )         ::boost_part::unit_test::const_string( s, sizeof( s ) - 1 )
+#define BOOST_TEST_L( s )         ::boost::unit_test::const_string( s, sizeof( s ) - 1 )
 #define BOOST_TEST_STRINGIZE( s ) BOOST_TEST_L( BOOST_STRINGIZE( s ) )
 #define BOOST_TEST_EMPTY_STRING   BOOST_TEST_L( "" )
 
@@ -23,7 +23,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 typedef unsigned long   counter_t;
@@ -87,7 +87,7 @@ T static_constant<T>::value;
 //____________________________________________________________________________//
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 //____________________________________________________________________________//
 

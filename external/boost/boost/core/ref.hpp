@@ -36,7 +36,7 @@
 /**
  Boost namespace.
 */
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 #if defined( BOOST_MSVC ) && BOOST_WORKAROUND( BOOST_MSVC, == 1600 )
@@ -70,11 +70,11 @@ public:
 
      @remark Does not throw.
     */
-    BOOST_FORCEINLINE explicit reference_wrapper(T& t): t_(boost_part::addressof(t)) {}
+    BOOST_FORCEINLINE explicit reference_wrapper(T& t): t_(boost::addressof(t)) {}
 
 #if defined( BOOST_MSVC ) && BOOST_WORKAROUND( BOOST_MSVC, == 1600 )
 
-    BOOST_FORCEINLINE explicit reference_wrapper( T & t, ref_workaround_tag ): t_( boost_part::addressof( t ) ) {}
+    BOOST_FORCEINLINE explicit reference_wrapper( T & t, ref_workaround_tag ): t_( boost::addressof( t ) ) {}
 
 #endif
 
@@ -296,6 +296,6 @@ template<class T> BOOST_FORCEINLINE T* get_pointer( reference_wrapper<T> const &
  @endcond
 */
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // #ifndef BOOST_CORE_REF_HPP

@@ -11,7 +11,7 @@
 //                 and can be deduced through a function call.
 
 
-namespace boost_part_no_template_templates{
+namespace boost_no_template_templates{
 
 
 template<class T>

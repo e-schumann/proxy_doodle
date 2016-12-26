@@ -11,7 +11,7 @@
 //                 conflict with a specialisation for a cv-unqualififed type.
 
 
-namespace boost_part_no_cv_specializations{
+namespace boost_no_cv_specializations{
 
 template <class T>
 struct is_int

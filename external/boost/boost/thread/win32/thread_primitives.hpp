@@ -27,7 +27,7 @@
 #if defined( BOOST_USE_WINDOWS_H )
 # include <windows.h>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -127,7 +127,7 @@ struct _SYSTEM_INFO;
 }
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -221,7 +221,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -357,7 +357,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 handle const res = create_event(0, type, state);
                 if(!res)
                 {
-                    boost_part::throw_exception(thread_resource_error());
+                    boost::throw_exception(thread_resource_error());
                 }
                 return res;
             }
@@ -381,7 +381,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 handle const res=create_anonymous_semaphore_nothrow(initial_count,max_count);
                 if(!res)
                 {
-                    boost_part::throw_exception(thread_resource_error());
+                    boost::throw_exception(thread_resource_error());
                 }
                 return res;
             }
@@ -394,7 +394,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 bool const success=DuplicateHandle(current_process,source,current_process,&new_handle,0,false,same_access_flag)!=0;
                 if(!success)
                 {
-                    boost_part::throw_exception(thread_resource_error());
+                    boost::throw_exception(thread_resource_error());
                 }
                 return new_handle;
             }
@@ -420,15 +420,15 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #if BOOST_PLAT_WINDOWS_RUNTIME
                     std::this_thread::yield();
 #else
-                    ::boost_part::detail::win32::Sleep(0);
+                    ::boost::detail::win32::Sleep(0);
 #endif
                 }
                 else
                 {
 #if BOOST_PLAT_WINDOWS_RUNTIME
-                    ::boost_part::detail::win32::WaitForSingleObjectEx(::boost_part::detail::win32::GetCurrentThread(), milliseconds, 0);
+                    ::boost::detail::win32::WaitForSingleObjectEx(::boost::detail::win32::GetCurrentThread(), milliseconds, 0);
 #else
-                    ::boost_part::detail::win32::Sleep(milliseconds);
+                    ::boost::detail::win32::Sleep(milliseconds);
 #endif
                 }
             }
@@ -442,7 +442,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
                 ~scoped_winrt_thread()
                 {
-                    if (m_completionHandle != ::boost_part::detail::win32::invalid_handle_value)
+                    if (m_completionHandle != ::boost::detail::win32::invalid_handle_value)
                     {
                         CloseHandle(m_completionHandle);
                     }
@@ -453,7 +453,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
                 handle waitable_handle() const
                 {
-                    BOOST_ASSERT(m_completionHandle != ::boost_part::detail::win32::invalid_handle_value);
+                    BOOST_ASSERT(m_completionHandle != ::boost::detail::win32::invalid_handle_value);
                     return m_completionHandle;
                 }
 
@@ -529,7 +529,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #if defined(BOOST_MSVC) && (_MSC_VER>=1400)  && !defined(UNDER_CE)
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -561,7 +561,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 }
 #define BOOST_THREAD_BTS_DEFINED
 #elif (defined(BOOST_MSVC) || defined(BOOST_INTEL_WIN)) && defined(_M_IX86)
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -621,7 +621,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #ifndef BOOST_THREAD_BTS_DEFINED
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {

@@ -15,32 +15,32 @@
    (\
       /* Lhs==pointer and Rhs==pointer */\
       (\
-         ::boost_part::is_pointer< Lhs_noref >::value && \
-         ::boost_part::is_pointer< Rhs_noref >::value\
+         ::boost::is_pointer< Lhs_noref >::value && \
+         ::boost::is_pointer< Rhs_noref >::value\
       ) || \
       /* Lhs==void* and Rhs==fundamental */\
       (\
-         ::boost_part::is_pointer< Lhs_noref >::value && \
-         ::boost_part::is_void< Lhs_noptr >::value && \
-         ::boost_part::is_fundamental< Rhs_nocv >::value\
+         ::boost::is_pointer< Lhs_noref >::value && \
+         ::boost::is_void< Lhs_noptr >::value && \
+         ::boost::is_fundamental< Rhs_nocv >::value\
       ) || \
       /* Rhs==void* and Lhs==fundamental */\
       (\
-         ::boost_part::is_pointer< Rhs_noref >::value && \
-         ::boost_part::is_void< Rhs_noptr >::value && \
-         ::boost_part::is_fundamental< Lhs_nocv >::value\
+         ::boost::is_pointer< Rhs_noref >::value && \
+         ::boost::is_void< Rhs_noptr >::value && \
+         ::boost::is_fundamental< Lhs_nocv >::value\
       ) || \
       /* Lhs==pointer and Rhs==fundamental and Rhs!=integral */\
       (\
-         ::boost_part::is_pointer< Lhs_noref >::value && \
-         ::boost_part::is_fundamental< Rhs_nocv >::value && \
-         (!  ::boost_part::is_integral< Rhs_noref >::value )\
+         ::boost::is_pointer< Lhs_noref >::value && \
+         ::boost::is_fundamental< Rhs_nocv >::value && \
+         (!  ::boost::is_integral< Rhs_noref >::value )\
       ) || \
       /* Rhs==pointer and Lhs==fundamental and Lhs!=integral */\
       (\
-         ::boost_part::is_pointer< Rhs_noref >::value && \
-         ::boost_part::is_fundamental< Lhs_nocv >::value && \
-         (!  ::boost_part::is_integral< Lhs_noref >::value )\
+         ::boost::is_pointer< Rhs_noref >::value && \
+         ::boost::is_fundamental< Lhs_nocv >::value && \
+         (!  ::boost::is_integral< Lhs_noref >::value )\
       )\
    )
 

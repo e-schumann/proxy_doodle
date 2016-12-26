@@ -27,10 +27,10 @@
 #include <boost/move/detail/iterator_traits.hpp>
 #include <boost/move/detail/meta_utils_core.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace intrusive {
 
-using boost_part::movelib::iterator_traits;
+using boost::movelib::iterator_traits;
 
 ////////////////////
 //    iterator
@@ -50,9 +50,9 @@ struct iterator
 ////////////////////////////////////////
 template<class I, class Tag, class R = void>
 struct iterator_enable_if_tag
-   : ::boost_part::move_detail::enable_if_c
-      < ::boost_part::move_detail::is_same
-         < typename boost_part::intrusive::iterator_traits<I>::iterator_category 
+   : ::boost::move_detail::enable_if_c
+      < ::boost::move_detail::is_same
+         < typename boost::intrusive::iterator_traits<I>::iterator_category 
          , Tag
          >::value
          , R>
@@ -60,9 +60,9 @@ struct iterator_enable_if_tag
 
 template<class I, class Tag, class R = void>
 struct iterator_disable_if_tag
-   : ::boost_part::move_detail::enable_if_c
-      < !::boost_part::move_detail::is_same
-         < typename boost_part::intrusive::iterator_traits<I>::iterator_category 
+   : ::boost::move_detail::enable_if_c
+      < !::boost::move_detail::is_same
+         < typename boost::intrusive::iterator_traits<I>::iterator_category 
          , Tag
          >::value
          , R>
@@ -73,12 +73,12 @@ struct iterator_disable_if_tag
 ////////////////////////////////////////
 template<class I, class Tag>
 struct iterator_enable_if_tag_difference_type
-   : iterator_enable_if_tag<I, Tag, typename boost_part::intrusive::iterator_traits<I>::difference_type>
+   : iterator_enable_if_tag<I, Tag, typename boost::intrusive::iterator_traits<I>::difference_type>
 {};
 
 template<class I, class Tag>
 struct iterator_disable_if_tag_difference_type
-   : iterator_disable_if_tag<I, Tag, typename boost_part::intrusive::iterator_traits<I>::difference_type>
+   : iterator_disable_if_tag<I, Tag, typename boost::intrusive::iterator_traits<I>::difference_type>
 {};
 
 ////////////////////
@@ -151,6 +151,6 @@ BOOST_INTRUSIVE_FORCEINLINE T * iterator_arrow_result(T *p)
 {  return p;   }
 
 } //namespace intrusive
-} //namespace boost_part
+} //namespace boost
 
 #endif //BOOST_INTRUSIVE_DETAIL_ITERATOR_HPP

@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_ARRAY
 #include "boost_has_tr1_array.ipp"
 #else
-namespace boost_part_has_tr1_array = empty_boost;
+namespace boost_has_tr1_array = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_array::test();
+   return boost_has_tr1_array::test();
 }
 

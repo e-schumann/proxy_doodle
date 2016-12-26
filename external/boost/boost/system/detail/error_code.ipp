@@ -31,7 +31,7 @@
 # endif
 
 //----------------------------------------------------------------------------//
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace system
     {
@@ -67,9 +67,9 @@ namespace
 
   std::string generic_error_category::message( int ev ) const
   {
-    using namespace boost_part::system::errc;
+    using namespace boost::system::errc;
 #if defined(__PGI)
-      using boost_part::system::errc::invalid_argument;
+      using boost::system::errc::invalid_argument;
 #endif
 
     static std::string unknown_err( "Unknown error" );
@@ -165,9 +165,9 @@ namespace
 
   error_condition system_error_category::default_error_condition( int ev ) const BOOST_SYSTEM_NOEXCEPT
   {
-    using namespace boost_part::system::errc;
+    using namespace boost::system::errc;
 #if defined(__PGI)
-      using boost_part::system::errc::invalid_argument;
+      using boost::system::errc::invalid_argument;
 #endif
 
 # if defined(BOOST_WINDOWS_API)
@@ -464,4 +464,4 @@ namespace
     }
 
   } // namespace system
-} // namespace boost_part
+} // namespace boost

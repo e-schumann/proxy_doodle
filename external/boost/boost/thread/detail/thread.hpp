@@ -51,7 +51,7 @@
 #pragma warning(disable:4251)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
     namespace detail
@@ -66,7 +66,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       public:
           BOOST_THREAD_NO_COPYABLE(thread_data)
             thread_data(BOOST_THREAD_RV_REF(F) f_, BOOST_THREAD_RV_REF(ArgTypes)... args_):
-              fp(boost_part::forward<F>(f_), boost_part::forward<ArgTypes>(args_)...)
+              fp(boost::forward<F>(f_), boost::forward<ArgTypes>(args_)...)
             {}
           template <std::size_t ...Indices>
           void run2(tuple_indices<Indices...>)
@@ -94,7 +94,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             BOOST_THREAD_NO_COPYABLE(thread_data)
 #ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
               thread_data(BOOST_THREAD_RV_REF(F) f_):
-                f(boost_part::forward<F>(f_))
+                f(boost::forward<F>(f_))
               {}
 // This overloading must be removed if we want the packaged_task's tests to pass.
 //            thread_data(F& f_):
@@ -121,14 +121,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         };
 
         template<typename F>
-        class thread_data<boost_part::reference_wrapper<F> >:
+        class thread_data<boost::reference_wrapper<F> >:
             public detail::thread_data_base
         {
         private:
             F& f;
         public:
             BOOST_THREAD_NO_COPYABLE(thread_data)
-            thread_data(boost_part::reference_wrapper<F> f_):
+            thread_data(boost::reference_wrapper<F> f_):
                 f(f_)
             {}
             void run()
@@ -138,14 +138,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         };
 
         template<typename F>
-        class thread_data<const boost_part::reference_wrapper<F> >:
+        class thread_data<const boost::reference_wrapper<F> >:
             public detail::thread_data_base
         {
         private:
             F& f;
         public:
             BOOST_THREAD_NO_COPYABLE(thread_data)
-            thread_data(const boost_part::reference_wrapper<F> f_):
+            thread_data(const boost::reference_wrapper<F> f_):
                 f(f_)
             {}
             void run()
@@ -177,14 +177,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
           if (!start_thread_noexcept())
           {
-            boost_part::throw_exception(thread_resource_error());
+            boost::throw_exception(thread_resource_error());
           }
         }
         void start_thread(const attributes& attr)
         {
           if (!start_thread_noexcept(attr))
           {
-            boost_part::throw_exception(thread_resource_error());
+            boost::throw_exception(thread_resource_error());
           }
         }
 
@@ -198,9 +198,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         static inline detail::thread_data_ptr make_thread_info(BOOST_THREAD_RV_REF(F) f, BOOST_THREAD_RV_REF(ArgTypes)... args)
         {
             return detail::thread_data_ptr(detail::heap_new<
-                  detail::thread_data<typename boost_part::remove_reference<F>::type, ArgTypes...>
+                  detail::thread_data<typename boost::remove_reference<F>::type, ArgTypes...>
                   >(
-                    boost_part::forward<F>(f), boost_part::forward<ArgTypes>(args)...
+                    boost::forward<F>(f), boost::forward<ArgTypes>(args)...
                   )
                 );
         }
@@ -208,20 +208,20 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         template<typename F>
         static inline detail::thread_data_ptr make_thread_info(BOOST_THREAD_RV_REF(F) f)
         {
-            return detail::thread_data_ptr(detail::heap_new<detail::thread_data<typename boost_part::remove_reference<F>::type> >(
-                boost_part::forward<F>(f)));
+            return detail::thread_data_ptr(detail::heap_new<detail::thread_data<typename boost::remove_reference<F>::type> >(
+                boost::forward<F>(f)));
         }
 #endif
         static inline detail::thread_data_ptr make_thread_info(void (*f)())
         {
             return detail::thread_data_ptr(detail::heap_new<detail::thread_data<void(*)()> >(
-                boost_part::forward<void(*)()>(f)));
+                boost::forward<void(*)()>(f)));
         }
 #else
         template<typename F>
         static inline detail::thread_data_ptr make_thread_info(F f
             , typename disable_if_c<
-                //boost_part::thread_detail::is_convertible<F&,BOOST_THREAD_RV_REF(F)>::value ||
+                //boost::thread_detail::is_convertible<F&,BOOST_THREAD_RV_REF(F)>::value ||
                 is_same<typename decay<F>::type, thread>::value,
                 dummy* >::type=0
                 )
@@ -260,7 +260,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         explicit thread(BOOST_THREAD_RV_REF(F) f
         //, typename disable_if<is_same<typename decay<F>::type, thread>, dummy* >::type=0
         ):
-          thread_info(make_thread_info(thread_detail::decay_copy(boost_part::forward<F>(f))))
+          thread_info(make_thread_info(thread_detail::decay_copy(boost::forward<F>(f))))
         {
             start_thread();
         }
@@ -268,7 +268,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
           class F
         >
         thread(attributes const& attrs, BOOST_THREAD_RV_REF(F) f):
-          thread_info(make_thread_info(thread_detail::decay_copy(boost_part::forward<F>(f))))
+          thread_info(make_thread_info(thread_detail::decay_copy(boost::forward<F>(f))))
         {
             start_thread(attrs);
         }
@@ -291,8 +291,8 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         template <class F>
         explicit thread(F f
         , typename disable_if_c<
-        boost_part::thread_detail::is_rv<F>::value // todo ass a thread_detail::is_rv
-        //boost_part::thread_detail::is_convertible<F&,BOOST_THREAD_RV_REF(F)>::value
+        boost::thread_detail::is_rv<F>::value // todo ass a thread_detail::is_rv
+        //boost::thread_detail::is_convertible<F&,BOOST_THREAD_RV_REF(F)>::value
             //|| is_same<typename decay<F>::type, thread>::value
            , dummy* >::type=0
         ):
@@ -302,8 +302,8 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
         template <class F>
         thread(attributes const& attrs, F f
-            , typename disable_if<boost_part::thread_detail::is_rv<F>, dummy* >::type=0
-            //, typename disable_if<boost_part::thread_detail::is_convertible<F&,BOOST_THREAD_RV_REF(F) >, dummy* >::type=0
+            , typename disable_if<boost::thread_detail::is_rv<F>, dummy* >::type=0
+            //, typename disable_if<boost::thread_detail::is_convertible<F&,BOOST_THREAD_RV_REF(F) >, dummy* >::type=0
         ):
             thread_info(make_thread_info(f))
         {
@@ -315,7 +315,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         , typename disable_if<is_same<typename decay<F>::type, thread>, dummy* >::type=0
         ):
 #ifdef BOOST_THREAD_USES_MOVE
-        thread_info(make_thread_info(boost_part::move<F>(f))) // todo : Add forward
+        thread_info(make_thread_info(boost::move<F>(f))) // todo : Add forward
 #else
         thread_info(make_thread_info(f)) // todo : Add forward
 #endif
@@ -326,7 +326,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         template <class F>
         thread(attributes const& attrs, BOOST_THREAD_RV_REF(F) f):
 #ifdef BOOST_THREAD_USES_MOVE
-            thread_info(make_thread_info(boost_part::move<F>(f))) // todo : Add forward
+            thread_info(make_thread_info(boost::move<F>(f))) // todo : Add forward
 #else
             thread_info(make_thread_info(f)) // todo : Add forward
 #endif
@@ -366,9 +366,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         template <class F, class Arg, class ...Args>
         thread(F&& f, Arg&& arg, Args&&... args) :
           thread_info(make_thread_info(
-              thread_detail::decay_copy(boost_part::forward<F>(f)),
-              thread_detail::decay_copy(boost_part::forward<Arg>(arg)),
-              thread_detail::decay_copy(boost_part::forward<Args>(args))...)
+              thread_detail::decay_copy(boost::forward<F>(f)),
+              thread_detail::decay_copy(boost::forward<Arg>(arg)),
+              thread_detail::decay_copy(boost::forward<Args>(args))...)
           )
 
         {
@@ -377,9 +377,9 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         template <class F, class Arg, class ...Args>
         thread(attributes const& attrs, F&& f, Arg&& arg, Args&&... args) :
           thread_info(make_thread_info(
-              thread_detail::decay_copy(boost_part::forward<F>(f)),
-              thread_detail::decay_copy(boost_part::forward<Arg>(arg)),
-              thread_detail::decay_copy(boost_part::forward<Args>(args))...)
+              thread_detail::decay_copy(boost::forward<F>(f)),
+              thread_detail::decay_copy(boost::forward<Arg>(arg)),
+              thread_detail::decay_copy(boost::forward<Args>(args))...)
           )
 
         {
@@ -387,63 +387,63 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
 #else
         template <class F,class A1>
-        thread(F f,A1 a1,typename disable_if<boost_part::thread_detail::is_convertible<F&,thread_attributes >, dummy* >::type=0):
-            thread_info(make_thread_info(boost_part::bind(boost_part::type<void>(),f,a1)))
+        thread(F f,A1 a1,typename disable_if<boost::thread_detail::is_convertible<F&,thread_attributes >, dummy* >::type=0):
+            thread_info(make_thread_info(boost::bind(boost::type<void>(),f,a1)))
         {
             start_thread();
         }
         template <class F,class A1,class A2>
         thread(F f,A1 a1,A2 a2):
-            thread_info(make_thread_info(boost_part::bind(boost_part::type<void>(),f,a1,a2)))
+            thread_info(make_thread_info(boost::bind(boost::type<void>(),f,a1,a2)))
         {
             start_thread();
         }
 
         template <class F,class A1,class A2,class A3>
         thread(F f,A1 a1,A2 a2,A3 a3):
-            thread_info(make_thread_info(boost_part::bind(boost_part::type<void>(),f,a1,a2,a3)))
+            thread_info(make_thread_info(boost::bind(boost::type<void>(),f,a1,a2,a3)))
         {
             start_thread();
         }
 
         template <class F,class A1,class A2,class A3,class A4>
         thread(F f,A1 a1,A2 a2,A3 a3,A4 a4):
-            thread_info(make_thread_info(boost_part::bind(boost_part::type<void>(),f,a1,a2,a3,a4)))
+            thread_info(make_thread_info(boost::bind(boost::type<void>(),f,a1,a2,a3,a4)))
         {
             start_thread();
         }
 
         template <class F,class A1,class A2,class A3,class A4,class A5>
         thread(F f,A1 a1,A2 a2,A3 a3,A4 a4,A5 a5):
-            thread_info(make_thread_info(boost_part::bind(boost_part::type<void>(),f,a1,a2,a3,a4,a5)))
+            thread_info(make_thread_info(boost::bind(boost::type<void>(),f,a1,a2,a3,a4,a5)))
         {
             start_thread();
         }
 
         template <class F,class A1,class A2,class A3,class A4,class A5,class A6>
         thread(F f,A1 a1,A2 a2,A3 a3,A4 a4,A5 a5,A6 a6):
-            thread_info(make_thread_info(boost_part::bind(boost_part::type<void>(),f,a1,a2,a3,a4,a5,a6)))
+            thread_info(make_thread_info(boost::bind(boost::type<void>(),f,a1,a2,a3,a4,a5,a6)))
         {
             start_thread();
         }
 
         template <class F,class A1,class A2,class A3,class A4,class A5,class A6,class A7>
         thread(F f,A1 a1,A2 a2,A3 a3,A4 a4,A5 a5,A6 a6,A7 a7):
-            thread_info(make_thread_info(boost_part::bind(boost_part::type<void>(),f,a1,a2,a3,a4,a5,a6,a7)))
+            thread_info(make_thread_info(boost::bind(boost::type<void>(),f,a1,a2,a3,a4,a5,a6,a7)))
         {
             start_thread();
         }
 
         template <class F,class A1,class A2,class A3,class A4,class A5,class A6,class A7,class A8>
         thread(F f,A1 a1,A2 a2,A3 a3,A4 a4,A5 a5,A6 a6,A7 a7,A8 a8):
-            thread_info(make_thread_info(boost_part::bind(boost_part::type<void>(),f,a1,a2,a3,a4,a5,a6,a7,a8)))
+            thread_info(make_thread_info(boost::bind(boost::type<void>(),f,a1,a2,a3,a4,a5,a6,a7,a8)))
         {
             start_thread();
         }
 
         template <class F,class A1,class A2,class A3,class A4,class A5,class A6,class A7,class A8,class A9>
         thread(F f,A1 a1,A2 a2,A3 a3,A4 a4,A5 a5,A6 a6,A7 a7,A8 a8,A9 a9):
-            thread_info(make_thread_info(boost_part::bind(boost_part::type<void>(),f,a1,a2,a3,a4,a5,a6,a7,a8,a9)))
+            thread_info(make_thread_info(boost::bind(boost::type<void>(),f,a1,a2,a3,a4,a5,a6,a7,a8,a9)))
         {
             start_thread();
         }
@@ -539,7 +539,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         {
           using namespace chrono;
           nanoseconds d = tp.time_since_epoch();
-          timespec ts = boost_part::detail::to_timespec(d);
+          timespec ts = boost::detail::to_timespec(d);
           return do_try_join_until(ts);
         }
 #endif
@@ -753,7 +753,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         #if defined BOOST_THREAD_PROVIDES_BASIC_THREAD_ID
              return pthread_self();
         #else
-            boost_part::detail::thread_data_base* const thread_info=get_or_make_current_thread_data();
+            boost::detail::thread_data_base* const thread_info=get_or_make_current_thread_data();
             return (thread_info?thread::id(thread_info->shared_from_this()):thread::id());
         #endif
         }
@@ -761,7 +761,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #endif
     void thread::join() {
         if (this_thread::get_id() == get_id())
-          boost_part::throw_exception(thread_resource_error(static_cast<int>(system::errc::resource_deadlock_would_occur), "boost thread: trying joining itself"));
+          boost::throw_exception(thread_resource_error(static_cast<int>(system::errc::resource_deadlock_would_occur), "boost thread: trying joining itself"));
 
         BOOST_THREAD_VERIFY_PRECONDITION( join_noexcept(),
             thread_resource_error(static_cast<int>(system::errc::invalid_argument), "boost thread: thread not joinable")
@@ -775,7 +775,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 #endif
     {
         if (this_thread::get_id() == get_id())
-          boost_part::throw_exception(thread_resource_error(static_cast<int>(system::errc::resource_deadlock_would_occur), "boost thread: trying joining itself"));
+          boost::throw_exception(thread_resource_error(static_cast<int>(system::errc::resource_deadlock_would_occur), "boost thread: trying joining itself"));
         bool res;
         if (do_try_join_until_noexcept(timeout, res))
         {
@@ -856,7 +856,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     namespace this_thread
     {
         template<typename F>
-        void boost_partat_thread_exit(F f)
+        void at_thread_exit(F f)
         {
             detail::thread_exit_function_base* const thread_exit_func=detail::heap_new<detail::thread_exit_function<F> >(f);
             detail::add_thread_exit_function(thread_exit_func);

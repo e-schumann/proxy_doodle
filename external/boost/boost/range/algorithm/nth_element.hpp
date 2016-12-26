@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -31,7 +31,7 @@ inline RandomAccessRange& nth_element(RandomAccessRange& rng,
     BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type nth)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<RandomAccessRange> ));
-    std::nth_element(boost_part::begin(rng), nth, boost_part::end(rng));
+    std::nth_element(boost::begin(rng), nth, boost::end(rng));
     return rng;
 }
 
@@ -41,7 +41,7 @@ inline const RandomAccessRange& nth_element(const RandomAccessRange& rng,
     BOOST_DEDUCED_TYPENAME range_iterator<const RandomAccessRange>::type nth)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<const RandomAccessRange> ));
-    std::nth_element(boost_part::begin(rng), nth, boost_part::end(rng));
+    std::nth_element(boost::begin(rng), nth, boost::end(rng));
     return rng;
 }
 
@@ -52,7 +52,7 @@ inline RandomAccessRange& nth_element(RandomAccessRange& rng,
     BinaryPredicate sort_pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<RandomAccessRange> ));
-    std::nth_element(boost_part::begin(rng), nth, boost_part::end(rng), sort_pred);
+    std::nth_element(boost::begin(rng), nth, boost::end(rng), sort_pred);
     return rng;
 }
 
@@ -63,12 +63,12 @@ inline const RandomAccessRange& nth_element(const RandomAccessRange& rng,
     BinaryPredicate sort_pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<const RandomAccessRange> ));
-    std::nth_element(boost_part::begin(rng), nth, boost_part::end(rng), sort_pred);
+    std::nth_element(boost::begin(rng), nth, boost::end(rng), sort_pred);
     return rng;
 }
 
     } // namespace range
     using range::nth_element;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

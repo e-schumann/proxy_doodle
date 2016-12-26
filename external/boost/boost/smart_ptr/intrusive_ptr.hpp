@@ -31,7 +31,7 @@
 #endif
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 //
@@ -73,7 +73,7 @@ public:
     template<class U>
 #if !defined( BOOST_SP_NO_SP_CONVERTIBLE )
 
-    intrusive_ptr( intrusive_ptr<U> const & rhs, typename boost_part::detail::sp_enable_if_convertible<U,T>::type = boost_part::detail::sp_empty() )
+    intrusive_ptr( intrusive_ptr<U> const & rhs, typename boost::detail::sp_enable_if_convertible<U,T>::type = boost::detail::sp_empty() )
 
 #else
 
@@ -127,7 +127,7 @@ public:
     template<class U>
 #if !defined( BOOST_SP_NO_SP_CONVERTIBLE )
 
-    intrusive_ptr(intrusive_ptr<U> && rhs, typename boost_part::detail::sp_enable_if_convertible<U,T>::type = boost_part::detail::sp_empty())
+    intrusive_ptr(intrusive_ptr<U> && rhs, typename boost::detail::sp_enable_if_convertible<U,T>::type = boost::detail::sp_empty())
 
 #else
 
@@ -257,22 +257,22 @@ template<class T> inline bool operator!=(intrusive_ptr<T> const & a, intrusive_p
 
 #if !defined( BOOST_NO_CXX11_NULLPTR )
 
-template<class T> inline bool operator==( intrusive_ptr<T> const & p, boost_part::detail::sp_nullptr_t ) BOOST_NOEXCEPT
+template<class T> inline bool operator==( intrusive_ptr<T> const & p, boost::detail::sp_nullptr_t ) BOOST_NOEXCEPT
 {
     return p.get() == 0;
 }
 
-template<class T> inline bool operator==( boost_part::detail::sp_nullptr_t, intrusive_ptr<T> const & p ) BOOST_NOEXCEPT
+template<class T> inline bool operator==( boost::detail::sp_nullptr_t, intrusive_ptr<T> const & p ) BOOST_NOEXCEPT
 {
     return p.get() == 0;
 }
 
-template<class T> inline bool operator!=( intrusive_ptr<T> const & p, boost_part::detail::sp_nullptr_t ) BOOST_NOEXCEPT
+template<class T> inline bool operator!=( intrusive_ptr<T> const & p, boost::detail::sp_nullptr_t ) BOOST_NOEXCEPT
 {
     return p.get() != 0;
 }
 
-template<class T> inline bool operator!=( boost_part::detail::sp_nullptr_t, intrusive_ptr<T> const & p ) BOOST_NOEXCEPT
+template<class T> inline bool operator!=( boost::detail::sp_nullptr_t, intrusive_ptr<T> const & p ) BOOST_NOEXCEPT
 {
     return p.get() != 0;
 }
@@ -350,11 +350,11 @@ template<class E, class T, class Y> std::basic_ostream<E, T> & operator<< (std::
 
 template< class T > struct hash;
 
-template< class T > std::size_t hash_value( boost_part::intrusive_ptr<T> const & p )
+template< class T > std::size_t hash_value( boost::intrusive_ptr<T> const & p )
 {
-    return boost_part::hash< T* >()( p.get() );
+    return boost::hash< T* >()( p.get() );
 }
 
-} // namespace boost_part
+} // namespace boost
 
 #endif  // #ifndef BOOST_SMART_PTR_INTRUSIVE_PTR_HPP_INCLUDED

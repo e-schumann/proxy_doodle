@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -29,7 +29,7 @@ template< class ForwardRange, class Generator >
 inline ForwardRange& generate( ForwardRange& rng, Generator gen )
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    std::generate(boost_part::begin(rng), boost_part::end(rng), gen);
+    std::generate(boost::begin(rng), boost::end(rng), gen);
     return rng;
 }
 
@@ -38,12 +38,12 @@ template< class ForwardRange, class Generator >
 inline const ForwardRange& generate( const ForwardRange& rng, Generator gen )
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    std::generate(boost_part::begin(rng), boost_part::end(rng), gen);
+    std::generate(boost::begin(rng), boost::end(rng), gen);
     return rng;
 }
 
     } // namespace range
     using range::generate;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

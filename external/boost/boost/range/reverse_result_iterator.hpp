@@ -17,7 +17,7 @@
 
 #include <boost/range/reverse_iterator.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     //
     // This interface is deprecated, use range_reverse_iterator<T>
@@ -27,6 +27,6 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     struct range_reverse_result_iterator : range_reverse_iterator<C>
     { };
     
-} // namespace boost_part
+} // namespace boost
 
 #endif

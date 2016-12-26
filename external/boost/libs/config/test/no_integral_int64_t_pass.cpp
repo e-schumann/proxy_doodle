@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_INTEGRAL_INT64_T
 #include "boost_no_integral_int64_t.ipp"
 #else
-namespace boost_part_no_integral_int64_t = empty_boost;
+namespace boost_no_integral_int64_t = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_integral_int64_t::test();
+   return boost_no_integral_int64_t::test();
 }
 

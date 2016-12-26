@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_has_long_long::test();
+   return boost_has_long_long::test();
 }
 

@@ -32,6 +32,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_sfinae_expr::test();
+   return boost_no_sfinae_expr::test();
 }
 

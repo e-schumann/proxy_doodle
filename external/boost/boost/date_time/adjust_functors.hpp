@@ -12,7 +12,7 @@
 #include "boost/date_time/date.hpp"
 #include "boost/date_time/wrapping_int.hpp"
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace date_time {
   
 

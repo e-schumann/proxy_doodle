@@ -12,14 +12,14 @@
 #include <boost/config.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 template <class T> struct is_rvalue_reference : public false_type {};
 #ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
 template <class T> struct is_rvalue_reference<T&&> : public true_type {};
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_IS_REFERENCE_HPP_INCLUDED
 

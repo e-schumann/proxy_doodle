@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_USER_DEFINED_LITERALS
 #include "boost_no_cxx11_user_lit.ipp"
 #else
-namespace boost_part_no_cxx11_user_defined_literals = empty_boost;
+namespace boost_no_cxx11_user_defined_literals = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_user_defined_literals::test();
+   return boost_no_cxx11_user_defined_literals::test();
 }
 

@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_BETHREADS
 #include "boost_has_bethreads.ipp"
 #else
-namespace boost_part_has_bethreads = empty_boost;
+namespace boost_has_bethreads = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_bethreads::test();
+   return boost_has_bethreads::test();
 }
 

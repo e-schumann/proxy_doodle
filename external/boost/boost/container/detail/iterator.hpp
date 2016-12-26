@@ -23,18 +23,18 @@
 
 #include <boost/intrusive/detail/iterator.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace container {
 
-using ::boost_part::intrusive::iterator_traits;
-using ::boost_part::intrusive::iterator_distance;
-using ::boost_part::intrusive::iterator_advance;
-using ::boost_part::intrusive::iterator;
-using ::boost_part::intrusive::iterator_enable_if_tag;
-using ::boost_part::intrusive::iterator_disable_if_tag;
-using ::boost_part::intrusive::iterator_arrow_result;
+using ::boost::intrusive::iterator_traits;
+using ::boost::intrusive::iterator_distance;
+using ::boost::intrusive::iterator_advance;
+using ::boost::intrusive::iterator;
+using ::boost::intrusive::iterator_enable_if_tag;
+using ::boost::intrusive::iterator_disable_if_tag;
+using ::boost::intrusive::iterator_arrow_result;
 
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #endif   //#ifndef BOOST_CONTAINER_DETAIL_ITERATORS_HPP

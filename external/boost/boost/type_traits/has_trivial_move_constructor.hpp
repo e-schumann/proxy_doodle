@@ -28,7 +28,7 @@
 #endif
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 template <typename T> struct has_trivial_move_constructor : public integral_constant<bool, BOOST_HAS_TRIVIAL_MOVE_CONSTRUCTOR(T)>{};
 
@@ -49,10 +49,10 @@ template <typename T> struct has_trivial_move_constructor : public integral_cons
 #include <boost/type_traits/is_pod.hpp>
 #include <boost/type_traits/is_volatile.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 template <typename T> struct has_trivial_move_constructor 
-   : public integral_constant<bool, ::boost_part::is_pod<T>::value && !::boost_part::is_volatile<T>::value SOLARIS_EXTRA_CHECK>{};
+   : public integral_constant<bool, ::boost::is_pod<T>::value && !::boost::is_volatile<T>::value SOLARIS_EXTRA_CHECK>{};
 
 #undef SOLARIS_EXTRA_CHECK
 
@@ -73,6 +73,6 @@ template <class T> struct has_trivial_move_constructor<T&&> : public true_type{}
 template <class T, std::size_t N> struct has_trivial_move_constructor<T[N]> : public false_type{};
 template <class T> struct has_trivial_move_constructor<T[]> : public false_type{};
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_HAS_TRIVIAL_MOVE_CONSTRUCTOR_HPP_INCLUDED

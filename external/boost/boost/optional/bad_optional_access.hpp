@@ -17,7 +17,7 @@
 #include <string> // to make converting-ctor std::string(char const*) visible
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 class bad_optional_access : public std::logic_error
 {
@@ -27,6 +27,6 @@ public:
     {}
 };
 
-} // namespace boost_part
+} // namespace boost
 
 #endif

@@ -12,7 +12,7 @@
 #include <nl_types.h>
 
 
-namespace boost_part_has_nl_types_h{
+namespace boost_has_nl_types_h{
 
 int test()
 {

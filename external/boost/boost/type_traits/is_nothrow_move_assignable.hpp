@@ -19,7 +19,7 @@
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/declval.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 #ifdef BOOST_IS_NOTHROW_MOVE_ASSIGN
 
@@ -38,33 +38,33 @@ template <class T> struct is_nothrow_move_assignable<T&&> : public false_type{};
 namespace detail{
 
 template <class T, class Enable = void>
-struct false_or_cpp11_noexcept_move_assignable: public ::boost_part::false_type {};
+struct false_or_cpp11_noexcept_move_assignable: public ::boost::false_type {};
 
 template <class T>
 struct false_or_cpp11_noexcept_move_assignable <
         T,
-        typename ::boost_part::enable_if_c<sizeof(T) && BOOST_NOEXCEPT_EXPR(::boost_part::declval<T&>() = ::boost_part::declval<T>())>::type
-    > : public ::boost_part::integral_constant<bool, BOOST_NOEXCEPT_EXPR(::boost_part::declval<T&>() = ::boost_part::declval<T>())>
+        typename ::boost::enable_if_c<sizeof(T) && BOOST_NOEXCEPT_EXPR(::boost::declval<T&>() = ::boost::declval<T>())>::type
+    > : public ::boost::integral_constant<bool, BOOST_NOEXCEPT_EXPR(::boost::declval<T&>() = ::boost::declval<T>())>
 {};
 
 }
 
 template <class T>
-struct is_nothrow_move_assignable : public integral_constant<bool, ::boost_part::detail::false_or_cpp11_noexcept_move_assignable<T>::value>{};
+struct is_nothrow_move_assignable : public integral_constant<bool, ::boost::detail::false_or_cpp11_noexcept_move_assignable<T>::value>{};
 
-template <class T> struct is_nothrow_move_assignable<T const> : public ::boost_part::false_type {};
-template <class T> struct is_nothrow_move_assignable<T const volatile> : public ::boost_part::false_type{};
-template <class T> struct is_nothrow_move_assignable<T volatile> : public ::boost_part::false_type{};
-template <class T> struct is_nothrow_move_assignable<T&> : public ::boost_part::false_type{};
+template <class T> struct is_nothrow_move_assignable<T const> : public ::boost::false_type {};
+template <class T> struct is_nothrow_move_assignable<T const volatile> : public ::boost::false_type{};
+template <class T> struct is_nothrow_move_assignable<T volatile> : public ::boost::false_type{};
+template <class T> struct is_nothrow_move_assignable<T&> : public ::boost::false_type{};
 #ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-template <class T> struct is_nothrow_move_assignable<T&&> : public ::boost_part::false_type{};
+template <class T> struct is_nothrow_move_assignable<T&&> : public ::boost::false_type{};
 #endif
 
 #else
 
 template <class T>
 struct is_nothrow_move_assignable : public integral_constant<bool,
-   (::boost_part::has_trivial_move_assign<T>::value || ::boost_part::has_nothrow_assign<T>::value) &&  ! ::boost_part::is_array<T>::value>{};
+   (::boost::has_trivial_move_assign<T>::value || ::boost::has_nothrow_assign<T>::value) &&  ! ::boost::is_array<T>::value>{};
 
 #endif
 
@@ -76,6 +76,6 @@ template <> struct is_nothrow_move_assignable<void const volatile> : public fals
 template <> struct is_nothrow_move_assignable<void volatile> : public false_type{};
 #endif
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_IS_NOTHROW_MOVE_ASSIGNABLE_HPP_INCLUDED

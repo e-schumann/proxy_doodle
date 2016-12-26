@@ -24,10 +24,10 @@
 #pragma once
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 using atomics::atomic_flag;
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_ATOMIC_ATOMIC_FLAG_HPP_INCLUDED_

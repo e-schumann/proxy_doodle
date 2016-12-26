@@ -21,7 +21,7 @@
 #include <boost/detail/sp_typeinfo.hpp>
 #include <boost/smart_ptr/detail/spinlock_pool.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -127,6 +127,6 @@ public:
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
 #endif  // #ifndef BOOST_SMART_PTR_DETAIL_SP_COUNTED_BASE_SPIN_HPP_INCLUDED

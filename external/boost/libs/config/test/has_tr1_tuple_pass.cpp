@@ -28,11 +28,11 @@
 #ifdef BOOST_HAS_TR1_TUPLE
 #include "boost_has_tr1_tuple.ipp"
 #else
-namespace boost_part_has_tr1_tuple = empty_boost;
+namespace boost_has_tr1_tuple = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_tr1_tuple::test();
+   return boost_has_tr1_tuple::test();
 }
 

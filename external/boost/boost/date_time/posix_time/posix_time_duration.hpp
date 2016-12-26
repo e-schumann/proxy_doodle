@@ -11,7 +11,7 @@
 
 #include "boost/date_time/posix_time/posix_time_config.hpp"
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace posix_time {
 
   //! Allows expression of durations as an hour count

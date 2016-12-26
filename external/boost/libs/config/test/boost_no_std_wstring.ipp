@@ -11,7 +11,7 @@
 
 #include <string>
 
-namespace boost_part_no_std_wstring{
+namespace boost_no_std_wstring{
 
 int test()
 {

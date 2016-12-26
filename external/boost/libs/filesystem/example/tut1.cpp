@@ -9,7 +9,7 @@
 
 #include <iostream>
 #include <boost/filesystem.hpp>
-using namespace boost_part::filesystem;
+using namespace boost::filesystem;
 
 int main(int argc, char* argv[])
 {

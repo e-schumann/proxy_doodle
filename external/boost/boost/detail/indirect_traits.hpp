@@ -26,7 +26,7 @@
 # include <boost/mpl/aux_/lambda_support.hpp>
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace detail {
+namespace boost { namespace detail {
 
 namespace indirect_traits {
 
@@ -199,6 +199,6 @@ struct is_pointer_to_class
 
 using namespace indirect_traits;
 
-}} // namespace boost_part::python::detail
+}} // namespace boost::python::detail
 
 #endif // INDIRECT_TRAITS_DWA2002131_HPP

@@ -12,7 +12,7 @@
 #include <pthread.h>
 
 
-namespace boost_part_has_pthread_mutexattr_settype{
+namespace boost_has_pthread_mutexattr_settype{
 
 void f()
 {

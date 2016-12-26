@@ -14,7 +14,7 @@
 #include <string>
 using std::cout;
 using std::endl;
-using namespace boost_part::filesystem;
+using namespace boost::filesystem;
 
 int cpp_main(int argc, char* argv[])
 {

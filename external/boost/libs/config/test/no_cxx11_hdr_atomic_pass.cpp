@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_HDR_ATOMIC
 #include "boost_no_cxx11_hdr_atomic.ipp"
 #else
-namespace boost_part_no_cxx11_hdr_atomic = empty_boost;
+namespace boost_no_cxx11_hdr_atomic = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_hdr_atomic::test();
+   return boost_no_cxx11_hdr_atomic::test();
 }
 

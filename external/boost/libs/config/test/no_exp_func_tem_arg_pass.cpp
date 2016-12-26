@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_EXPLICIT_FUNCTION_TEMPLATE_ARGUMENTS
 #include "boost_no_exp_func_tem_arg.ipp"
 #else
-namespace boost_part_no_explicit_function_template_arguments = empty_boost;
+namespace boost_no_explicit_function_template_arguments = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_explicit_function_template_arguments::test();
+   return boost_no_explicit_function_template_arguments::test();
 }
 

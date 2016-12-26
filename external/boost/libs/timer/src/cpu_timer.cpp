@@ -31,9 +31,9 @@
 # error unknown API
 # endif
 
-using boost_part::timer::nanosecond_type;
-using boost_part::timer::cpu_times;
-using boost_part::system::error_code;
+using boost::timer::nanosecond_type;
+using boost::timer::cpu_times;
+using boost::system::error_code;
 
 namespace
 {
@@ -46,10 +46,10 @@ namespace
     if (places > 9)
       places = 9;
     else if (places < 0)
-      places = boost_part::timer::default_places;
+      places = boost::timer::default_places;
  
-    boost_part::io::ios_flags_saver ifs(os);
-    boost_part::io::ios_precision_saver ips(os);
+    boost::io::ios_flags_saver ifs(os);
+    boost::io::ios_precision_saver ips(os);
     os.setf(std::ios_base::fixed, std::ios_base::floatfield);
     os.precision(places);
 
@@ -94,10 +94,10 @@ namespace
   }
 
 # if defined(BOOST_POSIX_API)
-  boost_part::int_least64_t tick_factor() // multiplier to convert ticks
+  boost::int_least64_t tick_factor() // multiplier to convert ticks
                                      //  to nanoseconds; -1 if unknown
   {
-    static boost_part::int_least64_t tick_factor = 0;
+    static boost::int_least64_t tick_factor = 0;
     if (!tick_factor)
     {
       if ((tick_factor = ::sysconf(_SC_CLK_TCK)) <= 0)
@@ -114,10 +114,10 @@ namespace
   }
 # endif
 
-  void get_cpu_times(boost_part::timer::cpu_times& current)
+  void get_cpu_times(boost::timer::cpu_times& current)
   {
-    boost_part::chrono::duration<boost_part::int64_t, boost_part::nano>
-      x (boost_part::chrono::high_resolution_clock::now().time_since_epoch());
+    boost::chrono::duration<boost::int64_t, boost::nano>
+      x (boost::chrono::high_resolution_clock::now().time_since_epoch());
     current.wall = x.count();
 
 # if defined(BOOST_WINDOWS_API)
@@ -131,20 +131,20 @@ namespace
     }
     else
     {
-      current.system = current.user = boost_part::timer::nanosecond_type(-1);
+      current.system = current.user = boost::timer::nanosecond_type(-1);
     }
 # else
     tms tm;
     clock_t c = ::times(&tm);
     if (c == static_cast<clock_t>(-1)) // error
     {
-      current.system = current.user = boost_part::timer::nanosecond_type(-1);
+      current.system = current.user = boost::timer::nanosecond_type(-1);
     }
     else
     {
-      current.system = boost_part::timer::nanosecond_type(tm.tms_stime + tm.tms_cstime);
-      current.user = boost_part::timer::nanosecond_type(tm.tms_utime + tm.tms_cutime);
-      boost_part::int_least64_t factor;
+      current.system = boost::timer::nanosecond_type(tm.tms_stime + tm.tms_cstime);
+      current.user = boost::timer::nanosecond_type(tm.tms_utime + tm.tms_cutime);
+      boost::int_least64_t factor;
       if ((factor = tick_factor()) != -1)
       {
         current.user *= factor;
@@ -152,7 +152,7 @@ namespace
       }
       else
       {
-        current.user = current.system = boost_part::timer::nanosecond_type(-1);
+        current.user = current.system = boost::timer::nanosecond_type(-1);
       }
     }
 # endif
@@ -163,7 +163,7 @@ namespace
 
 } // unnamed namespace
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace timer
   {
@@ -258,4 +258,4 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     }
 
   } // namespace timer
-} // namespace boost_part
+} // namespace boost

@@ -12,7 +12,7 @@
 //                 for array types
 
 
-namespace boost_part_no_array_type_specializations{
+namespace boost_no_array_type_specializations{
 
 template< typename T > struct is_array
 {

@@ -32,6 +32,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx17_std_invoke::test();
+   return boost_no_cxx17_std_invoke::test();
 }
 

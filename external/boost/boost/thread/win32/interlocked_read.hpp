@@ -17,7 +17,7 @@
 
 #ifdef BOOST_MSVC
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -47,7 +47,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #else
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {

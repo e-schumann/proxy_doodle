@@ -23,11 +23,11 @@
 #ifndef BOOST_NO_FENV_H
 #include "boost_no_fenv_h.ipp"
 #else
-namespace boost_part_no_fenv_h = empty_boost;
+namespace boost_no_fenv_h = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_fenv_h::test();
+   return boost_no_fenv_h::test();
 }
 

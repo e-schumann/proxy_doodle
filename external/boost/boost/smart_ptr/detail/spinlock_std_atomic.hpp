@@ -18,7 +18,7 @@
 #include <boost/smart_ptr/detail/yield_k.hpp>
 #include <atomic>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -41,7 +41,7 @@ public:
     {
         for( unsigned k = 0; !try_lock(); ++k )
         {
-            boost_part::detail::yield( k );
+            boost::detail::yield( k );
         }
     }
 
@@ -76,7 +76,7 @@ public:
 };
 
 } // namespace detail
-} // namespace boost_part
+} // namespace boost
 
 #define BOOST_DETAIL_SPINLOCK_INIT { ATOMIC_FLAG_INIT }
 

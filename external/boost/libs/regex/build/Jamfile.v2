@@ -115,14 +115,14 @@ SOURCES =
    usinstances.cpp ;
 
 
-lib boost_part_regex : ../src/$(SOURCES) icu_options
+lib boost_regex : ../src/$(SOURCES) icu_options
     :         
 	     <link>shared:<define>BOOST_REGEX_DYN_LINK=1
 	     <toolset>gcc-cygwin:<link>static
         <toolset>sun:<link>static
     ;
 
-boost-install boost_part_regex ;
+boost-install boost_regex ;
 
 
 

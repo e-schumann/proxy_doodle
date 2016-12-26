@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_NANOSLEEP
 #include "boost_has_nanosleep.ipp"
 #else
-namespace boost_part_has_nanosleep = empty_boost;
+namespace boost_has_nanosleep = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_nanosleep::test();
+   return boost_has_nanosleep::test();
 }
 

@@ -22,7 +22,7 @@
 #undef isalpha
 #undef ispunct
 
-namespace boost_part_no_stdc_namespace{
+namespace boost_no_stdc_namespace{
 
 
 int test()

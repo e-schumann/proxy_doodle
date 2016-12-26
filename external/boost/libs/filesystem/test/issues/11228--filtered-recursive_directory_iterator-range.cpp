@@ -5,8 +5,8 @@
 #include <vector>
 #include <iostream>
 
-namespace fs = boost_part::filesystem;
-using namespace boost_part::adaptors;
+namespace fs = boost::filesystem;
+using namespace boost::adaptors;
 
 int main() {
     fs::recursive_directory_iterator beg("."), end;
@@ -17,7 +17,7 @@ int main() {
     };
 
     std::vector<fs::path> paths;
-    copy(boost_part::make_iterator_range(beg, end) | filtered(fileFilter),
+    copy(boost::make_iterator_range(beg, end) | filtered(fileFilter),
       std::back_inserter(paths));
 
     for(auto& p : paths)

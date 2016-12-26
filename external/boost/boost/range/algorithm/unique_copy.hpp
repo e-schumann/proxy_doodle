@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -32,7 +32,7 @@ inline OutputIterator
 unique_copy( const SinglePassRange& rng, OutputIterator out_it )
 {
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return std::unique_copy(boost_part::begin(rng), boost_part::end(rng), out_it);
+    return std::unique_copy(boost::begin(rng), boost::end(rng), out_it);
 }
 /// \overload
 template< class SinglePassRange, class OutputIterator, class BinaryPredicate >
@@ -41,11 +41,11 @@ unique_copy( const SinglePassRange& rng, OutputIterator out_it,
              BinaryPredicate pred )
 {
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return std::unique_copy(boost_part::begin(rng), boost_part::end(rng), out_it, pred);
+    return std::unique_copy(boost::begin(rng), boost::end(rng), out_it, pred);
 }
 
     } // namespace range
     using range::unique_copy;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

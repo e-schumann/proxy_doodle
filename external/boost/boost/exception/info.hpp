@@ -19,8 +19,8 @@
 #include <boost/config.hpp>
 #include <map>
 
-namespace boost_part {} namespace boost = boost_part; namespace
-boost_part
+namespace
+boost
     {
     template <class Tag,class T>
     inline
@@ -146,7 +146,7 @@ boost_part
 
             private:
 
-            friend class boost_part::exception;
+            friend class boost::exception;
 
             typedef std::map< type_info_, shared_ptr<error_info_base> > error_info_map;
             error_info_map info_;

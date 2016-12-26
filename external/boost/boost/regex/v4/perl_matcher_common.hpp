@@ -39,7 +39,7 @@
 #  pragma warning(disable: 4800)
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 namespace BOOST_REGEX_DETAIL_NS{
 
 template <class BidiIterator, class Allocator, class traits>
@@ -52,7 +52,7 @@ void perl_matcher<BidiIterator, Allocator, traits>::construct_init(const basic_r
    {
       // precondition failure: e is not a valid regex.
       std::invalid_argument ex("Invalid regular expression object");
-      boost_part::throw_exception(ex);
+      boost::throw_exception(ex);
    }
    pstate = 0;
    m_match_flags = f;
@@ -107,7 +107,7 @@ void perl_matcher<BidiIterator, Allocator, traits>::estimate_max_state_count(std
    // Calculate NS^2 first:
    //
    static const std::ptrdiff_t k = 100000;
-   std::ptrdiff_t dist = boost_part::BOOST_REGEX_DETAIL_NS::distance(base, last);
+   std::ptrdiff_t dist = boost::BOOST_REGEX_DETAIL_NS::distance(base, last);
    if(dist == 0)
       dist = 1;
    std::ptrdiff_t states = re.size();
@@ -171,7 +171,7 @@ template <class BidiIterator, class Allocator, class traits>
 inline bool perl_matcher<BidiIterator, Allocator, traits>::protected_call(
    protected_proc_type proc)
 {
-   ::boost_part::BOOST_REGEX_DETAIL_NS::concrete_protected_call
+   ::boost::BOOST_REGEX_DETAIL_NS::concrete_protected_call
       <perl_matcher<BidiIterator, Allocator, traits> >
       obj(this, proc);
    return obj.execute();
@@ -710,9 +710,9 @@ bool perl_matcher<BidiIterator, Allocator, traits>::match_backstep()
 #pragma warning(push)
 #pragma warning(disable:4127)
 #endif
-   if( ::boost_part::is_random_access_iterator<BidiIterator>::value)
+   if( ::boost::is_random_access_iterator<BidiIterator>::value)
    {
-      std::ptrdiff_t maxlen = ::boost_part::BOOST_REGEX_DETAIL_NS::distance(backstop, position);
+      std::ptrdiff_t maxlen = ::boost::BOOST_REGEX_DETAIL_NS::distance(backstop, position);
       if(maxlen < static_cast<const re_brace*>(pstate)->index)
          return false;
       std::advance(position, -static_cast<const re_brace*>(pstate)->index);
@@ -987,7 +987,7 @@ bool perl_matcher<BidiIterator, Allocator, traits>::find_restart_lit()
 
 } // namespace BOOST_REGEX_DETAIL_NS
 
-} // namespace boost_part
+} // namespace boost
 
 #ifdef BOOST_MSVC
 #  pragma warning(pop)

@@ -14,7 +14,7 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/filesystem/operations.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 namespace filesystem
 {
@@ -38,6 +38,6 @@ void load_string_file(const path& p, std::string& str)
   file.read(&str[0], sz);
 }
 }  // namespace filesystem
-}  // namespace boost_part
+}  // namespace boost
 
 #endif  // include guard

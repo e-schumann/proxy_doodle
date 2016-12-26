@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX14_DECLTYPE_AUTO
 #include "boost_no_cxx14_decltype_auto.ipp"
 #else
-namespace boost_part_no_cxx14_decltype_auto = empty_boost;
+namespace boost_no_cxx14_decltype_auto = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx14_decltype_auto::test();
+   return boost_no_cxx14_decltype_auto::test();
 }
 

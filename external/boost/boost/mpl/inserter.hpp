@@ -15,7 +15,7 @@
 // $Date$
 // $Revision$
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 template<
       typename Sequence

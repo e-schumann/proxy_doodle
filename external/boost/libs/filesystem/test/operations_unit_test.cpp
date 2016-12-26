@@ -36,8 +36,8 @@
 #include <boost/detail/lightweight_main.hpp>
 #include <iostream>
 
-using namespace boost_part::filesystem;
-using namespace boost_part::system;
+using namespace boost::filesystem;
+using namespace boost::system;
 using std::cout;
 using std::endl;
 using std::string;
@@ -54,7 +54,7 @@ namespace
   {
     if (ok) return;
 
-    ++::boost_part::detail::test_errors();
+    ++::boost::detail::test_errors();
 
     cout << file << '(' << line << "): test failed\n";
   }
@@ -86,7 +86,7 @@ namespace
 
     error_code ec;
 
-    CHECK(file_size("no-such-file", ec) == static_cast<boost_part::uintmax_t>(-1));
+    CHECK(file_size("no-such-file", ec) == static_cast<boost::uintmax_t>(-1));
     CHECK(ec == errc::no_such_file_or_directory);
 
     CHECK(status("no-such-file") == file_status(file_not_found, no_perms));
@@ -106,7 +106,7 @@ namespace
     CHECK(exists("/"));
     CHECK(is_directory("/"));
     CHECK(!is_regular_file("/"));
-    CHECK(!boost_part::filesystem::is_empty("/"));
+    CHECK(!boost::filesystem::is_empty("/"));
     CHECK(!is_other("/"));
   }
 
@@ -243,7 +243,7 @@ namespace
 
     CHECK(!create_directory("/", ec));
 
-    CHECK(!boost_part::filesystem::remove("no-such-file-or-directory"));
+    CHECK(!boost::filesystem::remove("no-such-file-or-directory"));
     CHECK(!remove_all("no-such-file-or-directory"));
 
     space_info info = space("/");
@@ -298,7 +298,7 @@ namespace
     { 
       file_size("no-such-file");
     }
-    catch (const boost_part::filesystem::filesystem_error & ex)
+    catch (const boost::filesystem::filesystem_error & ex)
     {
       threw = true;
       cout << "\nas expected, attempt to get size of non-existent file threw a filesystem_error\n"
@@ -382,5 +382,5 @@ int cpp_main(int, char*[])
 //    BOOST_TEST(!fs::exists(dir));  // nice test, but doesn't play well with TortoiseGit cache
   }
 
-  return ::boost_part::report_errors();
+  return ::boost::report_errors();
 }

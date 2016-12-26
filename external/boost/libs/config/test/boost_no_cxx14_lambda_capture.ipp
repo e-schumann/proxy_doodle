@@ -11,7 +11,7 @@
 //  TITLE:         C++14 initialized lambda capture unavailable
 //  DESCRIPTION:   The compiler does not support C++14 initialized lambda capture
 
-namespace boost_part_no_cxx14_initialized_lambda_captures
+namespace boost_no_cxx14_initialized_lambda_captures
 {
 
 int test()

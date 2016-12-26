@@ -132,7 +132,7 @@ extern "C" long __cdecl _InterlockedExchangeAdd( long volatile *, long );
 
 #elif defined( WIN32 ) || defined( _WIN32 ) || defined( __WIN32__ ) || defined( __CYGWIN__ )
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -146,13 +146,13 @@ extern "C" __declspec(dllimport) long __stdcall InterlockedExchangeAdd( long vol
 
 } // namespace detail
 
-} // namespace boost_part
+} // namespace boost
 
-# define BOOST_SP_INTERLOCKED_INCREMENT ::boost_part::detail::InterlockedIncrement
-# define BOOST_SP_INTERLOCKED_DECREMENT ::boost_part::detail::InterlockedDecrement
-# define BOOST_SP_INTERLOCKED_COMPARE_EXCHANGE ::boost_part::detail::InterlockedCompareExchange
-# define BOOST_SP_INTERLOCKED_EXCHANGE ::boost_part::detail::InterlockedExchange
-# define BOOST_SP_INTERLOCKED_EXCHANGE_ADD ::boost_part::detail::InterlockedExchangeAdd
+# define BOOST_SP_INTERLOCKED_INCREMENT ::boost::detail::InterlockedIncrement
+# define BOOST_SP_INTERLOCKED_DECREMENT ::boost::detail::InterlockedDecrement
+# define BOOST_SP_INTERLOCKED_COMPARE_EXCHANGE ::boost::detail::InterlockedCompareExchange
+# define BOOST_SP_INTERLOCKED_EXCHANGE ::boost::detail::InterlockedExchange
+# define BOOST_SP_INTERLOCKED_EXCHANGE_ADD ::boost::detail::InterlockedExchangeAdd
 
 #else
 

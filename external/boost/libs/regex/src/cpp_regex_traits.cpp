@@ -28,7 +28,7 @@ namespace std{
 }
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{ namespace BOOST_REGEX_DETAIL_NS{
+namespace boost{ namespace BOOST_REGEX_DETAIL_NS{
 
 void cpp_regex_traits_char_layer<char>::init() 
 {
@@ -51,7 +51,7 @@ void cpp_regex_traits_char_layer<char>::init()
       {
          std::string m("Unable to open message catalog: ");
          std::runtime_error err(m + cat_name);
-         boost_part::BOOST_REGEX_DETAIL_NS::raise_runtime_error(err);
+         boost::BOOST_REGEX_DETAIL_NS::raise_runtime_error(err);
       }
    }
    //

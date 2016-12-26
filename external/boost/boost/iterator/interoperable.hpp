@@ -14,7 +14,7 @@
 
 # include <boost/iterator/detail/config_def.hpp> // must appear last
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace iterators {
 
   //
@@ -47,7 +47,7 @@ namespace iterators {
 
 using iterators::is_interoperable;
 
-} // namespace boost_part
+} // namespace boost
 
 # include <boost/iterator/detail/config_undef.hpp>
 

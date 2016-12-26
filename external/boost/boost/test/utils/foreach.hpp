@@ -34,7 +34,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace for_each {
 
@@ -203,7 +203,7 @@ prev( static_any_t cur, C const&, mpl::true_ )
 
 template<class RefType,typename C>
 inline RefType
-deref( static_any_t cur, C&, ::boost_part::type<RefType>, mpl::false_ )
+deref( static_any_t cur, C&, ::boost::type<RefType>, mpl::false_ )
 {
     return *static_any_cast<BOOST_DEDUCED_TYPENAME C::iterator>( cur );
 }
@@ -212,7 +212,7 @@ deref( static_any_t cur, C&, ::boost_part::type<RefType>, mpl::false_ )
 
 template<class RefType,typename C>
 inline RefType
-deref( static_any_t cur, C const&, ::boost_part::type<RefType>, mpl::true_ )
+deref( static_any_t cur, C const&, ::boost::type<RefType>, mpl::true_ )
 {
     return *static_any_cast<BOOST_DEDUCED_TYPENAME C::const_iterator>( cur );
 }
@@ -223,23 +223,23 @@ deref( static_any_t cur, C const&, ::boost_part::type<RefType>, mpl::true_ )
 // **************              BOOST_TEST_FOREACH              ************** //
 // ************************************************************************** //
 
-#define BOOST_TEST_FE_ANY                   ::boost_part::unit_test::for_each::static_any_t
-#define BOOST_TEST_FE_IS_CONST( COL )       ::boost_part::unit_test::for_each::is_const_coll( COL )
+#define BOOST_TEST_FE_ANY                   ::boost::unit_test::for_each::static_any_t
+#define BOOST_TEST_FE_IS_CONST( COL )       ::boost::unit_test::for_each::is_const_coll( COL )
 
 #define BOOST_TEST_FE_BEG( COL )            \
-    ::boost_part::unit_test::for_each::begin(    \
+    ::boost::unit_test::for_each::begin(    \
         COL,                                \
         BOOST_TEST_FE_IS_CONST( COL ) )     \
 /**/
 
 #define BOOST_TEST_FE_END( COL )            \
-    ::boost_part::unit_test::for_each::end(      \
+    ::boost::unit_test::for_each::end(      \
         COL,                                \
         BOOST_TEST_FE_IS_CONST( COL ) )     \
 /**/
 
 #define BOOST_TEST_FE_DONE( COL )           \
-    ::boost_part::unit_test::for_each::done(     \
+    ::boost::unit_test::for_each::done(     \
         BOOST_TEST_FE_CUR_VAR,              \
         BOOST_TEST_FE_END_VAR,              \
         COL,                                \
@@ -247,14 +247,14 @@ deref( static_any_t cur, C const&, ::boost_part::type<RefType>, mpl::true_ )
 /**/
 
 #define BOOST_TEST_FE_NEXT( COL )           \
-    ::boost_part::unit_test::for_each::next(     \
+    ::boost::unit_test::for_each::next(     \
         BOOST_TEST_FE_CUR_VAR,              \
         COL,                                \
         BOOST_TEST_FE_IS_CONST( COL ) )     \
 /**/
 
 #define BOOST_TEST_FE_PREV( COL )           \
-    ::boost_part::unit_test::for_each::prev(     \
+    ::boost::unit_test::for_each::prev(     \
         BOOST_TEST_FE_CUR_VAR,              \
         COL,                                \
         BOOST_TEST_FE_IS_CONST( COL ) )     \
@@ -264,10 +264,10 @@ deref( static_any_t cur, C const&, ::boost_part::type<RefType>, mpl::true_ )
     ((void)&(COL))
 
 #define BOOST_TEST_FE_DEREF( COL, RefType ) \
-    ::boost_part::unit_test::for_each::deref(    \
+    ::boost::unit_test::for_each::deref(    \
         BOOST_TEST_FE_CUR_VAR,              \
         COL,                                \
-        ::boost_part::type<RefType >(),          \
+        ::boost::type<RefType >(),          \
         BOOST_TEST_FE_IS_CONST( COL ) )     \
 /**/
 
@@ -309,7 +309,7 @@ for( bool BOOST_TEST_FE_CON_VAR = true;                                         
 
 } // namespace for_each
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

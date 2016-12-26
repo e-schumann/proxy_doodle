@@ -14,7 +14,7 @@ char abi_test::virtual_one()const
    return c; 
 }
 
-boost_part::int32_t abi_test::virtual_two()const
+boost::int32_t abi_test::virtual_two()const
 { 
    return i; 
 }

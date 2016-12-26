@@ -13,18 +13,18 @@
 #include <boost/operators.hpp>
 #include <boost/date_time/special_defs.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace date_time {
 
 
   //! Duration type with date level resolution
   template<class duration_rep_traits>
   class date_duration : private
-              boost_part::less_than_comparable1< date_duration< duration_rep_traits >
-            , boost_part::equality_comparable1< date_duration< duration_rep_traits >
-            , boost_part::addable1< date_duration< duration_rep_traits >
-            , boost_part::subtractable1< date_duration< duration_rep_traits >
-            , boost_part::dividable2< date_duration< duration_rep_traits >, int
+              boost::less_than_comparable1< date_duration< duration_rep_traits >
+            , boost::equality_comparable1< date_duration< duration_rep_traits >
+            , boost::addable1< date_duration< duration_rep_traits >
+            , boost::subtractable1< date_duration< duration_rep_traits >
+            , boost::dividable2< date_duration< duration_rep_traits >, int
             > > > > >
   {
   public:
@@ -134,7 +134,7 @@ namespace date_time {
   struct duration_traits_adapted
   {
     typedef long int_type;
-    typedef boost_part::date_time::int_adapter<long> impl_type;
+    typedef boost::date_time::int_adapter<long> impl_type;
     static int_type as_number(impl_type i) { return i.as_number(); }
   };
 

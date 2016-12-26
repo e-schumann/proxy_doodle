@@ -35,14 +35,14 @@
 
 namespace {
 
-void fail(int err, boost_part::system::error_code* ec)
+void fail(int err, boost::system::error_code* ec)
 {
   if (ec == 0)
-    BOOST_FILESYSTEM_THROW( boost_part::system::system_error(err,
-      boost_part::system::system_category(),
-      "boost_part::filesystem::unique_path"));
+    BOOST_FILESYSTEM_THROW( boost::system::system_error(err,
+      boost::system::system_category(),
+      "boost::filesystem::unique_path"));
 
-  ec->assign(err, boost_part::system::system_category());
+  ec->assign(err, boost::system::system_category());
   return;
 }
 
@@ -73,7 +73,7 @@ int acquire_crypt_handle(HCRYPTPROV& handle)
 
 #endif
 
-void system_crypt_random(void* buf, std::size_t len, boost_part::system::error_code* ec)
+void system_crypt_random(void* buf, std::size_t len, boost::system::error_code* ec)
 {
 # ifdef BOOST_POSIX_API
 
@@ -125,7 +125,7 @@ void system_crypt_random(void* buf, std::size_t len, boost_part::system::error_c
 
 }  // unnamed namespace
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace filesystem { namespace detail {
+namespace boost { namespace filesystem { namespace detail {
 
 BOOST_FILESYSTEM_DECL
 path unique_path(const path& model, system::error_code* ec)

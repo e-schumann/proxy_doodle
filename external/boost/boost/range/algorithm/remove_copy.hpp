@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -34,11 +34,11 @@ inline OutputIterator
 remove_copy(const SinglePassRange& rng, OutputIterator out_it, const Value& val)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return std::remove_copy(boost_part::begin(rng), boost_part::end(rng), out_it, val);
+    return std::remove_copy(boost::begin(rng), boost::end(rng), out_it, val);
 }
 
     } // namespace range
     using range::remove_copy;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

@@ -13,7 +13,7 @@
 #include <iterator>
 #include <stddef.h>
 
-namespace boost_part_no_std_iterator{
+namespace boost_no_std_iterator{
 
 
 int test()

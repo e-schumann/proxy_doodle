@@ -36,7 +36,7 @@ namespace std{
 #endif
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{ namespace BOOST_REGEX_DETAIL_NS{
+namespace boost{ namespace BOOST_REGEX_DETAIL_NS{
 
 BOOST_REGEX_DECL const char* BOOST_REGEX_CALL get_default_syntax(regex_constants::syntax_type n)
 {
@@ -138,12 +138,12 @@ BOOST_REGEX_DECL const char* BOOST_REGEX_CALL get_default_error_string(regex_con
       "Unknown error.",                                                     /* REG_E_UNKNOWN 21 error_unknown */
    };
 
-   return (n > ::boost_part::regex_constants::error_unknown) ? s_default_error_messages[ ::boost_part::regex_constants::error_unknown] : s_default_error_messages[n];
+   return (n > ::boost::regex_constants::error_unknown) ? s_default_error_messages[ ::boost::regex_constants::error_unknown] : s_default_error_messages[n];
 }
 
-BOOST_REGEX_DECL bool BOOST_REGEX_CALL is_combining_implementation(boost_part::uint_least16_t c)
+BOOST_REGEX_DECL bool BOOST_REGEX_CALL is_combining_implementation(boost::uint_least16_t c)
 {
-   const boost_part::uint_least16_t combining_ranges[] = { 0x0300, 0x0361, 
+   const boost::uint_least16_t combining_ranges[] = { 0x0300, 0x0361, 
                            0x0483, 0x0486, 
                            0x0903, 0x0903, 
                            0x093E, 0x0940, 
@@ -182,7 +182,7 @@ BOOST_REGEX_DECL bool BOOST_REGEX_CALL is_combining_implementation(boost_part::u
                            0xFE20, 0xFE23, 
                            0xffff, 0xffff, };
 
-      const boost_part::uint_least16_t* p = combining_ranges + 1;
+      const boost::uint_least16_t* p = combining_ranges + 1;
    while(*p < c) p += 2;
    --p;
    if((c >= *p) && (c <= *(p+1)))

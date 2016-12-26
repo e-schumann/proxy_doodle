@@ -31,7 +31,7 @@
 #endif
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 template <class T> struct has_nothrow_copy_constructor : public integral_constant<bool, BOOST_HAS_NOTHROW_COPY(T)>{};
 
@@ -40,26 +40,26 @@ template <class T> struct has_nothrow_copy_constructor : public integral_constan
 #include <boost/type_traits/declval.hpp>
 #include <boost/type_traits/is_copy_constructible.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
 namespace detail{
 
 template <class T, bool b>
-struct has_nothrow_copy_constructor_imp : public boost_part::integral_constant<bool, false>{};
+struct has_nothrow_copy_constructor_imp : public boost::integral_constant<bool, false>{};
 template <class T>
-struct has_nothrow_copy_constructor_imp<T, true> : public boost_part::integral_constant<bool, noexcept(T(boost_part::declval<const T&>()))>{};
+struct has_nothrow_copy_constructor_imp<T, true> : public boost::integral_constant<bool, noexcept(T(boost::declval<const T&>()))>{};
 
 }
 
-template <class T> struct has_nothrow_copy_constructor : public detail::has_nothrow_copy_constructor_imp<T, boost_part::is_copy_constructible<T>::value>{};
+template <class T> struct has_nothrow_copy_constructor : public detail::has_nothrow_copy_constructor_imp<T, boost::is_copy_constructible<T>::value>{};
 
 #else
 
 #include <boost/type_traits/has_trivial_copy.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
-template <class T> struct has_nothrow_copy_constructor : public integral_constant<bool, ::boost_part::has_trivial_copy<T>::value>{};
+template <class T> struct has_nothrow_copy_constructor : public integral_constant<bool, ::boost::has_trivial_copy<T>::value>{};
 
 #endif
 
@@ -77,6 +77,6 @@ template <> struct has_nothrow_copy_constructor<void const volatile> : public fa
 
 template <class T> struct has_nothrow_copy : public has_nothrow_copy_constructor<T>{};
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_HAS_NOTHROW_COPY_HPP_INCLUDED

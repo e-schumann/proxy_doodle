@@ -14,7 +14,7 @@
 #include <boost/smart_ptr/detail/array_utility.hpp>
 #include <boost/type_traits/alignment_of.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace detail {
         struct ms_init_tag   { };
         struct ms_noinit_tag { };
@@ -127,7 +127,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
             pointer allocate(size_type count, const_void_pointer = 0) {
                 enum {
-                    M = boost_part::alignment_of<type>::value
+                    M = boost::alignment_of<type>::value
                 };
                 std::size_t n1 = count * sizeof(value_type);
                 std::size_t n2 = data.size * sizeof(type);
@@ -135,14 +135,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
                 CA ca(allocator());
                 void* p1 = ca.allocate(n1 + n3);
                 void* p2 = static_cast<char*>(p1) + n1;
-                (void)boost_part::alignment::align(M, n2, p2, n3);
+                (void)boost::alignment::align(M, n2, p2, n3);
                 *data.result = static_cast<type*>(p2);
                 return static_cast<value_type*>(p1);
             }
 
             void deallocate(pointer memory, size_type count) {
                 enum {
-                    M = boost_part::alignment_of<type>::value
+                    M = boost::alignment_of<type>::value
                 };
                 std::size_t n1 = count * sizeof(value_type);
                 std::size_t n2 = data.size * sizeof(type) + M;
@@ -237,14 +237,14 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
             pointer allocate(size_type count, const void* = 0) {
                 enum {
-                    M = boost_part::alignment_of<type>::value
+                    M = boost::alignment_of<type>::value
                 };
                 std::size_t n1 = count * sizeof(Y);
                 std::size_t n2 = data.size * sizeof(type);
                 std::size_t n3 = n2 + M;
                 void* p1 = ::operator new(n1 + n3);
                 void* p2 = static_cast<char*>(p1) + n1;
-                (void)boost_part::alignment::align(M, n2, p2, n3);
+                (void)boost::alignment::align(M, n2, p2, n3);
                 *data.result = static_cast<type*>(p2);
                 return static_cast<Y*>(p1);
             }

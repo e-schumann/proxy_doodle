@@ -17,7 +17,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace executors
   {
@@ -69,7 +69,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
      * Whatever exception that can be throw while storing the closure.
      */
     void submit(BOOST_THREAD_RV_REF(work) closure) {
-      ex.submit(boost_part::move(closure));
+      ex.submit(boost::move(closure));
     }
 //    void submit(work& closure) {
 //      ex.submit(closure);
@@ -139,7 +139,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
     void submit(BOOST_THREAD_RV_REF(work) closure)
     {
-      ex->submit(boost_part::move(closure));
+      ex->submit(boost::move(closure));
     }
 
 #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -147,22 +147,22 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     void submit(Closure & closure)
     {
       //work w ((closure));
-      //submit(boost_part::move(w));
+      //submit(boost::move(w));
       submit(work(closure));
     }
 #endif
     void submit(void (*closure)())
     {
       work w ((closure));
-      submit(boost_part::move(w));
+      submit(boost::move(w));
       //submit(work(closure));
     }
 
     template <typename Closure>
     void submit(BOOST_THREAD_FWD_REF(Closure) closure)
     {
-      work w((boost_part::forward<Closure>(closure)));
-      submit(boost_part::move(w));
+      work w((boost::forward<Closure>(closure)));
+      submit(boost::move(w));
     }
 
 //    size_t num_pending_closures() const

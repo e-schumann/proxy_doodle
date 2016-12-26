@@ -10,7 +10,7 @@
 #ifndef BOOST_NUMERIC_CONVERSION_SIGN_MIXTURE_ENUM_FLC_12NOV2002_HPP
 #define BOOST_NUMERIC_CONVERSION_SIGN_MIXTURE_ENUM_FLC_12NOV2002_HPP
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace numeric
+namespace boost { namespace numeric
 {
   enum sign_mixture_enum
   {
@@ -20,7 +20,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part { nam
     ,unsigned_to_signed
   } ;
 
-} } // namespace boost_part::numeric
+} } // namespace boost::numeric
 
 #endif
 //

@@ -20,12 +20,12 @@
 #include <vector>
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace csbl
   {
 #if defined BOOST_THREAD_USES_BOOST_VECTOR
-    using ::boost_part::container::vector;
+    using ::boost::container::vector;
 #else
     using ::std::vector;
 #endif

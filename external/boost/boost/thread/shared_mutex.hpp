@@ -26,7 +26,7 @@
 
 #include <boost/thread/lockable_traits.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   typedef shared_mutex shared_timed_mutex;
   namespace sync

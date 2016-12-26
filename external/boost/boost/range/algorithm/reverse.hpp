@@ -16,7 +16,7 @@
 #include <boost/range/detail/range_return.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -30,7 +30,7 @@ template<class BidirectionalRange>
 inline BidirectionalRange& reverse(BidirectionalRange& rng)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<BidirectionalRange> ));
-    std::reverse(boost_part::begin(rng), boost_part::end(rng));
+    std::reverse(boost::begin(rng), boost::end(rng));
     return rng;
 }
 
@@ -39,12 +39,12 @@ template<class BidirectionalRange>
 inline const BidirectionalRange& reverse(const BidirectionalRange& rng)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<const BidirectionalRange> ));
-    std::reverse(boost_part::begin(rng), boost_part::end(rng));
+    std::reverse(boost::begin(rng), boost::end(rng));
     return rng;
 }
 
     } // namespace range
     using range::reverse;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

@@ -12,7 +12,7 @@
 
 #include <random>
 
-namespace boost_part_no_cxx11_hdr_random {
+namespace boost_no_cxx11_hdr_random {
 
 int test()
 {

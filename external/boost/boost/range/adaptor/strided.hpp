@@ -16,7 +16,7 @@
 #include <boost/iterator/iterator_facade.hpp>
 #include <iterator>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
@@ -31,7 +31,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 , typename iterator_difference<BaseIterator>::type
             >
         {
-            friend class ::boost_part::iterator_core_access;
+            friend class ::boost::iterator_core_access;
 
             typedef iterator_facade<
                 strided_iterator<BaseIterator, Category>
@@ -134,7 +134,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 , typename iterator_difference<BaseIterator>::type
             >
         {
-            friend class ::boost_part::iterator_core_access;
+            friend class ::boost::iterator_core_access;
 
             typedef iterator_facade<
                 strided_iterator<BaseIterator, bidirectional_traversal_tag>
@@ -147,7 +147,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             typedef typename super_t::difference_type difference_type;
             typedef typename super_t::reference reference;
             typedef BaseIterator base_iterator;
-            typedef typename boost_part::make_unsigned<difference_type>::type
+            typedef typename boost::make_unsigned<difference_type>::type
                         size_type;
             typedef std::bidirectional_iterator_tag iterator_category;
 
@@ -265,7 +265,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 , typename iterator_difference<BaseIterator>::type
             >
         {
-            friend class ::boost_part::iterator_core_access;
+            friend class ::boost::iterator_core_access;
 
             typedef iterator_facade<
                 strided_iterator<BaseIterator, random_access_traversal_tag>
@@ -417,7 +417,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<Rng>::type,
                 forward_traversal_tag
-            >(boost_part::begin(rng), boost_part::end(rng), stride);
+            >(boost::begin(rng), boost::end(rng), stride);
         }
 
         template<class Rng, class Difference> inline
@@ -433,7 +433,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<const Rng>::type,
                 forward_traversal_tag
-            >(boost_part::begin(rng), boost_part::end(rng), stride);
+            >(boost::begin(rng), boost::end(rng), stride);
         }
 
         template<class Rng, class Difference> inline
@@ -449,7 +449,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<Rng>::type,
                 forward_traversal_tag
-            >(boost_part::end(rng), boost_part::end(rng), stride);
+            >(boost::end(rng), boost::end(rng), stride);
         }
 
         template<class Rng, class Difference> inline
@@ -465,7 +465,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<const Rng>::type,
                 forward_traversal_tag
-            >(boost_part::end(rng), boost_part::end(rng), stride);
+            >(boost::end(rng), boost::end(rng), stride);
         }
 
         template<class Rng, class Difference> inline
@@ -483,7 +483,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<Rng>::type,
                 bidirectional_traversal_tag
-            >(boost_part::begin(rng), difference_type(), stride);
+            >(boost::begin(rng), difference_type(), stride);
         }
 
         template<class Rng, class Difference> inline
@@ -501,7 +501,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<const Rng>::type,
                 bidirectional_traversal_tag
-            >(boost_part::begin(rng), difference_type(), stride);
+            >(boost::begin(rng), difference_type(), stride);
         }
 
         template<class Rng, class Difference> inline
@@ -517,7 +517,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<Rng>::type,
                 bidirectional_traversal_tag
-            >(boost_part::end(rng), boost_part::size(rng), stride);
+            >(boost::end(rng), boost::size(rng), stride);
         }
 
         template<class Rng, class Difference> inline
@@ -533,7 +533,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<const Rng>::type,
                 bidirectional_traversal_tag
-            >(boost_part::end(rng), boost_part::size(rng), stride);
+            >(boost::end(rng), boost::size(rng), stride);
         }
 
         template<class Rng, class Difference> inline
@@ -549,7 +549,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<Rng>::type,
                 random_access_traversal_tag
-            >(boost_part::begin(rng), boost_part::begin(rng), stride);
+            >(boost::begin(rng), boost::begin(rng), stride);
         }
 
         template<class Rng, class Difference> inline
@@ -565,7 +565,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<const Rng>::type,
                 random_access_traversal_tag
-            >(boost_part::begin(rng), boost_part::begin(rng), stride);
+            >(boost::begin(rng), boost::begin(rng), stride);
         }
 
         template<class Rng, class Difference> inline
@@ -581,7 +581,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<Rng>::type,
                 random_access_traversal_tag
-            >(boost_part::begin(rng), boost_part::end(rng), stride);
+            >(boost::begin(rng), boost::end(rng), stride);
         }
 
         template<class Rng, class Difference> inline
@@ -597,7 +597,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             return strided_iterator<
                 typename range_iterator<const Rng>::type,
                 random_access_traversal_tag
-            >(boost_part::begin(rng), boost_part::end(rng), stride);
+            >(boost::begin(rng), boost::end(rng), stride);
         }
 
         template<

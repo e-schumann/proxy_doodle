@@ -11,7 +11,7 @@
 
 #include <unordered_map>
 
-namespace boost_part_has_tr1_unordered_map{
+namespace boost_has_tr1_unordered_map{
 
 using std::tr1::unordered_map;
 using std::tr1::unordered_multimap;

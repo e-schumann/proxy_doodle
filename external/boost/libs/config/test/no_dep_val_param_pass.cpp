@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS
 #include "boost_no_dep_val_param.ipp"
 #else
-namespace boost_part_no_dependent_types_in_template_value_parameters = empty_boost;
+namespace boost_no_dependent_types_in_template_value_parameters = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_dependent_types_in_template_value_parameters::test();
+   return boost_no_dependent_types_in_template_value_parameters::test();
 }
 

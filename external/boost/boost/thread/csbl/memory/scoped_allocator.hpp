@@ -15,15 +15,15 @@
 #if defined BOOST_NO_CXX11_ALLOCATOR
 #include <boost/container/scoped_allocator.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace csbl
   {
-    using ::boost_part::container::uses_allocator;
+    using ::boost::container::uses_allocator;
   }
 }
 #else
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace csbl
   {

@@ -26,7 +26,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace thread_detail
   {
@@ -64,7 +64,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       void_completion_function fct_;
       template <typename F>
       void_functor_barrier_reseter(unsigned int size, BOOST_THREAD_RV_REF(F) funct)
-      : size_(size), fct_(boost_part::move(funct))
+      : size_(size), fct_(boost::move(funct))
       {}
       template <typename F>
       void_functor_barrier_reseter(unsigned int size, F& funct)
@@ -80,7 +80,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
       }
       void_functor_barrier_reseter(BOOST_THREAD_RV_REF(void_functor_barrier_reseter) other) BOOST_NOEXCEPT :
       size_(BOOST_THREAD_RV(other).size_), fct_(BOOST_THREAD_RV(other).fct_)
-      //size_(BOOST_THREAD_RV(other).size_), fct_(boost_part::move(BOOST_THREAD_RV(other).fct_))
+      //size_(BOOST_THREAD_RV(other).size_), fct_(boost::move(BOOST_THREAD_RV(other).fct_))
       {
       }
 
@@ -124,7 +124,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
   {
     static inline unsigned int check_counter(unsigned int count)
     {
-      if (count == 0) boost_part::throw_exception(
+      if (count == 0) boost::throw_exception(
           thread_exception(system::errc::invalid_argument, "barrier constructor: count cannot be zero."));
       return count;
     }
@@ -151,7 +151,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     : m_count(check_counter(count)),
       m_generation(0),
       fct_(BOOST_THREAD_MAKE_RV_REF(thread_detail::void_functor_barrier_reseter(count,
-        boost_part::move(funct)))
+        boost::move(funct)))
     )
     {
     }
@@ -181,7 +181,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     )
     : m_count(check_counter(count)),
       m_generation(0),
-      fct_(boost_part::move(funct))
+      fct_(boost::move(funct))
     {
     }
     template <typename F>
@@ -217,7 +217,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
     bool wait()
     {
-      boost_part::unique_lock < boost_part::mutex > lock(m_mutex);
+      boost::unique_lock < boost::mutex > lock(m_mutex);
       unsigned int gen = m_generation;
 
       if (--m_count == 0)
@@ -248,7 +248,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     thread_detail::size_completion_function fct_;
   };
 
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/config/abi_suffix.hpp>
 

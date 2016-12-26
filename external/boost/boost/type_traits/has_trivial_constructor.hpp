@@ -34,24 +34,24 @@
 #define BOOST_TT_TRIVIAL_CONSTRUCT_FIX
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 template <typename T> struct has_trivial_constructor
 #ifdef BOOST_HAS_TRIVIAL_CONSTRUCTOR
-   : public integral_constant <bool, ((::boost_part::is_pod<T>::value || BOOST_HAS_TRIVIAL_CONSTRUCTOR(T)) BOOST_TT_TRIVIAL_CONSTRUCT_FIX)>{};
+   : public integral_constant <bool, ((::boost::is_pod<T>::value || BOOST_HAS_TRIVIAL_CONSTRUCTOR(T)) BOOST_TT_TRIVIAL_CONSTRUCT_FIX)>{};
 #else
-   : public integral_constant <bool, ::boost_part::is_pod<T>::value>{};
+   : public integral_constant <bool, ::boost::is_pod<T>::value>{};
 #endif
 
-template <> struct has_trivial_constructor<void> : public boost_part::false_type{};
-template <> struct has_trivial_constructor<void const> : public boost_part::false_type{};
-template <> struct has_trivial_constructor<void const volatile> : public boost_part::false_type{};
-template <> struct has_trivial_constructor<void volatile> : public boost_part::false_type{};
+template <> struct has_trivial_constructor<void> : public boost::false_type{};
+template <> struct has_trivial_constructor<void const> : public boost::false_type{};
+template <> struct has_trivial_constructor<void const volatile> : public boost::false_type{};
+template <> struct has_trivial_constructor<void volatile> : public boost::false_type{};
 
 template <class T> struct has_trivial_default_constructor : public has_trivial_constructor<T> {};
 
 #undef BOOST_TT_TRIVIAL_CONSTRUCT_FIX
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_HAS_TRIVIAL_CONSTRUCTOR_HPP_INCLUDED

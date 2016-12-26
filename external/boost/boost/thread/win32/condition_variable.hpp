@@ -33,7 +33,7 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -58,7 +58,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 waiters(1),notified(false),references(0)
             {}
 
-            static bool no_waiters(boost_part::intrusive_ptr<basic_cv_list_entry> const& entry)
+            static bool no_waiters(boost::intrusive_ptr<basic_cv_list_entry> const& entry)
             {
                 return !detail::interlocked_read_acquire(&entry->waiters);
             }
@@ -120,13 +120,13 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         class basic_condition_variable
         {
-            boost_part::mutex internal_mutex;
+            boost::mutex internal_mutex;
             long total_count;
             unsigned active_generation_count;
 
             typedef basic_cv_list_entry list_entry;
 
-            typedef boost_part::intrusive_ptr<list_entry> entry_ptr;
+            typedef boost::intrusive_ptr<list_entry> entry_ptr;
             typedef std::vector<entry_ptr> generation_list;
 
             generation_list generations;
@@ -166,7 +166,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
             entry_ptr get_wait_entry()
             {
-                boost_part::lock_guard<boost_part::mutex> internal_lock(internal_mutex);
+                boost::lock_guard<boost::mutex> internal_lock(internal_mutex);
 
                 if(!wake_sem)
                 {
@@ -191,16 +191,16 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             struct entry_manager
             {
                 entry_ptr const entry;
-                boost_part::mutex& internal_mutex;
+                boost::mutex& internal_mutex;
 
                 BOOST_THREAD_NO_COPYABLE(entry_manager)
-                entry_manager(entry_ptr const& entry_, boost_part::mutex& mutex_):
+                entry_manager(entry_ptr const& entry_, boost::mutex& mutex_):
                     entry(entry_), internal_mutex(mutex_)
                 {}
 
                 ~entry_manager()
                 {
-                    boost_part::lock_guard<boost_part::mutex> internal_lock(internal_mutex);
+                    boost::lock_guard<boost::mutex> internal_lock(internal_mutex);
                     entry->remove_waiter();
                 }
 
@@ -260,7 +260,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             {
                 if(detail::interlocked_read_acquire(&total_count))
                 {
-                    boost_part::lock_guard<boost_part::mutex> internal_lock(internal_mutex);
+                    boost::lock_guard<boost::mutex> internal_lock(internal_mutex);
                     if(!total_count)
                     {
                         return;
@@ -281,7 +281,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             {
                 if(detail::interlocked_read_acquire(&total_count))
                 {
-                    boost_part::lock_guard<boost_part::mutex> internal_lock(internal_mutex);
+                    boost::lock_guard<boost::mutex> internal_lock(internal_mutex);
                     if(!total_count)
                     {
                         return;
@@ -325,12 +325,12 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 
 #if defined BOOST_THREAD_USES_DATETIME
-        bool timed_wait(unique_lock<mutex>& m,boost_part::system_time const& abs_time)
+        bool timed_wait(unique_lock<mutex>& m,boost::system_time const& abs_time)
         {
             return do_wait(m,abs_time);
         }
 
-        bool timed_wait(unique_lock<mutex>& m,boost_part::xtime const& abs_time)
+        bool timed_wait(unique_lock<mutex>& m,boost::xtime const& abs_time)
         {
             return do_wait(m,system_time(abs_time));
         }
@@ -350,12 +350,12 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
 
         template<typename predicate_type>
-        bool timed_wait(unique_lock<mutex>& m,boost_part::system_time const& abs_time,predicate_type pred)
+        bool timed_wait(unique_lock<mutex>& m,boost::system_time const& abs_time,predicate_type pred)
         {
             return do_wait(m,abs_time,pred);
         }
         template<typename predicate_type>
-        bool timed_wait(unique_lock<mutex>& m,boost_part::xtime const& abs_time,predicate_type pred)
+        bool timed_wait(unique_lock<mutex>& m,boost::xtime const& abs_time,predicate_type pred)
         {
             return do_wait(m,system_time(abs_time),pred);
         }
@@ -433,7 +433,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 const chrono::duration<Rep, Period>& d,
                 Predicate pred)
         {
-            return wait_until(lock, chrono::steady_clock::now() + d, boost_part::move(pred));
+            return wait_until(lock, chrono::steady_clock::now() + d, boost::move(pred));
         }
 #endif
     };
@@ -463,13 +463,13 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 #if defined BOOST_THREAD_USES_DATETIME
         template<typename lock_type>
-        bool timed_wait(lock_type& m,boost_part::system_time const& abs_time)
+        bool timed_wait(lock_type& m,boost::system_time const& abs_time)
         {
             return do_wait(m,abs_time);
         }
 
         template<typename lock_type>
-        bool timed_wait(lock_type& m,boost_part::xtime const& abs_time)
+        bool timed_wait(lock_type& m,boost::xtime const& abs_time)
         {
             return do_wait(m,system_time(abs_time));
         }
@@ -481,13 +481,13 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         }
 
         template<typename lock_type,typename predicate_type>
-        bool timed_wait(lock_type& m,boost_part::system_time const& abs_time,predicate_type pred)
+        bool timed_wait(lock_type& m,boost::system_time const& abs_time,predicate_type pred)
         {
             return do_wait(m,abs_time,pred);
         }
 
         template<typename lock_type,typename predicate_type>
-        bool timed_wait(lock_type& m,boost_part::xtime const& abs_time,predicate_type pred)
+        bool timed_wait(lock_type& m,boost::xtime const& abs_time,predicate_type pred)
         {
             return do_wait(m,system_time(abs_time),pred);
         }
@@ -554,7 +554,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 const chrono::duration<Rep, Period>& d,
                 Predicate pred)
         {
-            return wait_until(lock, chrono::steady_clock::now() + d, boost_part::move(pred));
+            return wait_until(lock, chrono::steady_clock::now() + d, boost::move(pred));
         }
 #endif
     };

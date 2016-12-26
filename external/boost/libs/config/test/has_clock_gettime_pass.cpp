@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_CLOCK_GETTIME
 #include "boost_has_clock_gettime.ipp"
 #else
-namespace boost_part_has_clock_gettime = empty_boost;
+namespace boost_has_clock_gettime = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_clock_gettime::test();
+   return boost_has_clock_gettime::test();
 }
 

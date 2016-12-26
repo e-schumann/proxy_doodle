@@ -18,14 +18,14 @@
 #include <boost/range/detail/detail_str.hpp>
 #include <boost/range/iterator_range.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     template< class Range >
     inline iterator_range<BOOST_DEDUCED_TYPENAME range_iterator<Range>::type> 
     as_literal( Range& r )
     {
-        return ::boost_part::make_iterator_range( ::boost_part::range_detail::str_begin(r),
-                                             ::boost_part::range_detail::str_end(r) );
+        return ::boost::make_iterator_range( ::boost::range_detail::str_begin(r),
+                                             ::boost::range_detail::str_end(r) );
     }
 
 }

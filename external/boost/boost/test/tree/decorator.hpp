@@ -38,7 +38,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 class test_unit;
@@ -50,7 +50,7 @@ namespace decorator {
 // ************************************************************************** //
 
 class base;
-typedef boost_part::shared_ptr<base> base_ptr;
+typedef boost::shared_ptr<base> base_ptr;
 
 class BOOST_TEST_DECL collector : public singleton<collector> {
 public:
@@ -230,7 +230,7 @@ fixture( Arg const& arg )
 //____________________________________________________________________________//
 
 inline fixture_t
-fixture( boost_part::function<void()> const& setup, boost_part::function<void()> const& teardown = boost_part::function<void()>() )
+fixture( boost::function<void()> const& setup, boost::function<void()> const& teardown = boost::function<void()>() )
 {
     return fixture_t( test_unit_fixture_ptr( new unit_test::function_based_fixture( setup, teardown ) ) );
 }
@@ -243,7 +243,7 @@ fixture( boost_part::function<void()> const& setup, boost_part::function<void()>
 
 class BOOST_TEST_DECL precondition : public decorator::base {
 public:
-    typedef boost_part::function<test_tools::assertion_result (test_unit_id)>   predicate_t;
+    typedef boost::function<test_tools::assertion_result (test_unit_id)>   predicate_t;
 
     explicit                precondition( predicate_t p ) : m_precondition( p ) {}
 
@@ -270,7 +270,7 @@ using decorator::fixture;
 using decorator::precondition;
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

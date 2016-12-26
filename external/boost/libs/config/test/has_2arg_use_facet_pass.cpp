@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_TWO_ARG_USE_FACET
 #include "boost_has_2arg_use_facet.ipp"
 #else
-namespace boost_part_has_two_arg_use_facet = empty_boost;
+namespace boost_has_two_arg_use_facet = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_two_arg_use_facet::test();
+   return boost_has_two_arg_use_facet::test();
 }
 

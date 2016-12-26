@@ -29,15 +29,15 @@ class abi_test : protected empty
 private:
    empty e;
    char c;
-   boost_part::int32_t i;
+   boost::int32_t i;
 public:
    inline char inline_one()const
    { return c; }
-   inline boost_part::int32_t inline_two()const
+   inline boost::int32_t inline_two()const
    { return i; }
 
    virtual char virtual_one()const;
-   virtual boost_part::int32_t virtual_two()const;
+   virtual boost::int32_t virtual_two()const;
 
    abi_test();
 };

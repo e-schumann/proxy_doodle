@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_FUNCTION_TEMPLATE_ORDERING
 #include "boost_no_func_tmp_order.ipp"
 #else
-namespace boost_part_no_function_template_ordering = empty_boost;
+namespace boost_no_function_template_ordering = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_function_template_ordering::test();
+   return boost_no_function_template_ordering::test();
 }
 

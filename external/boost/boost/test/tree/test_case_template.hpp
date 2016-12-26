@@ -46,7 +46,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 namespace ut_detail {
 
@@ -57,7 +57,7 @@ namespace ut_detail {
 template<typename TestCaseTemplate,typename TestType>
 class test_case_template_invoker {
 public:
-    void    operator()()    { TestCaseTemplate::run( (boost_part::type<TestType>*)0 ); }
+    void    operator()()    { TestCaseTemplate::run( (boost::type<TestType>*)0 ); }
 };
 
 // ************************************************************************** //
@@ -80,11 +80,11 @@ struct generate_test_case_4_type {
         assign_op( full_name, m_test_case_name, 0 );
         full_name += '<';
 #if !defined(BOOST_NO_TYPEID) && !defined(BOOST_NO_RTTI)
-        full_name += boost_part::core::demangle(typeid(TestType).name()); // same as execution_monitor.ipp
+        full_name += boost::core::demangle(typeid(TestType).name()); // same as execution_monitor.ipp
 #else
         full_name += BOOST_CURRENT_FUNCTION;
 #endif
-        if( boost_part::is_const<TestType>::value )
+        if( boost::is_const<TestType>::value )
             full_name += "_const";
         full_name += '>';
 
@@ -134,7 +134,7 @@ public:
 
 } // namespace ut_detail
 } // unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

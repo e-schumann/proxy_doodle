@@ -13,7 +13,7 @@
 #include <time.h>
 
 
-namespace boost_part_has_pthread_delay_np{
+namespace boost_has_pthread_delay_np{
 
 void f()
 {

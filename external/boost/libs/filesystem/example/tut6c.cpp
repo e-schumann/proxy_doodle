@@ -12,8 +12,8 @@
 #include <boost/filesystem.hpp>
 #include <boost/system/error_code.hpp>
 
-using namespace boost_part::filesystem;
-using namespace boost_part::system;
+using namespace boost::filesystem;
+using namespace boost::system;
 
 int main(int argc, char* argv[])
 {

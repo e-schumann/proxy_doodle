@@ -12,7 +12,7 @@
 
 #include <tuple>
 
-namespace boost_part_no_cxx11_hdr_tuple {
+namespace boost_no_cxx11_hdr_tuple {
 
 int test()
 {

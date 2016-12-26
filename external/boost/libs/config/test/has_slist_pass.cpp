@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_SLIST
 #include "boost_has_slist.ipp"
 #else
-namespace boost_part_has_slist = empty_boost;
+namespace boost_has_slist = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_slist::test();
+   return boost_has_slist::test();
 }
 

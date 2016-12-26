@@ -10,7 +10,7 @@
 #include <boost/thread/lock_options.hpp>
 #include <boost/thread/detail/delete.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
     template<typename SharedMutex>

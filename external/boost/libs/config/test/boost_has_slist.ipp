@@ -20,7 +20,7 @@
 #define BOOST_STD_EXTENSION_NAMESPACE std
 #endif
 
-namespace boost_part_has_slist{
+namespace boost_has_slist{
 
 template <class T, class Alloc>
 void foo(const BOOST_STD_EXTENSION_NAMESPACE::slist<T,Alloc>& )

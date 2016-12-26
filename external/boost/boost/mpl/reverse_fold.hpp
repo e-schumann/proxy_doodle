@@ -21,7 +21,7 @@
 #include <boost/mpl/aux_/reverse_fold_impl.hpp>
 #include <boost/mpl/aux_/na_spec.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl {
+namespace boost { namespace mpl {
 
 template<
       typename BOOST_MPL_AUX_NA_PARAM(Sequence)
@@ -32,7 +32,7 @@ template<
 struct reverse_fold
 {
     typedef typename aux::reverse_fold_impl<
-          ::boost_part::mpl::O1_size<Sequence>::value
+          ::boost::mpl::O1_size<Sequence>::value
         , typename begin<Sequence>::type
         , typename end<Sequence>::type
         , State

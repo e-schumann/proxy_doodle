@@ -18,7 +18,7 @@
 #include <boost/iterator/transform_iterator.hpp>
 #include <boost/utility/result_of.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range_detail
     {
@@ -38,7 +38,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
         template< class F, class R >
         struct transformed_range :
-            public boost_part::iterator_range<
+            public boost::iterator_range<
                 typename transform_iterator_gen<
                     F, typename range_iterator<R>::type>::type>
         {
@@ -46,7 +46,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             typedef typename transform_iterator_gen<
                 F, typename range_iterator<R>::type>::type transform_iter_t;
 
-            typedef boost_part::iterator_range<transform_iter_t> base;
+            typedef boost::iterator_range<transform_iter_t> base;
 
         public:
             typedef typename default_constructible_unary_fn_gen<
@@ -60,8 +60,8 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
             typedef R source_range_type;
 
             transformed_range(transform_fn_type f, R& r)
-                : base(transform_iter_t(boost_part::begin(r), f),
-                       transform_iter_t(boost_part::end(r), f))
+                : base(transform_iter_t(boost::begin(r), f),
+                       transform_iter_t(boost::end(r), f))
             {
             }
         };

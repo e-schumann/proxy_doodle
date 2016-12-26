@@ -11,7 +11,7 @@
 
 #include <locale>
 
-namespace boost_part_no_std_locale{
+namespace boost_no_std_locale{
 
 int test()
 {

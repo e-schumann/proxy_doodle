@@ -32,7 +32,7 @@
 
 #include <boost/config/abi_prefix.hpp> // must be the last #include
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace filesystem {
+namespace boost { namespace filesystem {
 
   BOOST_FILESYSTEM_DECL const system::error_category& codecvt_error_category();
   //  uses std::codecvt_base::result used for error codes:
@@ -73,7 +73,7 @@ namespace path_traits {
   template <class Container> inline
     // disable_if aids broken compilers (IBM, old GCC, etc.) and is harmless for
     // conforming compilers. Replace by plain "bool" at some future date (2012?) 
-    typename boost_part::disable_if<boost_part::is_array<Container>, bool>::type
+    typename boost::disable_if<boost::is_array<Container>, bool>::type
       empty(const Container & c)
         { return c.begin() == c.end(); }
 
@@ -278,7 +278,7 @@ namespace path_traits {
   template <class Container, class U> inline
     // disable_if aids broken compilers (IBM, old GCC, etc.) and is harmless for
     // conforming compilers. Replace by plain "void" at some future date (2012?) 
-    typename boost_part::disable_if<boost_part::is_array<Container>, void>::type
+    typename boost::disable_if<boost::is_array<Container>, void>::type
     dispatch(const Container & c, U& to, const codecvt_type& cvt)
   {
     if (c.size())
@@ -313,7 +313,7 @@ namespace path_traits {
   template <class Container, class U> inline
     // disable_if aids broken compilers (IBM, old GCC, etc.) and is harmless for
     // conforming compilers. Replace by plain "void" at some future date (2012?) 
-    typename boost_part::disable_if<boost_part::is_array<Container>, void>::type
+    typename boost::disable_if<boost::is_array<Container>, void>::type
     dispatch(const Container & c, U& to)
   {
     if (c.size())
@@ -345,7 +345,7 @@ namespace path_traits {
     );
 
 
-}}} // namespace boost_part::filesystem::path_traits
+}}} // namespace boost::filesystem::path_traits
 
 #include <boost/config/abi_suffix.hpp> // pops abi_prefix.hpp pragmas
 

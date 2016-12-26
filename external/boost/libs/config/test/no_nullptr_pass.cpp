@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_NULLPTR
 #include "boost_no_nullptr.ipp"
 #else
-namespace boost_part_no_cxx11_nullptr = empty_boost;
+namespace boost_no_cxx11_nullptr = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_nullptr::test();
+   return boost_no_cxx11_nullptr::test();
 }
 

@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_CWCTYPE
 #include "boost_no_cwctype.ipp"
 #else
-namespace boost_part_no_cwctype = empty_boost;
+namespace boost_no_cwctype = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cwctype::test();
+   return boost_no_cwctype::test();
 }
 

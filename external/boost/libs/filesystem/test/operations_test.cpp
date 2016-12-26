@@ -28,10 +28,10 @@
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/detail/lightweight_main.hpp>
 
-namespace fs = boost_part::filesystem;
-using boost_part::system::error_code;
-using boost_part::system::system_category;
-using boost_part::system::system_error;
+namespace fs = boost::filesystem;
+using boost::system::error_code;
+using boost::system::system_category;
+using boost::system::system_error;
 
 #include <fstream>
 #include <iostream>
@@ -168,8 +168,8 @@ namespace
     return false;
   }
 
-  boost_part::system::error_category* poison_category_aux() { return 0; }
-  boost_part::system::error_category& poison_category()     { return *poison_category_aux(); }
+  boost::system::error_category* poison_category_aux() { return 0; }
+  boost::system::error_category& poison_category()     { return *poison_category_aux(); }
 
   // compile-only two argument "do-the-right-thing" tests
   //   verifies that all overload combinations compile without error
@@ -295,8 +295,8 @@ namespace
         // the stdcxx standard library apparently appends additional info
         // to what(), so check only the initial portion: 
         BOOST_TEST(std::strncmp(x.what(),
-          "boost_part::filesystem::create_directory",
-          sizeof("boost_part::filesystem::create_directory")-1) == 0);
+          "boost::filesystem::create_directory",
+          sizeof("boost::filesystem::create_directory")-1) == 0);
     }
     BOOST_TEST(exception_thrown);
 
@@ -314,7 +314,7 @@ namespace
       if (report_throws) cout << x.what() << endl;
       if (platform == "Windows" && language_id == 0x0409) // English (United States)
         BOOST_TEST(std::strcmp(x.what(),
-          "boost_part::filesystem::create_directory: The system cannot find the path specified") == 0);
+          "boost::filesystem::create_directory: The system cannot find the path specified") == 0);
     }
     BOOST_TEST(exception_thrown);
 
@@ -333,7 +333,7 @@ namespace
       if (platform == "Windows" && language_id == 0x0409) // English (United States)
       {
         bool ok (std::strcmp(x.what(),
-          "boost_part::filesystem::create_directory: The system cannot find the path specified: \"no-such-dir/foo/bar\"") == 0);
+          "boost::filesystem::create_directory: The system cannot find the path specified: \"no-such-dir/foo/bar\"") == 0);
         BOOST_TEST(ok);
         if (!ok)
         {
@@ -358,7 +358,7 @@ namespace
       if (platform == "Windows" && language_id == 0x0409) // English (United States)
       {
         bool ok (std::strcmp(x.what(),
-          "boost_part::filesystem::create_directory: The system cannot find the path specified: \"no-such-dir/foo/bar\"") == 0);
+          "boost::filesystem::create_directory: The system cannot find the path specified: \"no-such-dir/foo/bar\"") == 0);
         BOOST_TEST(ok);
         if (!ok)
         {
@@ -472,7 +472,7 @@ namespace
       error_code ecx;
       fs::directory_iterator itx("nosuchdirectory", ecx);
       BOOST_TEST(ecx);
-      BOOST_TEST(ecx == boost_part::system::errc::no_such_file_or_directory);
+      BOOST_TEST(ecx == boost::system::errc::no_such_file_or_directory);
     }
     catch (const fs::filesystem_error &) { dir_itr_exception = true; }
     BOOST_TEST(!dir_itr_exception);
@@ -637,7 +637,7 @@ namespace
 
     //  test iterator increment with error_code argument
     cout << "  with error_code argument" << endl;
-    boost_part::system::error_code ec;
+    boost::system::error_code ec;
     int d1f1_count = 0;
     fs::recursive_directory_iterator it(dir, fs::symlink_option::no_recurse);
     fs::recursive_directory_iterator it2(it);  // test single pass shallow copy semantics
@@ -1581,7 +1581,7 @@ namespace
   {
     cout << "symlink_status_tests..." << endl;
 
-    boost_part::system::error_code ec;
+    boost::system::error_code ec;
 
     fs::path dangling_sym(dir / "dangling-sym");
     fs::path dangling_directory_sym(dir / "dangling-directory-sym");
@@ -2201,8 +2201,8 @@ int cpp_main(int argc, char* argv[])
   BOOST_TEST(!fs::exists(dir));
 
   // several functions give unreasonable results if uintmax_t isn't 64-bits
-  cout << "sizeof(boost_part::uintmax_t) = " << sizeof(boost_part::uintmax_t) << '\n';
-  BOOST_TEST(sizeof(boost_part::uintmax_t) >= 8);
+  cout << "sizeof(boost::uintmax_t) = " << sizeof(boost::uintmax_t) << '\n';
+  BOOST_TEST(sizeof(boost::uintmax_t) >= 8);
 
   initial_tests();
   predicate_and_status_tests();
@@ -2279,5 +2279,5 @@ int cpp_main(int argc, char* argv[])
   }
 
   cout << "returning from main()" << endl;
-  return ::boost_part::report_errors();
+  return ::boost::report_errors();
 } // main

@@ -38,7 +38,7 @@
 
 //  throw an exception  ----------------------------------------------------------------//
 //
-//  Exceptions were originally thrown via boost_part::throw_exception().
+//  Exceptions were originally thrown via boost::throw_exception().
 //  As throw_exception() became more complex, it caused user error reporting
 //  to be harder to interpret, since the exception reported became much more complex.
 //  The immediate fix was to throw directly, wrapped in a macro to make any later change
@@ -94,7 +94,7 @@
 // Set the name of our library, this will get undef'ed by auto_link.hpp
 // once it's done with it:
 //
-#define BOOST_LIB_NAME boost_part_filesystem
+#define BOOST_LIB_NAME boost_filesystem
 //
 // If we're importing code from a dll, then tell auto_link.hpp about it:
 //

@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_pointer_to_member_template_parameters::test();
+   return boost_no_pointer_to_member_template_parameters::test();
 }
 

@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_STD_MESSAGES
 #include "boost_no_std_messages.ipp"
 #else
-namespace boost_part_no_std_messages = empty_boost;
+namespace boost_no_std_messages = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_std_messages::test();
+   return boost_no_std_messages::test();
 }
 

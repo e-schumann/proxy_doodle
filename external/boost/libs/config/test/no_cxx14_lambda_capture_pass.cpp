@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX14_INITIALIZED_LAMBDA_CAPTURES
 #include "boost_no_cxx14_lambda_capture.ipp"
 #else
-namespace boost_part_no_cxx14_initialized_lambda_captures = empty_boost;
+namespace boost_no_cxx14_initialized_lambda_captures = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx14_initialized_lambda_captures::test();
+   return boost_no_cxx14_initialized_lambda_captures::test();
 }
 

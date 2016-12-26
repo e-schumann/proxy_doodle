@@ -10,7 +10,7 @@
 //  DESCRIPTION:   If the compiler rejects the typename keyword when calling
 //                 the constructor of a dependent type
 
-namespace boost_part_no_typename_with_ctor {
+namespace boost_no_typename_with_ctor {
 
 struct A {};
 

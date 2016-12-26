@@ -32,7 +32,7 @@
 #define BOOST_STD_EXTENSION_NAMESPACE std
 #endif
 
-namespace boost_part_has_hash{
+namespace boost_has_hash{
 
 #ifndef DISABLE_BOOST_HAS_HASH_TEST
 

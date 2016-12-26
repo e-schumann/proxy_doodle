@@ -18,16 +18,16 @@
 
 #if !defined( BOOST_USE_WINDOWS_H )
 extern "C" {
-BOOST_SYMBOL_IMPORT boost_part::detail::winapi::BOOL_ WINAPI
+BOOST_SYMBOL_IMPORT boost::detail::winapi::BOOL_ WINAPI
 QueryPerformanceCounter(::_LARGE_INTEGER* lpPerformanceCount);
 
-BOOST_SYMBOL_IMPORT boost_part::detail::winapi::BOOL_ WINAPI
+BOOST_SYMBOL_IMPORT boost::detail::winapi::BOOL_ WINAPI
 QueryPerformanceFrequency(::_LARGE_INTEGER* lpFrequency);
 }
 #endif
 
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace detail {
 namespace winapi {
 

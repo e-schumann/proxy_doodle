@@ -30,7 +30,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 // ************************************************************************** //
 // **************            basic_wrap_stringstream           ************** //
@@ -155,7 +155,7 @@ operator<<( basic_wrap_stringstream<CharT>& targ, std::basic_ios<Elem, Tr>& (BOO
 typedef basic_wrap_stringstream<char>       wrap_stringstream;
 typedef basic_wrap_stringstream<wchar_t>    wrap_wstringstream;
 
-}  // namespace boost_part
+}  // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

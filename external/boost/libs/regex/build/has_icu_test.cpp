@@ -42,7 +42,7 @@ int main()
       return err;
    }
    U_NAMESPACE_QUALIFIER Locale l;
-   boost_part::scoped_ptr<U_NAMESPACE_QUALIFIER Collator> p_col(U_NAMESPACE_QUALIFIER Collator::createInstance(l, err));
+   boost::scoped_ptr<U_NAMESPACE_QUALIFIER Collator> p_col(U_NAMESPACE_QUALIFIER Collator::createInstance(l, err));
    if(err > 0)
    {
       print_error(err, "Collator::createInstance");

@@ -24,7 +24,7 @@
 #endif
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace detail
     {
@@ -81,10 +81,10 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
                     do
                     {
-                        unsigned const retval(win32::WaitForSingleObjectEx(sem, ::boost_part::detail::win32::infinite,0));
-                        BOOST_VERIFY(0 == retval || ::boost_part::detail::win32::wait_abandoned == retval);
+                        unsigned const retval(win32::WaitForSingleObjectEx(sem, ::boost::detail::win32::infinite,0));
+                        BOOST_VERIFY(0 == retval || ::boost::detail::win32::wait_abandoned == retval);
 //                        BOOST_VERIFY(win32::WaitForSingleObject(
-//                                         sem,::boost_part::detail::win32::infinite)==0);
+//                                         sem,::boost::detail::win32::infinite)==0);
                         clear_waiting_and_try_lock(old_count);
                         lock_acquired=!(old_count&lock_flag_value);
                     }
@@ -126,7 +126,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
 
 #if defined BOOST_THREAD_USES_DATETIME
-            bool timed_lock(::boost_part::system_time const& wait_until)
+            bool timed_lock(::boost::system_time const& wait_until)
             {
                 if(try_lock())
                 {
@@ -142,7 +142,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
                     do
                     {
-                        if(win32::WaitForSingleObjectEx(sem,::boost_part::detail::get_milliseconds_until(wait_until),0)!=0)
+                        if(win32::WaitForSingleObjectEx(sem,::boost::detail::get_milliseconds_until(wait_until),0)!=0)
                         {
                             BOOST_INTERLOCKED_DECREMENT(&active_count);
                             return false;
@@ -161,7 +161,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
                 return timed_lock(get_system_time()+timeout);
             }
 
-            bool timed_lock(boost_part::xtime const& timeout)
+            bool timed_lock(boost::xtime const& timeout)
             {
                 return timed_lock(system_time(timeout));
             }
@@ -240,7 +240,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
         private:
             void* get_event()
             {
-                void* current_event=::boost_part::detail::interlocked_read_acquire(&event);
+                void* current_event=::boost::detail::interlocked_read_acquire(&event);
 
                 if(!current_event)
                 {

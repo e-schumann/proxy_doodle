@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX14_VARIABLE_TEMPLATES
 #include "boost_no_cxx14_var_templ.ipp"
 #else
-namespace boost_part_no_cxx14_variable_templates = empty_boost;
+namespace boost_no_cxx14_variable_templates = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx14_variable_templates::test();
+   return boost_no_cxx14_variable_templates::test();
 }
 

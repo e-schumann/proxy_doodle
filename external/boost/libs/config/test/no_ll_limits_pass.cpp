@@ -24,11 +24,11 @@
 #ifndef BOOST_NO_LONG_LONG_NUMERIC_LIMITS
 #include "boost_no_ll_limits.ipp"
 #else
-namespace boost_part_no_long_long_numeric_limits = empty_boost;
+namespace boost_no_long_long_numeric_limits = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_long_long_numeric_limits::test();
+   return boost_no_long_long_numeric_limits::test();
 }
 

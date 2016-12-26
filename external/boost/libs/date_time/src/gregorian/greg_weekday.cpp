@@ -15,7 +15,7 @@
 
 #include "greg_names.hpp"
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace gregorian {
   
   //! Return a 3 digit english string of the day of week (eg: Sun)

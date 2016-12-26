@@ -3,7 +3,7 @@
 #include <boost/detail/lightweight_test_report.hpp>
 #include <boost/filesystem.hpp>
 
-namespace fs = boost_part::filesystem;
+namespace fs = boost::filesystem;
 
 int test_main(int, char*[])     // note name
 {
@@ -11,7 +11,7 @@ int test_main(int, char*[])     // note name
   BOOST_TEST_EQ(4 + 4, 9);      // two EqualityComparible arguments
   BOOST_TEST(fs::exists("."));  // should pass, so nothing reported
 
-  return ::boost_part::report_errors();   // required
+  return ::boost::report_errors();   // required
 }
 
 //  Copyright Beman Dawes 2014

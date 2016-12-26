@@ -12,7 +12,7 @@
 #include <sys/time.h>
 
 
-namespace boost_part_has_gettimeofday{
+namespace boost_has_gettimeofday{
 
 void f()
 {

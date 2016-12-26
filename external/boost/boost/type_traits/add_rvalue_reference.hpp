@@ -28,7 +28,7 @@
 // reference. -end note ]
 //----------------------------------------------------------------------------//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 namespace type_traits_detail {
 
@@ -47,7 +47,7 @@ namespace type_traits_detail {
     template <typename T>
     struct add_rvalue_reference_imp
     {
-       typedef typename boost_part::type_traits_detail::add_rvalue_reference_helper
+       typedef typename boost::type_traits_detail::add_rvalue_reference_helper
                   <T, (is_void<T>::value == false && is_reference<T>::value == false) >::type type;
     };
 
@@ -55,10 +55,10 @@ namespace type_traits_detail {
 
 template <class T> struct add_rvalue_reference
 {
-   typedef typename boost_part::type_traits_detail::add_rvalue_reference_imp<T>::type type;
+   typedef typename boost::type_traits_detail::add_rvalue_reference_imp<T>::type type;
 };
 
-}  // namespace boost_part
+}  // namespace boost
 
 #endif  // BOOST_TYPE_TRAITS_EXT_ADD_RVALUE_REFERENCE__HPP
 

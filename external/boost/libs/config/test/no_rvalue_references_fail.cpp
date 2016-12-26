@@ -32,6 +32,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_rvalue_references::test();
+   return boost_no_cxx11_rvalue_references::test();
 }
 

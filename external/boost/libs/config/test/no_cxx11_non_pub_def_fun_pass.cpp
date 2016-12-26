@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX11_NON_PUBLIC_DEFAULTED_FUNCTIONS
 #include "boost_no_cxx11_non_pub_def_fun.ipp"
 #else
-namespace boost_part_no_cxx11_non_public_defaulted_functions = empty_boost;
+namespace boost_no_cxx11_non_public_defaulted_functions = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx11_non_public_defaulted_functions::test();
+   return boost_no_cxx11_non_public_defaulted_functions::test();
 }
 

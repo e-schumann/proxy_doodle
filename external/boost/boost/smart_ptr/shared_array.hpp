@@ -30,7 +30,7 @@
 #include <algorithm>          // for std::swap
 #include <functional>         // for std::less
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 //
@@ -59,7 +59,7 @@ public:
 
 #if !defined( BOOST_NO_CXX11_NULLPTR )
 
-    shared_array( boost_part::detail::sp_nullptr_t ) BOOST_NOEXCEPT : px( 0 ), pn()
+    shared_array( boost::detail::sp_nullptr_t ) BOOST_NOEXCEPT : px( 0 ), pn()
     {
     }
 
@@ -68,7 +68,7 @@ public:
     template<class Y>
     explicit shared_array( Y * p ): px( p ), pn( p, checked_array_deleter<Y>() )
     {
-        boost_part::detail::sp_assert_convertible< Y[], T[] >();
+        boost::detail::sp_assert_convertible< Y[], T[] >();
     }
 
     //
@@ -79,14 +79,14 @@ public:
 
     template<class Y, class D> shared_array( Y * p, D d ): px( p ), pn( p, d )
     {
-        boost_part::detail::sp_assert_convertible< Y[], T[] >();
+        boost::detail::sp_assert_convertible< Y[], T[] >();
     }
 
     // As above, but with allocator. A's copy constructor shall not throw.
 
     template<class Y, class D, class A> shared_array( Y * p, D d, A a ): px( p ), pn( p, d, a )
     {
-        boost_part::detail::sp_assert_convertible< Y[], T[] >();
+        boost::detail::sp_assert_convertible< Y[], T[] >();
     }
 
 //  generated copy constructor, destructor are fine...
@@ -112,7 +112,7 @@ public:
     template<class Y>
 #if !defined( BOOST_SP_NO_SP_CONVERTIBLE )
 
-    shared_array( shared_array<Y> const & r, typename boost_part::detail::sp_enable_if_convertible< Y[], T[] >::type = boost_part::detail::sp_empty() )
+    shared_array( shared_array<Y> const & r, typename boost::detail::sp_enable_if_convertible< Y[], T[] >::type = boost::detail::sp_empty() )
 
 #else
 
@@ -121,7 +121,7 @@ public:
 #endif
     BOOST_NOEXCEPT : px( r.px ), pn( r.pn ) // never throws
     {
-        boost_part::detail::sp_assert_convertible< Y[], T[] >();
+        boost::detail::sp_assert_convertible< Y[], T[] >();
     }
 
     // aliasing
@@ -224,7 +224,7 @@ public:
         pn.swap(other.pn);
     }
 
-    void * _internal_get_deleter( boost_part::detail::sp_typeinfo const & ti ) const
+    void * _internal_get_deleter( boost::detail::sp_typeinfo const & ti ) const
     {
         return pn.get_deleter( ti );
     }
@@ -250,22 +250,22 @@ template<class T> inline bool operator!=(shared_array<T> const & a, shared_array
 
 #if !defined( BOOST_NO_CXX11_NULLPTR )
 
-template<class T> inline bool operator==( shared_array<T> const & p, boost_part::detail::sp_nullptr_t ) BOOST_NOEXCEPT
+template<class T> inline bool operator==( shared_array<T> const & p, boost::detail::sp_nullptr_t ) BOOST_NOEXCEPT
 {
     return p.get() == 0;
 }
 
-template<class T> inline bool operator==( boost_part::detail::sp_nullptr_t, shared_array<T> const & p ) BOOST_NOEXCEPT
+template<class T> inline bool operator==( boost::detail::sp_nullptr_t, shared_array<T> const & p ) BOOST_NOEXCEPT
 {
     return p.get() == 0;
 }
 
-template<class T> inline bool operator!=( shared_array<T> const & p, boost_part::detail::sp_nullptr_t ) BOOST_NOEXCEPT
+template<class T> inline bool operator!=( shared_array<T> const & p, boost::detail::sp_nullptr_t ) BOOST_NOEXCEPT
 {
     return p.get() != 0;
 }
 
-template<class T> inline bool operator!=( boost_part::detail::sp_nullptr_t, shared_array<T> const & p ) BOOST_NOEXCEPT
+template<class T> inline bool operator!=( boost::detail::sp_nullptr_t, shared_array<T> const & p ) BOOST_NOEXCEPT
 {
     return p.get() != 0;
 }
@@ -287,6 +287,6 @@ template< class D, class T > D * get_deleter( shared_array<T> const & p )
     return static_cast< D * >( p._internal_get_deleter( BOOST_SP_TYPEID(D) ) );
 }
 
-} // namespace boost_part
+} // namespace boost
 
 #endif  // #ifndef BOOST_SMART_PTR_SHARED_ARRAY_HPP_INCLUDED

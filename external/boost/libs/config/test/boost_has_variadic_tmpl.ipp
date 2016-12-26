@@ -9,7 +9,7 @@
 //  TITLE:         variadic templates
 //  DESCRIPTION:   The compiler supports C++0x variadic templates
 
-namespace boost_part_has_variadic_tmpl {
+namespace boost_has_variadic_tmpl {
 
 template<typename... Elements> struct tuple {};
 

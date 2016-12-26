@@ -17,7 +17,7 @@
 
 // todo make use of integral_constant, true_type and false_type
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace sync
   {
@@ -34,7 +34,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     namespace detail
     {
 #define BOOST_THREAD_DEFINE_HAS_MEMBER_CALLED(member_name)                     \
-        template<typename T, bool=boost_part::is_class<T>::value>            \
+        template<typename T, bool=boost::is_class<T>::value>            \
         struct has_member_called_##member_name                          \
         {                                                               \
             BOOST_STATIC_CONSTANT(bool, value=false);                   \

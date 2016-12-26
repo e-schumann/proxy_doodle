@@ -1,6 +1,6 @@
 #include <iostream>
 #include <boost/filesystem.hpp>
-using boost_part::filesystem::path;
+using boost::filesystem::path;
 
 int main()
 {

@@ -14,7 +14,7 @@
 #include <boost/memory_order.hpp>
 #include <pthread.h>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   namespace thread_detail
   {
@@ -87,4 +87,4 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
 
   } // namespace thread_detail
 
-} // namespace boost_part
+} // namespace boost

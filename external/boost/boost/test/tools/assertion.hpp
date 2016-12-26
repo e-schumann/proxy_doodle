@@ -34,7 +34,7 @@
 
 //____________________________________________________________________________//
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace test_tools {
 namespace assertion {
 
@@ -125,8 +125,8 @@ namespace op {
 
 #ifndef BOOST_NO_CXX11_DECLTYPE
 #   define DEDUCE_RESULT_TYPE( oper )                                   \
-    decltype(boost_part::declval<Lhs>() oper boost_part::declval<Rhs>() ) optype; \
-    typedef typename boost_part::remove_reference<optype>::type              \
+    decltype(boost::declval<Lhs>() oper boost::declval<Rhs>() ) optype; \
+    typedef typename boost::remove_reference<optype>::type              \
 /**/
 #else
 #   define DEDUCE_RESULT_TYPE( oper ) bool
@@ -201,11 +201,11 @@ public:
 
 #define ADD_OP_SUPPORT( oper, name, _ )                         \
     template<typename T>                                        \
-    binary_expr<ExprType,typename boost_part::decay<T const>::type,  \
-        op::name<ValType,typename boost_part::decay<T const>::type> >\
+    binary_expr<ExprType,typename boost::decay<T const>::type,  \
+        op::name<ValType,typename boost::decay<T const>::type> >\
     operator oper( T const& rhs ) const                         \
     {                                                           \
-        typedef typename boost_part::decay<T const>::type Rhs;       \
+        typedef typename boost::decay<T const>::type Rhs;       \
         return binary_expr<ExprType,Rhs,op::name<ValType,Rhs> > \
             ( *static_cast<ExprType const*>(this),              \
               rhs );                                            \
@@ -403,7 +403,7 @@ public:
 
 } // namespace assertion
 } // namespace test_tools
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

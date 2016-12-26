@@ -12,16 +12,16 @@
 
 #include <boost/config/abi_prefix.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
-    typedef boost_part::posix_time::ptime system_time;
+    typedef boost::posix_time::ptime system_time;
     
     inline system_time get_system_time()
     {
 #if defined(BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK)
-        return boost_part::date_time::microsec_clock<system_time>::universal_time();
+        return boost::date_time::microsec_clock<system_time>::universal_time();
 #else // defined(BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK)
-        return boost_part::date_time::second_clock<system_time>::universal_time();
+        return boost::date_time::second_clock<system_time>::universal_time();
 #endif // defined(BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK)
     }
 
@@ -29,7 +29,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part
     {
         inline system_time get_system_time_sentinel()
         {
-            return system_time(boost_part::posix_time::pos_infin);
+            return system_time(boost::posix_time::pos_infin);
         }
 
         inline unsigned long get_milliseconds_until(system_time const& target_time)

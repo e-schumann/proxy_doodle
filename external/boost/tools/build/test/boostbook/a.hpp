@@ -5,7 +5,7 @@
 
 // Seems like Boostbook does like classes outside of namespaces,
 // and won't generate anything for them.
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 
 /// A class
 class A {

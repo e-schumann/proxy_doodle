@@ -21,7 +21,7 @@
 
 #include <boost/type_traits/is_reference.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part { namespace mpl { namespace aux {
+namespace boost { namespace mpl { namespace aux {
 
 template< typename T > struct is_class_helper
 {

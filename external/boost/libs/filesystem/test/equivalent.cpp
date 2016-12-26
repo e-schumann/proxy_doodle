@@ -16,7 +16,7 @@
 
 int main( int argc, char * argv[] )
 {
-  boost_part::filesystem::path::default_name_check( boost_part::filesystem::native );
+  boost::filesystem::path::default_name_check( boost::filesystem::native );
   if ( argc != 3 )
   {
     std::cout << "Usage: equivalent path1 path2\n";
@@ -26,7 +26,7 @@ int main( int argc, char * argv[] )
   bool eq;
   try
   {
-    eq = boost_part::filesystem::equivalent( argv[1], argv[2] );
+    eq = boost::filesystem::equivalent( argv[1], argv[2] );
   }
   catch ( const std::exception & ex )
   {

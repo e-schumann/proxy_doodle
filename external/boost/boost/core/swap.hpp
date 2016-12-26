@@ -17,16 +17,16 @@
 // because some compilers (including MSVC 7.1, Borland 5.9.3, and
 // Intel 8.1) don't do argument-dependent lookup when it has a
 // using-declaration instead.
-// - boost_part::swap has two template arguments, instead of one, to
+// - boost::swap has two template arguments, instead of one, to
 // avoid ambiguity when swapping objects of a Boost type that does
-// not have its own boost_part::swap overload.
+// not have its own boost::swap overload.
 
 #include <utility> //for std::swap (C++11)
 #include <algorithm> //for std::swap (C++98)
 #include <cstddef> //for std::size_t
 #include <boost/config.hpp>
 
-namespace boost_part_swap_impl
+namespace boost_swap_impl
 {
   template<class T>
   BOOST_GPU_ENABLED
@@ -42,18 +42,18 @@ namespace boost_part_swap_impl
   {
     for (std::size_t i = 0; i < N; ++i)
     {
-      ::boost_part_swap_impl::swap_impl(left[i], right[i]);
+      ::boost_swap_impl::swap_impl(left[i], right[i]);
     }
   }
 }
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
   template<class T1, class T2>
   BOOST_GPU_ENABLED
   void swap(T1& left, T2& right)
   {
-    ::boost_part_swap_impl::swap_impl(left, right);
+    ::boost_swap_impl::swap_impl(left, right);
   }
 }
 

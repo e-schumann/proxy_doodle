@@ -30,7 +30,7 @@
 # define BOOST_LIGHTWEIGHT_TEST_OSTREAM std::cerr
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
 namespace detail
@@ -149,9 +149,9 @@ template<class T, class U> inline void test_ne_impl( char const * expr1, char co
 
 inline int report_errors()
 {
-    boost_part::detail::report_errors_remind().called_report_errors_function = true;
+    boost::detail::report_errors_remind().called_report_errors_function = true;
 
-    int errors = boost_part::detail::test_errors();
+    int errors = boost::detail::test_errors();
 
     if( errors == 0 )
     {
@@ -167,27 +167,27 @@ inline int report_errors()
     }
 }
 
-} // namespace boost_part
+} // namespace boost
 
-#define BOOST_TEST(expr) ((expr)? (void)0: ::boost_part::detail::test_failed_impl(#expr, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION))
+#define BOOST_TEST(expr) ((expr)? (void)0: ::boost::detail::test_failed_impl(#expr, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION))
 #define BOOST_TEST_NOT(expr) BOOST_TEST(!(expr))
 
-#define BOOST_ERROR(msg) ( ::boost_part::detail::error_impl(msg, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION) )
+#define BOOST_ERROR(msg) ( ::boost::detail::error_impl(msg, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION) )
 
-#define BOOST_TEST_EQ(expr1,expr2) ( ::boost_part::detail::test_eq_impl(#expr1, #expr2, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION, expr1, expr2) )
-#define BOOST_TEST_NE(expr1,expr2) ( ::boost_part::detail::test_ne_impl(#expr1, #expr2, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION, expr1, expr2) )
+#define BOOST_TEST_EQ(expr1,expr2) ( ::boost::detail::test_eq_impl(#expr1, #expr2, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION, expr1, expr2) )
+#define BOOST_TEST_NE(expr1,expr2) ( ::boost::detail::test_ne_impl(#expr1, #expr2, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION, expr1, expr2) )
 
 #ifndef BOOST_NO_EXCEPTIONS
    #define BOOST_TEST_THROWS( EXPR, EXCEP )                    \
       try {                                                    \
          EXPR;                                                 \
-         ::boost_part::detail::throw_failed_impl                    \
+         ::boost::detail::throw_failed_impl                    \
          (#EXCEP, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION); \
       }                                                        \
       catch(EXCEP const&) {                                    \
       }                                                        \
       catch(...) {                                             \
-         ::boost_part::detail::throw_failed_impl                    \
+         ::boost::detail::throw_failed_impl                    \
          (#EXCEP, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION); \
       }                                                        \
    //

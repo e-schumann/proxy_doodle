@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_PARTIAL_STD_ALLOCATOR
 #include "boost_has_part_alloc.ipp"
 #else
-namespace boost_part_has_partial_std_allocator = empty_boost;
+namespace boost_has_partial_std_allocator = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_partial_std_allocator::test();
+   return boost_has_partial_std_allocator::test();
 }
 

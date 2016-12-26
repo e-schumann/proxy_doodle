@@ -27,11 +27,11 @@
 #ifndef BOOST_NO_CXX17_STD_INVOKE
 #include "boost_no_cxx17_std_invoke.ipp"
 #else
-namespace boost_part_no_cxx17_std_invoke = empty_boost;
+namespace boost_no_cxx17_std_invoke = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_no_cxx17_std_invoke::test();
+   return boost_no_cxx17_std_invoke::test();
 }
 

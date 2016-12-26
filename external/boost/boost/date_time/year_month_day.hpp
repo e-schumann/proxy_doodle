@@ -9,7 +9,7 @@
  * $Date$
  */
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace date_time {
 
   //! Allow rapid creation of ymd triples of different types

@@ -23,7 +23,7 @@
 #include <boost/intrusive/detail/workaround.hpp>
 #endif   //BOOST_INTRUSIVE_DETAIL_WORKAROUND_HPP
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace intrusive {
 namespace detail{
 
@@ -147,7 +147,7 @@ struct pointer_element_impl
 template<class Ptr>
 struct pointer_element_impl<Ptr, false>
 {
-   typedef typename boost_part::intrusive::detail::first_param<Ptr>::type type;
+   typedef typename boost::intrusive::detail::first_param<Ptr>::type type;
 };
 
 }  //namespace detail{
@@ -155,7 +155,7 @@ struct pointer_element_impl<Ptr, false>
 template <typename Ptr>
 struct pointer_element
 {
-   typedef typename ::boost_part::intrusive::detail::pointer_element_impl<Ptr>::type type;
+   typedef typename ::boost::intrusive::detail::pointer_element_impl<Ptr>::type type;
 };
 
 template <typename T>
@@ -163,6 +163,6 @@ struct pointer_element<T*>
 {  typedef T type; };
 
 }  //namespace container {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #endif // defined(BOOST_INTRUSIVE_DETAIL_POINTER_ELEMENT_HPP)

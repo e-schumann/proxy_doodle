@@ -11,14 +11,14 @@
 
 #include <boost/smart_ptr/shared_ptr.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace detail {
         template<class T>
         struct sp_if_array;
 
         template<class T>
         struct sp_if_array<T[]> {
-            typedef boost_part::shared_ptr<T[]> type;
+            typedef boost::shared_ptr<T[]> type;
         };
 
         template<class T>
@@ -26,7 +26,7 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part {
 
         template<class T, std::size_t N>
         struct sp_if_size_array<T[N]> {
-            typedef boost_part::shared_ptr<T[N]> type;
+            typedef boost::shared_ptr<T[N]> type;
         };
     }
 }

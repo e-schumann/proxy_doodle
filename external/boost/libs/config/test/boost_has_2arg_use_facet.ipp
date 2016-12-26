@@ -14,7 +14,7 @@
 #include <locale>
 
 
-namespace boost_part_has_two_arg_use_facet{
+namespace boost_has_two_arg_use_facet{
 
 int test()
 {

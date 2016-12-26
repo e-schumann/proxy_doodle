@@ -15,7 +15,7 @@
 #include <boost/range/concepts.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -30,7 +30,7 @@ inline ForwardRange& rotate(ForwardRange& rng,
     BOOST_DEDUCED_TYPENAME range_iterator<ForwardRange>::type middle)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    std::rotate(boost_part::begin(rng), middle, boost_part::end(rng));
+    std::rotate(boost::begin(rng), middle, boost::end(rng));
     return rng;
 }
 
@@ -40,12 +40,12 @@ inline const ForwardRange& rotate(const ForwardRange& rng,
     BOOST_DEDUCED_TYPENAME range_iterator<const ForwardRange>::type middle)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    std::rotate(boost_part::begin(rng), middle, boost_part::end(rng));
+    std::rotate(boost::begin(rng), middle, boost::end(rng));
     return rng;
 }
 
     } // namespace range
     using range::rotate;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

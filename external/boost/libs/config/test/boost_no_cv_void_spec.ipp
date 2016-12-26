@@ -11,7 +11,7 @@
 //                 conflict with a specialisation for void.
 
 
-namespace boost_part_no_cv_void_specializations{
+namespace boost_no_cv_void_specializations{
 
 template <class T>
 struct is_void

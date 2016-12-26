@@ -25,7 +25,7 @@
 // **************                  lazy_ostream                ************** //
 // ************************************************************************** //
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace unit_test {
 
 class lazy_ostream {
@@ -118,10 +118,10 @@ operator<<( lazy_ostream_impl<PrevPrevType,TPrev> const& prev, R& (BOOST_TEST_CA
 
 #endif
 
-#define BOOST_TEST_LAZY_MSG( M ) (::boost_part::unit_test::lazy_ostream::instance() << M)
+#define BOOST_TEST_LAZY_MSG( M ) (::boost::unit_test::lazy_ostream::instance() << M)
 
 } // namespace unit_test
-} // namespace boost_part
+} // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
 

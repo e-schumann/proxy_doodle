@@ -9,4 +9,4 @@ project
      <threading>multi
    ;
    
-local test-requirements = <library>../../test/build//boost_part_test_exec_monitor  ;
+local test-requirements = <library>../../test/build//boost_test_exec_monitor  ;

@@ -32,6 +32,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_has_int128::test();
+   return boost_has_int128::test();
 }
 

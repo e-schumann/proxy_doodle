@@ -24,7 +24,7 @@
 
 //Small meta-typetraits to support move
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace move_detail {
 
 //////////////////////////////////////
@@ -127,6 +127,6 @@ template <class T, class U, class R = void>
 struct disable_if_same : disable_if<is_same<T, U>, R> {};
 
 }  //namespace move_detail {
-}  //namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+}  //namespace boost {
 
 #endif //#ifndef BOOST_MOVE_DETAIL_META_UTILS_CORE_HPP

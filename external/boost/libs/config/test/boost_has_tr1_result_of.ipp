@@ -11,7 +11,7 @@
 
 #include <functional>
 
-namespace boost_part_has_tr1_result_of{
+namespace boost_has_tr1_result_of{
 
 typedef std::tr1::result_of<int*(int)> r;
 typedef r::type rr;

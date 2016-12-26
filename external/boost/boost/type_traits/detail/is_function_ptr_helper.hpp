@@ -31,7 +31,7 @@
 #undef PP1
 #endif
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
 namespace type_traits {
 
 template <class R>
@@ -157,7 +157,7 @@ struct is_function_ptr_helper<R (*)( T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 
 #endif // BOOST_TT_PREPROCESSING_MODE
 
 } // namespace type_traits
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_DETAIL_IS_FUNCTION_PTR_HELPER_HPP_INCLUDED
 

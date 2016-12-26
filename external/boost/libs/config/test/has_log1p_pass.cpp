@@ -24,11 +24,11 @@
 #ifdef BOOST_HAS_LOG1P
 #include "boost_has_log1p.ipp"
 #else
-namespace boost_part_has_log1p = empty_boost;
+namespace boost_has_log1p = empty_boost;
 #endif
 
 int main( int, char *[] )
 {
-   return boost_part_has_log1p::test();
+   return boost_has_log1p::test();
 }
 

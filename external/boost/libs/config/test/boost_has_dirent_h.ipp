@@ -12,7 +12,7 @@
 #include <dirent.h>
 
 
-namespace boost_part_has_dirent_h{
+namespace boost_has_dirent_h{
 
 int test()
 {

@@ -29,6 +29,6 @@
 
 int main( int, char *[] )
 {
-   return boost_part_no_std_wstreambuf::test();
+   return boost_no_std_wstreambuf::test();
 }
 

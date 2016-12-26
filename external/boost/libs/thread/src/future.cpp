@@ -10,14 +10,14 @@
 #include <boost/thread/futures/future_error_code.hpp>
 #include <string>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
 
   namespace thread_detail
   {
 
     class  future_error_category :
-      public boost_part::system::error_category
+      public boost::system::error_category
     {
     public:
         virtual const char* name() const BOOST_NOEXCEPT;

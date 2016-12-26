@@ -16,7 +16,7 @@
 #include <boost/range/detail/range_return.hpp>
 #include <algorithm>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part
+namespace boost
 {
     namespace range
     {
@@ -32,7 +32,7 @@ inline BOOST_DEDUCED_TYPENAME range_iterator<ForwardRange>::type
 max_element(ForwardRange& rng)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return std::max_element(boost_part::begin(rng), boost_part::end(rng));
+    return std::max_element(boost::begin(rng), boost::end(rng));
 }
 
 /// \overload
@@ -41,7 +41,7 @@ inline BOOST_DEDUCED_TYPENAME range_iterator<const ForwardRange>::type
 max_element(const ForwardRange& rng)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::max_element(boost_part::begin(rng), boost_part::end(rng));
+    return std::max_element(boost::begin(rng), boost::end(rng));
 }
 
 /// \overload
@@ -50,7 +50,7 @@ inline BOOST_DEDUCED_TYPENAME range_iterator<ForwardRange>::type
 max_element(ForwardRange& rng, BinaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return std::max_element(boost_part::begin(rng), boost_part::end(rng), pred);
+    return std::max_element(boost::begin(rng), boost::end(rng), pred);
 }
 
 /// \overload
@@ -59,7 +59,7 @@ inline BOOST_DEDUCED_TYPENAME range_iterator<const ForwardRange>::type
 max_element(const ForwardRange& rng, BinaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::max_element(boost_part::begin(rng), boost_part::end(rng), pred);
+    return std::max_element(boost::begin(rng), boost::end(rng), pred);
 }
 
 // range_return overloads
@@ -71,7 +71,7 @@ max_element(ForwardRange& rng)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
     return range_return<ForwardRange,re>::pack(
-        std::max_element(boost_part::begin(rng), boost_part::end(rng)),
+        std::max_element(boost::begin(rng), boost::end(rng)),
         rng);
 }
 
@@ -82,7 +82,7 @@ max_element(const ForwardRange& rng)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
     return range_return<const ForwardRange,re>::pack(
-        std::max_element(boost_part::begin(rng), boost_part::end(rng)),
+        std::max_element(boost::begin(rng), boost::end(rng)),
         rng);
 }
 
@@ -93,7 +93,7 @@ max_element(ForwardRange& rng, BinaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
     return range_return<ForwardRange,re>::pack(
-        std::max_element(boost_part::begin(rng), boost_part::end(rng), pred),
+        std::max_element(boost::begin(rng), boost::end(rng), pred),
         rng);
 }
 
@@ -104,12 +104,12 @@ max_element(const ForwardRange& rng, BinaryPredicate pred)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
     return range_return<const ForwardRange,re>::pack(
-        std::max_element(boost_part::begin(rng), boost_part::end(rng), pred),
+        std::max_element(boost::begin(rng), boost::end(rng), pred),
         rng);
 }
 
     } // namespace range
     using range::max_element;
-} // namespace boost_part
+} // namespace boost
 
 #endif // include guard

@@ -18,28 +18,28 @@
 #include <boost/type_traits/detail/yes_no_type.hpp>
 #include <boost/type_traits/declval.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
    namespace detail{
 
       struct is_destructible_imp
       {
-         template<typename T, typename = decltype(boost_part::declval<T&>().~T())>
-         static boost_part::type_traits::yes_type test(int);
+         template<typename T, typename = decltype(boost::declval<T&>().~T())>
+         static boost::type_traits::yes_type test(int);
          template<typename>
-         static boost_part::type_traits::no_type test(...);
+         static boost::type_traits::no_type test(...);
       };
 
    }
 
-   template <class T> struct is_destructible : public integral_constant<bool, sizeof(detail::is_destructible_imp::test<T>(0)) == sizeof(boost_part::type_traits::yes_type)>{};
+   template <class T> struct is_destructible : public integral_constant<bool, sizeof(detail::is_destructible_imp::test<T>(0)) == sizeof(boost::type_traits::yes_type)>{};
 
 #else
 
 #include <boost/type_traits/is_pod.hpp>
 #include <boost/type_traits/is_class.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part{
+namespace boost{
 
    // We don't know how to implement this:
    template <class T> struct is_destructible : public integral_constant<bool, is_pod<T>::value || is_class<T>::value>{};
@@ -56,6 +56,6 @@ namespace boost_part {} namespace boost = boost_part; namespace boost_part{
    template <class T, std::size_t N> struct is_destructible<T[N]> : public is_destructible<T>{};
    template <class T> struct is_destructible<T[]> : public is_destructible<T>{};
 
-} // namespace boost_part
+} // namespace boost
 
 #endif // BOOST_TT_IS_DESTRUCTIBLE_HPP_INCLUDED

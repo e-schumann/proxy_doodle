@@ -11,11 +11,11 @@
 
 #include <boost/type_traits/remove_cv.hpp>
 
-namespace boost_part {} namespace boost = boost_part; namespace boost_part {
+namespace boost {
     namespace detail {
         template<class T>
         struct array_base {
-            typedef typename boost_part::remove_cv<T>::type type;
+            typedef typename boost::remove_cv<T>::type type;
         };
 
         template<class T>

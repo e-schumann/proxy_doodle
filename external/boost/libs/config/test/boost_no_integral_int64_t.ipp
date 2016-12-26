@@ -12,7 +12,7 @@
 #include <cstdlib>
 
 
-namespace boost_part_no_integral_int64_t{
+namespace boost_no_integral_int64_t{
 
 #ifdef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
 enum{ mask = 1uLL << 50 };

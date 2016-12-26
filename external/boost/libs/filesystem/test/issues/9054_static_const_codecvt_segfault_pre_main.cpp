@@ -1,7 +1,7 @@
 #include "boost/filesystem.hpp"
 
-static const boost_part::filesystem::path::codecvt_type &dummy =
-  boost_part::filesystem::path::codecvt();
+static const boost::filesystem::path::codecvt_type &dummy =
+  boost::filesystem::path::codecvt();
 
 int main()
 {
