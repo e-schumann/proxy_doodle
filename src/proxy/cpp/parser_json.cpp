@@ -5,21 +5,21 @@
  */
 
 /**
- * @File   decoder.cpp
+ * @File   parser_json.cpp
  * @Author Eike Schumann <e-schumann@online.de>
  *
  * (c) Copyright 2016 by Eike Schumann
  *
- * Created on December 26, 2016, 10:25 AM
+ * Created on December 26, 2016, 1:55 PM
  *
- * @Brief Brief description of decoder.cpp.
+ * @Brief Brief description of parser_json.cpp.
  *
  * Description:
  */
 
 // Include STL headers (e.g. vector, string, etc...)
 // -------------------------------------------------
-
+#include <sstream>
 
 // Include system headers (e.g. dlfcn.h, etc ...)
 // ----------------------------------------------
@@ -27,19 +27,22 @@
 
 // Include external headers (e.g. from Boost, etc ...)
 // ---------------------------------------------------
-
+#include <boost/property_tree/json_parser.hpp>
 
 // Include project headers
 // -----------------------
-#include <parser_interface.h>
+
 
 // Include declaration header
 // --------------------------
-#include <decoder.h>
+#include <parser_json.h>
 
-tuto::decoder::decoder( std::shared_ptr<parser_interface> parser ) : parser_{parser} {
+tuto::pt::ptree tuto::parser_json::parse( std::string const& data ) const {
+   std::stringstream stream;
+   stream << data;
+
+   pt::ptree return_ptree;
+   pt::read_json( stream, return_ptree );
+
+   return return_ptree;
 }
-
-tuto::pt::ptree tuto::decoder::decode( std::string const& data ) const {
-   return parser_->parse(data);
- }

@@ -13,7 +13,7 @@
  * Created on December 26, 2016, 10:25 AM
  *
  * @Brief Brief description of file.
- * 
+ *
  * Description:
  */
 
@@ -55,18 +55,26 @@
 
 // Include project headers
 // -----------------------
-
+#include <decoder_interface.h>
 
 // Synopsis/Namespace interface:
 // This section lists the classes, functions and types provided by this
 // file as well as forward declaration of classes, functions and types
 // provided by custom components.
 // --------------------------------------------------------------------
-
+namespace tuto {
+  class decoder;
+  //Forward declarations
+  struct parser_interface;}
 
 // Declarations of the class interfaces
 // ------------------------------------
-
+class tuto::decoder : public tuto::decoder_interface {
+  std::shared_ptr<parser_interface> parser_;
+public:
+  decoder( std::shared_ptr<parser_interface> );
+  pt::ptree decode( std::string const& data ) const override;
+};
 
 // Definition of (inlined) methods and functions ( most likely template related ).
 // ------------------------------------------------------------------------------

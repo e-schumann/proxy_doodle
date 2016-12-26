@@ -117,10 +117,3 @@ TEST( context_singletonTest, context02 ) {
   }
 }
 
-#include <fixture_create_test_file.h>
-
-typedef test::fixture_create_test_file file_fixture;
-
-TEST_F( file_fixture, test01 ) {
-
-}

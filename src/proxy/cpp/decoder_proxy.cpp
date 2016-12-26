@@ -27,12 +27,21 @@
 
 // Include external headers (e.g. from Boost, etc ...)
 // ---------------------------------------------------
-#include <boost/property_tree/ptree.hpp>
+
 
 // Include project headers
 // -----------------------
-
+#include <decoder.h>
+#include <parser_interface.h>
 
 // Include declaration header
 // --------------------------
 #include <decoder_proxy.h>
+
+tuto::pt::ptree tuto::decoder_proxy::decode( std::string const& data ) const {
+    return decoder_->decode(data);
+}
+
+// ToDo: This initialization list needs some attention ...
+tuto::decoder_proxy::decoder_proxy( parser_interface* parser) : parser_{parser}, decoder_{new decoder(parser_)} {
+}

@@ -5,12 +5,12 @@
  */
 
 /**
- * @File   fixture_create_test_file.h
+ * @File   parser_xml.h
  * @Author Eike Schumann <e-schumann@online.de>
  *
  * (c) Copyright 2016 by Eike Schumann
  *
- * Created on December 26, 2016, 2:22 AM
+ * Created on December 26, 2016, 12:20 PM
  *
  * @Brief Brief description of file.
  *
@@ -23,7 +23,7 @@
 // -----------------------------------------------------
 
 #if defined( __unix__ ) || defined( __unix )
-#ident "@(#) fixture_create_test_file 2016-12-26 02:22:51 Eike Schumann"
+#ident "@(#) parser_xml 2016-12-26 12:20:42 Eike Schumann"
 #endif
 
 
@@ -38,12 +38,12 @@
 
 // Include guard to avoid multiple inclusion
 // -----------------------------------------
-#ifndef FIXTURE_CREATE_TEST_FILE_H
-#define FIXTURE_CREATE_TEST_FILE_H
+#ifndef PARSER_XML_H
+#define PARSER_XML_H
 
 // Include STL headers (e.g. vector, string, etc...)
 // -------------------------------------------------
-#include <string>
+
 
 // Include system headers (e.g. dlfcn.h, etc ...)
 // ----------------------------------------------
@@ -51,43 +51,31 @@
 
 // Include external headers (e.g. from Boost, etc ...)
 // ---------------------------------------------------
-#include <boost/filesystem.hpp>
-#include <gtest/gtest.h>
+
 
 // Include project headers
 // -----------------------
-
+#include <parser_interface.h>
 
 // Synopsis/Namespace interface:
 // This section lists the classes, functions and types provided by this
 // file as well as forward declaration of classes, functions and types
 // provided by custom components.
 // --------------------------------------------------------------------
-namespace test {
-  namespace fs = boost::filesystem;
-  class fixture_create_test_file;
+namespace tuto {
+  class parser_xml;
 }
 
 // Declarations of the class interfaces
 // ------------------------------------
-class test::fixture_create_test_file : public ::testing::Test {
-  fs::path current_path_;
-  void write_xml( std::string const& name, int age ) const;
-  void write_json( std::string const& name, int age ) const;
-  void remove_xml( std::string const& name ) const;
-  void remove_json( std::string const& name ) const;
-protected:
-  virtual void SetUp();
-  virtual void TearDown();
+class tuto::parser_xml : public tuto::parser_interface {
 public:
-  fixture_create_test_file();
-  std::string get_file_content( std::string const& filename ) const;
+  pt::ptree parse( std::string const& data ) const override;
 };
-
 
 // Definition of (inlined) methods and functions ( most likely template related ).
 // ------------------------------------------------------------------------------
 
 
 
-#endif /* FIXTURE_CREATE_TEST_FILE_H */
+#endif /* PARSER_XML_H */

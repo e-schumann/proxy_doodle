@@ -13,7 +13,7 @@
  * Created on December 26, 2016, 10:24 AM
  *
  * @Brief Brief description of file.
- * 
+ *
  * Description:
  */
 
@@ -51,21 +51,35 @@
 
 // Include external headers (e.g. from Boost, etc ...)
 // ---------------------------------------------------
-
+#include <memory>
 
 // Include project headers
 // -----------------------
-
+#include <decoder_interface.h>
+#include <context_singleton.h>
 
 // Synopsis/Namespace interface:
 // This section lists the classes, functions and types provided by this
 // file as well as forward declaration of classes, functions and types
 // provided by custom components.
 // --------------------------------------------------------------------
-
+namespace tuto {
+  class decoder_proxy;
+  //Forward declarations
+  struct decoder_interface;
+  struct parser_interface;
+}
 
 // Declarations of the class interfaces
 // ------------------------------------
+class tuto::decoder_proxy : public tuto::utl::instance_scope::context_singleton<tuto::decoder_proxy>,
+                            public tuto::decoder_interface {
+  std::shared_ptr<parser_interface> parser_;
+  std::unique_ptr<decoder_interface> decoder_;
+public:
+  decoder_proxy( parser_interface* );
+  pt::ptree decode( std::string const& data ) const override;
+};
 
 
 // Definition of (inlined) methods and functions ( most likely template related ).
