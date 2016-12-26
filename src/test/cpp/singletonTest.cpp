@@ -47,7 +47,8 @@
 // Include external headers (e.g. from Boost, etc ...)
 // ---------------------------------------------------
 #include <gtest/gtest.h>
-#include <boost/filesystem/path.hpp>
+
+
 // Include project headers
 // -----------------------
 
@@ -319,6 +320,5 @@ TEST( singletonTest, simple03 ) {
       count = instance2.num_created();
       EXPECT_EQ( count, 1 );
    }
-
 }
 
