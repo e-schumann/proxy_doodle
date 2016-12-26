@@ -71,7 +71,7 @@ TEST_F( file_fixture, test01 ) {
 }
 
 
-template <typename T, typename P> struct base_command {
+template <typename T, typename P> struct base_command_handler {
    static tuto::pt::ptree decode( std::string const& content ) {
       tuto::decoder_interface& decoder_proxy = tuto::decoder_proxy::instance<T>( &tuto::utl::singleton<P>::instance() );
       return decoder_proxy.decode( content );
@@ -79,45 +79,45 @@ template <typename T, typename P> struct base_command {
 };
 
 
-struct command_a : public base_command<command_a, tuto::parser_xml> {
+struct command_a_handler : public base_command_handler<command_a_handler, tuto::parser_xml> {
    tuto::pt::ptree decode( std::string const& content ) {
-      return base_command::decode( content );
+      return base_command_handler::decode( content );
    }
 };
 
-struct command_b : public base_command<command_b, tuto::parser_xml> {
+struct command_b_handler : public base_command_handler<command_b_handler, tuto::parser_xml> {
    tuto::pt::ptree decode( std::string const& content ) {
-      return  base_command::decode( content );
+      return  base_command_handler::decode( content );
    }
 };
 
-struct command_c : public base_command<command_c, tuto::parser_xml> {
+struct command_c_handler : public base_command_handler<command_c_handler, tuto::parser_xml> {
    tuto::pt::ptree decode( std::string const& content ) {
-      return base_command::decode( content );
+      return base_command_handler::decode( content );
    }
 };
 
-struct command_d : public base_command<command_d, tuto::parser_json> {
+struct command_d_handler : public base_command_handler<command_d_handler, tuto::parser_json> {
    tuto::pt::ptree decode( std::string const& content ) {
-      return base_command::decode( content );
+      return base_command_handler::decode( content );
    }
 };
 
-struct command_e : public base_command<command_e, tuto::parser_json> {
+struct command_e_handler : public base_command_handler<command_e_handler, tuto::parser_json> {
    tuto::pt::ptree decode( std::string const& content ) {
-      return base_command::decode( content );
+      return base_command_handler::decode( content );
    }
 };
 
-struct command_f : public base_command<command_f, tuto::parser_json> {
+struct command_f_handler : public base_command_handler<command_f_handler, tuto::parser_json> {
    tuto::pt::ptree decode( std::string const& content ) {
-      return base_command::decode( content );
+      return base_command_handler::decode( content );
    }
 };
 
 TEST_F( file_fixture, test02 ) {
    auto content = get_file_content( "Hugo.xml");
-   command_a a;
+   command_a_handler a;
    auto props = a.decode( content );
    EXPECT_EQ( "Hugo", props.get("testdata.name", "") );
    EXPECT_EQ( 25, props.get("testdata.age", 0) );
@@ -138,19 +138,19 @@ TEST_F( file_fixture, test02 ) {
    );
 
 
-   command_b b;
+   command_b_handler b;
    content = get_file_content( "Otto.xml");
    props = b.decode( content );
    EXPECT_EQ( "Otto", props.get("testdata.name", "") );
    EXPECT_EQ( 12, props.get("testdata.age", 0) );
 
-   command_c c;
+   command_c_handler c;
    content = get_file_content( "Karl.xml");
    props = c.decode( content );
    EXPECT_EQ( "Karl", props.get("testdata.name", "") );
    EXPECT_EQ( 88, props.get("testdata.age", 0) );
 
-   command_d d;
+   command_d_handler d;
    content = get_file_content( "Emilia.json");
    props = d.decode( content );
    EXPECT_EQ( "Emilia", props.get("testdata.name", "") );
@@ -166,13 +166,13 @@ TEST_F( file_fixture, test02 ) {
    EXPECT_EQ( "Carla", props.get("testdata.name", "") );
    EXPECT_EQ( 22, props.get("testdata.age", 0) );
 
-   command_e e;
+   command_e_handler e;
    content = get_file_content( "Emilia.json");
    props = e.decode( content );
    EXPECT_EQ( "Emilia", props.get("testdata.name", "") );
    EXPECT_EQ( 43, props.get("testdata.age", 0) );
 
-   command_f f;
+   command_f_handler f;
    content = get_file_content( "Emilia.json");
    props = f.decode( content );
    EXPECT_EQ( "Emilia", props.get("testdata.name", "") );
