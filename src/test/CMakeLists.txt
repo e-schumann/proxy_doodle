@@ -19,6 +19,7 @@ else()
    include_directories( ${GTEST_INCLUDE_DIRS}/include )
 endif()
 
+message( "proxy_INCLUDE_DIRS: ${proxy_INCLUDE_DIRS}" )
 include_directories( ${util_INCLUDE_DIRS} ${proxy_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/cpp )
 include_directories( ${Boost_INCLUDE_DIRS} )
 link_directories( ${Boost_LIBRARY_DIRS} ${proxy_LIBRARY_DIRS} )

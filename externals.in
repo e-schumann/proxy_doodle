@@ -20,6 +20,7 @@ set( GTEST_MAIN_LIBRARY ${CMAKE_BINARY_DIR}/${GOOGLETEST_NAME}-prefix/src/${GOOG
 ExternalProject_Add( spdlog
   GIT_REPOSITORY    https://github.com/gabime/spdlog.git
   GIT_TAG           master
+  CMAKE_ARGS        -DBUILD_TESTING=OFF
   UPDATE_COMMAND    ""
   INSTALL_COMMAND   ""
 )
