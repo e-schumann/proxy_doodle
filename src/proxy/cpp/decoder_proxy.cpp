@@ -27,7 +27,7 @@
 
 // Include external headers (e.g. from Boost, etc ...)
 // ---------------------------------------------------
-
+#include <boost/property_tree/ptree.hpp>
 
 // Include project headers
 // -----------------------

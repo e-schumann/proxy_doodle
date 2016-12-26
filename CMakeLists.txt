@@ -40,7 +40,7 @@ include(externals.in)
 
 add_subdirectory(src/util)
 add_subdirectory(src/test)
-
+add_subdirectory(src/proxy)
 
 add_test( NAME SingletonTests COMMAND ${PROJECT_TEST_NAME} )
 
