@@ -5,7 +5,8 @@ project( util C CXX )
 file( GLOB UTIL_SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/header/*.h )
 
 add_library( ${PROJECT_NAME} INTERFACE )
-target_include_directories( ${PROJECT_NAME} INTERFACE ... )
+target_include_directories( ${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/header )
 target_sources( ${PROJECT_NAME} INTERFACE ${UTIL_SRC_FILES} )
 
-set( ${PROJECT_NAME}_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/header CACHE INTERNAL "${PROJECT_NAME}: Include Directories" FORCE )
+#set( ${PROJECT_NAME}_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/header CACHE INTERNAL "${PROJECT_NAME}: Include Directories" FORCE )
+
