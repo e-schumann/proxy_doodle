@@ -70,9 +70,9 @@ namespace tuto {
 // Declarations of the class interfaces
 // ------------------------------------
 class tuto::decoder : public tuto::decoder_interface {
-  std::shared_ptr<parser_interface> parser_;
+  parser_interface* parser_;
 public:
-  decoder( std::shared_ptr<parser_interface> );
+  decoder( parser_interface* );
   pt::ptree decode( std::string const& data ) const override;
 };
 

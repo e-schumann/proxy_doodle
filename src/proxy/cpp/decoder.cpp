@@ -37,7 +37,7 @@
 // --------------------------
 #include <decoder.h>
 
-tuto::decoder::decoder( std::shared_ptr<parser_interface> parser ) : parser_{parser} {
+tuto::decoder::decoder( parser_interface* parser ) : parser_{parser} {
 }
 
 tuto::pt::ptree tuto::decoder::decode( std::string const& data ) const {

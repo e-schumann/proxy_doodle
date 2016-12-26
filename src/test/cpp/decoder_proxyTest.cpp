@@ -81,71 +81,107 @@ template <typename T, typename P> struct base_command {
 
 struct command_a : public base_command<command_a, tuto::parser_xml> {
    tuto::pt::ptree decode( std::string const& content ) {
-      base_command::decode( content );
+      return base_command::decode( content );
    }
 };
 
-//class command_b : public base_command<command_b> {
-//   std::unique_ptr< tuto::parser_interface> parser_;
-//public:
-//   command_b() : parser_{new tuto::parser_xml} {
-//   }
-//
-//   tuto::pt::ptree decode( std::string const& content ) {
-//      base_command::decode( content, parser_.get() );
-//   }
-//};
-//
-//class command_c : public base_command<command_c> {
-//   std::unique_ptr< tuto::parser_interface> parser_;
-//public:
-//   command_c() : parser_{new tuto::parser_xml} {
-//   }
-//
-//   tuto::pt::ptree decode( std::string const& content ) {
-//      base_command::decode( content, parser_.get() );
-//   }
-//};
-//
-//class command_d : public base_command<command_d> {
-//   std::unique_ptr< tuto::parser_interface> parser_;
-//public:
-//   command_d() : parser_{new tuto::parser_json} {
-//   }
-//
-//   tuto::pt::ptree decode( std::string const& content ) {
-//      base_command::decode( content, parser_.get() );
-//   }
-//};
-//
-//class command_e : public base_command<command_e> {
-//   std::unique_ptr< tuto::parser_interface> parser_;
-//public:
-//   command_e() : parser_{new tuto::parser_json} {
-//   }
-//
-//   tuto::pt::ptree decode( std::string const& content ) {
-//      base_command::decode( content, parser_.get() );
-//   }
-//};
-//
-//class command_f : public base_command<command_f> {
-//   std::unique_ptr< tuto::parser_interface> parser_;
-//public:
-//   command_f() : parser_{new tuto::parser_json} {
-//   }
-//
-//   tuto::pt::ptree decode( std::string const& content ) {
-//      base_command::decode( content, parser_.get() );
-//   }
-//};
+struct command_b : public base_command<command_b, tuto::parser_xml> {
+   tuto::pt::ptree decode( std::string const& content ) {
+      return  base_command::decode( content );
+   }
+};
+
+struct command_c : public base_command<command_c, tuto::parser_xml> {
+   tuto::pt::ptree decode( std::string const& content ) {
+      return base_command::decode( content );
+   }
+};
+
+struct command_d : public base_command<command_d, tuto::parser_json> {
+   tuto::pt::ptree decode( std::string const& content ) {
+      return base_command::decode( content );
+   }
+};
+
+struct command_e : public base_command<command_e, tuto::parser_json> {
+   tuto::pt::ptree decode( std::string const& content ) {
+      return base_command::decode( content );
+   }
+};
+
+struct command_f : public base_command<command_f, tuto::parser_json> {
+   tuto::pt::ptree decode( std::string const& content ) {
+      return base_command::decode( content );
+   }
+};
 
 TEST_F( file_fixture, test02 ) {
    auto content = get_file_content( "Hugo.xml");
    command_a a;
    auto props = a.decode( content );
-//   EXPECT_EQ( "Hugo", props.get("testdata.name", "") );
-//   EXPECT_EQ( 25, props.get("testdata.age", 0) );
+   EXPECT_EQ( "Hugo", props.get("testdata.name", "") );
+   EXPECT_EQ( 25, props.get("testdata.age", 0) );
+
+   content = get_file_content( "Otto.xml");
+   props = a.decode( content );
+   EXPECT_EQ( "Otto", props.get("testdata.name", "") );
+   EXPECT_EQ( 12, props.get("testdata.age", 0) );
+
+   content = get_file_content( "Karl.xml");
+   props = a.decode( content );
+   EXPECT_EQ( "Karl", props.get("testdata.name", "") );
+   EXPECT_EQ( 88, props.get("testdata.age", 0) );
+
+   content = get_file_content( "Carla.json");
+   EXPECT_ANY_THROW(
+      props = a.decode( content );
+   );
+
+
+   command_b b;
+   content = get_file_content( "Otto.xml");
+   props = b.decode( content );
+   EXPECT_EQ( "Otto", props.get("testdata.name", "") );
+   EXPECT_EQ( 12, props.get("testdata.age", 0) );
+
+   command_c c;
+   content = get_file_content( "Karl.xml");
+   props = c.decode( content );
+   EXPECT_EQ( "Karl", props.get("testdata.name", "") );
+   EXPECT_EQ( 88, props.get("testdata.age", 0) );
+
+   command_d d;
+   content = get_file_content( "Emilia.json");
+   props = d.decode( content );
+   EXPECT_EQ( "Emilia", props.get("testdata.name", "") );
+   EXPECT_EQ( 43, props.get("testdata.age", 0) );
+
+   content = get_file_content( "Hillary.json");
+   props = d.decode( content );
+   EXPECT_EQ( "Hillary", props.get("testdata.name", "") );
+   EXPECT_EQ( 62, props.get("testdata.age", 0) );
+
+   content = get_file_content( "Carla.json");
+   props = d.decode( content );
+   EXPECT_EQ( "Carla", props.get("testdata.name", "") );
+   EXPECT_EQ( 22, props.get("testdata.age", 0) );
+
+   command_e e;
+   content = get_file_content( "Emilia.json");
+   props = e.decode( content );
+   EXPECT_EQ( "Emilia", props.get("testdata.name", "") );
+   EXPECT_EQ( 43, props.get("testdata.age", 0) );
+
+   command_f f;
+   content = get_file_content( "Emilia.json");
+   props = f.decode( content );
+   EXPECT_EQ( "Emilia", props.get("testdata.name", "") );
+   EXPECT_EQ( 43, props.get("testdata.age", 0) );
+
+   content = get_file_content( "Karl.xml");
+   EXPECT_ANY_THROW(
+      props = f.decode( content );
+   );
 }
 
 

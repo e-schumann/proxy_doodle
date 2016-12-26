@@ -74,7 +74,7 @@ namespace tuto {
 // ------------------------------------
 class tuto::decoder_proxy : public tuto::utl::instance_scope::context_singleton<tuto::decoder_proxy>,
                             public tuto::decoder_interface {
-  std::shared_ptr<parser_interface> parser_;
+  parser_interface* parser_;
   std::unique_ptr<decoder_interface> decoder_;
 public:
   decoder_proxy( parser_interface* );
