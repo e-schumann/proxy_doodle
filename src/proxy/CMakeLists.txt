@@ -13,7 +13,7 @@ include_directories( ${Boost_INCLUDE_DIRS} )
 add_library( ${PROJECT_NAME} SHARED ${PROXY_SRC_FILES} )
 target_link_libraries( ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
-set( ${PROJECT_NAME}_INCLUDE_DIRS ${PROJECT_DIR}/header CACHE INTERNAL "${PROJECT_NAME}: Include Directories" FORCE )
+set( ${PROJECT_NAME}_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/header CACHE INTERNAL "${PROJECT_NAME}: Include Directories" FORCE )
 
 
 
