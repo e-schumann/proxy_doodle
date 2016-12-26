@@ -1,4 +1,10 @@
-Sorry, building takes a while (it includes a full boost distribution ;-) )
+git clone git@github.com:e-schumann/proxy_doodle.git
+mkdir proxy_doodle/build
+cd proxy_doodle/build
+cmake ..
+cmake --build .
+ctest -VV 
+
 
 
 Netbeans has nice built in cmake support
