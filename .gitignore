@@ -12,6 +12,7 @@
 *.so
 *.dylib
 *.dll
+*.so*
 
 # Fortran module files
 *.mod
@@ -39,4 +40,7 @@ CTestTestfile.cmake
 
 nbproject/
 /build/
-/external/
+*.jam*
+bootstrap.log
+external/boost/b2
+external/boost/bjam
